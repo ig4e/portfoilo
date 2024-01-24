@@ -125,7 +125,7 @@ export default function Home({
                 id="skills"
             >
                 <div className="mx-auto flex min-h-[40vh] max-w-6xl flex-col gap-4 overflow-x-hidden overflow-y-clip">
-                    <div className="mx-auto max-w-3xl w-full">
+                    <div className="mx-auto w-full max-w-3xl">
                         <div className="mb-6 flex items-center gap-4 ">
                             <Icons.logo className="h-9 w-9" />
                             <Typography element="h2" as="h2">
