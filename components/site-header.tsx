@@ -13,6 +13,7 @@ import {
 import { LocaleSelector } from "./locale-selector";
 import { Link } from "@/lib/navigation";
 import { NavSheet } from "./nav-sheet";
+import { routes } from "@/config/routes";
 
 function SiteHeader() {
     const t = useTranslations("site-header");
@@ -34,21 +35,15 @@ function SiteHeader() {
                     </Link>
 
                     <div className="hidden items-center gap-4 md:flex">
-                        <Link href={"/#about"}>
-                            <Typography element="h4" as={"link"}>
-                                {t("links.about-me")}
-                            </Typography>
-                        </Link>
-                        <Link href={"/#skills"}>
-                            <Typography element="h4" as={"link"}>
-                                {t("links.skills")}
-                            </Typography>
-                        </Link>
-                        <Link href={"/#experience"}>
-                            <Typography element="h4" as={"link"}>
-                                {t("links.experience")}
-                            </Typography>
-                        </Link>
+                        {routes.map((route) => {
+                            return (
+                                <Link href={route.url} key={route.title}>
+                                    <Typography element="h4" as={"link"}>
+                                        {t(`links.${route.title}`)}
+                                    </Typography>
+                                </Link>
+                            );
+                        })}
                     </div>
                 </div>
 

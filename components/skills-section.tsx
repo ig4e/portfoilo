@@ -13,10 +13,10 @@ function SkillsSection() {
     return (
         <section className="dark bg-black px-4 py-12 text-white" id="skills">
             <div
-                className="mx-auto flex min-h-[40vh] max-w-7xl flex-col gap-4 overflow-x-hidden overflow-y-clip"
+                className="container flex min-h-[40vh]  flex-col gap-4 overflow-x-hidden overflow-y-clip"
                 id="skill-cards"
             >
-                <div className="mx-auto w-full max-w-3xl">
+                <div className="w-full ">
                     <div className="mb-6 flex items-center gap-4 ">
                         <Icons.logo className="h-9 w-9" />
                         <Typography element="h2" as="h2">

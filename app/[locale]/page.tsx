@@ -1,8 +1,10 @@
 import HeroSection from "@/components/hero-section";
+import ProjectsSection from "@/components/projects-section";
 import SkillsSection from "@/components/skills-section";
 import Typography from "@/components/typography";
 import { Icons } from "@/components/ui/icons";
 import { locales } from "@/config/i18n";
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 
@@ -13,6 +15,8 @@ export default function Home({
 }>) {
     unstable_setRequestLocale(locale);
     const t = useTranslations("index");
+
+    
 
     return (
         <main className="">
@@ -56,6 +60,8 @@ export default function Home({
                     </div>
                 </div>
             </section>
+
+            <ProjectsSection></ProjectsSection>
 
             <SkillsSection />
         </main>

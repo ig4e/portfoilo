@@ -11,8 +11,9 @@ function HeroScrollText() {
     const compref = useRef<HTMLElement>(null);
     const windowSize = typeof window !== "undefined" ? window.innerWidth : 1;
     const componentWidth = compref.current?.clientWidth ?? 200;
-    const { isDesktop } = useViewport()
-    const multiplier = (windowSize / (componentWidth - windowSize)) * (isDesktop ? 20 : 10);
+    const { isDesktop } = useViewport();
+    const multiplier =
+        (windowSize / (componentWidth - windowSize)) * (isDesktop ? 20 : 10);
     const final = (windowSize / ((y || 1) < 180 ? 180 : y || 1)) * multiplier;
     const t = useTranslations("index.hero");
 
