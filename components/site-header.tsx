@@ -21,8 +21,16 @@ function SiteHeader() {
         <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container flex h-14 max-w-screen-2xl items-center">
                 <div className="flex items-center gap-4">
-                    <Link href={"/"}>
+                    <Link href={"/"} className="group flex items-center gap-2">
                         <Icons.logo className="h-8 w-8"></Icons.logo>
+                        <Typography element="h4" as={"h5"} className="relative">
+                            <span className="block whitespace-nowrap group-hover:hidden">
+                                セカイ
+                            </span>
+                            <span className="hidden group-hover:block">
+                                {t("name")}
+                            </span>
+                        </Typography>
                     </Link>
 
                     <div className="hidden items-center gap-4 md:flex">
