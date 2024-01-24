@@ -6,6 +6,7 @@ import { skills } from "@/config/skills";
 import { useLocale, useTranslations } from "next-intl";
 import { hexToRgb } from "@/lib/utils";
 import { Locale } from "@/config/i18n";
+import { Noise } from "./ui/images";
 
 function SkillsSection() {
     const t = useTranslations("index");
@@ -107,6 +108,15 @@ function SkillCard({
                     background: `radial-gradient(var(--circle-size,250px) circle at var(--x, 100px) var(--y, 100px), rgba(${itemRgbColor.r}, ${itemRgbColor.g}, ${itemRgbColor.b}, 0.4), transparent 40%)`,
                 }}
             ></div>
+
+            <div
+                className="top-18 absolute inset-0 z-[4] mix-blend-overlay"
+                style={{
+                    backgroundRepeat: "repeat",
+                    backgroundImage: `url('${Noise.src}')`,
+                    opacity: 0.1,
+                }}
+            />
 
             <div
                 className="absolute inset-10 z-[3] h-full w-full opacity-25 blur-3xl md:bottom-0 md:left-0 md:h-1/2 md:opacity-15"
