@@ -82,10 +82,10 @@ const config = {
                         transform: "translate(0px, 0px) scale(1)",
                     },
                     "33%": {
-                        transform: "translate(0px, 0px) scale(1.2)",
+                        transform: "translate(0px, 0px) scale(0.8)",
                     },
                     "66%": {
-                        transform: "translate(5px,0px) scale(1.1)",
+                        transform: "translate(5px,0px) scale(0.9)",
                     },
                 },
             },

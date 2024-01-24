@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { Cairo, Inter } from "next/font/google";
+import { Cairo, Inter, Roboto } from "next/font/google";
+import localFont from "next/font/local";
+
 import "../globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -10,12 +12,17 @@ import { DirectionProvider } from "@/components/direction-provider";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 
 const inter = Inter({
+    //weight: ["100", "300", "400", "500", "700", "900"],
     subsets: ["latin"],
     variable: "--font-sans",
 });
 const cairo = Cairo({
     subsets: ["arabic"],
     variable: "--font-ar",
+});
+
+const HarlowSolid = localFont({
+    src: "../../public/fonts/HarlowSolidRegular.ttf",
 });
 
 export const metadata: Metadata = {
