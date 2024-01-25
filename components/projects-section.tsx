@@ -26,7 +26,11 @@ function ProjectsSection() {
     const { isMobile } = useViewport();
 
     const opacityDimensions = () => {
-        return isMobile ? [0.7, 1] : [0, 1];
+        return isMobile ? [0.6, 1] : [0, 1];
+    };
+
+    const translateDimensions = () => {
+        return isMobile ? [0, -300] : [0, -500];
     };
 
     const opacity = useTransform(
@@ -37,7 +41,11 @@ function ProjectsSection() {
 
     const scale = useTransform(projectsScrollYProgress, [0, 1], [1.05, 1]);
 
-    const translate = useTransform(projectsScrollYProgress, [1, 0], [0, -300]);
+    const translate = useTransform(
+        projectsScrollYProgress,
+        [1, 0],
+        translateDimensions(),
+    );
 
     return (
         <section className="dark bg-black py-12 text-white" id="my-projects">
@@ -74,7 +82,7 @@ function ProjectsSection() {
                                 <Link
                                     href={`/projects/${project.id}`}
                                     key={project.id}
-                                    className="group relative rounded-md transition duration-500 hover:-translate-y-2"
+                                    className="group relative overflow-hidden rounded-md border transition duration-500 hover:-translate-y-1 hover:border-primary"
                                 >
                                     <Image
                                         src={project.image}
@@ -82,7 +90,7 @@ function ProjectsSection() {
                                         alt={project.name[locale]}
                                     ></Image>
 
-                                    <div className="absolute inset-0 z-10 flex h-full w-full items-end justify-between gap-2 bg-gradient-to-b from-transparent to-black px-4">
+                                    <div className="absolute inset-0 z-10 flex h-full w-full items-end justify-between gap-2 bg-gradient-to-b from-transparent to-black p-4">
                                         <div className="flex flex-col items-start gap-2">
                                             <Typography element="h4" as="h4">
                                                 {project.name[locale]}
@@ -96,7 +104,7 @@ function ProjectsSection() {
                                             </Typography>
                                         </div>
 
-                                        <ExternalLinkIcon className="h-5 w-5 opacity-100 transition group-hover:opacity-100 md:opacity-100"></ExternalLinkIcon>
+                                        <ExternalLinkIcon className="h-5 w-5 opacity-100 transition group-hover:opacity-100 md:opacity-0 duration-300"></ExternalLinkIcon>
                                     </div>
                                 </Link>
                             );

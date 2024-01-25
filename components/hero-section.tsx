@@ -21,7 +21,7 @@ function HeroSection() {
                 <div className="overflow-hidden">
                     <div className="absolute inset-x-0 top-0 -z-[10] min-h-[40vh] animate-cardlight rounded-b-full bg-gradient-to-b from-rose-500 to-red-100 opacity-80 blur-3xl dark:from-rose-900 md:min-h-[60vh]" />
                     <div
-                        className="top-18 absolute inset-0 -z-[5] mix-blend-overlay"
+                        className="top-18 absolute inset-0 -z-[1] mix-blend-overlay"
                         style={{
                             backgroundRepeat: "repeat",
                             backgroundImage: `url('${Noise.src}')`,
