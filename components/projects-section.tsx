@@ -26,7 +26,7 @@ function ProjectsSection() {
     const { isMobile } = useViewport();
 
     const opacityDimensions = () => {
-        return isMobile ? [0.8, 1] : [0, 1];
+        return isMobile ? [0.7, 1] : [0, 1];
     };
 
     const titleScale = useTransform(scrollYProgress, [0, 1], [0.7, 1]);
@@ -48,7 +48,7 @@ function ProjectsSection() {
             id="my-projects"
         >
             <motion.div
-                className=" container flex min-h-[40vh] flex-col gap-4"
+                className="container flex min-h-[40vh] flex-col gap-4"
                 transition={{ duration: 0.5 }}
                 viewport={{ once: false }}
                 style={{}}

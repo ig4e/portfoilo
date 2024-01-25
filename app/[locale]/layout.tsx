@@ -10,6 +10,7 @@ import { locales } from "@/config/i18n";
 import { unstable_setRequestLocale } from "next-intl/server";
 import { DirectionProvider } from "@/components/direction-provider";
 import { NextIntlClientProvider, useMessages } from "next-intl";
+import SiteFooter from "@/components/site-footer";
 
 const inter = Inter({
     //weight: ["100", "300", "400", "500", "700", "900"],
@@ -60,6 +61,7 @@ export default function RootLayout({
                         <NextIntlClientProvider messages={messages}>
                             <SiteHeader></SiteHeader>
                             <div className="">{children}</div>
+                            <SiteFooter></SiteFooter>
                         </NextIntlClientProvider>
                     </ThemeProvider>
                 </body>

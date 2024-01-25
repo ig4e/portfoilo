@@ -12,7 +12,7 @@ function SkillsSection() {
     const t = useTranslations("index");
 
     return (
-        <section className="dark bg-black px-4 py-12 text-white" id="skills">
+        <section className="dark bg-black py-12 text-white" id="skills">
             <div
                 className="container flex min-h-[40vh]  flex-col gap-4 overflow-x-hidden overflow-y-clip"
                 id="skill-cards"
@@ -74,7 +74,7 @@ export function SkillsTypeSection({
                 {t(`skills.${skillSection.type}`)}
             </Typography>
 
-            <div className="group/section grid gap-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+            <div className="group/section grid gap-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
                 {skillSection.items.map((skill) => (
                     <SkillCard key={skill.name["en-US"]} item={skill} />
                 ))}
@@ -126,7 +126,7 @@ function SkillCard({
             ></div>
 
             <div className="relative z-[2] flex h-full w-full flex-row-reverse items-center gap-4 rounded-[inherit] bg-black p-4 md:aspect-square md:flex-col">
-                <item.icon className="z-10 flex h-16 w-auto min-w-[4rem] items-center justify-center place-self-center justify-self-center md:mt-auto rounded-sm"></item.icon>
+                <item.icon className="z-10 flex h-16 w-auto min-w-[4rem] items-center justify-center place-self-center justify-self-center rounded-sm md:mt-auto"></item.icon>
 
                 <div className="me-auto mt-auto space-y-1">
                     <Typography element="h4" as="h4">

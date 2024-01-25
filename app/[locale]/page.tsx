@@ -22,7 +22,7 @@ export default function Home({
         <main className="">
             <HeroSection />
 
-            <section className="dark bg-black px-4 py-12 text-white" id="about">
+            <section className="dark bg-black px-2 py-12 text-white" id="about">
                 <div className="mx-auto flex min-h-[40vh] max-w-3xl flex-col gap-4 overflow-x-hidden overflow-y-clip">
                     <div className="mb-6 flex items-center gap-4">
                         <Icons.logo className="h-9 w-9" />
