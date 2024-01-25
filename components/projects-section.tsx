@@ -100,11 +100,15 @@ function ProjectsSection() {
                                                 as="mutedText"
                                                 className=""
                                             >
-                                                {project.description[locale]}
+                                                {
+                                                    project.shortDescription[
+                                                        locale
+                                                    ]
+                                                }
                                             </Typography>
                                         </div>
 
-                                        <ExternalLinkIcon className="h-5 w-5 opacity-100 transition group-hover:opacity-100 md:opacity-0 duration-300"></ExternalLinkIcon>
+                                        <ExternalLinkIcon className="h-5 w-5 opacity-100 transition duration-300 group-hover:opacity-100 md:opacity-0"></ExternalLinkIcon>
                                     </div>
                                 </Link>
                             );
