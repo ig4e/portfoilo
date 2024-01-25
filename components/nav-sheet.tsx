@@ -1,22 +1,22 @@
-import { Button, buttonVariants } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
+"use client";
+
+import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { routes } from "@/config/routes";
+import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
-import Link from "next/link";
-import Typography from "@/components/typography";
-import { ModeToggle } from "./mode-toggle";
-import { LocaleSelector } from "./locale-selector";
 import { useTranslations } from "next-intl";
-import { siteConfig } from "@/config/site";
+import Link from "next/link";
+import { useState } from "react";
 import { Icons } from "./ui/icons";
 
 export function NavSheet() {
     const t = useTranslations("site-header");
+    const [open, setOpen] = useState(false);
 
     return (
-        <Sheet>
+        <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
                 <Button variant="ghost" size={"icon"}>
                     <HamburgerMenuIcon className="h-5 w-5"></HamburgerMenuIcon>
@@ -27,6 +27,7 @@ export function NavSheet() {
                     {routes.map((route) => {
                         return (
                             <Link
+                                onClick={() => setOpen(false)}
                                 key={route.title}
                                 href={route.url}
                                 className={cn(

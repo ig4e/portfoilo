@@ -31,10 +31,11 @@ export function ModeToggle() {
     const { setTheme } = useTheme();
     const t = useTranslations("mode-toggle");
     const tModals = useTranslations("modals");
+    const [open, setOpen] = React.useState(false);
 
     if (isMobile)
         return (
-            <Drawer>
+            <Drawer open={open} onOpenChange={setOpen}>
                 <DrawerTrigger asChild>
                     <Button variant="ghost" size={"icon"}>
                         <SunIcon className="block h-[1.2rem] w-[1.2rem] dark:hidden" />
@@ -61,7 +62,10 @@ export function ModeToggle() {
                                     key={mode}
                                     variant="secondary"
                                     className="w-full"
-                                    onClick={() => setTheme(mode)}
+                                    onClick={() => {
+                                        setTheme(mode);
+                                        setTimeout(() => setOpen(false), 200);
+                                    }}
                                 >
                                     <ModeIcon className="h-4 w-4" />
 
