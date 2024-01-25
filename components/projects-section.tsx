@@ -85,8 +85,9 @@ function ProjectsSection() {
                                     className="group relative overflow-hidden rounded-md border transition duration-500 hover:-translate-y-1 hover:border-primary"
                                 >
                                     <Image
+                                        width={500}
                                         src={project.image}
-                                        className="rounded-md object-cover"
+                                        className="h-full w-full rounded-md object-cover"
                                         alt={project.name[locale]}
                                     ></Image>
 
