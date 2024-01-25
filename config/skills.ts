@@ -5,6 +5,7 @@ export const skills = [
         type: "languages",
         items: [
             {
+                id: "html",
                 icon: Icons.html,
                 name: {
                     "ar-EG": "إتش تي أم أل",
@@ -19,6 +20,7 @@ export const skills = [
                 link: "https://www.w3.org/TR/HTML",
             },
             {
+                id: "css",
                 icon: Icons.css,
                 name: {
                     "ar-EG": "سي إس إس",
@@ -30,10 +32,11 @@ export const skills = [
                     "en-US":
                         "Cascading Style Sheets is a style sheet language used for specifying the presentation and styling of a document.",
                 },
-                color: "#1572b7",
+                color: "#0284c7",
                 link: "https://www.w3.org/TR/CSS",
             },
             {
+                id: "js",
                 icon: Icons.js,
                 name: {
                     "ar-EG": "جافا سكريبت",
@@ -49,6 +52,23 @@ export const skills = [
                 link: "https://www.w3.org/TR/JS",
             },
             {
+                id: "ts",
+                icon: Icons.ts,
+                name: {
+                    "ar-EG": "تايب سكريبت",
+                    "en-US": "TypeScript",
+                },
+                description: {
+                    "ar-EG":
+                        "تايب سكريبت هي لغة برمجة عالية المستوى تضيف الكتابة الثابتة مع التعليقات التوضيحية الاختيارية إلى جافا سكريبت",
+                    "en-US":
+                        "TypeScript is a high-level programming language that adds static typing with optional type annotations to JavaScript.",
+                },
+                color: "#2563eb",
+                link: "https://www.typescriptlang.org/",
+            },
+            {
+                id: "py",
                 icon: Icons.py,
                 name: {
                     "ar-EG": "بايثون",
@@ -63,6 +83,7 @@ export const skills = [
                 link: "https://www.python.org/",
             },
             {
+                id: "graphql",
                 icon: Icons.react,
                 name: {
                     "ar-EG": "غراف كيو أل",
@@ -83,6 +104,7 @@ export const skills = [
         type: "libraries-frameworks",
         items: [
             {
+                id: "react",
                 icon: Icons.react,
                 name: {
                     "ar-EG": "رياكت",
@@ -98,6 +120,7 @@ export const skills = [
                 link: "https://react.dev/",
             },
             {
+                id: "vue",
                 icon: Icons.vue,
                 name: {
                     "ar-EG": "فيو",
@@ -112,6 +135,7 @@ export const skills = [
                 link: "https://vuejs.org/",
             },
             {
+                id: "svelte",
                 icon: Icons.svelte,
                 name: {
                     "ar-EG": "سفلت",
@@ -127,6 +151,7 @@ export const skills = [
                 link: "https://svelte.dev/",
             },
             {
+                id: "nextjs",
                 icon: Icons.next,
                 name: {
                     "ar-EG": "نيكست.جي إس",
@@ -136,12 +161,13 @@ export const skills = [
                     "ar-EG":
                         "نيكست.جي إس يوفر تطبيقات الويب القائمة على رياكت مع تقديم الصفحات من الخادم وإنشاء مواقع ويب ثابتة.",
                     "en-US":
-                        "Next.js is providing React-based web applications with server-side rendering and static website generation.",
+                        "Next.js is providing React applications with production features.",
                 },
                 color: "#FFF",
                 link: "https://nextjs.org/",
             },
             {
+                id: "nuxt",
                 icon: Icons.nuxt,
                 name: {
                     "ar-EG": "ناكست.جي إس",
@@ -155,6 +181,7 @@ export const skills = [
                 link: "https://nuxtjs.org/",
             },
             {
+                id: "nest",
                 icon: Icons.nest,
                 name: {
                     "ar-EG": "نيست.جي إس (نود جي إس)",
@@ -170,6 +197,7 @@ export const skills = [
                 link: "https://nestjs.com/",
             },
             {
+                id: "express",
                 icon: Icons.express,
                 name: {
                     "ar-EG": "إكسبريس (نود جي إس)",
@@ -185,6 +213,7 @@ export const skills = [
                 link: "https://expressjs.com/",
             },
             {
+                id: "prisma",
                 icon: Icons.prisma,
                 name: {
                     "ar-EG": "بريزما أورم",
@@ -199,6 +228,7 @@ export const skills = [
                 link: "https://www.prisma.io/",
             },
             {
+                id: "tailwind",
                 icon: Icons.tailwind,
                 name: {
                     "ar-EG": "تيلويند سي إس إس",
@@ -211,12 +241,27 @@ export const skills = [
                 color: "#0891b2",
                 link: "https://tailwindcss.com/",
             },
+            {
+                id: "shadcnui",
+                icon: Icons.shadcnui,
+                name: {
+                    "ar-EG": "شاد سي ان يو اي",
+                    "en-US": "ShadCN UI",
+                },
+                description: {
+                    "ar-EG": "مكونات واجهة مستخدم مصممة بشكل جميل.",
+                    "en-US": "Beautifully designed ui components.",
+                },
+                color: "#FFFFFF",
+                link: "https://ui.shadcn.com/",
+            },
         ],
     },
     {
         type: "databases",
         items: [
             {
+                id: "mongodb",
                 icon: Icons.mongodb,
                 name: {
                     "ar-EG": "مونغو دي بي",
@@ -235,6 +280,7 @@ export const skills = [
         type: "tools",
         items: [
             {
+                id: "adobexd",
                 icon: Icons.adobeXd,
                 name: {
                     "ar-EG": "أدوبي إكس دي",
@@ -250,6 +296,7 @@ export const skills = [
                 link: "https://www.adobe.com/products/xd.html",
             },
             {
+                id: "figma",
                 icon: Icons.figma,
                 name: {
                     "ar-EG": "فيغما",
@@ -265,6 +312,7 @@ export const skills = [
                 link: "https://www.figma.com/",
             },
             {
+                id: "vsc",
                 icon: Icons.vsc,
                 name: {
                     "ar-EG": "في إس كود",
@@ -280,6 +328,7 @@ export const skills = [
                 link: "https://code.visualstudio.com/",
             },
             {
+                id: "git",
                 icon: Icons.git,
                 name: {
                     "ar-EG": "جيت",
@@ -292,6 +341,58 @@ export const skills = [
                 color: "#ef5032",
                 link: "https://git-scm.com/",
             },
+            {
+                id: "github",
+                icon: Icons.gitHub,
+                name: {
+                    "ar-EG": "جيت هب",
+                    "en-US": "Github",
+                },
+                description: {
+                    "ar-EG":
+                        "GitHub عبارة عن نظام أساسي للمطورين يتيح للمطورين إنشاء التعليمات البرمجية الخاصة بهم وتخزينها وإدارتها ومشاركتها.",
+                    "en-US":
+                        "GitHub is a developer platform that allows developers to create, store, manage and share their code.",
+                },
+                color: "#FFFFFF",
+                link: "https://github.com/",
+            },
         ],
     },
 ] as const;
+
+type MappedCategory<T extends (typeof skills)[number]> = {
+    [key in T["items"][number]["id"]]: T["items"][number];
+};
+
+export const languages = skills[0].items.reduce(
+    (object, item) => {
+        object[item.id] = item;
+        return object;
+    },
+    {} as MappedCategory<(typeof skills)[0]>,
+);
+
+export const technologies = skills[1].items.reduce(
+    (object, item) => {
+        object[item.id] = item;
+        return object;
+    },
+    {} as MappedCategory<(typeof skills)[1]>,
+);
+
+export const databases = skills[2].items.reduce(
+    (object, item) => {
+        object[item.id] = item;
+        return object;
+    },
+    {} as MappedCategory<(typeof skills)[2]>,
+);
+
+export const tools = skills[3].items.reduce(
+    (object, item) => {
+        object[item.id] = item;
+        return object;
+    },
+    {} as MappedCategory<(typeof skills)[3]>,
+);

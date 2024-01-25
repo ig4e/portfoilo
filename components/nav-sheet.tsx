@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { routes } from "@/config/routes";
@@ -59,6 +59,16 @@ export function NavSheet() {
                         <Button variant={"secondary"} size={"icon"}>
                             <Icons.gitHub className="h-4 w-4" />
                             <span className="sr-only">GitHub</span>
+                        </Button>
+                    </Link>
+                    <Link
+                        href={siteConfig.links.linkedIn}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        <Button variant={"secondary"} size={"icon"}>
+                            <Icons.linkedIn className="h-4 w-4" />
+                            <span className="sr-only">LinkedIn</span>
                         </Button>
                     </Link>
                 </div>

@@ -6,6 +6,7 @@ import Typography from "@/components/typography";
 import { Button } from "@/components/ui/button";
 import { Noise } from "@/components/ui/images";
 import { Locale } from "@/config/i18n";
+import { Link } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
@@ -57,7 +58,9 @@ function HeroSection() {
                     </Typography>
 
                     <div className="mt-4 flex items-center gap-4">
-                        <Button size={"xl"}>{t("hero.my-projects")}</Button>
+                        <Link href="/#my-projects">
+                            <Button size={"xl"}>{t("hero.my-projects")}</Button>
+                        </Link>
                         <Button size={"xl"} variant={"secondary"}>
                             {t("hero.resume")}
                         </Button>

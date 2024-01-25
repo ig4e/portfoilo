@@ -71,6 +71,25 @@ function SiteHeader() {
                             </div>
                         </Link>
 
+                        <Link
+                            href={siteConfig.links.linkedIn}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="hidden md:flex"
+                        >
+                            <div
+                                className={cn(
+                                    buttonVariants({
+                                        variant: "ghost",
+                                    }),
+                                    "aspect-square !h-9 !w-9 px-0",
+                                )}
+                            >
+                                <Icons.linkedIn className="h-4 w-4" />
+                                <span className="sr-only">LinkedIn</span>
+                            </div>
+                        </Link>
+
                         <ModeToggle />
                         <LocaleSelector />
 

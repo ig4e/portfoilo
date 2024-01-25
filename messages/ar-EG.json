@@ -50,7 +50,16 @@
             "languages": "لغات البرمجة",
             "libraries-frameworks": "المكتبات والأطُر",
             "databases": "قاعدات البيانات",
-            "tools": "الأدوات"
+            "tools": "الأدوات",
+            "made-with": "صنع بـ"
         }
+    },
+    "project": {
+        "about-project": "عن المشروع"
+    },
+    "404": {
+        "title": "404: مش موجود",
+        "description": "الصفحة الي بتدور عليها مش موجودة.",
+        "go-back": "ارجع تاني"
     }
 }

@@ -3,14 +3,19 @@
 import React, { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Typography from "./typography";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import ShareMe from "@/public/assets/projects/shareme.png";
 import Image from "next/image";
 import useViewport from "@/hooks/use-viewport";
+import { projects } from "@/config/projects";
+import { Locale } from "@/config/i18n";
+import { Link } from "@/lib/navigation";
+import { ExternalLinkIcon } from "lucide-react";
 
 function ProjectsSection() {
     const sectionRef = useRef<HTMLElement>(null);
     const projectsRef = useRef(null);
+    const locale = useLocale() as Locale;
 
     const t = useTranslations("index");
     const { scrollYProgress } = useScroll({});
@@ -49,16 +54,11 @@ function ProjectsSection() {
                 style={{}}
             >
                 <div className="relative min-h-[800px] w-full ">
-                    <motion.div
-                        style={{
-                            scale: titleScale,
-                        }}
-                        className="sticky top-[50%] z-30  flex justify-center"
-                    >
-                        <div className="flex w-max items-center gap-4 overflow-hidden rounded-[2.5rem] bg-black/60 px-12 py-10 backdrop-blur-lg md:rounded-[3.5rem] md:px-16 md:py-12">
+                    <motion.div className="sticky top-[50%] z-30  flex justify-center">
+                        <div className="flex w-max items-center gap-4 overflow-hidden rounded-[2.5rem] bg-black/60 px-12 py-8 backdrop-blur-lg md:rounded-[3.5rem]">
                             <Typography
                                 element="h2"
-                                className="whitespace-nowrap text-[3rem] font-semibold leading-tight sm:text-6xl md:leading-normal lg:text-7xl"
+                                className="whitespace-nowrap text-[3rem] font-semibold leading-tight sm:text-6xl md:leading-normal"
                             >
                                 {t("my-projects.section-name")}
                             </Typography>
@@ -75,14 +75,36 @@ function ProjectsSection() {
                             scale: scale,
                         }}
                     >
-                        {new Array(9).fill("").map(() => {
+                        {projects.map((project) => {
                             return (
-                                <Image
-                                    src={ShareMe}
-                                    className="rounded-md object-cover transition duration-500 hover:-translate-y-2"
-                                    key={crypto.randomUUID()}
-                                    alt=""
-                                ></Image>
+                                <Link
+                                    href={`/projects/${project.id}`}
+                                    key={project.id}
+                                    className="group relative rounded-md transition duration-500 hover:-translate-y-2"
+                                >
+                                    <Image
+                                        src={project.image}
+                                        className="rounded-md object-cover"
+                                        alt={project.name[locale]}
+                                    ></Image>
+
+                                    <div className="absolute inset-0 z-10 flex h-full w-full items-end justify-between gap-2 bg-gradient-to-b from-transparent to-black px-4">
+                                        <div className="flex flex-col items-start gap-2">
+                                            <Typography element="h4" as="h4">
+                                                {project.name[locale]}
+                                            </Typography>
+                                            <Typography
+                                                element="p"
+                                                as="mutedText"
+                                                className=""
+                                            >
+                                                {project.description[locale]}
+                                            </Typography>
+                                        </div>
+
+                                        <ExternalLinkIcon className="h-5 w-5 opacity-100 transition group-hover:opacity-100 md:opacity-100"></ExternalLinkIcon>
+                                    </div>
+                                </Link>
                             );
                         })}
                     </motion.div>

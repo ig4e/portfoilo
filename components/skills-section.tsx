@@ -37,7 +37,7 @@ function SkillsSection() {
     );
 }
 
-function SkillsTypeSection({
+export function SkillsTypeSection({
     skillSection,
 }: {
     skillSection: (typeof skills)[number];
@@ -126,7 +126,7 @@ function SkillCard({
             ></div>
 
             <div className="relative z-[2] flex h-full w-full flex-row-reverse items-center gap-4 rounded-[inherit] bg-black p-4 md:aspect-square md:flex-col">
-                <item.icon className="z-10 flex h-16 w-auto min-w-[4rem] items-center justify-center place-self-center justify-self-center md:mt-auto"></item.icon>
+                <item.icon className="z-10 flex h-16 w-auto min-w-[4rem] items-center justify-center place-self-center justify-self-center md:mt-auto rounded-sm"></item.icon>
 
                 <div className="me-auto mt-auto space-y-1">
                     <Typography element="h4" as="h4">

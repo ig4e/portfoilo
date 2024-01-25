@@ -50,7 +50,16 @@
             "languages": "Languages",
             "libraries-frameworks": "Libraries & Frameworks",
             "databases": "Databases",
-            "tools": "Tools"
+            "tools": "Tools",
+            "made-with": "Made with"
         }
+    },
+    "project": {
+        "about-project": "About Project"
+    },
+    "404": {
+        "title": "404: Not found",
+        "description": "The page you were looking for doesn't exist.",
+        "go-back": "Go Back"
     }
 }
