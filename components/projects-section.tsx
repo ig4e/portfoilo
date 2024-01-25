@@ -15,6 +15,9 @@ import { ExternalLinkIcon } from "lucide-react";
 function ProjectsSection() {
     const sectionRef = useRef(null);
     const projectsRef = useRef(null);
+    const projectsCompRef = useRef<HTMLDivElement>(null);
+    const rect = projectsCompRef.current?.clientHeight;
+
     const locale = useLocale() as Locale;
 
     const t = useTranslations("index");
@@ -30,7 +33,7 @@ function ProjectsSection() {
     };
 
     const translateDimensions = () => {
-        return isMobile ? [0, -300] : [0, -500];
+        return isMobile ? [400, -300] : [400, -500];
     };
 
     const opacity = useTransform(
@@ -51,12 +54,12 @@ function ProjectsSection() {
         <section className="dark bg-black py-12 text-white" id="my-projects">
             <motion.div
                 ref={sectionRef}
-                className="container flex min-h-[40vh] flex-col gap-4"
+                className="container flex flex-col gap-4"
                 transition={{ duration: 0.5 }}
                 viewport={{ once: false }}
             >
-                <div className="relative min-h-[800px] w-full">
-                    <motion.div className="mb-36 flex justify-center md:top-[50%]">
+                <div className="relative w-full">
+                    <motion.div className="flex justify-center md:top-[50%]">
                         <div className="flex w-max items-center gap-4">
                             <Typography
                                 element="h2"
@@ -70,6 +73,7 @@ function ProjectsSection() {
                     <div ref={projectsRef}></div>
 
                     <motion.div
+                        ref={projectsCompRef}
                         className="relative z-40 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
                         style={{
                             opacity: opacity,

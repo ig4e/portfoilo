@@ -246,11 +246,13 @@ export const skills = [
                 icon: Icons.shadcnui,
                 name: {
                     "ar-EG": "شاد سي ان يو اي",
-                    "en-US": "ShadCN UI",
+                    "en-US": "Shadcn UI",
                 },
                 description: {
-                    "ar-EG": "مكونات واجهة مستخدم مصممة بشكل جميل.",
-                    "en-US": "Beautifully designed ui components.",
+                    "ar-EG":
+                        "مكونات واجهة مستخدم مصممة بشكل جميل بـ راديكس يو أي وتيلوند سي أس أس",
+                    "en-US":
+                        "Beautifully designed ui components with radix ui and tailwindcss.",
                 },
                 color: "#FFFFFF",
                 link: "https://ui.shadcn.com/",
@@ -268,8 +270,10 @@ export const skills = [
                     "en-US": "MongoDB",
                 },
                 description: {
-                    "ar-EG": "قاعدة بيانات NoSQL.",
-                    "en-US": "A NoSQL database.",
+                    "ar-EG":
+                        "MongoDB هي قاعدة بيانات NoSQL متاحة المصدر وموجهة نحو المستندات.",
+                    "en-US":
+                        "MongoDB is a source-available document-oriented NoSQL database.",
                 },
                 color: "#01ed64",
                 link: "https://www.mongodb.com/",

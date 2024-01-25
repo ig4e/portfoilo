@@ -11,6 +11,7 @@ import { unstable_setRequestLocale } from "next-intl/server";
 import { DirectionProvider } from "@/components/direction-provider";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import SiteFooter from "@/components/site-footer";
+import Script from "next/script";
 
 const inter = Inter({
     //weight: ["100", "300", "400", "500", "700", "900"],
@@ -66,6 +67,13 @@ export default function RootLayout({
                     </ThemeProvider>
                 </body>
             </DirectionProvider>
+
+            <Script
+                strategy="afterInteractive"
+                defer
+                src="https://eu.umami.is/script.js"
+                data-website-id="5e7d095f-b63e-49a5-b4b5-9bbe5f60c764"
+            />
         </html>
     );
 }
