@@ -31,7 +31,7 @@ function ProjectPage({
         <div className="">
             <div
                 ref={heroRef}
-                className="flex min-h-[50vh] flex-col items-center justify-center gap-12 overflow-hidden text-center md:mb-12 container md:min-h-screen"
+                className="container flex min-h-[50vh] flex-col items-center justify-center gap-12 overflow-hidden text-center md:mb-12 md:min-h-screen"
             >
                 <div className="overflow-hidden">
                     <div
@@ -60,7 +60,7 @@ function ProjectPage({
                         duration: 0.2,
                     }}
                 >
-                    <div className="mt-12 flex flex-col items-center gap-4">
+                    <div className="flex flex-col items-center gap-4 md:mt-12">
                         <div className="w-fit rounded-full border bg-gradient-to-t from-secondary/20 to-secondary/80 px-4 py-1 text-sm text-secondary-foreground">
                             {project.createdAt}
                         </div>
