@@ -60,7 +60,7 @@ function ProjectPage({
                         duration: 0.2,
                     }}
                 >
-                    <div className="flex flex-col items-center gap-4 md:mt-12">
+                    <div className="flex flex-col items-center gap-4 md:mt-8">
                         <div className="w-fit rounded-full border bg-gradient-to-t from-secondary/20 to-secondary/80 px-4 py-1 text-sm text-secondary-foreground">
                             {project.createdAt}
                         </div>
