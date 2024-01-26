@@ -4,7 +4,11 @@ import withNextIntl from "next-intl/plugin";
 
 const nextConfig = {};
 
-export default million.next(withNextIntl()(nextConfig), {
-    auto: { threshold: 0.05, rsc: true },
-    hmr: true,
-});
+const nextWithIntl = withNextIntl()(nextConfig);
+
+export default nextWithIntl;
+
+// export default million.next(nextWithIntl, {
+//     auto: { threshold: 0.05, rsc: true },
+//     hmr: true,
+// });

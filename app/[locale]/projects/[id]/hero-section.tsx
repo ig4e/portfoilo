@@ -57,7 +57,7 @@ function HeroSection({ projectId }: { projectId: string }) {
                     <Typography
                         element="h1"
                         className={cn(
-                            "container text-balance text-center text-[3rem] font-semibold leading-tight sm:text-6xl  md:leading-normal lg:text-7xl xl:text-8xl",
+                            "container text-balance text-center text-[3rem] font-semibold leading-tight sm:text-6xl md:leading-normal lg:text-7xl xl:text-8xl mb-6",
                             {
                                 "text-5xl leading-relaxed sm:text-7xl lg:text-8xl xl:text-9xl":
                                     locale === "ar-EG",
@@ -70,7 +70,7 @@ function HeroSection({ projectId }: { projectId: string }) {
                     <Typography
                         element="p"
                         as="h3"
-                        className="font-normal text-muted-foreground"
+                        className="max-w-6xl text-balance font-normal text-muted-foreground"
                     >
                         {project.shortDescription[locale]}
                     </Typography>

@@ -55,6 +55,7 @@
         }
     },
     "project": {
+        "my-projects": "مشاريعي",
         "about-project": "عن المشروع"
     },
     "404": {

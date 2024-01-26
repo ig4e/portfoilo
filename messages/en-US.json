@@ -55,6 +55,7 @@
         }
     },
     "project": {
+        "my-projects": "My Projects",
         "about-project": "About Project"
     },
     "404": {

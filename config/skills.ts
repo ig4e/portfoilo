@@ -84,7 +84,7 @@ export const skills = [
             },
             {
                 id: "graphql",
-                icon: Icons.react,
+                icon: Icons.graphql,
                 name: {
                     "ar-EG": "غراف كيو أل",
                     "en-US": "GraphQL",

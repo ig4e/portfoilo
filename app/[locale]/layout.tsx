@@ -30,6 +30,11 @@ const HarlowSolid = localFont({
 export const metadata: Metadata = {
     title: "Home - Ahmed Mohamed",
     description: "I'm Ahmed Mohamed A Fullstack web engineer | UI/UX Designer",
+    metadataBase: new URL(
+        process.env.VERCEL_URL
+            ? "https://portfoilo-umber.vercel.app/"
+            : `http://localhost:${process.env.PORT || 3000}`,
+    ),
 };
 
 export default function RootLayout({

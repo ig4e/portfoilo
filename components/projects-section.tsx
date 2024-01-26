@@ -51,77 +51,84 @@ function ProjectsSection() {
     );
 
     return (
-        <section className="dark bg-black py-12 text-white" id="my-projects">
-            <motion.div
-                ref={sectionRef}
-                className="container flex flex-col gap-4"
-                transition={{ duration: 0.5 }}
-                viewport={{ once: false }}
+        <>
+            <section
+                className="dark scroll-mt-20 bg-black py-12 text-white"
+                id="my-projects"
             >
-                <div className="relative w-full">
-                    <motion.div className="flex justify-center md:top-[50%]">
-                        <div className="flex w-max items-center gap-4">
-                            <Typography
-                                element="h2"
-                                className="whitespace-nowrap text-[3rem] font-semibold leading-tight sm:text-6xl md:leading-normal"
-                            >
-                                {t("my-projects.section-name")}
-                            </Typography>
-                        </div>
-                    </motion.div>
-
-                    <div ref={projectsRef}></div>
-
-                    <motion.div
-                        ref={projectsCompRef}
-                        className="relative z-40 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
-                        style={{
-                            opacity: opacity,
-                            translateY: translate,
-                            scale: scale,
-                        }}
-                    >
-                        {projects.map((project) => {
-                            return (
-                                <Link
-                                    href={`/projects/${project.id}`}
-                                    key={project.id}
-                                    className="group relative overflow-hidden rounded-md border transition duration-500 hover:-translate-y-1 hover:border-primary"
+                <motion.div
+                    ref={sectionRef}
+                    className="container flex flex-col gap-4"
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: false }}
+                >
+                    <div className="relative w-full">
+                        <motion.div className="flex justify-center md:top-[50%]">
+                            <div className="flex w-max items-center gap-4">
+                                <Typography
+                                    element="h2"
+                                    className="whitespace-nowrap text-[3rem] font-semibold leading-tight sm:text-6xl md:leading-normal"
                                 >
-                                    <Image
-                                        width={500}
-                                        src={project.image}
-                                        className="h-full w-full rounded-md object-cover"
-                                        alt={project.name[locale]}
-                                    ></Image>
+                                    {t("my-projects.section-name")}
+                                </Typography>
+                            </div>
+                        </motion.div>
 
-                                    <div className="absolute inset-0 z-10 flex h-full w-full items-end justify-between gap-2 bg-gradient-to-b from-transparent to-black p-4">
-                                        <div className="flex flex-col items-start gap-2">
-                                            <Typography element="h4" as="h4">
-                                                {project.name[locale]}
-                                            </Typography>
-                                            <Typography
-                                                element="p"
-                                                as="mutedText"
-                                                className=""
-                                            >
-                                                {
-                                                    project.shortDescription[
-                                                        locale
-                                                    ]
-                                                }
-                                            </Typography>
-                                        </div>
+                        <div ref={projectsRef}></div>
 
-                                        <ExternalLinkIcon className="h-5 w-5 opacity-100 transition duration-300 group-hover:opacity-100 md:opacity-0"></ExternalLinkIcon>
-                                    </div>
-                                </Link>
-                            );
-                        })}
-                    </motion.div>
+                        <motion.div
+                            ref={projectsCompRef}
+                            className="relative z-40 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+                            style={{
+                                opacity: opacity,
+                                translateY: translate,
+                                scale: scale,
+                            }}
+                        >
+                            {projects.map((project) => (
+                                <ProjectCard
+                                    key={project.id}
+                                    project={project}
+                                />
+                            ))}
+                        </motion.div>
+                    </div>
+                </motion.div>
+            </section>
+        </>
+    );
+}
+
+export type Project = (typeof projects)[number];
+
+export function ProjectCard({ project }: { project: Project }) {
+    const locale = useLocale() as Locale;
+    return (
+        <Link
+            href={`/projects/${project.id}`}
+            key={project.id}
+            className="group relative overflow-hidden rounded-md border transition duration-500 hover:-translate-y-1 hover:border-primary"
+        >
+            <Image
+                width={500}
+                src={project.image}
+                className="h-full w-full rounded-md object-cover"
+                alt={project.name[locale]}
+            ></Image>
+
+            <div className="absolute inset-0 z-10 flex h-full w-full items-end justify-between gap-2 bg-gradient-to-b from-transparent to-black p-4">
+                <div className="flex flex-col items-start gap-2">
+                    <Typography element="h4" as="h4">
+                        {project.name[locale]}
+                    </Typography>
+                    <Typography element="p" as="mutedText" className="">
+                        {project.shortDescription[locale]}
+                    </Typography>
                 </div>
-            </motion.div>
-        </section>
+
+                <ExternalLinkIcon className="h-5 w-5 opacity-100 transition duration-300 group-hover:opacity-100 md:opacity-0"></ExternalLinkIcon>
+            </div>
+        </Link>
     );
 }
 

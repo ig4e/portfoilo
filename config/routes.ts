@@ -19,6 +19,6 @@ export const routes = [
     {
         icon: Icons.logo,
         title: "my-projects",
-        url: "/#my-projects",
+        url: "/projects",
     },
 ] as const;

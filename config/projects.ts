@@ -5,8 +5,37 @@ import PhiBoutique from "@/public/assets/projects/phiboutique.png";
 import WolfLand from "@/public/assets/projects/wolfland.png";
 import WadinaFoods from "@/public/assets/projects/wadinafoods.png";
 import MHTCE from "@/public/assets/projects/mhtce.png";
-
 import { languages, skills, technologies, tools, databases } from "./skills";
+
+export const categories = {
+    "ux-ui": {
+        "ar-EG": "تصميم UX/UI",
+        "en-US": "UX/UX Design",
+    },
+    "front-end": {
+        "ar-EG": "برمجة فرونت-أيند",
+        "en-US": "Front-end Coding",
+    },
+    "back-end": {
+        "ar-EG": "برمجة باك-أيند",
+        "en-US": "Back-end Coding",
+    },
+    database: {
+        "ar-EG": "قاعدة بيانات",
+        "en-US": "Database",
+    },
+    "web-scrape": {
+        "ar-EG": "تجريف الويب",
+        "en-US": "Web scraping",
+    },
+};
+
+export const mappedCategories = (
+    Object.keys(categories) as (keyof typeof categories)[]
+).map((key) => ({
+    id: key,
+    ...categories[key],
+}));
 
 export const projects = [
     {
@@ -33,6 +62,12 @@ export const projects = [
         },
         color: "#4F46E5",
         links: {},
+        categories: [
+            categories["ux-ui"],
+            categories["front-end"],
+            categories["back-end"],
+            categories.database,
+        ],
         stack: [
             languages.html,
             languages.css,
@@ -74,6 +109,7 @@ export const projects = [
         },
         color: "#4453F9",
         links: {},
+        categories: [categories["ux-ui"]],
         stack: [tools.adobexd],
         createdAt: "2022/3/2",
     },
@@ -101,6 +137,11 @@ export const projects = [
         },
         color: "#F2E0D8",
         links: {},
+        categories: [
+            categories["ux-ui"],
+            categories["front-end"],
+            categories["back-end"],
+        ],
         stack: [
             languages.html,
             languages.css,
@@ -138,6 +179,7 @@ export const projects = [
         },
         color: "#F8C32A",
         links: {},
+        categories: [categories["ux-ui"]],
         stack: [tools.adobexd],
         createdAt: "2022/4/0",
     },
@@ -165,6 +207,13 @@ export const projects = [
         },
         color: "#0ea5e9",
         links: {},
+        categories: [
+            categories["ux-ui"],
+            categories["front-end"],
+            categories["back-end"],
+            categories.database,
+            categories["web-scrape"]
+        ],
         stack: [
             languages.html,
             languages.css,
@@ -205,6 +254,12 @@ export const projects = [
         },
         color: "#FFC64A",
         links: {},
+        categories: [
+            categories["ux-ui"],
+            categories["front-end"],
+            categories["back-end"],
+            categories.database,
+        ],
         stack: [
             languages.html,
             languages.css,
