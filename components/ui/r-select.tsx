@@ -1,14 +1,12 @@
+import { cn } from "@/lib/utils";
+import { CaretSortIcon, Cross2Icon } from "@radix-ui/react-icons";
+import { useTranslations } from "next-intl";
+import { forwardRef } from "react";
 import ReactSelect, {
     ClearIndicatorProps,
     DropdownIndicatorProps,
     components,
 } from "react-select";
-import { cn } from "@/lib/utils";
-import { forwardRef } from "react";
-import { CaretSortIcon, Cross1Icon, Cross2Icon } from "@radix-ui/react-icons";
-import { Badge } from "./badge";
-import { Separator } from "./separator";
-import { useTranslations } from "next-intl";
 
 export const RSelect = forwardRef<
     typeof ReactSelect,

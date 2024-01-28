@@ -58,7 +58,7 @@ function HeroSection() {
                     </Typography>
 
                     <div className="mt-4 flex items-center gap-4">
-                        <Link href="/#my-projects">
+                        <Link href="/projects">
                             <Button size={"xl"}>{t("hero.my-projects")}</Button>
                         </Link>
                         <Button size={"xl"} variant={"secondary"}>

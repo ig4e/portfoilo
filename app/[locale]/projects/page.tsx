@@ -31,8 +31,6 @@ const fuse = new Fuse(projects, {
         "description.ar-EG",
         "description.en-US",
     ],
-
-    
 });
 
 function ProjectsPage({ params: { locale } }: { params: { locale: Locale } }) {

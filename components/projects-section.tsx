@@ -139,11 +139,12 @@ export function ProjectCard({ project }: { project: Project }) {
                 alt={project.name[locale]}
             ></Image>
 
-            <div className="absolute inset-0 z-10 flex h-full w-full items-end justify-between gap-2 bg-gradient-to-b from-transparent to-black p-4">
+            <div className="absolute inset-0 z-10 flex h-full w-full items-end justify-between gap-2 bg-gradient-to-b from-transparent to-background p-4 dark text-white">
                 <div className="flex flex-col items-start gap-2">
                     <Typography element="h4" as="h4">
                         {project.name[locale]}
                     </Typography>
+
                     <Typography element="p" as="mutedText" className="">
                         {project.shortDescription[locale]}
                     </Typography>
