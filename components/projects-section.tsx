@@ -1,7 +1,12 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { forwardRef, useEffect, useRef } from "react";
+import {
+    HTMLMotionProps,
+    motion,
+    useScroll,
+    useTransform,
+} from "framer-motion";
 import Typography from "./typography";
 import { useLocale, useTranslations } from "next-intl";
 import ShareMe from "@/public/assets/projects/shareme.png";
@@ -11,6 +16,8 @@ import { projects } from "@/config/projects";
 import { Locale } from "@/config/i18n";
 import { Link } from "@/lib/navigation";
 import { ExternalLinkIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Badge } from "./ui/badge";
 
 function ProjectsSection() {
     const sectionRef = useRef(null);
@@ -76,22 +83,16 @@ function ProjectsSection() {
 
                         <div ref={projectsRef}></div>
 
-                        <motion.div
+                        <ProjectList
                             ref={projectsCompRef}
-                            className="relative z-40 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+                            className="bg-black"
                             style={{
                                 opacity: opacity,
                                 translateY: translate,
                                 scale: scale,
                             }}
-                        >
-                            {projects.map((project) => (
-                                <ProjectCard
-                                    key={project.id}
-                                    project={project}
-                                />
-                            ))}
-                        </motion.div>
+                            projects={projects}
+                        />
                     </div>
                 </motion.div>
             </section>
@@ -100,6 +101,28 @@ function ProjectsSection() {
 }
 
 export type Project = (typeof projects)[number];
+
+export const ProjectList = forwardRef<
+    HTMLDivElement,
+    HTMLMotionProps<"div"> & { projects: Project[] }
+>(({ projects, className, ...props }, ref) => {
+    return (
+        <motion.div
+            ref={ref}
+            className={cn(
+                "relative z-40 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3",
+                className,
+            )}
+            {...props}
+        >
+            {projects.map((project) => (
+                <ProjectCard key={project.id} project={project} />
+            ))}
+        </motion.div>
+    );
+});
+
+ProjectList.displayName = "ProjectList";
 
 export function ProjectCard({ project }: { project: Project }) {
     const locale = useLocale() as Locale;
@@ -112,7 +135,7 @@ export function ProjectCard({ project }: { project: Project }) {
             <Image
                 width={500}
                 src={project.image}
-                className="h-full w-full rounded-md object-cover"
+                className="h-full w-full object-cover"
                 alt={project.name[locale]}
             ></Image>
 
@@ -124,6 +147,12 @@ export function ProjectCard({ project }: { project: Project }) {
                     <Typography element="p" as="mutedText" className="">
                         {project.shortDescription[locale]}
                     </Typography>
+
+                    <div className="flex flex-wrap items-center gap-2">
+                        {project.stack.slice(0, 4).map(({ id, name }) => (
+                            <Badge key={id} variant={"transparent"}>{name[locale]}</Badge>
+                        ))}
+                    </div>
                 </div>
 
                 <ExternalLinkIcon className="h-5 w-5 opacity-100 transition duration-300 group-hover:opacity-100 md:opacity-0"></ExternalLinkIcon>

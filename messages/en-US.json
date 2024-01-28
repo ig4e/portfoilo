@@ -56,11 +56,22 @@
     },
     "project": {
         "my-projects": "My Projects",
-        "about-project": "About Project"
+        "about-project": "About Project",
+        "search": "Search",
+        "fillters": {
+            "categories": "Categories",
+            "languages": "Languages",
+            "libraries-frameworks": "Libraries & Frameworks",
+            "databases": "Databases",
+            "tools": "Tools"
+        }
     },
     "404": {
         "title": "404: Not found",
         "description": "The page you were looking for doesn't exist.",
         "go-back": "Go Back"
+    },
+    "r-select": {
+        "no-options": "No Results"
     }
 }

@@ -56,11 +56,22 @@
     },
     "project": {
         "my-projects": "مشاريعي",
-        "about-project": "عن المشروع"
+        "about-project": "عن المشروع",
+        "search": "البحث",
+        "fillters": {
+            "categories": "التصنيفات",
+            "languages": "لغات البرمجة",
+            "libraries-frameworks": "المكتبات والأطُر",
+            "databases": "قاعدات البيانات",
+            "tools": "الأدوات"
+        }
     },
     "404": {
         "title": "404: مش موجود",
         "description": "الصفحة الي بتدور عليها مش موجودة.",
         "go-back": "ارجع تاني"
+    },
+    "r-select": {
+        "no-options": "مفيش نتايج"
     }
 }

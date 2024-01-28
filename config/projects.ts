@@ -9,22 +9,27 @@ import { languages, skills, technologies, tools, databases } from "./skills";
 
 export const categories = {
     "ux-ui": {
+        id: "ux-ui",
         "ar-EG": "تصميم UX/UI",
         "en-US": "UX/UX Design",
     },
     "front-end": {
+        id: "front-end",
         "ar-EG": "برمجة فرونت-أيند",
         "en-US": "Front-end Coding",
     },
     "back-end": {
+        id: "back-end",
         "ar-EG": "برمجة باك-أيند",
         "en-US": "Back-end Coding",
     },
     database: {
+        id: "database",
         "ar-EG": "قاعدة بيانات",
         "en-US": "Database",
     },
     "web-scrape": {
+        id: "web-scrape",
         "ar-EG": "تجريف الويب",
         "en-US": "Web scraping",
     },
@@ -33,7 +38,6 @@ export const categories = {
 export const mappedCategories = (
     Object.keys(categories) as (keyof typeof categories)[]
 ).map((key) => ({
-    id: key,
     ...categories[key],
 }));
 
@@ -212,7 +216,7 @@ export const projects = [
             categories["front-end"],
             categories["back-end"],
             categories.database,
-            categories["web-scrape"]
+            categories["web-scrape"],
         ],
         stack: [
             languages.html,

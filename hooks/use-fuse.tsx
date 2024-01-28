@@ -15,7 +15,7 @@ export function useFuse<T, S extends Array<T>>({
 }) {
     const results = useMemo(() => {
         if (!query.value?.trim()) return store;
-        return fuse.search(query.value, query.options);
+        return fuse.search(query.value, query.options).map(fuseRes => fuseRes.item);
     }, [query, fuse, store]);
 
     return results;
