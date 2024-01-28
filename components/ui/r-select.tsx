@@ -24,7 +24,7 @@ export const RSelect = forwardRef<
             classNames={{
                 control: ({ isDisabled, isFocused, isRtl, isMulti }) =>
                     cn(
-                        "flex h-10 w-full items-center gap-2 min-w-44 justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background [&>span]:line-clamp-1",
+                        "flex !min-h-10 h-full w-full items-center gap-2 min-w-44 justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background [&>span]:line-clamp-1",
                         {
                             "outline-none ring-2 ring-ring ring-offset-2":
                                 isFocused,

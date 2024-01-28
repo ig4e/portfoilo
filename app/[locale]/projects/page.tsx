@@ -92,10 +92,10 @@ function ProjectsPage({ params: { locale } }: { params: { locale: Locale } }) {
             </div>
 
             <div className="flex items-center gap-4">
-                <div className="flex h-10 items-center rounded-md border px-3 ring-offset-background transition focus-within:bg-secondary focus-within:outline-none focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 hover:bg-secondary active:bg-secondary">
+                <div className="flex h-10 w-full min-w-16 items-center rounded-md border px-3 ring-offset-background transition focus-within:bg-secondary focus-within:outline-none focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 hover:bg-secondary active:bg-secondary">
                     <Search className="me-2 h-4 w-4 shrink-0 opacity-50" />
                     <input
-                        className="flex  w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+                        className="flex w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
                         placeholder={t("search")}
@@ -113,6 +113,7 @@ function ProjectsPage({ params: { locale } }: { params: { locale: Locale } }) {
                             ),
                         )
                     }
+                    className="w-1/2"
                 ></RSelect>
             </div>
 
