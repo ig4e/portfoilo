@@ -7,9 +7,9 @@ import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 import { useState } from "react";
 import { Icons } from "./ui/icons";
+import { Link } from "@/lib/navigation";
 
 export function NavSheet() {
     const t = useTranslations("site-header");
