@@ -1,19 +1,14 @@
-import React from "react";
-import { Icons } from "./ui/icons";
-import { Button, buttonVariants } from "./ui/button";
-import { cn } from "@/lib/utils";
-import { siteConfig } from "@/config/site";
-import { ModeToggle } from "./mode-toggle";
-import Typography from "./typography";
-import {
-    NextIntlClientProvider,
-    useMessages,
-    useTranslations,
-} from "next-intl";
-import { LocaleSelector } from "./locale-selector";
-import { Link } from "@/lib/navigation";
-import { NavSheet } from "./nav-sheet";
 import { routes } from "@/config/routes";
+import { siteConfig } from "@/config/site";
+import { Link } from "@/lib/navigation";
+import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
+import { LocaleSelector } from "./locale-selector";
+import { ModeToggle } from "./mode-toggle";
+import { NavSheet } from "./nav-sheet";
+import Typography from "./typography";
+import { Button, buttonVariants } from "./ui/button";
+import { Icons } from "./ui/icons";
 
 function SiteHeader() {
     const t = useTranslations("site-header");

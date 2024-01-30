@@ -1,19 +1,17 @@
 import Typography from "@/components/typography";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import React from "react";
-import { motion } from "framer-motion";
-import { useLocale, useTranslations } from "next-intl";
-import { Locale } from "@/config/i18n";
 import { Noise } from "@/components/ui/images";
+import { Locale } from "@/config/i18n";
 import { Link } from "@/lib/navigation";
+import { cn } from "@/lib/utils";
+import { useLocale, useTranslations } from "next-intl";
 
 function NotFoundPage() {
     const t = useTranslations("404");
     const locale = useLocale() as Locale;
 
     return (
-        <div className="mb-12">
+        <div className="min-h-[calc(100vh-9.5rem)]">
             <section className="flex min-h-[50vh] flex-col items-center justify-center gap-12 overflow-hidden text-center">
                 <div className="overflow-hidden">
                     <div className="absolute inset-x-0 top-0 -z-[10] min-h-[40vh] animate-cardlight rounded-b-full bg-gradient-to-b from-rose-500 to-red-100 opacity-80 blur-3xl dark:from-rose-900 md:min-h-[60vh]" />
@@ -28,7 +26,7 @@ function NotFoundPage() {
                 </div>
 
                 <div className="container flex flex-col items-center gap-12">
-                    <div className="mt-12">
+                    <div className="mt-12 space-y-8">
                         <Typography
                             element="h1"
                             className={cn(

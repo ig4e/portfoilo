@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const screens = {
     sm: 640,
@@ -13,7 +13,8 @@ export type Screen = keyof typeof screens;
 
 function useViewport() {
     const [width, setWidth] = useState<number>(
-        (typeof window !== "undefined" ? window : { innerWidth: 1280 }).innerWidth
+        (typeof window !== "undefined" ? window : { innerWidth: 1280 })
+            .innerWidth,
     );
 
     function handleWindowSizeChange() {
@@ -28,7 +29,7 @@ function useViewport() {
     }, []);
 
     const currentScreen = Object.keys(screens).find(
-        (screen) => screens[screen as Screen] <= width
+        (screen) => screens[screen as Screen] <= width,
     ) as Screen;
 
     return {

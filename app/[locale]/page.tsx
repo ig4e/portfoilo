@@ -4,9 +4,10 @@ import SkillsSection from "@/components/skills-section";
 import Typography from "@/components/typography";
 import { Icons } from "@/components/ui/icons";
 import { locales } from "@/config/i18n";
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
+
+
 
 export default function Home({
     params: { locale },
@@ -16,13 +17,14 @@ export default function Home({
     unstable_setRequestLocale(locale);
     const t = useTranslations("index");
 
-    
-
     return (
-        <main className="">
+        <main>
             <HeroSection />
 
-            <section className="dark bg-black px-4 py-12 text-white scroll-mt-20" id="about">
+            <section
+                className="dark scroll-mt-20 bg-black px-4 py-12 text-white"
+                id="about"
+            >
                 <div className="mx-auto flex min-h-[40vh] max-w-3xl flex-col gap-4 overflow-x-hidden overflow-y-clip">
                     <div className="mb-6 flex items-center gap-4">
                         <Icons.logo className="h-9 w-9" />
@@ -67,3 +69,7 @@ export default function Home({
         </main>
     );
 }
+
+export const config = {
+    amp: true,
+};

@@ -1,5 +1,5 @@
-import * as React from "react";
 import { VariantProps, cva } from "class-variance-authority";
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -35,7 +35,7 @@ type TypographyProps<T extends Element> = {
 
 const Typography = <T extends Element>(
     { className, element, as, ...props }: TypographyProps<T>,
-    ref: React.LegacyRef<T>
+    ref: React.LegacyRef<T>,
 ) => {
     const Component = element;
 

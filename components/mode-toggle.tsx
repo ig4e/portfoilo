@@ -1,9 +1,6 @@
 "use client";
 
-import * as React from "react";
-import { DesktopIcon, MoonIcon, SunIcon } from "@radix-ui/react-icons";
-import { useTheme } from "next-themes";
-import { useTranslations } from "next-intl";
+import { Button } from "@/components/ui/button";
 import {
     Drawer,
     DrawerClose,
@@ -21,8 +18,11 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
 import useViewport from "@/hooks/use-viewport";
+import { DesktopIcon, MoonIcon, SunIcon } from "@radix-ui/react-icons";
+import { useTranslations } from "next-intl";
+import { useTheme } from "next-themes";
+import * as React from "react";
 
 const modes = ["light", "dark", "system"] as const;
 

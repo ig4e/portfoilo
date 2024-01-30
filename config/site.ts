@@ -3,9 +3,8 @@ export const siteConfig = {
     url: "https://portfoilo-umber.vercel.app",
     ogImage: "https://portfoilo-umber.vercel.app/og.jpg",
     description:
-        "Beautifully designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source.",
+        "I'm Ahmed Mohamed A Fullstack web engineer | UI/UX Designer.",
     links: {
-        //twitter: "https://twitter.com/shadcn",
         github: "https://github.com/ig4e",
         linkedIn: "https://www.linkedin.com/in/ahmed-badr-8aa91723a/",
     },

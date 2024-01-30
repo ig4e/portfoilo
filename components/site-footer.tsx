@@ -1,27 +1,19 @@
-import React from "react";
-import { Icons } from "./ui/icons";
-import { Button, buttonVariants } from "./ui/button";
-import { cn } from "@/lib/utils";
 import { siteConfig } from "@/config/site";
+import { Link } from "@/lib/navigation";
+import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
+import { LocaleSelector } from "./locale-selector";
 import { ModeToggle } from "./mode-toggle";
 import Typography from "./typography";
-import {
-    NextIntlClientProvider,
-    useMessages,
-    useTranslations,
-} from "next-intl";
-import { LocaleSelector } from "./locale-selector";
-import { Link } from "@/lib/navigation";
-import { NavSheet } from "./nav-sheet";
-import { routes } from "@/config/routes";
+import { buttonVariants } from "./ui/button";
+import { Icons } from "./ui/icons";
 
 function SiteFooter() {
     const t = useTranslations("site-header");
 
     return (
-        <header className="z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 py-4">
+        <header className="z-50 w-full border-b border-border/40 bg-background/95 py-4 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container flex max-w-screen-2xl items-center">
-
                 <div className="flex flex-col gap-2">
                     <Link href={"/"} className="group flex items-center gap-2">
                         <Icons.logo className="h-8 w-8"></Icons.logo>

@@ -1,11 +1,10 @@
-import ShareMe from "@/public/assets/projects/shareme.png";
-import Kaboot from "@/public/assets/projects/kaboot.png";
 import Emanga from "@/public/assets/projects/emanga.png";
-import PhiBoutique from "@/public/assets/projects/phiboutique.png";
-import WolfLand from "@/public/assets/projects/wolfland.png";
-import WadinaFoods from "@/public/assets/projects/wadinafoods.png";
+import Kaboot from "@/public/assets/projects/kaboot.png";
 import MHTCE from "@/public/assets/projects/mhtce.png";
-import { languages, skills, technologies, tools, databases } from "./skills";
+import PhiBoutique from "@/public/assets/projects/phiboutique.png";
+import ShareMe from "@/public/assets/projects/shareme.png";
+import WolfLand from "@/public/assets/projects/wolfland.png";
+import { databases, languages, technologies, tools } from "./skills";
 
 export const categories = {
     "ux-ui": {
@@ -73,8 +72,6 @@ export const projects = [
             categories.database,
         ],
         stack: [
-            languages.html,
-            languages.css,
             languages.ts,
             technologies.nextjs,
             technologies.react,
@@ -82,6 +79,9 @@ export const projects = [
             technologies.nest,
             technologies.prisma,
             databases.mongodb,
+            languages.html,
+            languages.css,
+            languages.js,
             tools.vsc,
             tools.adobexd,
             tools.git,
@@ -147,12 +147,13 @@ export const projects = [
             categories["back-end"],
         ],
         stack: [
-            languages.html,
-            languages.css,
             languages.ts,
             technologies.nextjs,
             technologies.react,
             technologies.tailwind,
+            languages.html,
+            languages.css,
+            languages.js,
             tools.vsc,
             tools.adobexd,
             tools.git,
@@ -219,13 +220,14 @@ export const projects = [
             categories["web-scrape"],
         ],
         stack: [
-            languages.html,
-            languages.css,
             languages.ts,
             languages.graphql,
             technologies.nextjs,
             technologies.react,
             technologies.tailwind,
+            languages.html,
+            languages.css,
+            languages.js,
             technologies.nest,
             tools.vsc,
             tools.adobexd,
@@ -271,6 +273,7 @@ export const projects = [
             technologies.nextjs,
             technologies.react,
             technologies.tailwind,
+            languages.js,
             tools.vsc,
             tools.adobexd,
             tools.git,

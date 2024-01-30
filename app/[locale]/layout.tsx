@@ -1,20 +1,19 @@
 import type { Metadata } from "next";
-import { Cairo, Inter, Roboto } from "next/font/google";
+import { Cairo, Inter } from "next/font/google";
 import localFont from "next/font/local";
-
-import "../globals.css";
-import { cn } from "@/lib/utils";
-import { ThemeProvider } from "@/components/theme-provider";
-import SiteHeader from "@/components/site-header";
-import { locales } from "@/config/i18n";
-import { unstable_setRequestLocale } from "next-intl/server";
 import { DirectionProvider } from "@/components/direction-provider";
-import { NextIntlClientProvider, useMessages } from "next-intl";
 import SiteFooter from "@/components/site-footer";
+import SiteHeader from "@/components/site-header";
+import { ThemeProvider } from "@/components/theme-provider";
+import { locales } from "@/config/i18n";
+import { cn } from "@/lib/utils";
+import { NextIntlClientProvider, useMessages } from "next-intl";
+import { unstable_setRequestLocale } from "next-intl/server";
 import Script from "next/script";
+import "../globals.css";
+import { siteConfig } from "@/config/site";
 
 const inter = Inter({
-    //weight: ["100", "300", "400", "500", "700", "900"],
     subsets: ["latin"],
     variable: "--font-sans",
 });
@@ -29,7 +28,24 @@ const HarlowSolid = localFont({
 
 export const metadata: Metadata = {
     title: "Home - Ahmed Mohamed",
-    description: "I'm Ahmed Mohamed A Fullstack web engineer | UI/UX Designer",
+    description: siteConfig.description,
+    openGraph: {
+        title: "Home - Ahmed Mohamed",
+        description: siteConfig.description,
+        type: "profile",
+        locale: "en-US",
+        alternateLocale: "ar-EG",
+        countryName: "EG",
+        firstName: "Ahmed",
+        lastName: "Mohamed",
+        username: "Sekai",
+        gender: "male",
+        images: ["/og.png"],
+    },
+    creator: "Ahmed Mohamed",
+    category: "profile",
+    keywords:
+        "Ahmed, Mohamed, Ahmed Mohamed, Sekai, Fullstack web dev, discordjs dev, nextjs dev, react dev, developer",
     metadataBase: new URL(
         process.env.VERCEL_URL
             ? "https://portfoilo-umber.vercel.app/"

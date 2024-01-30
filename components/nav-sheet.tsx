@@ -1,15 +1,15 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { routes } from "@/config/routes";
 import { siteConfig } from "@/config/site";
+import { Link } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { Icons } from "./ui/icons";
-import { Link } from "@/lib/navigation";
 
 export function NavSheet() {
     const t = useTranslations("site-header");
@@ -30,16 +30,14 @@ export function NavSheet() {
                                 onClick={() => setOpen(false)}
                                 key={route.title}
                                 href={route.url}
-                                className={cn(
-                                    "flex select-none items-center gap-2 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                                )}
+                                className={cn(buttonVariants({ variant: "ghost", size: "default", className: "w-full justify-start" }))}
                             >
                                 {route?.icon && (
-                                    <route.icon className="w-5"></route.icon>
+                                    <route.icon className="w-6"></route.icon>
                                 )}
 
                                 <div>
-                                    <div className="text-sm font-medium leading-none">
+                                    <div className="font-medium leading-none">
                                         {t(`links.${route.title}`)}
                                     </div>
                                 </div>

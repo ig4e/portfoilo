@@ -1,11 +1,11 @@
 "use client";
-import React, { useEffect, useRef } from "react";
-import { Icons } from "./ui/icons";
-import Typography from "./typography";
-import { skills } from "@/config/skills";
-import { useLocale, useTranslations } from "next-intl";
-import { hexToRgb } from "@/lib/utils";
 import { Locale } from "@/config/i18n";
+import { skills } from "@/config/skills";
+import { hexToRgb } from "@/lib/utils";
+import { useLocale, useTranslations } from "next-intl";
+import { useEffect, useRef } from "react";
+import Typography from "./typography";
+import { Icons } from "./ui/icons";
 import { Noise } from "./ui/images";
 
 function SkillsSection() {
