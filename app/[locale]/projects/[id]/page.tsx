@@ -84,8 +84,4 @@ function ProjectPage({ params: { locale, id } }: PageProps) {
     );
 }
 
-export const config = {
-    amp: true,
-};
-
 export default ProjectPage;

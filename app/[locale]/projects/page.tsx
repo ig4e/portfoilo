@@ -24,8 +24,4 @@ function ProjectsPage({ params: { locale } }: { params: { locale: Locale } }) {
     );
 }
 
-export const config = {
-    amp: true,
-};
-
 export default ProjectsPage;

@@ -7,8 +7,6 @@ import { locales } from "@/config/i18n";
 import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 
-
-
 export default function Home({
     params: { locale },
 }: Readonly<{
@@ -69,7 +67,3 @@ export default function Home({
         </main>
     );
 }
-
-export const config = {
-    amp: true,
-};
