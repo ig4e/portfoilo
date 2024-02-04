@@ -11,6 +11,7 @@ import { Search } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { useFilterProjects } from "./use-fillter-projects";
+import { AnimatePresence, LayoutGroup } from "framer-motion";
 
 const fuse = new Fuse(projects, {
     keys: [
@@ -39,7 +40,7 @@ function ProjectsPageList({
         filtersIDs: fillters,
     });
 
-    const debouncedResults = useDebounce(results, 250);
+    const debouncedResults = useDebounce(results, 100);
 
     const options = [
         {
@@ -108,13 +109,11 @@ function ProjectsPageList({
             </div>
 
             <div>
-                <ProjectList
-                    projects={debouncedResults}
-                    className="z-0"
-                    cardProps={{
-                        transition: { type: "spring" },
-                    }}
-                />
+                <LayoutGroup id="projects">
+                    <AnimatePresence mode="wait">
+                        <ProjectList layoutRoot projects={debouncedResults} />
+                    </AnimatePresence>
+                </LayoutGroup>
             </div>
         </>
     );

@@ -7,12 +7,17 @@ import { useEffect, useRef } from "react";
 import Typography from "./typography";
 import { Icons } from "./ui/icons";
 import { Noise } from "./ui/images";
+import { ExternalLink } from "lucide-react";
+import { Link } from "@/lib/navigation";
 
 function SkillsSection() {
     const t = useTranslations("index");
 
     return (
-        <section className="dark bg-black py-12 text-white scroll-mt-20" id="skills">
+        <section
+            className="dark scroll-mt-20 bg-black py-12 text-white"
+            id="skills"
+        >
             <div
                 className="container flex min-h-[40vh]  flex-col gap-4 overflow-x-hidden overflow-y-clip"
                 id="skill-cards"
@@ -92,52 +97,55 @@ function SkillCard({
     const itemRgbColor = hexToRgb(item.color);
 
     return (
-        <div className="card group relative cursor-pointer overflow-hidden rounded-md bg-secondary p-[2px]">
-            <div
-                about="card-blur"
-                className="absolute inset-0 z-[3] h-full w-full opacity-0 blur-xl transition-all duration-300 group-hover:opacity-100"
-                style={{
-                    background: `radial-gradient(var(--circle-size, 700px) circle at var(--x, 100px) var(--y, 100px), rgba(${itemRgbColor.r}, ${itemRgbColor.g}, ${itemRgbColor.b}, 0.25), transparent 40%)`,
-                }}
-            ></div>
+        <Link href={item.link} target="_blank">
+            <div className="card group relative cursor-pointer overflow-hidden rounded-md bg-secondary px-[1px] py-[1.5px]">
+                <div
+                    about="card-blur"
+                    className="absolute inset-0 z-[3] h-full w-full opacity-0 blur-xl transition-all duration-300 group-hover:opacity-100"
+                    style={{
+                        background: `radial-gradient(var(--circle-size, 700px) circle at var(--x, 100px) var(--y, 100px), rgba(${itemRgbColor.r}, ${itemRgbColor.g}, ${itemRgbColor.b}, 0.25), transparent 40%)`,
+                    }}
+                ></div>
 
-            <div
-                about="card-border"
-                className="absolute inset-0 z-[1] h-full w-full opacity-0 transition-all duration-300 group-hover/section:opacity-100"
-                style={{
-                    background: `radial-gradient(var(--circle-size,250px) circle at var(--x, 100px) var(--y, 100px), rgba(${itemRgbColor.r}, ${itemRgbColor.g}, ${itemRgbColor.b}, 0.4), transparent 40%)`,
-                }}
-            ></div>
+                <div
+                    about="card-border"
+                    className="absolute inset-0 z-[1] h-full w-full opacity-0 transition-all duration-300 group-hover/section:opacity-100"
+                    style={{
+                        background: `radial-gradient(var(--circle-size,250px) circle at var(--x, 100px) var(--y, 100px), rgba(${itemRgbColor.r}, ${itemRgbColor.g}, ${itemRgbColor.b}, 0.4), transparent 40%)`,
+                    }}
+                ></div>
 
-            <div
-                className="top-18 absolute inset-0 z-[4] mix-blend-overlay"
-                style={{
-                    backgroundRepeat: "repeat",
-                    backgroundImage: `url('${Noise.src}')`,
-                    opacity: 0.1,
-                }}
-            />
+                <div
+                    className="top-18 absolute inset-0 z-[4] mix-blend-overlay"
+                    style={{
+                        backgroundRepeat: "repeat",
+                        backgroundImage: `url('${Noise.src}')`,
+                        opacity: 0.1,
+                    }}
+                />
 
-            <div
-                className="absolute inset-10 z-[3] h-full w-full opacity-25 blur-3xl md:bottom-0 md:left-0 md:h-1/2 md:opacity-15"
-                style={{
-                    backgroundColor: item.color,
-                }}
-            ></div>
+                <div
+                    className="absolute inset-10 z-[3] h-full w-full animate-skillcardlight opacity-15 blur-3xl md:bottom-0 md:left-0 md:h-1/2"
+                    style={{
+                        backgroundColor: item.color,
+                    }}
+                ></div>
 
-            <div className="relative z-[2] flex h-full w-full flex-row-reverse items-center gap-4 rounded-[inherit] bg-black p-4 md:aspect-square md:flex-col">
-                <item.icon className="z-10 flex h-16 w-auto min-w-[4rem] max-w-full items-center justify-center place-self-center justify-self-center rounded-sm md:mt-auto"></item.icon>
+                <div className="relative z-[2] flex h-full w-full flex-row-reverse items-center gap-4 rounded-[inherit] bg-black p-4 md:aspect-square md:flex-col">
+                    <ExternalLink className="absolute end-2 top-2 self-end opacity-0 transition-all group-hover:opacity-100 md:end-4 md:top-4"></ExternalLink>
+                    <item.icon className="z-10 flex h-16 w-auto min-w-[4rem] max-w-full items-center justify-center place-self-center justify-self-center rounded-sm md:mt-auto"></item.icon>
 
-                <div className="me-auto mt-auto space-y-1">
-                    <Typography element="h4" as="h4">
-                        {item.name[locale]}
-                    </Typography>
-                    <Typography element="p" as="mutedText" className="">
-                        {item.description[locale]}
-                    </Typography>
+                    <div className="me-auto mt-auto space-y-1">
+                        <Typography element="h4" as="h4">
+                            {item.name[locale]}
+                        </Typography>
+                        <Typography element="p" as="mutedText" className="">
+                            {item.description[locale]}
+                        </Typography>
+                    </div>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 }
 

@@ -1,17 +1,18 @@
-import type { Metadata } from "next";
-import { Cairo, Inter } from "next/font/google";
-import localFont from "next/font/local";
 import { DirectionProvider } from "@/components/direction-provider";
+import { MotionProvider } from "@/components/motion-provider";
 import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
 import { locales } from "@/config/i18n";
+import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
+import type { Metadata } from "next";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
+import { Cairo, Inter } from "next/font/google";
+import localFont from "next/font/local";
 import Script from "next/script";
 import "../globals.css";
-import { siteConfig } from "@/config/site";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -81,9 +82,11 @@ export default function RootLayout({
                         disableTransitionOnChange
                     >
                         <NextIntlClientProvider messages={messages}>
-                            <SiteHeader></SiteHeader>
-                            <div className="">{children}</div>
-                            <SiteFooter></SiteFooter>
+                            <MotionProvider reducedMotion="user">
+                                <SiteHeader></SiteHeader>
+                                <div className="">{children}</div>
+                                <SiteFooter></SiteFooter>
+                            </MotionProvider>
                         </NextIntlClientProvider>
                     </ThemeProvider>
                 </body>

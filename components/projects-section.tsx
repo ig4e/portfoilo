@@ -2,16 +2,14 @@
 
 import { Locale } from "@/config/i18n";
 import { projects } from "@/config/projects";
-import useViewport from "@/hooks/use-viewport";
 import { Link } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 import {
-    AnimatePresence,
     HTMLMotionProps,
-    LayoutGroup,
     motion,
     useScroll,
-    useTransform,
+    useSpring,
+    useTransform
 } from "framer-motion";
 import { ExternalLinkIcon } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
@@ -25,30 +23,13 @@ function ProjectsSection() {
     const projectsRef = useRef(null);
     const projectsCompRef = useRef<HTMLDivElement>(null);
     const t = useTranslations("index");
-    const { isMobile } = useViewport();
-    const { scrollYProgress: projectsScrollYProgress } = useScroll({
+    const { scrollYProgress } = useScroll({
         target: projectsRef,
     });
 
-    const opacityDimensions = () => {
-        return isMobile ? [0.6, 1] : [0, 1];
-    };
-
-    const translateDimensions = () => {
-        return isMobile ? [400, -300] : [400, -500];
-    };
-
-    const opacity = useTransform(
-        projectsScrollYProgress,
-        [1, 0.5],
-        opacityDimensions(),
-    );
-    const scale = useTransform(projectsScrollYProgress, [0, 1], [1.05, 1]);
-    const translate = useTransform(
-        projectsScrollYProgress,
-        [1, 0],
-        translateDimensions(),
-    );
+    const yScroll = useSpring(scrollYProgress, { damping: 30 });
+    const opacity = useTransform(yScroll, [1, 0.5], [0, 1]);
+    const translate = useTransform(yScroll, [1, 0], [1000, -500]);
 
     return (
         <>
@@ -81,8 +62,7 @@ function ProjectsSection() {
                             className="bg-black"
                             style={{
                                 opacity: opacity,
-                                translateY: translate,
-                                scale: scale,
+                                y: translate,
                             }}
                             projects={projects}
                         />
@@ -106,22 +86,18 @@ export const ProjectList = forwardRef<
         <motion.div
             ref={ref}
             className={cn(
-                "relative z-40 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3",
+                "relative z-40 grid grid-cols-1 gap-8 will-change-auto md:grid-cols-2 lg:grid-cols-3",
                 className,
             )}
             {...props}
         >
-            <LayoutGroup>
-                <AnimatePresence>
-                    {projects.map((project) => (
-                        <ProjectCard
-                            {...cardProps}
-                            key={project.id}
-                            project={project}
-                        />
-                    ))}
-                </AnimatePresence>
-            </LayoutGroup>
+            {projects.map((project) => (
+                <ProjectCard
+                    {...cardProps}
+                    key={project.id}
+                    project={project}
+                />
+            ))}
         </motion.div>
     );
 });
@@ -134,11 +110,10 @@ export function ProjectCard({
 }: HTMLMotionProps<"div"> & { project: Project }) {
     const locale = useLocale() as Locale;
     return (
-        <motion.div
-            {...props}
+        <div
             key={project.id}
+            id={project.id}
             className="group relative overflow-hidden rounded-md border transition duration-500 hover:-translate-y-1 hover:border-primary"
-            layout
         >
             <Link href={`/projects/${project.id}`}>
                 <Image
@@ -148,7 +123,7 @@ export function ProjectCard({
                     alt={project.name[locale]}
                 ></Image>
 
-                <div className="dark absolute inset-0 z-10 flex h-full w-full items-end justify-between gap-2 bg-gradient-to-b from-transparent to-background p-4 text-white">
+                <div className="absolute inset-0 z-10 flex h-full w-full items-end justify-between gap-2 bg-gradient-to-b from-transparent to-background p-4 ">
                     <div className="flex flex-col items-start gap-2">
                         <Typography element="h4" as="h4">
                             {project.name[locale]}
@@ -167,10 +142,10 @@ export function ProjectCard({
                         </div>
                     </div>
 
-                    <ExternalLinkIcon className="h-5 w-5 opacity-100 transition duration-300 group-hover:opacity-100 md:opacity-0"></ExternalLinkIcon>
+                    <ExternalLinkIcon className="h-5 w-5 min-w-5 opacity-100 transition duration-300 group-hover:opacity-100 md:opacity-0"></ExternalLinkIcon>
                 </div>
             </Link>
-        </motion.div>
+        </div>
     );
 }
 

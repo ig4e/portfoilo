@@ -35,7 +35,7 @@ export function ModeToggle() {
 
     if (isMobile)
         return (
-            <Drawer open={open} onOpenChange={setOpen}>
+            <Drawer open={open} onOpenChange={setOpen} shouldScaleBackground>
                 <DrawerTrigger asChild>
                     <Button variant="ghost" size={"icon"}>
                         <SunIcon className="block h-[1.2rem] w-[1.2rem] dark:hidden" />

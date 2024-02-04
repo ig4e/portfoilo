@@ -8,13 +8,13 @@ export const routes = [
     },
     {
         icon: Icons.logo,
-        title: "experience",
-        url: "/#experience",
+        title: "skills",
+        url: "/#skills",
     },
     {
         icon: Icons.logo,
-        title: "skills",
-        url: "/#skills",
+        title: "blog",
+        url: "/blog",
     },
     {
         icon: Icons.logo,

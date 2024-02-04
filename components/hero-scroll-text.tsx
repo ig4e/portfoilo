@@ -2,27 +2,31 @@
 
 import useViewport from "@/hooks/use-viewport";
 import { CodeIcon, CropIcon, CursorArrowIcon } from "@radix-ui/react-icons";
-import { useWindowScroll } from "@uidotdev/usehooks";
 import { useTranslations } from "next-intl";
 import { useRef } from "react";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 function HeroScrollText() {
-    const [{ y }] = useWindowScroll();
-    const compref = useRef<HTMLElement>(null);
-    const windowSize = typeof window !== "undefined" ? window.innerWidth : 1;
-    const componentWidth = compref.current?.clientWidth ?? 200;
-    const { isDesktop } = useViewport();
-    const multiplier =
-        (windowSize / (componentWidth - windowSize)) * (isDesktop ? 20 : 10);
-    const final = (windowSize / ((y || 1) < 180 ? 180 : y || 1)) * multiplier;
+    const heroRef = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({ target: heroRef });
+    const { isMobile } = useViewport();
+    const componentWidth = heroRef.current?.clientWidth ?? 200;
+    const translate = useTransform(
+        scrollYProgress,
+        [0, 1],
+        isMobile
+            ? [-componentWidth / 5.5, componentWidth / 2]
+            : [-componentWidth, componentWidth],
+    );
+    const translateSpring = useSpring(translate);
     const t = useTranslations("index.hero");
 
     return (
-        <section
-            ref={compref}
+        <motion.div
+            ref={heroRef}
             className="relative min-h-max"
             style={{
-                transform: `translate(${final}px)`,
+                x: translateSpring,
             }}
         >
             <p className="overflow-visible whitespace-nowrap text-[12vw] lowercase">
@@ -34,7 +38,7 @@ function HeroScrollText() {
                 <CodeIcon className="absolute -top-[1vh] right-[20vw] z-10 h-[5vh] w-[5vh] -rotate-12 text-primary md:h-[20vh] md:w-[20vh]"></CodeIcon>
                 <CursorArrowIcon className="absolute -bottom-[2vh] right-[60vw] z-10 h-[5vh] w-[5vh] -rotate-12 text-primary md:h-[20vh] md:w-[20vh]"></CursorArrowIcon>
             </div>
-        </section>
+        </motion.div>
     );
 }
 

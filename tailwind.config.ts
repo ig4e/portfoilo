@@ -88,11 +88,23 @@ const config = {
                         transform: "translate(5px,0px) scale(0.9)",
                     },
                 },
+                skillcardlight: {
+                    "0%, 100%": {
+                        transform: "translate(50px, -50px) scale(2)",
+                    },
+                    "50%": {
+                        transform: "translate(-70px, 100px) scale(0.8)",
+                    },
+                    "80%": {
+                        transform: "translate(150, -150px) scale(1)",
+                    },
+                },
             },
             animation: {
                 "accordion-down": "accordion-down 0.2s ease-out",
                 "accordion-up": "accordion-up 0.2s ease-out",
                 cardlight: "cardlight 7s linear infinite",
+                skillcardlight: "skillcardlight 10s linear infinite",
             },
         },
     },

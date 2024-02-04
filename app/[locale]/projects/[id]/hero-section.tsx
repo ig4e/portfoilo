@@ -4,8 +4,14 @@ import Typography from "@/components/typography";
 import { Noise } from "@/components/ui/images";
 import { Locale } from "@/config/i18n";
 import { projects } from "@/config/projects";
-import { cn } from "@/lib/utils";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { cn, hexToRgb } from "@/lib/utils";
+import {
+    motion,
+    useScroll,
+    useSpring,
+    useTransform,
+    useVelocity,
+} from "framer-motion";
 import { useLocale } from "next-intl";
 import Image from "next/image";
 import { useRef } from "react";
@@ -14,13 +20,19 @@ function HeroSection({ projectId }: { projectId: string }) {
     const project = projects.find((p) => p.id === projectId)!;
     const heroRef = useRef(null);
     const { scrollYProgress } = useScroll({ target: heroRef });
-    const translate = useTransform(scrollYProgress, [0, 1], [25, 0]);
+
+    const translateSpring = useSpring(scrollYProgress, {
+        bounce: 0.1,
+        damping: 20,
+    });
+    const translate = useTransform(translateSpring, [0, 1], [25, 0]);
+
     const locale = useLocale() as Locale;
 
     return (
         <div
             ref={heroRef}
-            className="container flex min-h-[50vh] flex-col items-center justify-center gap-12 overflow-hidden text-center md:mb-12 md:min-h-screen"
+            className=" flex min-h-[50vh] flex-col items-center justify-center gap-12 overflow-hidden pb-6 text-center md:min-h-screen md:pb-12"
         >
             <div className="overflow-hidden">
                 <div
@@ -42,14 +54,14 @@ function HeroSection({ projectId }: { projectId: string }) {
             </div>
 
             <motion.div
-                className="flex flex-col items-center gap-12"
+                className="relative flex flex-col items-center gap-12"
                 initial={{ opacity: 0.5 }}
                 animate={{ opacity: 1 }}
                 transition={{
                     duration: 0.2,
                 }}
             >
-                <div className="flex flex-col items-center gap-4 md:mt-8">
+                <div className="container flex flex-col items-center gap-4 md:mt-8">
                     <div className="w-fit rounded-full border bg-gradient-to-t from-secondary/20 to-secondary/80 px-4 py-1 text-sm text-secondary-foreground">
                         {project.createdAt}
                     </div>
@@ -57,7 +69,7 @@ function HeroSection({ projectId }: { projectId: string }) {
                     <Typography
                         element="h1"
                         className={cn(
-                            "container text-balance text-center text-[3rem] font-semibold leading-tight sm:text-6xl md:leading-normal lg:text-7xl xl:text-8xl mb-6",
+                            "container text-balance text-center text-[3rem] font-semibold leading-tight sm:text-6xl md:mb-6 md:leading-normal lg:text-7xl xl:text-8xl",
                             {
                                 "text-5xl leading-relaxed sm:text-7xl lg:text-8xl xl:text-9xl":
                                     locale === "ar-EG",
@@ -76,22 +88,73 @@ function HeroSection({ projectId }: { projectId: string }) {
                     </Typography>
                 </div>
 
-                <div className="mt-4 flex w-full items-center gap-4 [perspective:2000px;]">
+                <div className="mt-4 hidden w-full items-center gap-4 [perspective:2000px;] md:flex">
                     <motion.div
                         style={{
                             transformStyle: "preserve-3d",
                             rotateX: translate,
                         }}
-                        transition={{ type: "spring", bounce: 0.4 }}
+                        transition={{
+                            type: "spring",
+                            bounce: 0.4,
+                            stiffness: 400,
+                        }}
                     >
                         <Image
                             priority
                             src={project.image}
-                            className="w-full object-cover transition-all"
+                            className="container w-full rounded-[5vh] object-cover transition-all"
+                            width={1440}
                             alt={project.name[locale]}
                         ></Image>
                     </motion.div>
                 </div>
+
+                <div className="relative flex min-h-96 w-full min-w-[90vw] md:hidden">
+                    <div className="absolute inset-0 z-0 !w-full !min-w-[100vw] ps-[1rem]">
+                        <Image
+                            priority
+                            src={project.image}
+                            className="!h-full !w-full rounded-md !object-cover object-left transition-all"
+                            alt={project.name[locale]}
+                        ></Image>
+                    </div>
+                </div>
+
+                <div
+                    style={{
+                        //@ts-expect-error
+                        "-webkit-filter": "blur(10px)",
+                        background:
+                            "radial-gradient(50% 63.6% at 50% 72.5%,var(--gradient-color, #ffbb00) 0%,rgba(0,0,0,0) 100%)",
+                        "--gradient-color": project.color,
+                        bottom: "-70px",
+                        filter: "blur(10px)",
+                        flex: "none",
+                        height: "267px",
+                        "max-width": "1400px",
+                        opacity: ".4",
+                        overflow: "hidden",
+                        position: "absolute",
+                        width: "100%",
+                        zIndex: "1",
+                    }}
+                    about="Gradient Top"
+                />
+
+                <div
+                    style={{
+                        background: `radial-gradient(50% 75% at 50% 100%,rgba(${hexToRgb(project.color, true)},.2) 0%,rgba(${hexToRgb(project.color, true)},0) 100%)`,
+                        flex: "none",
+                        left: "calc(50.00000000000002% - 160% / 2)",
+                        overflow: "hidden",
+                        position: "absolute",
+                        top: "calc(34.00000000000002% - 132.125% / 2)",
+                        width: "160%",
+                        zIndex: "1",
+                        bottom: "-70px",
+                    }}
+                />
             </motion.div>
         </div>
     );
