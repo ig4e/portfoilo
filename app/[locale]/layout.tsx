@@ -19,6 +19,7 @@ const inter = Inter({
     subsets: ["latin"],
     variable: "--font-sans",
 });
+
 const cairo = Cairo({
     subsets: ["arabic"],
     variable: "--font-ar",
@@ -53,11 +54,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
     children,
-    params: { locale },
+    params,
 }: Readonly<{
     children: React.ReactNode;
     params: { locale: Locale };
 }>) {
+    const { locale } = params;
+
+    console.log("[locale]/layout.tsx", locale);
     unstable_setRequestLocale(locale);
     const messages = useMessages();
     const dir = locale === "ar-EG" ? "rtl" : "ltr";

@@ -37,7 +37,11 @@ export function generateMetadata(
     };
 }
 
-function ProjectPage({ params: { locale, id } }: PageProps) {
+function ProjectPage({ params }: PageProps) {
+    const { locale, id } = params;
+
+    console.log("[locale]/projects/[id]/page.tsx", locale);
+
     unstable_setRequestLocale(locale);
     const project = projects.find((p) => p.id === id);
     const t = useTranslations("project");
