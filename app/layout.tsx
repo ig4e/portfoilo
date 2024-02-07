@@ -1,3 +1,4 @@
+import { locales } from "@/config/i18n";
 import { type ReactNode } from "react";
 
 type Props = {
@@ -9,4 +10,8 @@ type Props = {
 // the locale would otherwise be ignored.
 export default function RootLayout({ children }: Props) {
     return children;
+}
+
+export function generateStaticParams() {
+    return locales.map((locale) => ({ locale }));
 }
