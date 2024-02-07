@@ -311,25 +311,25 @@ async function Post({
     );
 }
 
-// export async function generateStaticParams() {
-//     const posts = await fetch(
-//         `${process.env.NEXT_PUBLIC_STRAPI_API_URL?.replace("/graphql", "/api")}/posts?pagination[pageSize]=100`,
-//         {
-//             headers: {
-//                 Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_KEY}`,
-//             },
-//             next: { revalidate: 3600 },
-//         },
-//     ).then((res) => res.json());
+export async function generateStaticParams() {
+    const posts = await fetch(
+        `${process.env.NEXT_PUBLIC_STRAPI_API_URL?.replace("/graphql", "/api")}/posts?pagination[pageSize]=100&locale[0]=en-US&locale[1]=ar-EG`,
+        {
+            headers: {
+                Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_KEY}`,
+            },
+            next: { revalidate: 3600 },
+        },
+    ).then((res) => res.json());
 
-//     return posts.data.map(
-//         (post: {
-//             id: string;
-//             attributes: { slug: string; locale: string };
-//         }) => ({
-//             slug: [String(post.id), String(post.attributes.slug)],
-//         }),
-//     );
-// }
+    return posts.data.map(
+        (post: {
+            id: string;
+            attributes: { slug: string; locale: string };
+        }) => ({
+            slug: [String(post.id), String(post.attributes.slug)],
+        }),
+    );
+}
 
 export default Post;

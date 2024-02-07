@@ -7,13 +7,9 @@ import { cn } from "@/lib/utils";
 import { useLocale, useTranslations } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 
-function NotFoundPage({
-    params: { locale },
-}: Readonly<{
-    params: { locale: Locale };
-}>) {
-    unstable_setRequestLocale(locale);
+function NotFoundPage() {
     const t = useTranslations("404");
+    const locale = useLocale();
 
     return (
         <div className="min-h-[calc(100vh-9.5rem)]">
