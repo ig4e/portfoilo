@@ -313,13 +313,18 @@ export async function generateStaticParams() {
     const posts = await fetch(
         `${process.env.NEXT_PUBLIC_STRAPI_API_URL?.replace("/graphql", "/api")}/posts?pagination[pageSize]=100`,
         {
+            headers: {
+                Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_KEY}`,
+            },
             next: { revalidate: 3600 },
         },
     ).then((res) => res.json());
 
-    return posts.data.map((post: { id: string; attributes: { slug: string } }) => ({
-        slug: [post.id, post.attributes.slug],
-    })) as PostPageProps["params"][];
+    return posts.data.map(
+        (post: { id: string; attributes: { slug: string } }) => ({
+            slug: [post.id, post.attributes.slug],
+        }),
+    ) as PostPageProps["params"][];
 }
 
 export default Post;

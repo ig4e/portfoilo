@@ -11,7 +11,7 @@
         "codegen-watch": "graphql-codegen -w"
     },
     "dependencies": {
-        "@apollo/client": "3.9.0-rc.1",
+        "@apollo/client": "3.9.4",
         "@apollo/experimental-nextjs-app-support": "^0.8.0",
         "@mantine/hooks": "^7.5.1",
         "@next/bundle-analyzer": "^14.1.0",
@@ -38,7 +38,7 @@
         "framer-motion": "^11.0.3",
         "fuse.js": "^7.0.0",
         "graphql": "^16.8.1",
-        "lucide-react": "^0.321.0",
+        "lucide-react": "^0.323.0",
         "mdx": "^0.3.1",
         "million": "^3.0.2",
         "next": "14.1.0",
@@ -53,7 +53,7 @@
         "rehype-pretty-code": "^0.12.6",
         "remark-gfm": "^3.0.1",
         "sharp": "^0.33.2",
-        "shiki": "1.0.0-beta.6",
+        "shiki": "1.0.0",
         "styled-components": "^6.1.8",
         "tailwind-merge": "^2.2.1",
         "tailwindcss-animate": "^1.0.7",
@@ -61,17 +61,17 @@
         "vaul": "^0.9.0"
     },
     "devDependencies": {
-        "@graphql-codegen/cli": "^5.0.0",
-        "@graphql-codegen/client-preset": "^4.1.0",
+        "@graphql-codegen/cli": "^5.0.2",
+        "@graphql-codegen/client-preset": "^4.2.2",
         "@graphql-typed-document-node/core": "^3.2.0",
         "@tailwindcss/typography": "^0.5.10",
         "@types/node": "^20.11.16",
-        "@types/react": "^18.2.52",
-        "@types/react-dom": "^18.2.18",
+        "@types/react": "^18.2.55",
+        "@types/react-dom": "^18.2.19",
         "autoprefixer": "^10.4.17",
         "eslint": "^8.56.0",
         "eslint-config-next": "14.1.0",
-        "postcss": "^8.4.33",
+        "postcss": "^8.4.35",
         "tailwindcss": "^3.4.1",
         "typescript": "^5.3.3"
     }
