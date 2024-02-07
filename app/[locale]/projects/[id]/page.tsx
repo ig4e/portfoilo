@@ -29,7 +29,10 @@ export function generateMetadata(
         title: project.name[locale],
         description: project.description[locale],
         openGraph: {
+            title: project.name[locale],
+            description: project.description[locale],
             images: [project.image.src],
+            type: "article",
         },
     };
 }
