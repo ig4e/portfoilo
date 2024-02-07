@@ -1,4 +1,4 @@
-import { Locale } from "@/config/i18n";
+import { Locale, locales } from "@/config/i18n";
 import { unstable_setRequestLocale } from "next-intl/server";
 import React from "react";
 
@@ -14,3 +14,7 @@ function layout({
 }
 
 export default layout;
+
+export function generateStaticParams() {
+    return locales.map((locale) => ({ locale }));
+}
