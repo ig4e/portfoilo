@@ -1,32 +1,37 @@
 "use client";
 
+import { Locale } from "@/config/i18n";
 import useViewport from "@/hooks/use-viewport";
 import { CodeIcon, CropIcon, CursorArrowIcon } from "@radix-ui/react-icons";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { useTranslations } from "next-intl";
-import { useRef } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { useEffect, useRef, useState } from "react";
 
 function HeroScrollText() {
-    const heroRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({ target: heroRef });
-    const { isMobile } = useViewport();
-    const componentWidth = heroRef.current?.clientWidth ?? 200;
+    const [bottom, setBottom] = useState(0);
+    const { scrollY } = useScroll();
+    const locale = useLocale() as Locale;
 
     const translate = useTransform(
-        scrollYProgress,
-        [0, 1],
-        [-componentWidth / 5.5, componentWidth / 2],
+        scrollY,
+        [0, bottom],
+        locale === "ar-EG" ? [-18, 18] : [18, -18],
     );
-
     const translateSpring = useSpring(translate);
+    const mapping = useTransform(() => `${translateSpring.get()}%`);
+
     const t = useTranslations("index.hero");
+
+    useEffect(() => {
+        const hero = document.getElementById("hero");
+        if (hero) setBottom(hero.getBoundingClientRect().bottom);
+    }, []);
 
     return (
         <motion.div
-            ref={heroRef}
             className="relative min-h-max"
             style={{
-                x: translateSpring,
+                x: mapping,
             }}
         >
             <p className="overflow-visible whitespace-nowrap text-[12vw] lowercase">

@@ -15,7 +15,7 @@ function HeroSection() {
     const locale = useLocale() as Locale;
 
     return (
-        <div className="mb-12">
+        <div className="mb-12" id="hero">
             <section className="flex min-h-[50vh] flex-col items-center justify-center gap-12 overflow-hidden text-center md:min-h-screen">
                 <div className="overflow-hidden">
                     <div className="absolute inset-x-0 top-0 -z-[10] min-h-[40vh] animate-cardlight rounded-b-full bg-gradient-to-b from-rose-500 to-red-100 opacity-80 blur-3xl dark:from-rose-900 md:min-h-[60vh]" />

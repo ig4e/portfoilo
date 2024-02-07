@@ -85,16 +85,15 @@ export default function RootLayout({
                             <NextIntlClientProvider messages={messages}>
                                 <MotionProvider reducedMotion="user">
                                     <SiteHeader></SiteHeader>
-                                    <div className="">{children}</div>
+                                    <div>{children}</div>
                                     <SiteFooter></SiteFooter>
                                 </MotionProvider>
                             </NextIntlClientProvider>
                         </ApolloWrapper>
                     </ThemeProvider>
+                    <SpeedInsights />
                 </body>
             </DirectionProvider>
-
-            <SpeedInsights />
 
             <Script
                 strategy="afterInteractive"

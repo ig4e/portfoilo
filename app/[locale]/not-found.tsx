@@ -1,11 +1,9 @@
 import Typography from "@/components/typography";
 import { Button } from "@/components/ui/button";
 import { Noise } from "@/components/ui/images";
-import { Locale } from "@/config/i18n";
 import { Link } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 import { useLocale, useTranslations } from "next-intl";
-import { unstable_setRequestLocale } from "next-intl/server";
 
 function NotFoundPage() {
     const t = useTranslations("404");
