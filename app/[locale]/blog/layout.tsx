@@ -19,7 +19,3 @@ function layout({
 }
 
 export default layout;
-
-export function generateStaticParams() {
-    return locales.map((locale) => ({ locale }));
-}
