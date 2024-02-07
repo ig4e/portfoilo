@@ -90,6 +90,6 @@ function ProjectPage({ params: { locale, id } }: PageProps) {
 
 export default ProjectPage;
 
-export function generateStaticParams() {
-    return projects.map((project) => ({ id: project.id }));
-}
+// export function generateStaticParams() {
+//     return projects.map((project) => ({ id: project.id }));
+// }
