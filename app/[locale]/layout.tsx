@@ -3,7 +3,7 @@ import { MotionProvider } from "@/components/motion-provider";
 import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
-import { locales } from "@/config/i18n";
+import { Locale, locales } from "@/config/i18n";
 import { siteConfig } from "@/config/site";
 import { ApolloWrapper } from "@/lib/apollo-wrapper";
 import { cn } from "@/lib/utils";
@@ -56,7 +56,7 @@ export default function RootLayout({
     params: { locale },
 }: Readonly<{
     children: React.ReactNode;
-    params: { locale: (typeof locales)[number] };
+    params: { locale: Locale };
 }>) {
     unstable_setRequestLocale(locale);
     const messages = useMessages();

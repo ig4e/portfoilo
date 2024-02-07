@@ -5,10 +5,15 @@ import { Locale } from "@/config/i18n";
 import { Link } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 import { useLocale, useTranslations } from "next-intl";
+import { unstable_setRequestLocale } from "next-intl/server";
 
-function NotFoundPage() {
+function NotFoundPage({
+    params: { locale },
+}: Readonly<{
+    params: { locale: Locale };
+}>) {
+    unstable_setRequestLocale(locale);
     const t = useTranslations("404");
-    const locale = useLocale() as Locale;
 
     return (
         <div className="min-h-[calc(100vh-9.5rem)]">

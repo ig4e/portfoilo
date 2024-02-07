@@ -11,12 +11,12 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Locale } from "@/config/i18n";
+import { Locale, locales } from "@/config/i18n";
 import { getClient } from "@/lib/apollo";
 import { Link } from "@/lib/navigation";
 import { calculateRT, toLocaleDateString } from "@/lib/utils";
 import { AtSign, Clock } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 import LocaleAlert from "./locale-alert";
 import { Metadata } from "next";
@@ -133,6 +133,8 @@ export async function generateMetadata({
         locale,
     },
 }: PostPageProps) {
+    unstable_setRequestLocale(locale);
+
     const {
         data: { post },
     } = await getClient().query({
@@ -320,11 +322,19 @@ export async function generateStaticParams() {
         },
     ).then((res) => res.json());
 
-    return posts.data.map(
-        (post: { id: string; attributes: { slug: string } }) => ({
-            slug: [String(post.id), String(post.attributes.slug)],
-        }),
-    ) as PostPageProps["params"][];
+    return locales
+        .map((locale) => {
+            return posts.data.map(
+                (post: {
+                    id: string;
+                    attributes: { slug: string; locale: string };
+                }) => ({
+                    slug: [String(post.id), String(post.attributes.slug)],
+                    locale: locale,
+                }),
+            );
+        })
+        .reduce((acc, curr) => [...acc, ...curr], []);
 }
 
 export default Post;

@@ -1,7 +1,7 @@
 import HeroSection from "@/components/hero-section";
 import Typography from "@/components/typography";
 import { Icons } from "@/components/ui/icons";
-import { locales } from "@/config/i18n";
+import { Locale, locales } from "@/config/i18n";
 import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 import dynamic from "next/dynamic";
@@ -17,7 +17,7 @@ const SkillsSection = dynamic(() => import("@/components/skills-section"), {
 export default function Home({
     params: { locale },
 }: Readonly<{
-    params: { locale: (typeof locales)[number] };
+    params: { locale: Locale };
 }>) {
     unstable_setRequestLocale(locale);
     const t = useTranslations("index");
@@ -73,4 +73,8 @@ export default function Home({
             <SkillsSection />
         </main>
     );
+}
+
+export function generateStaticParams() {
+    return locales.map((locale) => ({ locale }));
 }

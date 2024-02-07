@@ -1,5 +1,5 @@
 import Typography from "@/components/typography";
-import { Locale } from "@/config/i18n";
+import { Locale, locales } from "@/config/i18n";
 import { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import ProjectsPageList from "./projects";
@@ -27,3 +27,7 @@ function ProjectsPage({ params: { locale } }: { params: { locale: Locale } }) {
 }
 
 export default ProjectsPage;
+
+export function generateStaticParams() {
+    return locales.map((locale) => ({ locale }));
+}

@@ -1,4 +1,4 @@
-import { Locale } from "@/config/i18n";
+import { Locale, locales } from "@/config/i18n";
 
 import GenericHero from "@/components/generic-hero";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
@@ -13,7 +13,7 @@ async function Blog({
     const t = await getTranslations("blog");
 
     return (
-        <div className="space-y-8 mb-14">
+        <div className="mb-14 space-y-8">
             <GenericHero title={t("my-blog")} description={t("description")} />
             <Posts></Posts>
         </div>
@@ -21,3 +21,7 @@ async function Blog({
 }
 
 export default Blog;
+
+export function generateStaticParams() {
+    return locales.map((locale) => ({ locale }));
+}
