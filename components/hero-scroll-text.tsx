@@ -8,16 +8,16 @@ import { useRef } from "react";
 
 function HeroScrollText() {
     const heroRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({});
+    const { scrollYProgress } = useScroll({ target: heroRef });
     const { isMobile } = useViewport();
     const componentWidth = heroRef.current?.clientWidth ?? 200;
+
     const translate = useTransform(
         scrollYProgress,
         [0, 1],
-        isMobile
-            ? [-componentWidth / 5.5, componentWidth / 2]
-            : [-componentWidth, componentWidth],
+        [-componentWidth / 5.5, componentWidth / 2],
     );
+
     const translateSpring = useSpring(translate);
     const t = useTranslations("index.hero");
 
