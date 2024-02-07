@@ -23,7 +23,6 @@ let exportedConfig = nextWithIntl;
 if (process.env.NODE_ENV === "production") {
     exportedConfig = million.next(exportedConfig, {
         auto: { threshold: 0.02, rsc: true },
-        hmr: true,
     });
 }
 

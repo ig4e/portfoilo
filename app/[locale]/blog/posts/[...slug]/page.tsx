@@ -133,8 +133,6 @@ export async function generateMetadata({
         locale,
     },
 }: PostPageProps) {
-    unstable_setRequestLocale(locale);
-
     const {
         data: { post },
     } = await getClient().query({
@@ -168,9 +166,11 @@ export async function generateMetadata({
 
 async function Post({
     params: {
+        locale,
         slug: [id],
     },
 }: PostPageProps) {
+    unstable_setRequestLocale(locale);
     const t = await getTranslations("blog");
     const {
         data: { post },

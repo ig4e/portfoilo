@@ -5,6 +5,7 @@ import { Locale, locales } from "@/config/i18n";
 import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 import dynamic from "next/dynamic";
+import { Suspense } from "react";
 
 const ProjectsSection = dynamic(() => import("@/components/projects-section"), {
     ssr: false,
@@ -24,7 +25,9 @@ export default function Home({
 
     return (
         <main>
-            <HeroSection />
+            <Suspense>
+                <HeroSection />
+            </Suspense>
 
             <section
                 className="dark scroll-mt-20 bg-black px-4 py-12 text-white"
@@ -68,9 +71,13 @@ export default function Home({
                 </div>
             </section>
 
-            <ProjectsSection></ProjectsSection>
+            <Suspense>
+                <ProjectsSection></ProjectsSection>
+            </Suspense>
 
-            <SkillsSection />
+            <Suspense>
+                <SkillsSection />
+            </Suspense>
         </main>
     );
 }
