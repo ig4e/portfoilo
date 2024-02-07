@@ -10,7 +10,6 @@ async function Blog({
 }: Readonly<{
     params: { locale: Locale };
 }>) {
-    console.log(locale);
     unstable_setRequestLocale(locale);
     const t = await getTranslations("blog");
 

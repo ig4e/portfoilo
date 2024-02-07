@@ -61,7 +61,6 @@ export default function RootLayout({
 }>) {
     const { locale } = params;
 
-    console.log("[locale]/layout.tsx", locale);
     unstable_setRequestLocale(locale);
     const messages = useMessages();
     const dir = locale === "ar-EG" ? "rtl" : "ltr";

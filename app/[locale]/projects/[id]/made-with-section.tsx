@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { SkillsTypeSection } from "@/components/skills-section";
 import { projects } from "@/config/projects";
