@@ -2,9 +2,9 @@
 
 import useViewport from "@/hooks/use-viewport";
 import { CodeIcon, CropIcon, CursorArrowIcon } from "@radix-ui/react-icons";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useRef } from "react";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 function HeroScrollText() {
     const heroRef = useRef<HTMLDivElement>(null);

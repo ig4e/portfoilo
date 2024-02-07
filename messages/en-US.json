@@ -50,12 +50,14 @@
             "languages": "Languages",
             "libraries-frameworks": "Libraries & Frameworks",
             "databases": "Databases",
+            "cms": "Content management systems",
             "tools": "Tools",
             "made-with": "Made with"
         }
     },
     "project": {
         "my-projects": "My Projects",
+        "description": "I prioritize client privacy and only showcase projects with their explicit approval",
         "about-project": "About Project",
         "search": "Search",
         "fillters": {
@@ -63,7 +65,27 @@
             "languages": "Languages",
             "libraries-frameworks": "Libraries & Frameworks",
             "databases": "Databases",
+            "cms": "Content management systems",
             "tools": "Tools"
+        }
+    },
+    "blog": {
+        "my-blog": "My Blog",
+        "description": "This blog serves as a repository for my writings, covering a spectrum from professional insights to personal anecdotes and anything in between",
+        "search": "Search",
+        "fillters": {
+            "categories": "Categories"
+        },
+        "rt": "{count, plural, =0 {# minutes} =1 {one minute} other {# minutes}} read",
+        "locale-alert": {
+            "title": "Localization Available!",
+            "description": "You're currently viewing a blog in a language different from your selected locale. Fortunately, there's a localized version available for your locale.",
+            "switch": "Switch Locales"
+        },
+        "locale-not-found-alert": {
+            "title": "Localization Unavailable!",
+            "description": "You're currently viewing a blog in a language different from your selected locale. Unfortunately, there's no localization available for your locale at the moment. I will update it as soon as possible.",
+            "switch": "No Locales Available"
         }
     },
     "404": {
@@ -73,5 +95,16 @@
     },
     "r-select": {
         "no-options": "No Results"
+    },
+    "loader": {
+        "loading": "Loading..."
+    },
+    "copy-button": {
+        "copy": "Copy",
+        "copied": "Copied!"
+    },
+    "pagination": {
+        "previous": "Previous",
+        "next": "Next"
     }
 }

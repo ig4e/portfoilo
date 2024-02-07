@@ -1,7 +1,6 @@
 "use client";
 
 import HeroScrollText from "@/components/hero-scroll-text";
-
 import Typography from "@/components/typography";
 import { Button } from "@/components/ui/button";
 import { Noise } from "@/components/ui/images";

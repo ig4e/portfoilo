@@ -30,7 +30,13 @@ export function NavSheet() {
                                 onClick={() => setOpen(false)}
                                 key={route.title}
                                 href={route.url}
-                                className={cn(buttonVariants({ variant: "ghost", size: "default", className: "w-full justify-start" }))}
+                                className={cn(
+                                    buttonVariants({
+                                        variant: "ghost",
+                                        size: "default",
+                                        className: "w-full justify-start",
+                                    }),
+                                )}
                             >
                                 {route?.icon && (
                                     <route.icon className="w-6"></route.icon>

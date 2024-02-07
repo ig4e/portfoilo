@@ -81,4 +81,16 @@
     *::-webkit-scrollbar-thumb {
         @apply rounded-md bg-primary;
     }
+
+    code[data-theme*=" "],
+    code[data-theme*=" "] span {
+        color: var(--shiki-light);
+    }
+
+    .dark {
+        code[data-theme*=" "],
+        code[data-theme*=" "] span {
+            color: var(--shiki-dark);
+        }
+    }
 }

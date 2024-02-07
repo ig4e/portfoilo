@@ -10,13 +10,28 @@ import { useLocale } from "next-intl";
 export interface GenericHeroProps {
     title: string;
     description: string;
+    classNames?: {
+        container?: string;
+        textContainer?: string;
+        title?: string;
+        description?: string;
+    };
 }
 
-function GenericHero({ title, description }: GenericHeroProps) {
+function GenericHero({
+    title,
+    description,
+    classNames = {
+        container: "",
+        description: "",
+        textContainer: "",
+        title: "",
+    },
+}: GenericHeroProps) {
     const locale = useLocale() as Locale;
 
     return (
-        <div className="mb-12">
+        <div className={cn("mb-12", classNames.container)}>
             <section className="flex flex-col items-center justify-center gap-12 overflow-hidden text-center">
                 <div className="overflow-hidden">
                     <div className="absolute inset-x-0 top-0 -z-[10] min-h-[40vh] animate-cardlight rounded-b-full bg-gradient-to-b from-rose-500 to-red-100 opacity-80 blur-3xl dark:from-rose-900 md:min-h-[60vh]" />
@@ -31,7 +46,10 @@ function GenericHero({ title, description }: GenericHeroProps) {
                 </div>
 
                 <motion.div
-                    className="container flex flex-col items-center gap-12"
+                    className={cn(
+                        "container flex flex-col items-center gap-12",
+                        classNames.textContainer,
+                    )}
                     initial={{ opacity: 0.5 }}
                     animate={{ opacity: 1 }}
                     transition={{
@@ -47,6 +65,7 @@ function GenericHero({ title, description }: GenericHeroProps) {
                                     "text-5xl leading-relaxed sm:text-7xl lg:text-8xl xl:text-9xl":
                                         locale === "ar-EG",
                                 },
+                                classNames.title,
                             )}
                         >
                             {title}
@@ -55,7 +74,10 @@ function GenericHero({ title, description }: GenericHeroProps) {
                         <Typography
                             element="p"
                             as="h3"
-                            className="max-w-6xl text-balance font-normal text-muted-foreground"
+                            className={cn(
+                                "max-w-6xl text-balance font-normal text-muted-foreground",
+                                classNames.description,
+                            )}
                         >
                             {description}
                         </Typography>

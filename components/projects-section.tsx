@@ -9,7 +9,7 @@ import {
     motion,
     useScroll,
     useSpring,
-    useTransform
+    useTransform,
 } from "framer-motion";
 import { ExternalLinkIcon } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
@@ -86,7 +86,7 @@ export const ProjectList = forwardRef<
         <motion.div
             ref={ref}
             className={cn(
-                "relative z-40 grid grid-cols-1 gap-8 will-change-auto md:grid-cols-2 lg:grid-cols-3",
+                "relative z-40 grid grid-cols-1 gap-4 will-change-auto md:grid-cols-2 lg:grid-cols-3",
                 className,
             )}
             {...props}
@@ -129,7 +129,11 @@ export function ProjectCard({
                             {project.name[locale]}
                         </Typography>
 
-                        <Typography element="p" as="mutedText" className="">
+                        <Typography
+                            element="p"
+                            as="mutedText"
+                            className="line-clamp-2"
+                        >
                             {project.shortDescription[locale]}
                         </Typography>
 

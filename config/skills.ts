@@ -98,6 +98,22 @@ export const skills = [
                 color: "#f5009b",
                 link: "https://graphql.org/",
             },
+            {
+                id: "md",
+                icon: Icons.md,
+                name: {
+                    "ar-EG": "مارك داون",
+                    "en-US": "Markdown",
+                },
+                description: {
+                    "ar-EG":
+                        "غراف كيو أل هو لغة استعلام وتلاعب في البيانات مفتوحة المصدر لواجهة برمجة التطبيقات.",
+                    "en-US":
+                        "GraphQL is an open-source data query and manipulation language for APIs.",
+                },
+                color: "#FFFFFF",
+                link: "https://www.markdownguide.org",
+            },
         ],
     },
     {
@@ -257,6 +273,67 @@ export const skills = [
                 color: "#FFFFFF",
                 link: "https://ui.shadcn.com/",
             },
+            {
+                id: "radixui",
+                icon: Icons.radix,
+                name: {
+                    "ar-EG": "راديكس يو أي",
+                    "en-US": "Radix UI",
+                },
+                description: {
+                    "ar-EG":
+                        "المكونات والأيقونات والألوان لإنشاء واجهة مستخدم عالية الجودة ويمكن الوصول إليها.",
+                    "en-US":
+                        "Components, icons, and colors for building high‑quality, accessible UI.",
+                },
+                color: "#FFFFFF",
+                link: "https://www.radix-ui.com",
+            },
+            {
+                id: "nextra",
+                icon: Icons.nextra,
+                name: {
+                    "ar-EG": "نيكسترا",
+                    "en-US": "Nextra",
+                },
+                description: {
+                    "ar-EG": "إطار إنشاء موقع بسيط وقوي ومرن.",
+                    "en-US":
+                        "Simple, powerful and flexible site generation framework.",
+                },
+                color: "#FFFFFF",
+                link: "https://nextra.site/",
+            },
+            {
+                id: "trpc",
+                icon: Icons.trpc,
+                name: {
+                    "ar-EG": "تي أر بي سي",
+                    "en-US": "tRPC",
+                },
+                description: {
+                    "ar-EG": "إطار إنشاء موقع بسيط وقوي ومرن.",
+                    "en-US":
+                        "Simple, powerful and flexible site generation framework.",
+                },
+                color: "#398ccb",
+                link: "https://trpc.io/",
+            },
+            {
+                id: "authjs",
+                icon: Icons.authjs,
+                name: {
+                    "ar-EG": "أوث جي أس",
+                    "en-US": "Auth.js",
+                },
+                description: {
+                    "ar-EG": "إطار إنشاء موقع بسيط وقوي ومرن.",
+                    "en-US":
+                        "Simple, powerful and flexible site generation framework.",
+                },
+                color: "#398ccb",
+                link: "https://authjs.dev/",
+            },
         ],
     },
     {
@@ -277,6 +354,27 @@ export const skills = [
                 },
                 color: "#01ed64",
                 link: "https://www.mongodb.com/",
+            },
+        ],
+    },
+    {
+        type: "cms",
+        items: [
+            {
+                id: "strapi",
+                icon: Icons.strapi,
+                name: {
+                    "ar-EG": "سترابي",
+                    "en-US": "Strapi",
+                },
+                description: {
+                    "ar-EG":
+                        "سترابي هو نظام إدارة محتوى فارغ الرأس مخصص لتطوير مواقع الويب، تطبيقات الهواتف المحمولة، متاجر التجارة الإلكترونية، وواجهات البرمجة (APIs).",
+                    "en-US":
+                        "Strapi is a headless CMS for developing websites, mobile apps, eCommerce sites, and APIs.",
+                },
+                color: "#4945ff",
+                link: "https://strapi.io/",
             },
         ],
     },
@@ -361,6 +459,38 @@ export const skills = [
                 color: "#FFFFFF",
                 link: "https://github.com/",
             },
+            {
+                id: "postman",
+                icon: Icons.postman,
+                name: {
+                    "ar-EG": "بوست مان",
+                    "en-US": "Postman",
+                },
+                description: {
+                    "ar-EG":
+                        "بوست مان هو تطبيق يتيح اختبار واستكشاف واستخدام وتصحيح الواجهات البرمجية للويب.",
+                    "en-US":
+                        "Postman is an application that allows the testing of web APIs.",
+                },
+                color: "#ff6c37",
+                link: "https://www.postman.com",
+            },
+            {
+                id: "mongodbcompass",
+                icon: Icons.mongodb,
+                name: {
+                    "ar-EG": "مونجو دي بي كومباس",
+                    "en-US": "MongoDB Compass",
+                },
+                description: {
+                    "ar-EG":
+                        "بوست مان هو تطبيق يتيح اختبار واستكشاف واستخدام وتصحيح الواجهات البرمجية للويب.",
+                    "en-US":
+                        "Postman is an application that allows the testing of web APIs.",
+                },
+                color: "#01ed64",
+                link: "https://www.mongodb.com/products/tools/compass",
+            },
         ],
     },
 ] as const;
@@ -393,10 +523,18 @@ export const databases = skills[2].items.reduce(
     {} as MappedCategory<(typeof skills)[2]>,
 );
 
-export const tools = skills[3].items.reduce(
+export const cms = skills[3].items.reduce(
     (object, item) => {
         object[item.id] = item;
         return object;
     },
     {} as MappedCategory<(typeof skills)[3]>,
+);
+
+export const tools = skills[4].items.reduce(
+    (object, item) => {
+        object[item.id] = item;
+        return object;
+    },
+    {} as MappedCategory<(typeof skills)[4]>,
 );

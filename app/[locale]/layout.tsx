@@ -13,6 +13,7 @@ import { Cairo, Inter } from "next/font/google";
 import localFont from "next/font/local";
 import Script from "next/script";
 import "../globals.css";
+import { ApolloWrapper } from "@/lib/apollo-wrapper";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -81,13 +82,15 @@ export default function RootLayout({
                         enableSystem
                         disableTransitionOnChange
                     >
-                        <NextIntlClientProvider messages={messages}>
-                            <MotionProvider reducedMotion="user">
-                                <SiteHeader></SiteHeader>
-                                <div className="">{children}</div>
-                                <SiteFooter></SiteFooter>
-                            </MotionProvider>
-                        </NextIntlClientProvider>
+                        <ApolloWrapper>
+                            <NextIntlClientProvider messages={messages}>
+                                <MotionProvider reducedMotion="user">
+                                    <SiteHeader></SiteHeader>
+                                    <div className="">{children}</div>
+                                    <SiteFooter></SiteFooter>
+                                </MotionProvider>
+                            </NextIntlClientProvider>
+                        </ApolloWrapper>
                     </ThemeProvider>
                 </body>
             </DirectionProvider>

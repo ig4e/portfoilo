@@ -1,4 +1,5 @@
 import { clsx, type ClassValue } from "clsx";
+import { useLocale } from "next-intl";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -18,4 +19,22 @@ export function hexToRgb(hex: string, toString = false) {
         : { r: 255, g: 255, b: 255 };
 
     return toString ? `${color.r}, ${color.g}, ${color.b}` : color;
+}
+
+export function calculateRT(string = "") {
+    const wpm = 225;
+    const words = string.trim().split(/\s+/).length;
+    return Math.ceil(words / wpm);
+}
+
+export function toLocaleDateString(date = new Date()) {
+    //eslint-disable-next-line react-hooks/rules-of-hooks
+    const locale = useLocale();
+
+    return new Date().toLocaleDateString(locale, {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+    });
 }

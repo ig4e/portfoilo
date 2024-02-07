@@ -4,6 +4,7 @@ import MHTCE from "@/public/assets/projects/mhtce.png";
 import PhiBoutique from "@/public/assets/projects/phiboutique.png";
 import ShareMe from "@/public/assets/projects/shareme.png";
 import WolfLand from "@/public/assets/projects/wolfland.png";
+import HnzakrOnline from "@/public/assets/projects/hnzakronline.png";
 import { databases, languages, technologies, tools } from "./skills";
 
 export const categories = {
@@ -78,6 +79,7 @@ export const projects = [
             technologies.tailwind,
             technologies.nest,
             technologies.prisma,
+            technologies.radixui,
             databases.mongodb,
             languages.html,
             languages.css,
@@ -86,6 +88,7 @@ export const projects = [
             tools.adobexd,
             tools.git,
             tools.github,
+            tools.postman,
         ],
         createdAt: "2022/9/20",
     },
@@ -158,6 +161,7 @@ export const projects = [
             tools.adobexd,
             tools.git,
             tools.github,
+            tools.postman,
         ],
         createdAt: "2021/12/20",
     },
@@ -233,8 +237,9 @@ export const projects = [
             tools.adobexd,
             tools.git,
             tools.github,
+            tools.postman,
         ],
-        createdAt: "2021/12/20",
+        createdAt: "2022/9/9",
     },
     {
         id: "wolfland",
@@ -280,5 +285,55 @@ export const projects = [
             tools.github,
         ],
         createdAt: "2021/12/20",
+    },
+    {
+        id: "hnzakronline-redesign",
+        image: HnzakrOnline,
+        name: {
+            "ar-EG": "هنذاكر اونلاين (نسخة)",
+            "en-US": "Hnzakr Online (clone)",
+        },
+        shortDescription: {
+            "ar-EG":
+                "أعادة تصميم للمنصة التعليمية واستخراج جميع المعلومات والشروحات منها وهندسة عكسية لنظام الحسابات الخاص بيهم",
+            "en-US":
+                "Redesign of the educational platform, extracting all information and explanations from it, and reverse engineering their authentication system.",
+        },
+        description: {
+            "ar-EG":
+                "أعادة تصميم للمنصة التعليمية واستخراج جميع المعلومات والشروحات منها وهندسة عكسية لنظام الحسابات الخاص بيهم",
+            "en-US":
+                "Redesign of the educational platform, extracting all information and explanations from it, and reverse engineering their authentication system.",
+        },
+        workArea: {
+            "ar-EG":
+                "فرونت-ايند | باك-ايند | تصميم واجهة المستخدم وتجربة المستخدم",
+            "en-US": "Front-end | Back-end | UI/UX Design",
+        },
+        color: "#22c55e",
+        links: {},
+        categories: [
+            categories["ux-ui"],
+            categories["front-end"],
+            categories["back-end"],
+            categories["web-scrape"],
+        ],
+        stack: [
+            technologies.nextjs,
+            technologies.react,
+            technologies.tailwind,
+            technologies.trpc,
+            technologies.shadcnui,
+            languages.html,
+            languages.css,
+            languages.ts,
+            languages.js,
+            tools.vsc,
+            tools.adobexd,
+            tools.git,
+            tools.github,
+            tools.postman,
+        ],
+        createdAt: "2023/9/16",
     },
 ];
