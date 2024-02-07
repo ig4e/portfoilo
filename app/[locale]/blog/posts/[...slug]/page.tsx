@@ -322,19 +322,14 @@ export async function generateStaticParams() {
         },
     ).then((res) => res.json());
 
-    return locales
-        .map((locale) => {
-            return posts.data.map(
-                (post: {
-                    id: string;
-                    attributes: { slug: string; locale: string };
-                }) => ({
-                    slug: [String(post.id), String(post.attributes.slug)],
-                    locale: locale,
-                }),
-            );
-        })
-        .reduce((acc, curr) => [...acc, ...curr], []);
+    return posts.data.map(
+        (post: {
+            id: string;
+            attributes: { slug: string; locale: string };
+        }) => ({
+            slug: [String(post.id), String(post.attributes.slug)],
+        }),
+    );
 }
 
 export default Post;

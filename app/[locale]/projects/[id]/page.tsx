@@ -91,9 +91,5 @@ function ProjectPage({ params: { locale, id } }: PageProps) {
 export default ProjectPage;
 
 export function generateStaticParams() {
-    return locales
-        .map((locale) => {
-            return projects.map((project) => ({ locale, id: project.id }));
-        })
-        .reduce((acc, curr) => [...acc, ...curr], []);
+    return projects.map((project) => ({ id: project.id }));
 }
