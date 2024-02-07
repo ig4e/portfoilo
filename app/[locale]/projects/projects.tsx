@@ -10,6 +10,7 @@ import Fuse from "fuse.js";
 import { useTranslations } from "next-intl";
 import { parseAsArrayOf, parseAsString, useQueryState } from "nuqs";
 import { useFilterProjects } from "./use-fillter-projects";
+import { useMemo } from "react";
 
 const fuse = new Fuse(projects, {
     keys: [
@@ -20,6 +21,7 @@ const fuse = new Fuse(projects, {
         "description.ar-EG",
         "description.en-US",
     ],
+    threshold: 0.2,
 });
 
 function ProjectsPageList({
@@ -78,13 +80,44 @@ function ProjectsPageList({
             })),
         },
         {
-            label: t("fillters.tools"),
+            label: t("fillters.cms"),
             options: skills[3].items.map((language) => ({
                 label: language.name[locale],
                 value: language.id,
             })),
         },
+        {
+            label: t("fillters.tools"),
+            options: skills[4].items.map((language) => ({
+                label: language.name[locale],
+                value: language.id,
+            })),
+        },
     ];
+
+    const filtersSelect = useMemo(() => {
+        return fillters.map((id) => {
+            const allSkillsItems = (
+                skills.reduce(
+                    //@ts-expect-error
+                    (acc, skill) => [...acc, ...skill.items],
+                    [],
+                ) as any as (typeof skills)[0]["items"]
+            ).map((item) => ({
+                id: item.id,
+                ...item.name,
+            }));
+
+            const filter = [...mappedCategories, ...allSkillsItems].find(
+                (category) => category.id === id,
+            );
+
+            return {
+                label: filter![locale],
+                value: id,
+            };
+        });
+    }, [fillters, locale]);
 
     return (
         <div className="space-y-4 rounded-md border bg-background/60 p-4 md:space-y-8">
@@ -100,12 +133,7 @@ function ProjectsPageList({
                     options={options}
                     isMulti
                     placeholder={t("fillters.categories")}
-                    value={fillters.map((id) => ({
-                        label: mappedCategories.find(
-                            (category) => category.id === id,
-                        )![locale],
-                        value: id,
-                    }))}
+                    value={filtersSelect}
                     onChange={(newValue, actionMeta) =>
                         setFillters(
                             (newValue as Option[]).map(

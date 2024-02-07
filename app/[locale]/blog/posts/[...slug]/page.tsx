@@ -19,6 +19,7 @@ import { AtSign, Clock } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import LocaleAlert from "./locale-alert";
+import { Metadata } from "next";
 
 interface PostPageProps {
     params: {
@@ -83,7 +84,85 @@ const POST_QUERY = gql(`query Post($postId: ID) {
       }
     }
   }
-  `);
+`);
+
+const POST_METADATA_QUERY = gql(`query PostMeta($postId: ID) {
+    post(id: $postId) {
+      data {
+        id
+        attributes {
+          author {
+            data {
+              id
+              attributes {
+                name
+                image {
+                  data {
+                    attributes {
+                      url
+                    }
+                  }
+                }
+                slug
+              }
+            }
+          }
+          description
+          image {
+            data {
+              attributes {
+                url
+                width
+                height
+              }
+            }
+          }
+          locale
+          postedAt
+          slug
+          title
+        }
+      }
+    }
+  }
+`);
+
+export async function generateMetadata({
+    params: {
+        slug: [id],
+        locale,
+    },
+}: PostPageProps) {
+    const {
+        data: { post },
+    } = await getClient().query({
+        query: POST_METADATA_QUERY,
+        variables: {
+            postId: id,
+        },
+    });
+
+    return {
+        title: post?.data?.attributes?.title!,
+        description: post?.data?.attributes?.description!,
+        openGraph: {
+            title: post?.data?.attributes?.title!,
+            description: post?.data?.attributes?.description!,
+            images: [
+                {
+                    url: post?.data?.attributes?.image?.data?.attributes?.url!,
+                    width: post?.data?.attributes?.image?.data?.attributes
+                        ?.width!,
+                    height: post?.data?.attributes?.image?.data?.attributes
+                        ?.height!,
+                },
+            ],
+            type: "article",
+            alternateLocale: ["ar-EG", "en-US"],
+            authors: [post?.data?.attributes?.author?.data?.attributes!.name],
+        },
+    } as Metadata;
+}
 
 async function Post({
     params: {
