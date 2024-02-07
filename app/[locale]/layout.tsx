@@ -3,7 +3,7 @@ import { MotionProvider } from "@/components/motion-provider";
 import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Locale, locales } from "@/config/i18n";
+import { Locale } from "@/config/i18n";
 import { siteConfig } from "@/config/site";
 import { ApolloWrapper } from "@/lib/apollo-wrapper";
 import { cn } from "@/lib/utils";
@@ -101,8 +101,4 @@ export default function RootLayout({
             />
         </html>
     );
-}
-
-export function generateStaticParams() {
-    return locales.map((locale) => ({ locale }));
 }
