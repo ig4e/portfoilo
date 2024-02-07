@@ -319,7 +319,7 @@ export async function generateStaticParams() {
 
     return posts.map((post: { id: string; attributes: { slug: string } }) => ({
         slug: [post.id, post.attributes.slug],
-    })) as PostPageProps["params"];
+    })) as PostPageProps["params"][];
 }
 
 export default Post;
