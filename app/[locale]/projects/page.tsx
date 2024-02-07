@@ -27,7 +27,3 @@ function ProjectsPage({ params: { locale } }: { params: { locale: Locale } }) {
 }
 
 export default ProjectsPage;
-
-export function generateStaticParams() {
-    return locales.map((locale) => ({ locale }));
-}

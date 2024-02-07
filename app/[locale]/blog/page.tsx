@@ -30,7 +30,3 @@ async function Blog({
 }
 
 export default Blog;
-
-export function generateStaticParams() {
-    return locales.map((locale) => ({ locale }));
-}
