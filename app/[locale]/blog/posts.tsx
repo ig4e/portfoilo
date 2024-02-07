@@ -224,7 +224,11 @@ export function PostCard({
                             {post.name}
                         </Typography>
 
-                        <Typography element="p" as="mutedText" className="line-clamp-2">
+                        <Typography
+                            element="p"
+                            as="mutedText"
+                            className="line-clamp-2"
+                        >
                             {post.description}
                         </Typography>
 

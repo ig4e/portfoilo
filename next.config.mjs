@@ -1,5 +1,6 @@
 import million from "million/compiler";
 import withNextIntl from "next-intl/plugin";
+import withBundleAnalyzer from "@next/bundle-analyzer";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -13,7 +14,9 @@ const nextConfig = {
     },
 };
 
-const nextWithIntl = withNextIntl()(nextConfig);
+const nextWithIntl = withBundleAnalyzer({
+    enabled: process.env.ANALYZE === "true",
+})(withNextIntl()(nextConfig));
 
 let exportedConfig = nextWithIntl;
 

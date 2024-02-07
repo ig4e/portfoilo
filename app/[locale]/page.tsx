@@ -1,11 +1,18 @@
 import HeroSection from "@/components/hero-section";
-import ProjectsSection from "@/components/projects-section";
-import SkillsSection from "@/components/skills-section";
 import Typography from "@/components/typography";
 import { Icons } from "@/components/ui/icons";
 import { locales } from "@/config/i18n";
 import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
+import dynamic from "next/dynamic";
+
+const ProjectsSection = dynamic(() => import("@/components/projects-section"), {
+    ssr: false,
+});
+
+const SkillsSection = dynamic(() => import("@/components/skills-section"), {
+    ssr: false,
+});
 
 export default function Home({
     params: { locale },

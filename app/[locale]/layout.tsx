@@ -5,15 +5,15 @@ import SiteHeader from "@/components/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
 import { locales } from "@/config/i18n";
 import { siteConfig } from "@/config/site";
+import { ApolloWrapper } from "@/lib/apollo-wrapper";
 import { cn } from "@/lib/utils";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 import { Cairo, Inter } from "next/font/google";
-import localFont from "next/font/local";
 import Script from "next/script";
 import "../globals.css";
-import { ApolloWrapper } from "@/lib/apollo-wrapper";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -22,10 +22,6 @@ const inter = Inter({
 const cairo = Cairo({
     subsets: ["arabic"],
     variable: "--font-ar",
-});
-
-const HarlowSolid = localFont({
-    src: "../../public/fonts/HarlowSolidRegular.ttf",
 });
 
 export const metadata: Metadata = {
@@ -94,6 +90,8 @@ export default function RootLayout({
                     </ThemeProvider>
                 </body>
             </DirectionProvider>
+
+            <SpeedInsights />
 
             <Script
                 strategy="afterInteractive"

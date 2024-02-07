@@ -5,13 +5,7 @@ import { Noise } from "@/components/ui/images";
 import { Locale } from "@/config/i18n";
 import { projects } from "@/config/projects";
 import { cn, hexToRgb } from "@/lib/utils";
-import {
-    motion,
-    useScroll,
-    useSpring,
-    useTransform,
-    useVelocity,
-} from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useLocale } from "next-intl";
 import Image from "next/image";
 import { useRef } from "react";
