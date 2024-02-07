@@ -317,7 +317,7 @@ export async function generateStaticParams() {
         },
     ).then((res) => res.json());
 
-    return posts.map((post: { id: string; attributes: { slug: string } }) => ({
+    return posts.data.map((post: { id: string; attributes: { slug: string } }) => ({
         slug: [post.id, post.attributes.slug],
     })) as PostPageProps["params"][];
 }
