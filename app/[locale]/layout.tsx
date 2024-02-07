@@ -102,3 +102,7 @@ export default function RootLayout({
         </html>
     );
 }
+
+export function generateStaticParams() {
+    return locales.map((locale) => ({ locale }));
+}
