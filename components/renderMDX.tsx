@@ -10,7 +10,7 @@ function RenderMDX({ source }: { source: string }) {
             source={source}
             options={{
                 mdxOptions: {
-                    development: true,
+                    development: process.env.NODE_ENV === "development",
                     remarkPlugins: [remarkGfm],
                     rehypePlugins: [
                         () => (tree) => {
