@@ -58,7 +58,7 @@ export function SkillsTypeSection({
         if (current) current.addEventListener("mousemove", onMouseMove);
 
         function onMouseMove(e: MouseEvent) {
-            if (!isMobile) return;
+            if (isMobile) return;
             if (!current) return;
 
             for (const card of document.getElementsByClassName("card")) {
