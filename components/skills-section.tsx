@@ -3,12 +3,13 @@ import { Locale } from "@/config/i18n";
 import { skills } from "@/config/skills";
 import { hexToRgb } from "@/lib/utils";
 import { useLocale, useTranslations } from "next-intl";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import Typography from "./typography";
 import { Icons } from "./ui/icons";
 import { Noise } from "./ui/images";
 import { ExternalLink } from "lucide-react";
 import { Link } from "@/lib/navigation";
+import useViewport from "@/hooks/use-viewport";
 
 function SkillsSection() {
     const t = useTranslations("index");
@@ -49,6 +50,7 @@ export function SkillsTypeSection({
 }) {
     const t = useTranslations("index");
     const sectionRef = useRef<HTMLDivElement>(null);
+    const { isMobile } = useViewport();
 
     useEffect(() => {
         const { current } = sectionRef;
@@ -56,6 +58,7 @@ export function SkillsTypeSection({
         if (current) current.addEventListener("mousemove", onMouseMove);
 
         function onMouseMove(e: MouseEvent) {
+            if (!isMobile) return;
             if (!current) return;
 
             for (const card of document.getElementsByClassName("card")) {
@@ -71,7 +74,7 @@ export function SkillsTypeSection({
         return () => {
             if (current) current.removeEventListener("mousemove", onMouseMove);
         };
-    }, [sectionRef]);
+    }, [sectionRef, isMobile]);
 
     return (
         <div key={skillSection.type} className="space-y-4" ref={sectionRef}>
@@ -94,7 +97,7 @@ function SkillCard({
     item: (typeof skills)[number]["items"][number];
 }) {
     const locale = useLocale() as Locale;
-    const itemRgbColor = hexToRgb(item.color);
+    const itemRgbColor = useMemo(() => hexToRgb(item.color), [item.color]);
 
     return (
         <Link href={item.link} target="_blank">

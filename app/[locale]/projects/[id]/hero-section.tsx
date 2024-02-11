@@ -100,6 +100,7 @@ function HeroSection({ projectId }: { projectId: string }) {
                             className="container w-full rounded-[5vh] object-cover transition-all"
                             width={1440}
                             alt={project.name[locale]}
+                            placeholder="blur"
                         ></Image>
                     </motion.div>
                 </div>
@@ -111,34 +112,35 @@ function HeroSection({ projectId }: { projectId: string }) {
                             src={project.image}
                             className="!h-full !w-full rounded-md !object-cover object-left transition-all"
                             alt={project.name[locale]}
+                            placeholder="blur"
                         ></Image>
                     </div>
                 </div>
 
                 <div
                     style={{
-                        //@ts-expect-error
-                        "-webkit-filter": "blur(10px)",
+                        WebkitFilter: "blur(10px)",
                         background:
                             "radial-gradient(50% 63.6% at 50% 72.5%,var(--gradient-color, #ffbb00) 0%,rgba(0,0,0,0) 100%)",
-                        "--gradient-color": project.color,
                         bottom: "-70px",
                         filter: "blur(10px)",
                         flex: "none",
                         height: "267px",
-                        "max-width": "1400px",
+                        maxWidth: "1400px",
                         opacity: ".4",
                         overflow: "hidden",
                         position: "absolute",
                         width: "100%",
                         zIndex: "1",
+                        //@ts-expect-error
+                        "--gradient-color": project.color,
                     }}
                     about="Gradient Top"
                 />
 
                 <div
                     style={{
-                        background: `radial-gradient(50% 75% at 50% 100%,rgba(${hexToRgb(project.color, true)},.2) 0%,rgba(${hexToRgb(project.color, true)},0) 100%)`,
+                        background: `radial-gradient(50% 75% at 50% 100%,rgba(${hexToRgb(project.color, true)},.1) 0%,rgba(${hexToRgb(project.color, true)},0) 100%)`,
                         flex: "none",
                         left: "calc(50.00000000000002% - 160% / 2)",
                         overflow: "hidden",

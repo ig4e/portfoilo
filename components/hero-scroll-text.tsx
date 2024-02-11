@@ -1,26 +1,24 @@
 "use client";
 
 import { Locale } from "@/config/i18n";
-import useViewport from "@/hooks/use-viewport";
 import { CodeIcon, CropIcon, CursorArrowIcon } from "@radix-ui/react-icons";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 function HeroScrollText() {
-    const [bottom, setBottom] = useState(0);
-    const { scrollY } = useScroll();
+    const t = useTranslations("index.hero");
     const locale = useLocale() as Locale;
-
+    const { scrollY } = useScroll();
+    const [bottom, setBottom] = useState(0);
     const translate = useTransform(
         scrollY,
         [0, bottom],
         locale === "ar-EG" ? [-18, 18] : [18, -18],
     );
+
     const translateSpring = useSpring(translate);
     const mapping = useTransform(() => `${translateSpring.get()}%`);
-
-    const t = useTranslations("index.hero");
 
     useEffect(() => {
         const hero = document.getElementById("hero");

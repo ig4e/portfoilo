@@ -8,7 +8,7 @@ import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
 const ProjectsSection = dynamic(() => import("@/components/projects-section"), {
-    ssr: false,
+    ssr: true,
 });
 
 const SkillsSection = dynamic(() => import("@/components/skills-section"), {
@@ -71,13 +71,9 @@ export default function Home({
                 </div>
             </section>
 
-            <Suspense>
-                <ProjectsSection></ProjectsSection>
-            </Suspense>
+            <ProjectsSection></ProjectsSection>
 
-            <Suspense>
-                <SkillsSection />
-            </Suspense>
+            <SkillsSection />
         </main>
     );
 }
