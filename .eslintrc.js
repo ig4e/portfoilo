@@ -1,6 +1,3 @@
-const path = require("node:path");
-const project = path.resolve(__dirname, "tsconfig.json");
-
 module.exports = {
     root: true,
     extends: [
@@ -13,10 +10,17 @@ module.exports = {
     settings: {
         "import/resolver": {
             typescript: {
-                project,
+                project: require("node:path").resolve(
+                    __dirname,
+                    "tsconfig.json",
+                ),
             },
         },
+    },
+    plugins: ["react"],
+    rules: {
         "react/self-closing-comp": "error",
         "no-undef": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
     },
 };
