@@ -148,6 +148,7 @@ function ProjectsPageList({
             <div className="relative z-40 grid grid-cols-1 gap-4 will-change-auto md:grid-cols-2 lg:grid-cols-3">
                 {debouncedResults.map((project) => (
                     <ProjectCard
+                        className="group relative overflow-hidden rounded-md border transition duration-500 hover:-translate-y-1 hover:border-primary"
                         locale={locale}
                         project={project}
                         key={project.id}

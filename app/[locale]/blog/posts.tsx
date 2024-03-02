@@ -201,14 +201,11 @@ export function PostCard({
     post,
     ...props
 }: HTMLMotionProps<"div"> & { post: Post }) {
-    const locale = useLocale() as Locale;
-
     return (
         <div
             key={post.slug}
             id={post.id}
-            className="group relative overflow-hidden rounded-md border transition duration-500 hover:-translate-y-1 hover:border-primary"
-        >
+            className="group relative overflow-hidden rounded-md border transition duration-500 hover:-translate-y-1 hover:border-primary">
             <Link href={`/blog/posts/${post.id}/${post.slug}`}>
                 <Image
                     height={500}
@@ -227,8 +224,7 @@ export function PostCard({
                         <Typography
                             element="p"
                             as="mutedText"
-                            className="line-clamp-2"
-                        >
+                            className="line-clamp-2">
                             {post.description}
                         </Typography>
 

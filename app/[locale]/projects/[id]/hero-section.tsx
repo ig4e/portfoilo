@@ -1,11 +1,20 @@
 "use client";
 
 import Typography from "@/components/typography";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Noise } from "@/components/ui/images";
 import { Locale } from "@/config/i18n";
 import { projects } from "@/config/projects";
 import { cn, hexToRgb } from "@/lib/utils";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import {
+    motion,
+    useAnimationFrame,
+    useMotionTemplate,
+    useMotionValue,
+    useScroll,
+    useSpring,
+    useTransform,
+} from "framer-motion";
 import { useLocale } from "next-intl";
 import Image from "next/image";
 import { useRef } from "react";
@@ -19,15 +28,15 @@ function HeroSection({ projectId }: { projectId: string }) {
         bounce: 0.1,
         damping: 20,
     });
-    const translate = useTransform(translateSpring, [0, 1], [25, 0]);
+
+    const translate = useTransform(translateSpring, [0, 1], [35, 0]);
 
     const locale = useLocale() as Locale;
 
     return (
         <div
             ref={heroRef}
-            className=" flex min-h-[50vh] flex-col items-center justify-center gap-12 overflow-hidden pb-6 text-center md:min-h-screen md:pb-12"
-        >
+            className=" flex min-h-[50vh] flex-col items-center justify-center gap-12 overflow-hidden pb-6 text-center md:min-h-screen md:pb-12">
             <div className="overflow-hidden">
                 <div
                     id="project-gradient"
@@ -54,8 +63,7 @@ function HeroSection({ projectId }: { projectId: string }) {
                 animate={{ opacity: 1 }}
                 transition={{
                     duration: 0.2,
-                }}
-            >
+                }}>
                 <div className="container flex flex-col items-center gap-4 md:mt-8">
                     <div className="w-fit rounded-full border bg-gradient-to-t from-secondary/20 to-secondary/80 px-4 py-1 text-sm text-secondary-foreground">
                         {project.createdAt}
@@ -69,41 +77,41 @@ function HeroSection({ projectId }: { projectId: string }) {
                                 "text-5xl leading-relaxed sm:text-7xl lg:text-8xl xl:text-9xl":
                                     locale === "ar-EG",
                             },
-                        )}
-                    >
+                        )}>
                         {project.name[locale]}
                     </Typography>
 
                     <Typography
                         element="p"
                         as="h3"
-                        className="max-w-6xl text-balance font-normal text-muted-foreground"
-                    >
+                        className="max-w-6xl text-balance font-normal text-muted-foreground">
                         {project.shortDescription[locale]}
                     </Typography>
                 </div>
 
-                <div className="mt-4 hidden w-full items-center gap-4 [perspective:2000px;] md:flex">
-                    <motion.div
-                        style={{
-                            transformStyle: "preserve-3d",
-                            rotateX: translate,
-                        }}
-                        transition={{
-                            type: "spring",
-                            bounce: 0.4,
-                            stiffness: 400,
-                        }}
-                    >
-                        <Image
-                            priority
-                            src={project.image}
-                            className="container w-full rounded-[5vh] object-cover transition-all"
-                            width={1440}
-                            alt={project.name[locale]}
-                            placeholder="blur"
-                        />
-                    </motion.div>
+                <div className="mt-4 hidden w-screen items-center gap-4 [perspective:2000px;] md:flex">
+                    <AspectRatio ratio={16 / 7.5} className="container w-full">
+                        <motion.div
+                            style={{
+                                transformStyle: "preserve-3d",
+                                rotateX: translate,
+                            }}
+                            transition={{
+                                type: "spring",
+                                bounce: 0.4,
+                                stiffness: 400,
+                            }}
+                            className="h-full w-full overflow-hidden rounded-[5vh] p-0.5">
+                            <Image
+                                priority
+                                src={project.image}
+                                className="h-full w-full rounded-[5vh] bg-accent object-fill"
+                                width={1440}
+                                alt={project.name[locale]}
+                                placeholder="blur"
+                            />
+                        </motion.div>
+                    </AspectRatio>
                 </div>
 
                 <div className="relative flex min-h-96 w-full min-w-[90vw] md:hidden">
