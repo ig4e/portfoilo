@@ -1,4 +1,4 @@
-import { Project } from "@/components/projects-section";
+import { Project } from "@/config/projects";
 import { useFuse } from "@/hooks/use-fuse";
 import Fuse, { FuseSearchOptions } from "fuse.js";
 import { useMemo } from "react";
