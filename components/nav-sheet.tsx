@@ -19,7 +19,7 @@ export function NavSheet() {
         <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
                 <Button variant="ghost" size={"icon"}>
-                    <HamburgerMenuIcon className="h-5 w-5"></HamburgerMenuIcon>
+                    <HamburgerMenuIcon className="h-5 w-5" />
                 </Button>
             </SheetTrigger>
             <SheetContent className="flex flex-col justify-between">
@@ -38,9 +38,7 @@ export function NavSheet() {
                                     }),
                                 )}
                             >
-                                {route?.icon && (
-                                    <route.icon className="w-6"></route.icon>
-                                )}
+                                {route?.icon && <route.icon className="w-6" />}
 
                                 <div>
                                     <div className="font-medium leading-none">

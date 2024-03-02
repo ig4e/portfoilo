@@ -16,7 +16,7 @@ function SiteFooter() {
             <div className="container flex max-w-screen-2xl items-center">
                 <div className="flex flex-col gap-2">
                     <Link href={"/"} className="group flex items-center gap-2">
-                        <Icons.logo className="h-8 w-8"></Icons.logo>
+                        <Icons.logo className="h-8 w-8" />
                         <Typography element="h4" as={"h5"} className="relative">
                             <span className="block whitespace-nowrap group-hover:hidden">
                                 セカイ

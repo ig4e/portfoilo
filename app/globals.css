@@ -67,6 +67,24 @@
         @apply bg-background text-foreground;
     }
 
+    @keyframes titleEn {
+        0% {
+            content: "Ahmed";
+        }
+
+        33% {
+            content: "セhmed";
+        }
+
+        66% {
+            content: "セカed";
+        }
+
+        100% {
+            content: "セカイ";
+        }
+    }
+
     /* Firefox */
 
     /* Chrome, Edge, and Safari */

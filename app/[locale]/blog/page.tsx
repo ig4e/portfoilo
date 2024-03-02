@@ -22,7 +22,7 @@ async function Blog({
                 />
             </Suspense>
             <Suspense>
-                <Posts></Posts>
+                <Posts />
             </Suspense>
         </div>
     );

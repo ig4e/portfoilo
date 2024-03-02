@@ -1,13 +1,12 @@
 import HeroSection from "@/components/hero-section";
 import Typography from "@/components/typography";
 import { Icons } from "@/components/ui/icons";
-import { Locale, locales } from "@/config/i18n";
+import { Locale } from "@/config/i18n";
 import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 import dynamic from "next/dynamic";
-import { Suspense } from "react";
 
-const ProjectsSection = dynamic(() => import("@/components/projects-section"), {
+const ProjectParallax = dynamic(() => import("@/components/project-parallax"), {
     ssr: true,
 });
 
@@ -25,12 +24,10 @@ export default function Home({
 
     return (
         <main>
-            <Suspense>
-                <HeroSection />
-            </Suspense>
+            <HeroSection />
 
             <section
-                className="dark scroll-mt-20 bg-black px-4 py-12 text-white"
+                className="scroll-m t-20 dark bg-black px-4 py-12 text-white"
                 id="about"
             >
                 <div className="mx-auto flex min-h-[40vh] max-w-3xl flex-col gap-4 overflow-x-hidden overflow-y-clip">
@@ -71,7 +68,7 @@ export default function Home({
                 </div>
             </section>
 
-            <ProjectsSection></ProjectsSection>
+            <ProjectParallax />
 
             <SkillsSection />
         </main>

@@ -84,9 +84,9 @@ export default function RootLayout({
                         <ApolloWrapper>
                             <NextIntlClientProvider messages={messages}>
                                 <MotionProvider reducedMotion="user">
-                                    <SiteHeader></SiteHeader>
+                                    <SiteHeader />
                                     <div>{children}</div>
-                                    <SiteFooter></SiteFooter>
+                                    <SiteFooter />
                                 </MotionProvider>
                             </NextIntlClientProvider>
                         </ApolloWrapper>

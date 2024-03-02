@@ -34,9 +34,10 @@ function HeroSection({ projectId }: { projectId: string }) {
                     className="absolute inset-x-0 top-0 -z-[10] min-h-[40vh] animate-cardlight rounded-b-full bg-gradient-to-b from-rose-900 opacity-80 blur-3xl md:min-h-[60vh]"
                     style={{
                         //@ts-expect-error
-                        "--tw-gradient-from": project.color,
+                        "--tw-gradient-to": project.color,
                     }}
                 />
+
                 <div
                     className="top-18 absolute inset-0 -z-[5] mix-blend-overlay"
                     style={{
@@ -101,7 +102,7 @@ function HeroSection({ projectId }: { projectId: string }) {
                             width={1440}
                             alt={project.name[locale]}
                             placeholder="blur"
-                        ></Image>
+                        />
                     </motion.div>
                 </div>
 
@@ -113,7 +114,7 @@ function HeroSection({ projectId }: { projectId: string }) {
                             className="!h-full !w-full rounded-md !object-cover object-left transition-all"
                             alt={project.name[locale]}
                             placeholder="blur"
-                        ></Image>
+                        />
                     </div>
                 </div>
 

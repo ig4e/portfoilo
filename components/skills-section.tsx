@@ -4,9 +4,9 @@ import { skills } from "@/config/skills";
 import { hexToRgb } from "@/lib/utils";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef } from "react";
-import Typography from "./typography";
-import { Icons } from "./ui/icons";
-import { Noise } from "./ui/images";
+import Typography from "@/components/typography";
+import { Icons } from "@/components/ui/icons";
+import { Noise } from "@/components/ui/images";
 import { ExternalLink } from "lucide-react";
 import { Link } from "@/lib/navigation";
 import useViewport from "@/hooks/use-viewport";
@@ -53,12 +53,12 @@ export function SkillsTypeSection({
     const { isMobile } = useViewport();
 
     useEffect(() => {
+        if (isMobile) return () => void 0;
         const { current } = sectionRef;
 
         if (current) current.addEventListener("mousemove", onMouseMove);
 
         function onMouseMove(e: MouseEvent) {
-            if (isMobile) return;
             if (!current) return;
 
             for (const card of document.getElementsByClassName("card")) {
@@ -108,7 +108,7 @@ function SkillCard({
                     style={{
                         background: `radial-gradient(var(--circle-size, 700px) circle at var(--x, 100px) var(--y, 100px), rgba(${itemRgbColor.r}, ${itemRgbColor.g}, ${itemRgbColor.b}, 0.25), transparent 40%)`,
                     }}
-                ></div>
+                />
 
                 <div
                     about="card-border"
@@ -116,7 +116,7 @@ function SkillCard({
                     style={{
                         background: `radial-gradient(var(--circle-size,250px) circle at var(--x, 100px) var(--y, 100px), rgba(${itemRgbColor.r}, ${itemRgbColor.g}, ${itemRgbColor.b}, 0.4), transparent 40%)`,
                     }}
-                ></div>
+                />
 
                 <div
                     className="top-18 absolute inset-0 z-[4] mix-blend-overlay"
@@ -132,11 +132,11 @@ function SkillCard({
                     style={{
                         backgroundColor: item.color,
                     }}
-                ></div>
+                />
 
                 <div className="relative z-[2] flex h-full w-full flex-row-reverse items-center gap-4 rounded-[inherit] bg-black p-4 md:aspect-square md:flex-col">
-                    <ExternalLink className="absolute end-2 top-2 self-end opacity-0 transition-all group-hover:opacity-100 md:end-4 md:top-4"></ExternalLink>
-                    <item.icon className="z-10 flex h-16 w-auto min-w-[4rem] max-w-full items-center justify-center place-self-center justify-self-center rounded-sm md:mt-auto"></item.icon>
+                    <ExternalLink className="absolute end-2 top-2 self-end opacity-0 transition-all group-hover:opacity-100 md:end-4 md:top-4" />
+                    <item.icon className="z-10 flex h-16 w-auto min-w-[4rem] max-w-full items-center justify-center place-self-center justify-self-center rounded-sm md:mt-auto" />
 
                     <div className="me-auto mt-auto space-y-1">
                         <Typography element="h4" as="h4">

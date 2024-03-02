@@ -145,7 +145,7 @@ export function Posts() {
                     placeholder={t("search")}
                     onChange={(e) => setQuery(e.target.value)}
                     value={query}
-                ></SearchInput>
+                />
                 <Suspense fallback={<Loader className="min-h-10" />}>
                     <Categories
                         onChange={(state) =>
@@ -158,7 +158,7 @@ export function Posts() {
                         placeholder={t("fillters.categories")}
                         className="w-1/2"
                         valueIDs={categories}
-                    ></Categories>
+                    />
                 </Suspense>
             </div>
 
@@ -176,14 +176,14 @@ export function Posts() {
                             description: post.attributes?.description!,
                             categories: post.attributes?.categories?.data!,
                         }}
-                    ></PostCard>
+                    />
                 ))}
             </div>
 
             <FullPagination
                 total={posts?.search?.posts?.meta.pagination.pageCount ?? 1}
                 onChange={setPage}
-            ></FullPagination>
+            />
         </div>
     );
 }
@@ -216,7 +216,7 @@ export function PostCard({
                     src={post.image}
                     className="aspect-video h-full w-full object-cover"
                     alt={post.name}
-                ></Image>
+                />
 
                 <div className="absolute inset-0 z-10 flex h-full w-full items-end justify-between gap-2 bg-gradient-to-b from-transparent to-background p-4 ">
                     <div className="flex flex-col items-start gap-2">
@@ -243,7 +243,7 @@ export function PostCard({
                         </div>
                     </div>
 
-                    <ExternalLinkIcon className="h-5 w-5 min-w-5 opacity-100 transition duration-300 group-hover:opacity-100 md:opacity-0"></ExternalLinkIcon>
+                    <ExternalLinkIcon className="h-5 w-5 min-w-5 opacity-100 transition duration-300 group-hover:opacity-100 md:opacity-0" />
                 </div>
             </Link>
         </div>

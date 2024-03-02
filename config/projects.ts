@@ -337,3 +337,5 @@ export const projects = [
         createdAt: "2023/9/16",
     },
 ];
+
+export type Project = (typeof projects)[number];

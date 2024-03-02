@@ -40,7 +40,7 @@ export function LocaleSelector() {
             <Drawer>
                 <DrawerTrigger asChild>
                     <Button variant="ghost" size={"icon"}>
-                        <LanguagesIcon className="h-[1.2rem] w-[1.2rem]"></LanguagesIcon>
+                        <LanguagesIcon className="h-[1.2rem] w-[1.2rem]" />
                         <span className="sr-only">{t("locale-select")}</span>
                     </Button>
                 </DrawerTrigger>
@@ -79,7 +79,7 @@ export function LocaleSelector() {
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size={"icon"}>
-                    <LanguagesIcon className="h-[1.2rem] w-[1.2rem]"></LanguagesIcon>
+                    <LanguagesIcon className="h-[1.2rem] w-[1.2rem]" />
                     <span className="sr-only">{t("locale-select")}</span>
                 </Button>
             </DropdownMenuTrigger>
@@ -87,11 +87,11 @@ export function LocaleSelector() {
                 <DropdownMenuLabel>{t("locale-select")}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={() => setLocale("ar-EG")}>
-                    <LanguagesIcon className="h-4 w-4"></LanguagesIcon>
+                    <LanguagesIcon className="h-4 w-4" />
                     {t("ar-EG")}
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setLocale("en-US")}>
-                    <LanguagesIcon className="h-4 w-4"></LanguagesIcon>
+                    <LanguagesIcon className="h-4 w-4" />
                     {t("en-US")}
                 </DropdownMenuItem>
             </DropdownMenuContent>

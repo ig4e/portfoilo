@@ -60,10 +60,10 @@ function Og() {
                         element="span"
                         as="mutedText"
                         className="place-self-end"
-                    ></Typography>
+                    />
                 </motion.div>
 
-                <HeroScrollText></HeroScrollText>
+                <HeroScrollText />
             </section>
         </div>
     );

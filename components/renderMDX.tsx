@@ -63,7 +63,7 @@ function RenderMDX({ source }: { source: string }) {
             components={{
                 pre: Pre,
             }}
-        ></MDXRemote>
+        />
     );
 }
 

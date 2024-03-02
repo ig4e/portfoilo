@@ -1,5 +1,4 @@
 "use client";
-import { ProjectList } from "@/components/projects-section";
 import SearchInput from "@/components/search-input";
 import { Option, RSelect } from "@/components/ui/r-select";
 import { Locale } from "@/config/i18n";
@@ -11,6 +10,7 @@ import { useTranslations } from "next-intl";
 import { parseAsArrayOf, parseAsString, useQueryState } from "nuqs";
 import { useFilterProjects } from "./use-fillter-projects";
 import { useMemo } from "react";
+import { ProjectCard } from "@/components/project-parallax";
 
 const fuse = new Fuse(projects, {
     keys: [
@@ -142,11 +142,17 @@ function ProjectsPageList({
                         )
                     }
                     className="w-1/2"
-                ></RSelect>
+                />
             </div>
 
-            <div>
-                <ProjectList layoutRoot projects={debouncedResults} />
+            <div className="relative z-40 grid grid-cols-1 gap-4 will-change-auto md:grid-cols-2 lg:grid-cols-3">
+                {debouncedResults.map((project) => (
+                    <ProjectCard
+                        locale={locale}
+                        project={project}
+                        key={project.id}
+                    />
+                ))}
             </div>
         </div>
     );

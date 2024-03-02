@@ -70,7 +70,7 @@ function Categories({
                 isMulti
                 value={valueIDs ? computedValues : undefined}
                 {...props}
-            ></RSelect>
+            />
         </div>
     );
 }

@@ -3,12 +3,12 @@ import { siteConfig } from "@/config/site";
 import { Link } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
-import { LocaleSelector } from "./locale-selector";
+import { NavSheet } from "@/components/nav-sheet";
+import Typography from "@/components/typography";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Icons } from "@/components/ui/icons";
 import { ModeToggle } from "./mode-toggle";
-import { NavSheet } from "./nav-sheet";
-import Typography from "./typography";
-import { Button, buttonVariants } from "./ui/button";
-import { Icons } from "./ui/icons";
+import { LocaleSelector } from "./locale-selector";
 
 function SiteHeader() {
     const t = useTranslations("site-header");
@@ -18,12 +18,16 @@ function SiteHeader() {
             <div className="container flex h-14 max-w-screen-2xl items-center">
                 <div className="flex items-center gap-4">
                     <Link href={"/"} className="group flex items-center gap-2">
-                        <Icons.logo className="h-8 w-8"></Icons.logo>
-                        <Typography element="h4" as={"h5"} className="relative">
-                            <span className="block whitespace-nowrap group-hover:hidden">
+                        <Icons.logo className="h-8 w-8" />
+                        <Typography
+                            element="h4"
+                            as={"h5"}
+                            className="relative w-14"
+                        >
+                            <span className="block w-14 overflow-hidden whitespace-nowrap transition-all duration-200 group-hover:w-0">
                                 セカイ
                             </span>
-                            <span className="hidden group-hover:block">
+                            <span className="absolute top-0 w-0 overflow-hidden transition-all duration-200 group-hover:w-14">
                                 {t("name")}
                             </span>
                         </Typography>

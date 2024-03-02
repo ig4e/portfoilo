@@ -21,7 +21,7 @@ function ProjectsPage({ params: { locale } }: { params: { locale: Locale } }) {
                 description={t("description")}
             />
 
-            <ProjectsPageList params={{ locale }}></ProjectsPageList>
+            <ProjectsPageList params={{ locale }} />
         </div>
     );
 }

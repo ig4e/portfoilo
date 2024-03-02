@@ -50,7 +50,7 @@ function ProjectPage({ params }: PageProps) {
 
     return (
         <div className="">
-            <HeroSection projectId={project.id}></HeroSection>
+            <HeroSection projectId={project.id} />
 
             <div className="dark">
                 <section className="bg-black px-4 py-12 text-white" id="about">

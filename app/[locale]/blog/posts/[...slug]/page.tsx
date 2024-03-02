@@ -11,15 +11,15 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Locale, locales } from "@/config/i18n";
+import { Locale } from "@/config/i18n";
 import { getClient } from "@/lib/apollo";
 import { Link } from "@/lib/navigation";
 import { calculateRT, toLocaleDateString } from "@/lib/utils";
 import { AtSign, Clock } from "lucide-react";
+import { Metadata } from "next";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 import LocaleAlert from "./locale-alert";
-import { Metadata } from "next";
 
 interface PostPageProps {
     params: {
@@ -217,7 +217,7 @@ async function Post({
                 title={postData?.title}
                 description={postData?.description}
                 classNames={{ description: "max-w-3xl" }}
-            ></GenericHero>
+            />
 
             <div className="rounded-md bg-background/60 p-4 py-8 backdrop-blur-3xl">
                 <div className="relative mx-auto max-w-3xl space-y-8">
@@ -229,7 +229,7 @@ async function Post({
                                 slug: postData.slug,
                             }}
                             localizations={postData.localizations}
-                        ></LocaleAlert>
+                        />
                     )}
 
                     <div className="flex items-center gap-4">
@@ -250,7 +250,7 @@ async function Post({
                                 as="mutedText"
                                 className="flex items-center gap-1"
                             >
-                                <Clock className="h-4 w-4"></Clock>
+                                <Clock className="h-4 w-4" />
                                 {t("rt", {
                                     count: calculateRT(postData?.body),
                                 })}
@@ -261,7 +261,7 @@ async function Post({
                                 as="mutedText"
                                 className="flex items-center gap-1"
                             >
-                                <AtSign className="h-4 w-4"></AtSign>
+                                <AtSign className="h-4 w-4" />
                                 {toLocaleDateString(postData?.postedAt)}
                             </Typography>
                         </div>
@@ -292,17 +292,17 @@ async function Post({
                             );
                         })}
                     </div>
-                    <Separator></Separator>
+                    <Separator />
                     <Image
                         src={postData?.image}
                         width={1000}
                         height={1000}
                         className="h-auto w-full rounded-md object-cover"
                         alt={postData?.title}
-                    ></Image>
+                    />
                     <div className="prose prose-stone max-w-3xl dark:prose-invert">
                         {post?.data?.attributes?.body && (
-                            <RenderMDX source={postData?.body!}></RenderMDX>
+                            <RenderMDX source={postData?.body!} />
                         )}
                     </div>
                 </div>

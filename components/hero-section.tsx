@@ -78,7 +78,7 @@ function HeroSection() {
                     </Typography>
                 </motion.div>
 
-                <HeroScrollText></HeroScrollText>
+                <HeroScrollText />
             </section>
         </div>
     );

@@ -36,11 +36,7 @@ export const CopyButton = ({ text }: { text: string }) => {
                         disabled={isCopied}
                         onClick={copy}
                     >
-                        {isCopied ? (
-                            <CheckIcon></CheckIcon>
-                        ) : (
-                            <ClipboardCopyIcon></ClipboardCopyIcon>
-                        )}
+                        {isCopied ? <CheckIcon /> : <ClipboardCopyIcon />}
                     </Button>
                 </TooltipTrigger>
                 <TooltipContent>
