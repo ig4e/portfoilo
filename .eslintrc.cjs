@@ -1,3 +1,5 @@
+const project = require("node:path").resolve(__dirname, "tsconfig.json");
+
 module.exports = {
     root: true,
     extends: [
@@ -10,10 +12,7 @@ module.exports = {
     settings: {
         "import/resolver": {
             typescript: {
-                project: require("node:path").resolve(
-                    __dirname,
-                    "tsconfig.json",
-                ),
+                project,
             },
         },
     },
