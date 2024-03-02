@@ -3,25 +3,19 @@
 import Typography from "@/components/typography";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Noise } from "@/components/ui/images";
-import { Locale } from "@/config/i18n";
+import type { Locale } from "@/config/i18n";
 import { projects } from "@/config/projects";
 import { cn, hexToRgb } from "@/lib/utils";
-import {
-    motion,
-    useAnimationFrame,
-    useMotionTemplate,
-    useMotionValue,
-    useScroll,
-    useSpring,
-    useTransform,
-} from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useLocale } from "next-intl";
 import Image from "next/image";
 import { useRef } from "react";
 
 function HeroSection({ projectId }: { projectId: string }) {
-    const project = projects.find((p) => p.id === projectId)!;
+    const project = projects.find((p) => p.id === projectId);
     const heroRef = useRef(null);
+    const locale = useLocale() as Locale;
+
     const { scrollYProgress } = useScroll({ target: heroRef });
 
     const translateSpring = useSpring(scrollYProgress, {
@@ -29,20 +23,22 @@ function HeroSection({ projectId }: { projectId: string }) {
         damping: 20,
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     const translate = useTransform(translateSpring, [0, 1], [35, 0]);
 
-    const locale = useLocale() as Locale;
+    if (!project) return null;
 
     return (
         <div
             ref={heroRef}
-            className=" flex min-h-[50vh] flex-col items-center justify-center gap-12 overflow-hidden pb-6 text-center md:min-h-screen md:pb-12">
+            className=" flex min-h-[50vh] flex-col items-center justify-center gap-12 overflow-hidden pb-6 text-center md:min-h-screen md:pb-12"
+        >
             <div className="overflow-hidden">
                 <div
                     id="project-gradient"
                     className="absolute inset-x-0 top-0 -z-[10] min-h-[40vh] animate-cardlight rounded-b-full bg-gradient-to-b from-rose-900 opacity-80 blur-3xl md:min-h-[60vh]"
                     style={{
-                        //@ts-expect-error
+                        //@ts-expect-error -- TODO
                         "--tw-gradient-to": project.color,
                     }}
                 />
@@ -63,7 +59,8 @@ function HeroSection({ projectId }: { projectId: string }) {
                 animate={{ opacity: 1 }}
                 transition={{
                     duration: 0.2,
-                }}>
+                }}
+            >
                 <div className="container flex flex-col items-center gap-4 md:mt-8">
                     <div className="w-fit rounded-full border bg-gradient-to-t from-secondary/20 to-secondary/80 px-4 py-1 text-sm text-secondary-foreground">
                         {project.createdAt}
@@ -77,14 +74,16 @@ function HeroSection({ projectId }: { projectId: string }) {
                                 "text-5xl leading-relaxed sm:text-7xl lg:text-8xl xl:text-9xl":
                                     locale === "ar-EG",
                             },
-                        )}>
+                        )}
+                    >
                         {project.name[locale]}
                     </Typography>
 
                     <Typography
                         element="p"
                         as="h3"
-                        className="max-w-6xl text-balance font-normal text-muted-foreground">
+                        className="max-w-6xl text-balance font-normal text-muted-foreground"
+                    >
                         {project.shortDescription[locale]}
                     </Typography>
                 </div>
@@ -101,7 +100,8 @@ function HeroSection({ projectId }: { projectId: string }) {
                                 bounce: 0.4,
                                 stiffness: 400,
                             }}
-                            className="h-full w-full overflow-hidden rounded-[5vh] p-0.5">
+                            className="h-full w-full overflow-hidden rounded-[5vh] p-0.5"
+                        >
                             <Image
                                 priority
                                 src={project.image}
@@ -141,7 +141,7 @@ function HeroSection({ projectId }: { projectId: string }) {
                         position: "absolute",
                         width: "100%",
                         zIndex: "1",
-                        //@ts-expect-error
+                        //@ts-expect-error -- TODO
                         "--gradient-color": project.color,
                     }}
                     about="Gradient Top"

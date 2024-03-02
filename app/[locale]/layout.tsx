@@ -3,7 +3,7 @@ import { MotionProvider } from "@/components/motion-provider";
 import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Locale } from "@/config/i18n";
+import type { Locale } from "@/config/i18n";
 import { siteConfig } from "@/config/site";
 import { ApolloWrapper } from "@/lib/apollo-wrapper";
 import { cn } from "@/lib/utils";

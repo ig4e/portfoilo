@@ -1,4 +1,4 @@
-import { Locale, locales } from "@/config/i18n";
+import type { Locale } from "@/config/i18n";
 import { unstable_setRequestLocale } from "next-intl/server";
 import React from "react";
 

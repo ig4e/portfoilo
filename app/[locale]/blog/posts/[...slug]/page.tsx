@@ -1,3 +1,10 @@
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/no-unnecessary-condition */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
+
 import { gql } from "@/_generated";
 import GenericHero from "@/components/generic-hero";
 import RenderMDX from "@/components/renderMDX";
@@ -11,12 +18,12 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Locale } from "@/config/i18n";
+import type { Locale } from "@/config/i18n";
 import { getClient } from "@/lib/apollo";
 import { Link } from "@/lib/navigation";
 import { calculateRT, toLocaleDateString } from "@/lib/utils";
 import { AtSign, Clock } from "lucide-react";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 import LocaleAlert from "./locale-alert";
@@ -130,7 +137,6 @@ const POST_METADATA_QUERY = gql(`query PostMeta($postId: ID) {
 export async function generateMetadata({
     params: {
         slug: [id],
-        locale,
     },
 }: PostPageProps) {
     const {
@@ -150,10 +156,10 @@ export async function generateMetadata({
             description: post?.data?.attributes?.description!,
             images: [
                 {
-                    url: post?.data?.attributes?.image?.data?.attributes?.url!,
-                    width: post?.data?.attributes?.image?.data?.attributes
+                    url: post?.data?.attributes?.image.data?.attributes?.url!,
+                    width: post?.data?.attributes?.image.data?.attributes
                         ?.width!,
-                    height: post?.data?.attributes?.image?.data?.attributes
+                    height: post?.data?.attributes?.image.data?.attributes
                         ?.height!,
                 },
             ],
@@ -186,7 +192,7 @@ async function Post({
         title: post?.data?.attributes?.title!,
         description: post?.data?.attributes?.description!,
         body: post?.data?.attributes?.body!,
-        image: post?.data?.attributes?.image?.data?.attributes?.url!,
+        image: post?.data?.attributes?.image.data?.attributes?.url!,
         author: {
             name: post?.data?.attributes?.author?.data?.attributes!.name!,
             image: post?.data?.attributes?.author?.data?.attributes!.image?.data
@@ -214,8 +220,8 @@ async function Post({
     return (
         <div className="space-y-16 pb-16" suppressHydrationWarning>
             <GenericHero
-                title={postData?.title}
-                description={postData?.description}
+                title={postData.title}
+                description={postData.description}
                 classNames={{ description: "max-w-3xl" }}
             />
 
@@ -234,15 +240,15 @@ async function Post({
 
                     <div className="flex items-center gap-4">
                         <Avatar className="h-20 w-20">
-                            <AvatarImage src={postData?.author.image} />
+                            <AvatarImage src={postData.author.image} />
                             <AvatarFallback className="text-lg font-semibold uppercase">
-                                {postData?.author.name.slice(0, 2)}
+                                {postData.author.name.slice(0, 2)}
                             </AvatarFallback>
                         </Avatar>
 
                         <div className="space-y-1">
                             <Typography element="h4" as="h4">
-                                {postData?.author.name}
+                                {postData.author.name}
                             </Typography>
 
                             <Typography
@@ -252,7 +258,7 @@ async function Post({
                             >
                                 <Clock className="h-4 w-4" />
                                 {t("rt", {
-                                    count: calculateRT(postData?.body),
+                                    count: calculateRT(postData.body),
                                 })}
                             </Typography>
 
@@ -262,12 +268,12 @@ async function Post({
                                 className="flex items-center gap-1"
                             >
                                 <AtSign className="h-4 w-4" />
-                                {toLocaleDateString(postData?.postedAt)}
+                                {toLocaleDateString(postData.postedAt)}
                             </Typography>
                         </div>
                     </div>
                     <div className="flex flex-wrap gap-2">
-                        {postData?.categories.map((category) => {
+                        {postData.categories.map((category) => {
                             return (
                                 <Link
                                     href={`/blog?categories=${category.id}`}
@@ -294,15 +300,15 @@ async function Post({
                     </div>
                     <Separator />
                     <Image
-                        src={postData?.image}
+                        src={postData.image}
                         width={1000}
                         height={1000}
                         className="h-auto w-full rounded-md object-cover"
-                        alt={postData?.title}
+                        alt={postData.title}
                     />
                     <div className="prose prose-stone max-w-3xl dark:prose-invert">
                         {post?.data?.attributes?.body && (
-                            <RenderMDX source={postData?.body!} />
+                            <RenderMDX source={postData.body} />
                         )}
                     </div>
                 </div>
@@ -322,6 +328,7 @@ export async function generateStaticParams() {
         },
     ).then((res) => res.json());
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     return posts.data.map(
         (post: {
             id: string;

@@ -16,10 +16,10 @@ export const CopyButton = ({ text }: { text: string }) => {
     const [isOpen, setIsOpen] = useState(false);
     const t = useTranslations("copy-button");
 
-    const copy = async () => {
-        await navigator.clipboard.writeText(text);
-        setIsCopied(true);
-
+    const copy = () => {
+        void navigator.clipboard.writeText(text).then(() => {
+            setIsCopied(true);
+        });
         setTimeout(() => {
             setIsCopied(false);
         }, 10000);

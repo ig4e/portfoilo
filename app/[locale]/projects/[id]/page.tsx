@@ -1,22 +1,21 @@
 import Typography from "@/components/typography";
 import { Icons } from "@/components/ui/icons";
-import { Locale, locales } from "@/config/i18n";
+import type { Locale } from "@/config/i18n";
 import { projects } from "@/config/projects";
-import { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
+import { unstable_setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import HeroSection from "./hero-section";
 import MadeWithSection from "./made-with-section";
-import { unstable_setRequestLocale } from "next-intl/server";
 
 interface PageProps {
     params: { locale: Locale; id: string };
 }
 
-export function generateMetadata(
-    { params: { id, locale } }: PageProps,
-    parent: ResolvingMetadata,
-): Metadata {
+export function generateMetadata({
+    params: { id, locale },
+}: PageProps): Metadata {
     const project = projects.find((p) => p.id === id);
 
     if (!project)

@@ -18,7 +18,8 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Locale, locales } from "@/config/i18n";
+import type { Locale } from "@/config/i18n";
+import { locales } from "@/config/i18n";
 import useViewport from "@/hooks/use-viewport";
 import { usePathname, useRouter } from "@/lib/navigation";
 import { LanguagesIcon } from "lucide-react";
@@ -56,7 +57,9 @@ export function LocaleSelector() {
                                     key={locale}
                                     variant="secondary"
                                     className="w-full"
-                                    onClick={() => setLocale(locale)}
+                                    onClick={() => {
+                                        setLocale(locale);
+                                    }}
                                 >
                                     {t(locale)}
                                 </Button>
@@ -86,11 +89,19 @@ export function LocaleSelector() {
             <DropdownMenuContent align="end">
                 <DropdownMenuLabel>{t("locale-select")}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => setLocale("ar-EG")}>
+                <DropdownMenuItem
+                    onClick={() => {
+                        setLocale("ar-EG");
+                    }}
+                >
                     <LanguagesIcon className="h-4 w-4" />
                     {t("ar-EG")}
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setLocale("en-US")}>
+                <DropdownMenuItem
+                    onClick={() => {
+                        setLocale("en-US");
+                    }}
+                >
                     <LanguagesIcon className="h-4 w-4" />
                     {t("en-US")}
                 </DropdownMenuItem>

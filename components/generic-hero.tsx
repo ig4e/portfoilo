@@ -2,7 +2,7 @@
 
 import Typography from "@/components/typography";
 import { Noise } from "@/components/ui/images";
-import { Locale } from "@/config/i18n";
+import type { Locale } from "@/config/i18n";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { useLocale } from "next-intl";

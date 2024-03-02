@@ -1,8 +1,6 @@
 "use client";
-import {
-    DirectionProvider as RxDirectionProvider,
-    DirectionProviderProps,
-} from "@radix-ui/react-direction";
+import type { DirectionProviderProps } from "@radix-ui/react-direction";
+import { DirectionProvider as RxDirectionProvider } from "@radix-ui/react-direction";
 
 export function DirectionProvider({
     children,

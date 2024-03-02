@@ -1,18 +1,19 @@
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 "use client";
 
 import { gql } from "@/_generated";
-import { CategoryEntity } from "@/_generated/graphql";
+import type { CategoryEntity } from "@/_generated/graphql";
 import FullPagination from "@/components/FullPagination";
 import SearchInput from "@/components/search-input";
 import Typography from "@/components/typography";
 import { Badge } from "@/components/ui/badge";
 import Loader from "@/components/ui/loader";
-import { Locale } from "@/config/i18n";
 import { Link } from "@/lib/navigation";
 import { useQuery } from "@apollo/experimental-nextjs-app-support/ssr";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import { useDebounce } from "@uidotdev/usehooks";
-import { HTMLMotionProps } from "framer-motion";
+import type { HTMLMotionProps } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import {
@@ -113,11 +114,7 @@ export function Posts() {
 
     const debouncedQuery = useDebounce(query, 250);
 
-    const {
-        data: posts,
-        loading,
-        error,
-    } = useQuery(POSTS_QUERY, {
+    const { data: posts, loading } = useQuery(POSTS_QUERY, {
         variables: {
             query: debouncedQuery ? debouncedQuery : "*",
             locale,
@@ -143,13 +140,13 @@ export function Posts() {
             <div className="relative flex items-center gap-4">
                 <SearchInput
                     placeholder={t("search")}
-                    onChange={(e) => setQuery(e.target.value)}
+                    onChange={(e) => void setQuery(e.target.value)}
                     value={query}
                 />
                 <Suspense fallback={<Loader className="min-h-10" />}>
                     <Categories
                         onChange={(state) =>
-                            setCategories(
+                            void setCategories(
                                 (
                                     state as { label: string; value: string }[]
                                 ).map((d) => d.value),
@@ -182,7 +179,7 @@ export function Posts() {
 
             <FullPagination
                 total={posts?.search?.posts?.meta.pagination.pageCount ?? 1}
-                onChange={setPage}
+                onChange={(newPage) => void setPage(newPage)}
             />
         </div>
     );
@@ -197,15 +194,13 @@ interface Post {
     categories: CategoryEntity[];
 }
 
-export function PostCard({
-    post,
-    ...props
-}: HTMLMotionProps<"div"> & { post: Post }) {
+export function PostCard({ post }: HTMLMotionProps<"div"> & { post: Post }) {
     return (
         <div
             key={post.slug}
             id={post.id}
-            className="group relative overflow-hidden rounded-md border transition duration-500 hover:-translate-y-1 hover:border-primary">
+            className="group relative overflow-hidden rounded-md border transition duration-500 hover:-translate-y-1 hover:border-primary"
+        >
             <Link href={`/blog/posts/${post.id}/${post.slug}`}>
                 <Image
                     height={500}
@@ -224,7 +219,8 @@ export function PostCard({
                         <Typography
                             element="p"
                             as="mutedText"
-                            className="line-clamp-2">
+                            className="line-clamp-2"
+                        >
                             {post.description}
                         </Typography>
 

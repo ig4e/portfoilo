@@ -5,7 +5,7 @@ export const siteConfig = {
     description: "I'm Ahmed Mohamed A Fullstack web engineer | UI/UX Designer.",
     links: {
         github: "https://github.com/ig4e",
-        linkedIn: "https://www.linkedin.com/in/ahmed-badr-8aa91723a/",
+        linkedIn: "https://www.linkedin.com/in/ahmedmohamedbadr",
     },
 };
 

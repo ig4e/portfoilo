@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-condition */
 "use client";
 
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -27,7 +28,9 @@ export function NavSheet() {
                     {routes.map((route) => {
                         return (
                             <Link
-                                onClick={() => setOpen(false)}
+                                onClick={() => {
+                                    setOpen(false);
+                                }}
                                 key={route.title}
                                 href={route.url}
                                 className={cn(
@@ -38,7 +41,7 @@ export function NavSheet() {
                                     }),
                                 )}
                             >
-                                {route?.icon && <route.icon className="w-6" />}
+                                {route.icon && <route.icon className="w-6" />}
 
                                 <div>
                                     <div className="font-medium leading-none">

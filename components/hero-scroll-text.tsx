@@ -1,12 +1,13 @@
 "use client";
 
-import { Locale } from "@/config/i18n";
+import type { Locale } from "@/config/i18n";
+import { cn } from "@/lib/utils";
 import { CodeIcon, CropIcon, CursorArrowIcon } from "@radix-ui/react-icons";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
-function HeroScrollText() {
+function HeroScrollText({ className }: { className?: string }) {
     const t = useTranslations("index.hero");
     const locale = useLocale() as Locale;
     const { scrollY } = useScroll();
@@ -32,7 +33,12 @@ function HeroScrollText() {
                 x: mapping,
             }}
         >
-            <p className="overflow-visible whitespace-nowrap text-[12vw] lowercase">
+            <p
+                className={cn(
+                    "overflow-visible whitespace-nowrap text-[12vw] lowercase",
+                    className,
+                )}
+            >
                 {t("scroll-text")}
             </p>
 

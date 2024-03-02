@@ -64,7 +64,9 @@ export function ModeToggle() {
                                     className="w-full"
                                     onClick={() => {
                                         setTheme(mode);
-                                        setTimeout(() => setOpen(false), 200);
+                                        setTimeout(() => {
+                                            setOpen(false);
+                                        }, 200);
                                     }}
                                 >
                                     <ModeIcon className="h-4 w-4" />
@@ -98,15 +100,27 @@ export function ModeToggle() {
             <DropdownMenuContent align="end">
                 <DropdownMenuLabel>{t("toggle-theme")}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => setTheme("light")}>
+                <DropdownMenuItem
+                    onClick={() => {
+                        setTheme("light");
+                    }}
+                >
                     <SunIcon className="h-4 w-4" />
                     {t("light")}
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("dark")}>
+                <DropdownMenuItem
+                    onClick={() => {
+                        setTheme("dark");
+                    }}
+                >
                     <MoonIcon className="h-4 w-4" />
                     {t("dark")}
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("system")}>
+                <DropdownMenuItem
+                    onClick={() => {
+                        setTheme("system");
+                    }}
+                >
                     <DesktopIcon className="h-4 w-4" />
                     {t("system")}
                 </DropdownMenuItem>

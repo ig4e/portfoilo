@@ -1,16 +1,17 @@
 "use client";
+import { ProjectCard } from "@/components/project-parallax";
 import SearchInput from "@/components/search-input";
-import { Option, RSelect } from "@/components/ui/r-select";
-import { Locale } from "@/config/i18n";
+import type { Option } from "@/components/ui/r-select";
+import { RSelect } from "@/components/ui/r-select";
+import type { Locale } from "@/config/i18n";
 import { mappedCategories, projects } from "@/config/projects";
 import { skills } from "@/config/skills";
 import { useDebounce } from "@uidotdev/usehooks";
 import Fuse from "fuse.js";
 import { useTranslations } from "next-intl";
 import { parseAsArrayOf, parseAsString, useQueryState } from "nuqs";
-import { useFilterProjects } from "./use-fillter-projects";
 import { useMemo } from "react";
-import { ProjectCard } from "@/components/project-parallax";
+import { useFilterProjects } from "./use-fillter-projects";
 
 const fuse = new Fuse(projects, {
     keys: [
@@ -99,10 +100,10 @@ function ProjectsPageList({
         return fillters.map((id) => {
             const allSkillsItems = (
                 skills.reduce(
-                    //@ts-expect-error
+                    //@ts-expect-error -- TODO
                     (acc, skill) => [...acc, ...skill.items],
                     [],
-                ) as any as (typeof skills)[0]["items"]
+                ) as unknown as (typeof skills)[0]["items"]
             ).map((item) => ({
                 id: item.id,
                 ...item.name,
@@ -112,8 +113,10 @@ function ProjectsPageList({
                 (category) => category.id === id,
             );
 
+            if (!filter) return;
+
             return {
-                label: filter![locale],
+                label: filter[locale],
                 value: id,
             };
         });
@@ -124,7 +127,7 @@ function ProjectsPageList({
             <div className="flex items-center gap-2 md:gap-4">
                 <SearchInput
                     value={query}
-                    onChange={(e) => setQuery(e.target.value)}
+                    onChange={(e) => void setQuery(e.target.value)}
                     placeholder={t("search")}
                     className="bg-background"
                 />
@@ -134,8 +137,8 @@ function ProjectsPageList({
                     isMulti
                     placeholder={t("fillters.categories")}
                     value={filtersSelect}
-                    onChange={(newValue, actionMeta) =>
-                        setFillters(
+                    onChange={(newValue) =>
+                        void setFillters(
                             (newValue as Option[]).map(
                                 (option) => option.value,
                             ),

@@ -1,17 +1,13 @@
 "use client";
 import React, { useMemo } from "react";
-import {
-    motion,
-    useScroll,
-    useTransform,
-    useSpring,
-    MotionValue,
-} from "framer-motion";
+import type { MotionValue } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Image from "next/image";
 import { Link } from "@/lib/navigation";
-import { Project, projects } from "@/config/projects";
+import type { Project } from "@/config/projects";
+import { projects } from "@/config/projects";
 import Typography from "./typography";
-import { Locale } from "@/config/i18n";
+import type { Locale } from "@/config/i18n";
 import { useLocale, useTranslations } from "next-intl";
 import { Badge } from "./ui/badge";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
@@ -21,7 +17,10 @@ export default function ProjectParallax() {
     const locale = useLocale() as Locale;
 
     const projectRows = useMemo(() => {
-        return [projects.slice(0, 5), projects.slice(5, 10)];
+        return [
+            projects.slice(0, 5),
+            Array(2).fill(projects.slice(5, 15)).flat(),
+        ] as Project[][];
     }, []);
 
     const ref = React.useRef(null);
@@ -67,7 +66,8 @@ export default function ProjectParallax() {
         <div
             ref={ref}
             className="relative flex flex-col overflow-hidden py-40 antialiased [perspective:1000px] [transform-style:preserve-3d]"
-            style={{ height: `${projectRows.length * 95}vh` }}>
+            style={{ height: `${projectRows.length * 95}vh` }}
+        >
             <Header />
 
             <motion.div
@@ -76,7 +76,8 @@ export default function ProjectParallax() {
                     rotateZ,
                     translateY,
                     opacity,
-                }}>
+                }}
+            >
                 {projectRows.map((row, index) => {
                     const isOdd = index % 2 === 0;
                     return (
@@ -87,14 +88,15 @@ export default function ProjectParallax() {
                                 {
                                     "flex-row-reverse": isOdd,
                                 },
-                            )}>
-                            {row.map((project) => (
+                            )}
+                        >
+                            {row.map((project, projectIndex) => (
                                 <AnimationProjectCard
                                     project={project}
                                     translate={
                                         isOdd ? translateXReverse : translateX
                                     }
-                                    key={project.id}
+                                    key={project.id + projectIndex}
                                     locale={locale}
                                 />
                             ))}
@@ -113,7 +115,8 @@ export function Header() {
         <div className="container relative inset-x-0 px-4 py-20 md:py-40">
             <Typography
                 element="h2"
-                className="whitespace-nowrap text-[3rem] font-semibold leading-tight sm:text-6xl md:leading-normal">
+                className="whitespace-nowrap text-[3rem] font-semibold leading-tight sm:text-6xl md:leading-normal"
+            >
                 {t("my-projects")}
             </Typography>
             <p className="mt-8 max-w-2xl text-base dark:text-neutral-200 md:text-xl">
@@ -141,7 +144,8 @@ export function AnimationProjectCard({
                 y: -10,
             }}
             key={project.id}
-            className="group/product relative w-[25rem] flex-shrink-0 md:w-[35rem]">
+            className="group/product relative w-[25rem] flex-shrink-0 md:w-[35rem]"
+        >
             <ProjectCard locale={locale} project={project} />
         </motion.div>
     );
@@ -159,7 +163,8 @@ export function ProjectCard({
     return (
         <Link
             href={`/projects/${project.id}`}
-            className={cn("relative", className)}>
+            className={cn("relative", className)}
+        >
             <Image
                 width={500}
                 src={project.image}
@@ -176,7 +181,8 @@ export function ProjectCard({
                     <Typography
                         element="p"
                         as="mutedText"
-                        className="line-clamp-2">
+                        className="line-clamp-2"
+                    >
                         {project.shortDescription[locale]}
                     </Typography>
 

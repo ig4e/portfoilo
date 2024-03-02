@@ -2,7 +2,7 @@
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import { Locale } from "@/config/i18n";
+import type { Locale } from "@/config/i18n";
 import { Link } from "@/lib/navigation";
 import { Languages } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";

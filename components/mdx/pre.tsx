@@ -1,8 +1,16 @@
 import { cn } from "@/lib/utils";
 import { CopyButton } from "./copy";
-import Typography from "../typography";
+import type { ReactNode } from "react";
 
-export function Pre({ className, ...props }: any) {
+export function Pre({
+    className,
+    ...props
+}: {
+    className?: string;
+    "data-language": string;
+    raw: string;
+    children: ReactNode;
+}) {
     return (
         <div className="overflow-hidden rounded-md border">
             <div className="flex w-full items-center justify-between rounded-md bg-background px-4 py-2">

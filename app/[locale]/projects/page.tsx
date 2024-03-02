@@ -1,10 +1,9 @@
-import Typography from "@/components/typography";
-import { Locale, locales } from "@/config/i18n";
-import { Metadata } from "next";
-import { useTranslations } from "next-intl";
-import ProjectsPageList from "./projects";
-import { unstable_setRequestLocale } from "next-intl/server";
 import GenericHero from "@/components/generic-hero";
+import type { Locale } from "@/config/i18n";
+import type { Metadata } from "next";
+import { useTranslations } from "next-intl";
+import { unstable_setRequestLocale } from "next-intl/server";
+import ProjectsPageList from "./projects";
 
 export const metadata: Metadata = {
     title: "Projects - Ahmed Mohamed",

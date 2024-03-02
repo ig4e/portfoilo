@@ -1,18 +1,11 @@
 import HeroSection from "@/components/hero-section";
+import ProjectParallax from "@/components/project-parallax";
+import SkillsSection from "@/components/skills-section";
 import Typography from "@/components/typography";
 import { Icons } from "@/components/ui/icons";
-import { Locale } from "@/config/i18n";
+import type { Locale } from "@/config/i18n";
 import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
-import dynamic from "next/dynamic";
-
-const ProjectParallax = dynamic(() => import("@/components/project-parallax"), {
-    ssr: true,
-});
-
-const SkillsSection = dynamic(() => import("@/components/skills-section"), {
-    ssr: false,
-});
 
 export default function Home({
     params: { locale },
@@ -69,7 +62,6 @@ export default function Home({
             </section>
 
             <ProjectParallax />
-
             <SkillsSection />
         </main>
     );

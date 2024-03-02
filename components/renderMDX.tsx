@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypePrettyCode from "rehype-pretty-code";
 import remarkGfm from "remark-gfm";
 import { visit } from "unist-util-visit";
 import { Pre } from "./mdx/pre";
 
-function RenderMDX({ source }: { source: string }) {
+function RenderMDX({ source }: { source: string }): JSX.Element {
     return (
         <MDXRemote
             source={source}
@@ -24,7 +26,7 @@ function RenderMDX({ source }: { source: string }) {
                             });
                         },
                         [
-                            //@ts-expect-error
+                            //@ts-expect-error -- type mismatch nothing i can do
                             rehypePrettyCode,
                             {
                                 theme: {
@@ -51,7 +53,7 @@ function RenderMDX({ source }: { source: string }) {
 
                                     for (const child of node.children) {
                                         if (child.tagName === "pre") {
-                                            child.properties["raw"] = node.raw;
+                                            child.properties.raw = node.raw;
                                         }
                                     }
                                 }
@@ -61,6 +63,7 @@ function RenderMDX({ source }: { source: string }) {
                 },
             }}
             components={{
+                //@ts-expect-error -- type mismatch nothing i can do
                 pre: Pre,
             }}
         />

@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { useSuspenseQuery } from "@apollo/client";
 import { useLocale, useTranslations } from "next-intl";
 import { useMemo } from "react";
-import ReactSelect from "react-select";
+import type ReactSelect from "react-select";
 
 const CATEGORIES_QUERY =
     gql(`query Categories($locale: I18NLocaleCode, $pagination: PaginationArg) {
@@ -51,7 +51,7 @@ function Categories({
     const options = [
         {
             label: t("fillters.categories"),
-            options: data?.categories?.data.map((category) => ({
+            options: data.categories?.data.map((category) => ({
                 label: category.attributes?.name,
                 value: category.id,
             })),

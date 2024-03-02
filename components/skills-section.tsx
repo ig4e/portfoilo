@@ -1,5 +1,5 @@
 "use client";
-import { Locale } from "@/config/i18n";
+import type { Locale } from "@/config/i18n";
 import { skills } from "@/config/skills";
 import { hexToRgb } from "@/lib/utils";
 import { useLocale, useTranslations } from "next-intl";

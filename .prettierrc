@@ -1,6 +1,5 @@
 {
     "tabWidth": 4,
     "useTabs": false,
-    "jsxBracketSameLine": true,
     "plugins": ["prettier-plugin-tailwindcss"]
 }

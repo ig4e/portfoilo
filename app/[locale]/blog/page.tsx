@@ -1,9 +1,9 @@
-import { Locale, locales } from "@/config/i18n";
+import type { Locale } from "@/config/i18n";
 
 import GenericHero from "@/components/generic-hero";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
-import { Posts } from "./posts";
 import { Suspense } from "react";
+import { Posts } from "./posts";
 
 async function Blog({
     params: { locale },

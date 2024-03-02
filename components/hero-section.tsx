@@ -4,7 +4,7 @@ import HeroScrollText from "@/components/hero-scroll-text";
 import Typography from "@/components/typography";
 import { Button } from "@/components/ui/button";
 import { Noise } from "@/components/ui/images";
-import { Locale } from "@/config/i18n";
+import type { Locale } from "@/config/i18n";
 import { Link } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";

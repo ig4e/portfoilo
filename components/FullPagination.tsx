@@ -28,7 +28,9 @@ function FullPagination({ ...props }: PaginationParams) {
             <PaginationContent>
                 <PaginationItem>
                     <PaginationPrevious
-                        onClick={() => pagination.previous()}
+                        onClick={() => {
+                            pagination.previous();
+                        }}
                         name={t("previous")}
                     />
                 </PaginationItem>
@@ -43,7 +45,9 @@ function FullPagination({ ...props }: PaginationParams) {
                     return (
                         <PaginationItem key={page + index}>
                             <PaginationLink
-                                onClick={() => pagination.setPage(page)}
+                                onClick={() => {
+                                    pagination.setPage(page);
+                                }}
                                 isActive={pagination.active === page}
                             >
                                 {page}
@@ -53,7 +57,9 @@ function FullPagination({ ...props }: PaginationParams) {
                 })}
                 <PaginationItem>
                     <PaginationNext
-                        onClick={() => pagination.next()}
+                        onClick={() => {
+                            pagination.next();
+                        }}
                         name={t("next")}
                     />
                 </PaginationItem>

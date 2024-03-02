@@ -1,9 +1,10 @@
-import { Project } from "@/config/projects";
+import type { Project } from "@/config/projects";
 import { useFuse } from "@/hooks/use-fuse";
-import Fuse, { FuseSearchOptions } from "fuse.js";
+import type { FuseSearchOptions } from "fuse.js";
+import type Fuse from "fuse.js";
 import { useMemo } from "react";
 
-export interface ProjectsFilterProps<T, S extends Array<T>> {
+export interface ProjectsFilterProps<T, S extends T[]> {
     fuse: Fuse<T>;
     query: {
         value?: string;
@@ -13,7 +14,7 @@ export interface ProjectsFilterProps<T, S extends Array<T>> {
     filtersIDs: string[];
 }
 
-export function useFilterProjects<T extends Project, S extends Array<T>>({
+export function useFilterProjects<T extends Project, S extends T[]>({
     fuse,
     query,
     store,
