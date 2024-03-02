@@ -1,7 +1,7 @@
 export const siteConfig = {
     name: "Ahmed Mohamed",
-    url: "https://portfoilo-umber.vercel.app",
-    ogImage: "https://portfoilo-umber.vercel.app/og.jpg",
+    url: "https://ahmed-mohamed-ig4e.vercel.app",
+    ogImage: "https://ahmed-mohamed-ig4e.vercel.app/og.jpg",
     description: "I'm Ahmed Mohamed A Fullstack web engineer | UI/UX Designer.",
     links: {
         github: "https://github.com/ig4e",
