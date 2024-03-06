@@ -12,9 +12,11 @@ import { useLocale, useTranslations } from "next-intl";
 import { Badge } from "./ui/badge";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils";
+import useViewport from "@/hooks/use-viewport";
 
 export default function ProjectParallax() {
     const locale = useLocale() as Locale;
+    const { isMobile } = useViewport();
 
     const projectRows = useMemo(() => {
         return [
@@ -33,12 +35,20 @@ export default function ProjectParallax() {
     const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
 
     const translateX = useSpring(
-        useTransform(scrollYProgress, [0, 1], [0, 1000]),
+        useTransform(
+            scrollYProgress,
+            [0, 1],
+            isMobile ? [-1000, 1000] : [0, 500],
+        ),
         springConfig,
     );
 
     const translateXReverse = useSpring(
-        useTransform(scrollYProgress, [0, 1], [0, -1000]),
+        useTransform(
+            scrollYProgress,
+            [0, 1],
+            isMobile ? [1000, -1000] : [0, -500],
+        ),
         springConfig,
     );
 
@@ -48,7 +58,7 @@ export default function ProjectParallax() {
     );
 
     const opacity = useSpring(
-        useTransform(scrollYProgress, [0, 0.2], [0.2, 1]),
+        useTransform(scrollYProgress, [0, 0.2], [0.4, 1]),
         springConfig,
     );
 
@@ -58,15 +68,15 @@ export default function ProjectParallax() {
     );
 
     const translateY = useSpring(
-        useTransform(scrollYProgress, [0, 0.2], [-650, 200]),
+        useTransform(scrollYProgress, [0, 0.2], isMobile ? [-500, 100] : [-550, 200]),
         springConfig,
     );
 
     return (
         <div
             ref={ref}
-            className="relative flex flex-col overflow-hidden py-40 antialiased [perspective:1000px] [transform-style:preserve-3d]"
-            style={{ height: `${projectRows.length * 95}vh` }}
+            className="dark relative flex flex-col overflow-hidden bg-black py-40 antialiased [perspective:1000px] [transform-style:preserve-3d]"
+            style={{ height: `${projectRows.length * (isMobile ? 70 : 95)}vh` }}
         >
             <Header />
 
@@ -112,7 +122,7 @@ export function Header() {
     const t = useTranslations("project");
 
     return (
-        <div className="container relative inset-x-0 px-4 py-20 md:py-40">
+        <div className="container relative inset-x-0 z-40 px-4 py-20 md:py-40">
             <Typography
                 element="h2"
                 className="whitespace-nowrap text-[3rem] font-semibold leading-tight sm:text-6xl md:leading-normal"
