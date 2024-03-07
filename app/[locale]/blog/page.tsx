@@ -1,31 +1,27 @@
-import type { Locale } from "@/config/i18n";
-
-import GenericHero from "@/components/generic-hero";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
-import { Suspense } from "react";
-import { Posts } from "./posts";
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { Suspense } from 'react';
+import type { Locale } from '@/config/i18n';
+import { GenericHero } from '@/components/generic-hero';
+import { Posts } from './posts';
 
 async function Blog({
-    params: { locale },
+  params: { locale },
 }: Readonly<{
-    params: { locale: Locale };
+  params: { locale: Locale };
 }>) {
-    unstable_setRequestLocale(locale);
-    const t = await getTranslations("blog");
+  unstable_setRequestLocale(locale);
+  const t = await getTranslations('blog');
 
-    return (
-        <div className="mb-14 space-y-8">
-            <Suspense>
-                <GenericHero
-                    title={t("my-blog")}
-                    description={t("description")}
-                />
-            </Suspense>
-            <Suspense>
-                <Posts />
-            </Suspense>
-        </div>
-    );
+  return (
+    <div className="mb-14 space-y-8">
+      <Suspense>
+        <GenericHero title={t('my-blog')} description={t('description')} />
+      </Suspense>
+      <Suspense>
+        <Posts />
+      </Suspense>
+    </div>
+  );
 }
 
 export default Blog;

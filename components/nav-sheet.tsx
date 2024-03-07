@@ -1,84 +1,81 @@
-/* eslint-disable @typescript-eslint/no-unnecessary-condition */
-"use client";
+'use client';
 
-import { Button, buttonVariants } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { routes } from "@/config/routes";
-import { siteConfig } from "@/config/site";
-import { Link } from "@/lib/navigation";
-import { cn } from "@/lib/utils";
-import { HamburgerMenuIcon } from "@radix-ui/react-icons";
-import { useTranslations } from "next-intl";
-import { useState } from "react";
-import { Icons } from "./ui/icons";
+import { HamburgerMenuIcon } from '@radix-ui/react-icons';
+import { useTranslations } from 'next-intl';
+import { useState } from 'react';
+import { Button, buttonVariants } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { routes } from '@/config/routes';
+import { siteConfig } from '@/config/site';
+import { Link } from '@/lib/navigation';
+import { cn } from '@/lib/utils';
+import { Icons } from './ui/icons';
 
 export function NavSheet() {
-    const t = useTranslations("site-header");
-    const [open, setOpen] = useState(false);
+  const t = useTranslations('site-header');
+  const [open, setOpen] = useState(false);
 
-    return (
-        <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger asChild>
-                <Button variant="ghost" size={"icon"}>
-                    <HamburgerMenuIcon className="h-5 w-5" />
-                </Button>
-            </SheetTrigger>
-            <SheetContent className="flex flex-col justify-between">
-                <div className="mt-4 space-y-2">
-                    {routes.map((route) => {
-                        return (
-                            <Link
-                                onClick={() => {
-                                    setOpen(false);
-                                }}
-                                key={route.title}
-                                href={route.url}
-                                className={cn(
-                                    buttonVariants({
-                                        variant: "ghost",
-                                        size: "default",
-                                        className: "w-full justify-start",
-                                    }),
-                                )}
-                            >
-                                {route.icon && <route.icon className="w-6" />}
+  return (
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetTrigger asChild>
+        <Button variant="ghost" size="icon">
+          <HamburgerMenuIcon className="h-5 w-5" />
+        </Button>
+      </SheetTrigger>
+      <SheetContent className="flex flex-col justify-between">
+        <div className="mt-4 space-y-2">
+          {routes.map((route) => {
+            return (
+              <Link
+                onClick={() => {
+                  setOpen(false);
+                }}
+                key={route.title}
+                href={route.url}
+                className={cn(
+                  buttonVariants({
+                    variant: 'ghost',
+                    size: 'default',
+                    className: 'w-full justify-start',
+                  }),
+                )}
+              >
+                {(route.icon as unknown as JSX.Element | undefined) ? (
+                  <route.icon className="w-6" />
+                ) : null}
 
-                                <div>
-                                    <div className="font-medium leading-none">
-                                        {t(`links.${route.title}`)}
-                                    </div>
-                                </div>
-                            </Link>
-                        );
-                    })}
+                <div>
+                  <div className="font-medium leading-none">
+                    {t(`links.${route.title}`)}
+                  </div>
                 </div>
+              </Link>
+            );
+          })}
+        </div>
 
-                <div className="flex items-center gap-2">
-                    <Button size={"sm"} className="w-full">
-                        {t("get-in-touch")}
-                    </Button>
-                    <Link
-                        href={siteConfig.links.github}
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        <Button variant={"secondary"} size={"icon"}>
-                            <Icons.gitHub className="h-4 w-4" />
-                            <span className="sr-only">GitHub</span>
-                        </Button>
-                    </Link>
-                    <Link
-                        href={siteConfig.links.linkedIn}
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        <Button variant={"secondary"} size={"icon"}>
-                            <Icons.linkedIn className="h-4 w-4" />
-                            <span className="sr-only">LinkedIn</span>
-                        </Button>
-                    </Link>
-                </div>
-            </SheetContent>
-        </Sheet>
-    );
+        <div className="flex items-center gap-2">
+          <Button size="sm" className="w-full">
+            {t('get-in-touch')}
+          </Button>
+          <Link href={siteConfig.links.github} target="_blank" rel="noreferrer">
+            <Button variant="secondary" size="icon">
+              <Icons.gitHub className="h-4 w-4" />
+              <span className="sr-only">GitHub</span>
+            </Button>
+          </Link>
+          <Link
+            href={siteConfig.links.linkedIn}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Button variant="secondary" size="icon">
+              <Icons.linkedIn className="h-4 w-4" />
+              <span className="sr-only">LinkedIn</span>
+            </Button>
+          </Link>
+        </div>
+      </SheetContent>
+    </Sheet>
+  );
 }
