@@ -6,7 +6,7 @@ import { Typography } from '@/components/typography';
 import { Icons } from '@/components/ui/icons';
 import type { Locale } from '@/config/i18n';
 import { projects } from '@/config/projects';
-import { HeroSection } from '@/components/hero-section';
+import { HeroSection } from './hero-section';
 import { MadeWithSection } from './made-with-section';
 
 interface PageProps {
@@ -49,7 +49,7 @@ function ProjectPage({ params }: PageProps) {
 
   return (
     <div className="">
-      <HeroSection />
+      <HeroSection projectId={project.id} />
 
       <div className="dark">
         <section className="bg-black px-4 py-12 text-white" id="about">
