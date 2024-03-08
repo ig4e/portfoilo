@@ -12,22 +12,31 @@ export function Pre({
   children: ReactNode;
 }) {
   return (
-    <div className="overflow-hidden rounded-md border">
-      <div className="flex w-full items-center justify-between rounded-md bg-background px-4 py-2">
+    <div className="overflow-hidden rounded-md border bg-background">
+      <div className="flex w-full items-center justify-between rounded-md px-4 py-2">
         <p className="m-0 text-muted-foreground first-letter:uppercase">
           {props['data-language']}
         </p>
         <CopyButton text={props.raw} />
       </div>
-      <pre
-        className={cn(
-          className,
-          'shiki shiki-themes relative m-0 border bg-secondary',
-        )}
-        {...props}
+
+      <div
+        className="p-2"
+        style={{
+          background:
+            'linear-gradient(140deg, rgb(255, 99, 99), rgb(115, 52, 52))',
+        }}
       >
-        {props.children}
-      </pre>
+        <pre
+          className={cn(
+            className,
+            'shiki shiki-themes relative m-0 border bg-background/90 dark:bg-background/80',
+          )}
+          {...props}
+        >
+          {props.children}
+        </pre>
+      </div>
     </div>
   );
 }

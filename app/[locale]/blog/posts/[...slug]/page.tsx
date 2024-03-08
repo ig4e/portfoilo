@@ -27,6 +27,7 @@ import { getClient } from '@/lib/apollo';
 import { Link } from '@/lib/navigation';
 import { calculateRT, toLocaleDateString } from '@/lib/utils';
 import { LocaleAlert } from './locale-alert';
+import { Toc } from './toc';
 
 interface PostPageProps {
   params: {
@@ -34,6 +35,8 @@ interface PostPageProps {
     readonly slug: [string, string];
   };
 }
+
+export const fetchCache = 'force-no-store';
 
 const POST_QUERY = gql(`query Post($postId: ID) {
     post(id: $postId) {
@@ -146,6 +149,8 @@ export async function generateMetadata({
     variables: {
       postId: id,
     },
+    errorPolicy: 'ignore',
+    fetchPolicy: 'no-cache',
   });
 
   return {
@@ -224,8 +229,8 @@ async function Post({
         classNames={{ description: 'max-w-3xl' }}
       />
 
-      <div className="rounded-md bg-background/60 p-4 py-8 backdrop-blur-3xl">
-        <div className="relative mx-auto max-w-3xl space-y-8">
+      <div className="rounded-md bg-background/60 p-4 py-8 backdrop-blur-3xl md:flex">
+        <div className="mx-auto max-w-4xl space-y-8">
           {postData ? (
             <LocaleAlert
               post={{
@@ -307,6 +312,9 @@ async function Post({
               <RenderMDX source={postData.body} />
             ) : null}
           </div>
+        </div>
+        <div className="max-w-80 w-full sticky top-20 h-full bg-accent/50 border p-2 rounded-md hidden md:block">
+          <Toc />
         </div>
       </div>
     </div>

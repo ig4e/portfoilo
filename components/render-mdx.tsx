@@ -1,20 +1,38 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call  -- TODO FIX MDX TYPES */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access -- TODO FIX MDX TYPES */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment  -- TODO FIX MDX TYPES */
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypePrettyCode from 'rehype-pretty-code';
 import remarkGfm from 'remark-gfm';
+import remarkToc from 'remark-toc';
+import type { Options as TocOptions } from 'remark-toc';
+import rehypeSlug from 'rehype-slug';
 import { visit } from 'unist-util-visit';
+import { getLocale } from 'next-intl/server';
+import type { Locale } from '@/config/i18n';
 import { Pre } from './mdx/pre';
 
-function RenderMDX({ source }: { source: string }): JSX.Element {
+async function RenderMDX({ source }: { source: string }) {
+  const locale = (await getLocale()) as Locale;
+
   return (
     <MDXRemote
       source={source}
       options={{
         mdxOptions: {
           development: process.env.NODE_ENV === 'development',
-          remarkPlugins: [remarkGfm],
+          remarkPlugins: [
+            [
+              remarkToc,
+              {
+                tight: true,
+                heading: locale === 'ar-EG' ? 'محتوي' : 'Contents',
+              } as TocOptions,
+            ],
+            remarkGfm,
+          ],
           rehypePlugins: [
+            rehypeSlug,
             () => (tree) => {
               visit(tree, (node) => {
                 if (node?.tagName === 'pre') {
@@ -30,10 +48,9 @@ function RenderMDX({ source }: { source: string }): JSX.Element {
               rehypePrettyCode,
               {
                 theme: {
-                  dark: 'one-dark-pro',
-                  light: 'github-light',
+                  dark: 'red',
+                  light: 'min-light',
                 },
-                // The rest of the rehypePrettyCode config
               },
             ],
             () => (tree) => {

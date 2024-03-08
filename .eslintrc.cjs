@@ -41,7 +41,8 @@ module.exports = {
         'app/**/opengraph-image.tsx',
         'app/sitemap.ts',
         'app/robots.ts',
-        // ...
+        'middleware.ts',
+        'codegen.ts',
       ],
       rules: {
         'import/no-default-export': 'off',

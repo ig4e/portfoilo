@@ -28,7 +28,7 @@ export function CopyButton({ text }: { text: string }) {
   return (
     <TooltipProvider>
       <Tooltip open={isOpen || isCopied} onOpenChange={setIsOpen}>
-        <TooltipTrigger>
+        <TooltipTrigger asChild>
           <Button
             size="icon"
             variant="secondary"
