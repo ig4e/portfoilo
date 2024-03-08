@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call -- TODO FIX MDX TYPES */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access -- TODO FIX MDX TYPES */
 /* eslint-disable @typescript-eslint/no-shadow  -- TODO FIX MDX TYPES  */
 /* eslint-disable @typescript-eslint/no-non-null-assertion  -- TODO FIX MDX TYPES  */
 /* eslint-disable @typescript-eslint/no-unnecessary-condition  -- TODO FIX MDX TYPES  */
@@ -36,7 +38,7 @@ interface PostPageProps {
   };
 }
 
-export const fetchCache = 'force-no-store';
+//export const fetchCache = 'force-no-store';
 
 const POST_QUERY = gql(`query Post($postId: ID) {
     post(id: $postId) {
@@ -79,6 +81,7 @@ const POST_QUERY = gql(`query Post($postId: ID) {
           }
           locale
           postedAt
+          createdAt
           slug
           title
           localizations {
@@ -211,7 +214,8 @@ async function Post({
     )!,
     slug: post?.data?.attributes?.slug!,
     locale: post?.data?.attributes?.locale! as Locale,
-    postedAt: post?.data?.attributes?.postedAt!,
+    postedAt:
+      post?.data?.attributes?.postedAt! ?? post?.data?.attributes?.createdAt,
     localizations: post?.data?.attributes?.localizations?.data!.map(
       ({ id, attributes }) => ({
         id: id!,
@@ -224,21 +228,21 @@ async function Post({
   return (
     <div className="space-y-16 pb-16" suppressHydrationWarning>
       <GenericHero
-        title={postData.title}
-        description={postData.description}
         classNames={{ description: 'max-w-3xl' }}
+        description={postData.description}
+        title={postData.title}
       />
 
-      <div className="rounded-md bg-background/60 p-4 py-8 backdrop-blur-3xl md:flex">
+      <div className="rounded-md bg-background/60 p-4 py-8 backdrop-blur-3xl md:flex md:gap-4">
         <div className="mx-auto max-w-4xl space-y-8">
           {postData ? (
             <LocaleAlert
+              localizations={postData.localizations}
               post={{
                 id: postData.id,
                 locale: postData.locale,
                 slug: postData.slug,
               }}
-              localizations={postData.localizations}
             />
           ) : null}
 
@@ -251,14 +255,14 @@ async function Post({
             </Avatar>
 
             <div className="space-y-1">
-              <Typography element="h4" as="h4">
+              <Typography as="h4" element="h4">
                 {postData.author.name}
               </Typography>
 
               <Typography
-                element="h4"
                 as="mutedText"
                 className="flex items-center gap-1"
+                element="h4"
               >
                 <Clock className="h-4 w-4" />
                 {t('rt', {
@@ -267,9 +271,9 @@ async function Post({
               </Typography>
 
               <Typography
-                element="h4"
                 as="mutedText"
                 className="flex items-center gap-1"
+                element="h4"
               >
                 <AtSign className="h-4 w-4" />
                 {toLocaleDateString(postData.postedAt)}
@@ -286,7 +290,7 @@ async function Post({
                   <TooltipProvider key={category.id}>
                     <Tooltip key={category.id}>
                       <TooltipTrigger>
-                        <Badge variant="secondary" className="text-base">
+                        <Badge className="text-base" variant="secondary">
                           {category.name}
                         </Badge>
                       </TooltipTrigger>
@@ -301,19 +305,23 @@ async function Post({
           </div>
           <Separator />
           <Image
+            alt={postData.title}
+            className="h-auto w-full rounded-md object-cover"
+            height={1000}
             src={postData.image}
             width={1000}
-            height={1000}
-            className="h-auto w-full rounded-md object-cover"
-            alt={postData.title}
           />
           <div className="prose prose-stone max-w-3xl dark:prose-invert">
             {post?.data?.attributes?.body ? (
-              <RenderMDX source={postData.body} />
+              <RenderMDX
+                source={postData.body}
+                sourceLocale={postData.locale}
+              />
             ) : null}
           </div>
         </div>
-        <div className="max-w-80 w-full sticky top-20 h-full bg-accent/50 border p-2 rounded-md hidden md:block">
+
+        <div className="sticky top-20 hidden h-full w-full max-w-80 rounded-md border bg-accent/50 p-2 md:block">
           <Toc />
         </div>
       </div>

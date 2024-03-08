@@ -35,9 +35,9 @@ export function ModeToggle() {
 
   if (isMobile)
     return (
-      <Drawer open={open} onOpenChange={setOpen}>
+      <Drawer onOpenChange={setOpen} open={open}>
         <DrawerTrigger asChild>
-          <Button variant="ghost" size="icon">
+          <Button size="icon" variant="ghost">
             <SunIcon className="block h-[1.2rem] w-[1.2rem] dark:hidden" />
             <MoonIcon className="hidden h-[1.2rem] w-[1.2rem] dark:block" />
             <span className="sr-only">{t('toggle-theme')}</span>
@@ -66,15 +66,15 @@ export function ModeToggle() {
 
               return (
                 <Button
-                  key={mode}
-                  variant="secondary"
                   className="w-full"
+                  key={mode}
                   onClick={() => {
                     setTheme(mode);
                     setTimeout(() => {
                       setOpen(false);
                     }, 200);
                   }}
+                  variant="secondary"
                 >
                   <ModeIcon className="h-4 w-4" />
 
@@ -86,7 +86,7 @@ export function ModeToggle() {
 
           <DrawerFooter>
             <DrawerClose>
-              <Button variant="outline" className="w-full">
+              <Button className="w-full" variant="outline">
                 {tModals('cancel')}
               </Button>
             </DrawerClose>
@@ -98,7 +98,7 @@ export function ModeToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon">
+        <Button size="icon" variant="ghost">
           <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 dark:-rotate-90 dark:scale-0" />
           <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 dark:rotate-0 dark:scale-100" />
           <span className="sr-only">{t('toggle-theme')}</span>

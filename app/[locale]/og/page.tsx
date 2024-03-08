@@ -22,19 +22,19 @@ function Og() {
         </div>
 
         <motion.div
+          animate={{ opacity: 1 }}
           className="container flex flex-col items-center gap-12"
           initial={{ opacity: 0.5 }}
-          animate={{ opacity: 1 }}
           transition={{
             duration: 0.2,
           }}
         >
           <div className="space-y-8">
             <Typography
-              element="h1"
               className={cn(
                 'container text-balance text-center text-[10rem] font-semibold leading-tight',
               )}
+              element="h1"
             >
               <span className="bg-gradient-to-tr from-primary to-[#db2777] bg-clip-text text-transparent">
                 Ahmed
@@ -43,18 +43,18 @@ function Og() {
             </Typography>
 
             <Typography
-              element="h4"
               as="h2"
               className="text-[4rem] text-muted-foreground"
+              element="h4"
             >
               Fullstack web engineer | UI/UX Designer
             </Typography>
           </div>
 
           <Typography
-            element="span"
             as="mutedText"
             className="place-self-end"
+            element="span"
           />
         </motion.div>
       </section>

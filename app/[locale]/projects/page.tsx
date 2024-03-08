@@ -15,7 +15,7 @@ function ProjectsPage({ params: { locale } }: { params: { locale: Locale } }) {
 
   return (
     <div className="container my-4 mb-8 space-y-8">
-      <GenericHero title={t('my-projects')} description={t('description')} />
+      <GenericHero description={t('description')} title={t('my-projects')} />
 
       <ProjectsPageList params={{ locale }} />
     </div>

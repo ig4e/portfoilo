@@ -1551,6 +1551,7 @@ export type PostQuery = {
         description: string;
         locale?: string | null;
         postedAt?: any | null;
+        createdAt?: any | null;
         slug?: string | null;
         title: string;
         author?: {
@@ -2444,6 +2445,10 @@ export const PostDocument = {
                             {
                               kind: 'Field',
                               name: { kind: 'Name', value: 'postedAt' },
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'createdAt' },
                             },
                             {
                               kind: 'Field',

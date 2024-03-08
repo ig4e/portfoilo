@@ -1,11 +1,10 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/lib/navigation';
-import { cn } from '@/lib/utils';
-import { Loader } from '@/components/ui/loader';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Typography } from '@/components/typography';
+import { Loader } from '@/components/ui/loader';
+import { cn } from '@/lib/utils';
 
 interface TOCItem {
   title: string;
@@ -48,16 +47,16 @@ export function Toc() {
         <Loader className="inset-0" />
       ) : (
         <>
-          <Typography element="h4" as="h4" className="p-2">
+          <Typography as="h4" className="p-2" element="h4">
             {t('toc')}
           </Typography>
           {tree.map((item) => {
             return (
               <Item
                 {...item}
-                setActiveId={setActiveId}
                 activeId={activeId}
                 key={item.url}
+                setActiveId={setActiveId}
               />
             );
           })}
@@ -100,28 +99,28 @@ function Item({
     <div className="prose prose-sm">
       <ul>
         <li>
-          <Link
-            href={url}
+          <a
             className={cn(
-              'text-muted-foreground font-semibold text-base hover:text-primary/80 transition',
+              'text-base font-semibold text-muted-foreground transition hover:text-primary/80',
               {
                 'text-primary': activeId === id,
               },
             )}
+            href={url}
             onClick={() => {
               setActiveId(id);
             }}
           >
             {title}
-          </Link>
+          </a>
         </li>
         <ul className="px-2">
           {children.map((child) => (
             <Item
               {...child}
+              activeId={activeId}
               key={child.url}
               setActiveId={setActiveId}
-              activeId={activeId}
             />
           ))}
         </ul>

@@ -35,13 +35,13 @@ export function HeroSection({ projectId }: { projectId: string }) {
 
   return (
     <div
-      ref={heroRef}
       className=" flex min-h-[50vh] flex-col items-center justify-center gap-12 overflow-hidden pb-6 text-center md:min-h-screen md:pb-12"
+      ref={heroRef}
     >
       <div className="overflow-hidden">
         <div
-          id="project-gradient"
           className="absolute inset-x-0 top-0 -z-[10] min-h-[40vh] animate-cardlight rounded-b-full bg-gradient-to-b from-rose-900 opacity-80 blur-3xl md:min-h-[60vh]"
+          id="project-gradient"
           style={{
             //@ts-expect-error -- TODO
             '--tw-gradient-to': project.color,
@@ -59,9 +59,9 @@ export function HeroSection({ projectId }: { projectId: string }) {
       </div>
 
       <motion.div
+        animate={{ opacity: 1 }}
         className="relative flex flex-col items-center gap-12"
         initial={{ opacity: 0.5 }}
-        animate={{ opacity: 1 }}
         transition={{
           duration: 0.2,
         }}
@@ -72,7 +72,6 @@ export function HeroSection({ projectId }: { projectId: string }) {
           </div>
 
           <Typography
-            element="h1"
             className={cn(
               'container text-balance text-center text-[3rem] font-semibold leading-tight sm:text-6xl md:mb-6 md:leading-normal lg:text-7xl xl:text-8xl',
               {
@@ -80,22 +79,24 @@ export function HeroSection({ projectId }: { projectId: string }) {
                   locale === 'ar-EG',
               },
             )}
+            element="h1"
           >
             {project.name[locale]}
           </Typography>
 
           <Typography
-            element="p"
             as="h3"
             className="max-w-6xl text-balance font-normal text-muted-foreground"
+            element="p"
           >
             {project.shortDescription[locale]}
           </Typography>
         </div>
 
         <div className="mt-4 hidden w-screen items-center gap-4 [perspective:2000px;] md:flex">
-          <AspectRatio ratio={16 / 7.5} className="container w-full">
+          <AspectRatio className="container w-full" ratio={16 / 7.5}>
             <motion.div
+              className="h-full w-full overflow-hidden rounded-[5vh] p-0.5"
               style={{
                 transformStyle: 'preserve-3d',
                 rotateX: translate,
@@ -105,15 +106,14 @@ export function HeroSection({ projectId }: { projectId: string }) {
                 bounce: 0.4,
                 stiffness: 400,
               }}
-              className="h-full w-full overflow-hidden rounded-[5vh] p-0.5"
             >
               <Image
+                alt={project.name[locale]}
+                className="h-full w-full rounded-[5vh] bg-accent object-fill"
+                placeholder="blur"
                 priority
                 src={project.image}
-                className="h-full w-full rounded-[5vh] bg-accent object-fill"
                 width={1440}
-                alt={project.name[locale]}
-                placeholder="blur"
               />
             </motion.div>
           </AspectRatio>
@@ -122,16 +122,17 @@ export function HeroSection({ projectId }: { projectId: string }) {
         <div className="relative flex min-h-96 w-full min-w-[90vw] md:hidden">
           <div className="absolute inset-0 z-0 !w-full !min-w-[100vw] ps-[1rem]">
             <Image
+              alt={project.name[locale]}
+              className="!h-full !w-full rounded-md !object-cover object-left transition-all"
+              placeholder="blur"
               priority
               src={project.image}
-              className="!h-full !w-full rounded-md !object-cover object-left transition-all"
-              alt={project.name[locale]}
-              placeholder="blur"
             />
           </div>
         </div>
 
         <div
+          about="Gradient Top"
           style={{
             WebkitFilter: 'blur(10px)',
             background:
@@ -149,7 +150,6 @@ export function HeroSection({ projectId }: { projectId: string }) {
             //@ts-expect-error -- TODO
             '--gradient-color': project.color,
           }}
-          about="Gradient Top"
         />
 
         <div

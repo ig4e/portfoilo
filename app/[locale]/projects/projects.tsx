@@ -126,25 +126,25 @@ export function ProjectsPageList({
     <div className="space-y-4 rounded-md border bg-background/60 p-4 md:space-y-8">
       <div className="flex items-center gap-2 md:gap-4">
         <SearchInput
-          value={query}
+          className="bg-background"
           onChange={(e) => {
             void setQuery(e.target.value);
           }}
           placeholder={t('search')}
-          className="bg-background"
+          value={query}
         />
 
         <RSelect
-          options={options}
+          className="w-1/2"
           isMulti
-          placeholder={t('fillters.categories')}
-          value={filtersSelect}
           onChange={(newValue) =>
             void setFillters(
               (newValue as Option[]).map((option) => option.value),
             )
           }
-          className="w-1/2"
+          options={options}
+          placeholder={t('fillters.categories')}
+          value={filtersSelect}
         />
       </div>
 
@@ -152,9 +152,9 @@ export function ProjectsPageList({
         {debouncedResults.map((project) => (
           <ProjectCard
             className="group relative overflow-hidden rounded-md border transition duration-500 hover:-translate-y-1 hover:border-primary"
+            key={project.id}
             locale={locale}
             project={project}
-            key={project.id}
           />
         ))}
       </div>

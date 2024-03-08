@@ -31,15 +31,14 @@ export function HeroSection() {
         </div>
 
         <motion.div
+          animate={{ opacity: 1 }}
           className="container flex flex-col items-center gap-12"
           initial={{ opacity: 0.5 }}
-          animate={{ opacity: 1 }}
           transition={{
             duration: 0.2,
           }}
         >
           <Typography
-            element="h1"
             className={cn(
               'container text-balance text-center text-[3rem] font-semibold leading-tight sm:text-6xl  md:leading-normal lg:text-7xl xl:text-8xl',
               {
@@ -47,6 +46,7 @@ export function HeroSection() {
                   locale === 'ar-EG',
               },
             )}
+            element="h1"
           >
             {t.rich('hero.title.text', {
               highlight: (chunks) => (
@@ -66,7 +66,7 @@ export function HeroSection() {
             </Button>
           </div>
 
-          <Typography element="span" as="mutedText" className="place-self-end">
+          <Typography as="mutedText" className="place-self-end" element="span">
             {t.rich('hero.title.highlight-meaning', {
               highlight: (chunks) => (
                 <span className="font-bold">{chunks}</span>

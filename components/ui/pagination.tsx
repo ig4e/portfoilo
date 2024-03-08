@@ -7,9 +7,9 @@ import { cn } from '@/lib/utils';
 function Pagination({ className, ...props }: React.ComponentProps<'nav'>) {
   return (
     <nav
-      role="navigation"
       aria-label="pagination"
       className={cn('mx-auto flex w-full justify-center', className)}
+      role="navigation"
       {...props}
     />
   );
@@ -21,8 +21,8 @@ const PaginationContent = React.forwardRef<
   React.ComponentProps<'ul'>
 >(({ className, ...props }, ref) => (
   <ul
-    ref={ref}
     className={cn('flex flex-row items-center gap-1', className)}
+    ref={ref}
     {...props}
   />
 ));
@@ -32,7 +32,7 @@ const PaginationItem = React.forwardRef<
   HTMLLIElement,
   React.ComponentProps<'li'>
 >(({ className, ...props }, ref) => (
-  <li ref={ref} className={cn('', className)} {...props} />
+  <li className={cn('', className)} ref={ref} {...props} />
 ));
 PaginationItem.displayName = 'PaginationItem';
 
@@ -49,7 +49,6 @@ function PaginationLink({
 }: PaginationLinkProps) {
   return (
     <button
-      type="button"
       aria-current={isActive ? 'page' : undefined}
       className={cn(
         buttonVariants({
@@ -58,6 +57,7 @@ function PaginationLink({
         }),
         className,
       )}
+      type="button"
       {...props}
     />
   );
@@ -71,10 +71,10 @@ function PaginationPrevious({
 }: React.ComponentProps<typeof PaginationLink>) {
   return (
     <PaginationLink
-      dir="ltr"
       aria-label="Go to previous page"
-      size="default"
       className={cn('gap-1 pl-2.5', className)}
+      dir="ltr"
+      size="default"
       {...props}
     >
       <ChevronLeft className="h-4 w-4" />
@@ -91,10 +91,10 @@ function PaginationNext({
 }: React.ComponentProps<typeof PaginationLink>) {
   return (
     <PaginationLink
-      dir="ltr"
       aria-label="Go to next page"
-      size="default"
       className={cn('gap-1 pr-2.5', className)}
+      dir="ltr"
+      size="default"
       {...props}
     >
       <span>{name}</span>

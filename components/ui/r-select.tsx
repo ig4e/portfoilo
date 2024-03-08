@@ -18,12 +18,10 @@ export const RSelect = forwardRef<
   const t = useTranslations('r-select');
   return (
     <ReactSelect
+      className={cn('', className)}
       //@ts-expect-error -- ref
       ref={ref}
-      className={cn('', className)}
       {...props}
-      unstyled
-      components={{ DropdownIndicator, ClearIndicator }}
       classNames={{
         control: ({ isDisabled, isFocused, isMulti }) =>
           cn(
@@ -65,8 +63,10 @@ export const RSelect = forwardRef<
 
         noOptionsMessage: () => cn('text-muted-foreground p-2 rounded-sm'),
       }}
+      components={{ DropdownIndicator, ClearIndicator }}
       formatGroupLabel={FormatGroupLabel}
       noOptionsMessage={() => t('no-options')}
+      unstyled
     />
   );
 });

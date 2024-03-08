@@ -27,14 +27,14 @@ export function CopyButton({ text }: { text: string }) {
 
   return (
     <TooltipProvider>
-      <Tooltip open={isOpen || isCopied} onOpenChange={setIsOpen}>
+      <Tooltip onOpenChange={setIsOpen} open={isOpen || isCopied}>
         <TooltipTrigger asChild>
           <Button
-            size="icon"
-            variant="secondary"
             className="h-7 w-7 rounded-sm"
             disabled={isCopied}
             onClick={copy}
+            size="icon"
+            variant="secondary"
           >
             {isCopied ? <CheckIcon /> : <ClipboardCopyIcon />}
           </Button>

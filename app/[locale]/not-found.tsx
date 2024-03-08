@@ -27,7 +27,6 @@ function NotFoundPage() {
         <div className="container flex flex-col items-center gap-12">
           <div className="mt-12 space-y-8">
             <Typography
-              element="h1"
               className={cn(
                 'container text-balance text-center text-[3rem] font-semibold leading-tight sm:text-6xl  md:leading-normal lg:text-7xl xl:text-8xl',
                 {
@@ -35,14 +34,15 @@ function NotFoundPage() {
                     locale === 'ar-EG',
                 },
               )}
+              element="h1"
             >
               {t('title')}
             </Typography>
 
             <Typography
-              element="p"
               as="h3"
               className="font-normal text-muted-foreground"
+              element="p"
             >
               {t('description')}
             </Typography>

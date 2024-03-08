@@ -136,12 +136,13 @@ export function Posts() {
     <div className="space-y-4 rounded-md border bg-background/60 p-4 md:space-y-8">
       <div className="relative flex items-center gap-4">
         <SearchInput
-          placeholder={t('search')}
           onChange={(e) => void setQuery(e.target.value)}
+          placeholder={t('search')}
           value={query}
         />
         <Suspense fallback={<Loader className="min-h-10" />}>
           <Categories
+            className="w-1/2"
             onChange={(state) =>
               void setCategories(
                 (state as { label: string; value: string }[]).map(
@@ -150,7 +151,6 @@ export function Posts() {
               )
             }
             placeholder={t('fillters.categories')}
-            className="w-1/2"
             valueIDs={categories}
           />
         </Suspense>
@@ -174,8 +174,8 @@ export function Posts() {
       </div>
 
       <FullPagination
-        total={posts?.search?.posts?.meta.pagination.pageCount ?? 1}
         onChange={(newPage) => void setPage(newPage)}
+        total={posts?.search?.posts?.meta.pagination.pageCount ?? 1}
       />
     </div>
   );
@@ -193,26 +193,26 @@ interface Post {
 export function PostCard({ post }: HTMLMotionProps<'div'> & { post: Post }) {
   return (
     <div
-      key={post.slug}
-      id={post.id}
       className="group relative overflow-hidden rounded-md border transition duration-500 hover:-translate-y-1 hover:border-primary"
+      id={post.id}
+      key={post.slug}
     >
       <Link href={`/blog/posts/${post.id}/${post.slug}`}>
         <Image
-          height={500}
-          width={500}
-          src={post.image}
-          className="aspect-video h-full w-full object-cover"
           alt={post.name}
+          className="aspect-video h-full w-full object-cover"
+          height={500}
+          src={post.image}
+          width={500}
         />
 
         <div className="absolute inset-0 z-10 flex h-full w-full items-end justify-between gap-2 bg-gradient-to-b from-transparent to-background p-4 ">
           <div className="flex flex-col items-start gap-2">
-            <Typography element="h4" as="h4">
+            <Typography as="h4" element="h4">
               {post.name}
             </Typography>
 
-            <Typography element="p" as="mutedText" className="line-clamp-2">
+            <Typography as="mutedText" className="line-clamp-2" element="p">
               {post.description}
             </Typography>
 

@@ -7,16 +7,22 @@ import remarkToc from 'remark-toc';
 import type { Options as TocOptions } from 'remark-toc';
 import rehypeSlug from 'rehype-slug';
 import { visit } from 'unist-util-visit';
-import { getLocale } from 'next-intl/server';
-import type { Locale } from '@/config/i18n';
 import { Pre } from './mdx/pre';
+import type { Locale } from '@/config/i18n';
 
-async function RenderMDX({ source }: { source: string }) {
-  const locale = (await getLocale()) as Locale;
-
+function RenderMDX({
+  source,
+  sourceLocale,
+}: {
+  source: string;
+  sourceLocale: Locale;
+}) {
   return (
     <MDXRemote
-      source={source}
+      components={{
+        //@ts-expect-error -- type mismatch nothing i can do
+        pre: Pre,
+      }}
       options={{
         mdxOptions: {
           development: process.env.NODE_ENV === 'development',
@@ -25,7 +31,7 @@ async function RenderMDX({ source }: { source: string }) {
               remarkToc,
               {
                 tight: true,
-                heading: locale === 'ar-EG' ? 'محتوي' : 'Contents',
+                heading: sourceLocale === 'ar-EG' ? 'محتوي' : 'Contents',
               } as TocOptions,
             ],
             remarkGfm,
@@ -70,10 +76,7 @@ async function RenderMDX({ source }: { source: string }) {
           ],
         },
       }}
-      components={{
-        //@ts-expect-error -- type mismatch nothing i can do
-        pre: Pre,
-      }}
+      source={source}
     />
   );
 }

@@ -46,19 +46,18 @@ export function GenericHero({
         </div>
 
         <motion.div
+          animate={{ opacity: 1 }}
           className={cn(
             'container flex flex-col items-center gap-12',
             classNames.textContainer,
           )}
           initial={{ opacity: 0.5 }}
-          animate={{ opacity: 1 }}
           transition={{
             duration: 0.2,
           }}
         >
           <div className="flex flex-col items-center gap-4 md:mt-8">
             <Typography
-              element="h1"
               className={cn(
                 'container mb-6 text-balance text-center text-[3rem] font-semibold leading-tight sm:text-6xl md:leading-normal lg:text-7xl xl:text-8xl',
                 {
@@ -67,17 +66,18 @@ export function GenericHero({
                 },
                 classNames.title,
               )}
+              element="h1"
             >
               {title}
             </Typography>
 
             <Typography
-              element="p"
               as="h3"
               className={cn(
                 'max-w-6xl text-balance font-normal text-muted-foreground',
                 classNames.description,
               )}
+              element="p"
             >
               {description}
             </Typography>

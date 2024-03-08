@@ -17,9 +17,9 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 max-w-screen-2xl items-center">
         <div className="flex items-center gap-4">
-          <Link href="/" className="group flex items-center gap-2">
+          <Link className="group flex items-center gap-2" href="/">
             <Icons.logo className="h-8 w-8" />
-            <Typography element="h4" as="h5" className="relative w-14">
+            <Typography as="h5" className="relative w-14" element="h4">
               <span className="block w-14 overflow-hidden whitespace-nowrap transition-all duration-200 group-hover:w-0">
                 セカイ
               </span>
@@ -33,7 +33,7 @@ export function SiteHeader() {
             {routes.map((route) => {
               return (
                 <Link href={route.url} key={route.title}>
-                  <Typography element="h4" as="link">
+                  <Typography as="link" element="h4">
                     {t(`links.${route.title}`)}
                   </Typography>
                 </Link>
@@ -45,10 +45,10 @@ export function SiteHeader() {
         <div className="flex flex-1 items-center justify-end space-x-2">
           <nav className="flex items-center gap-2" suppressHydrationWarning>
             <Link
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noreferrer"
               className="hidden md:flex"
+              href={siteConfig.links.github}
+              rel="noreferrer"
+              target="_blank"
             >
               <div
                 className={cn(
@@ -64,10 +64,10 @@ export function SiteHeader() {
             </Link>
 
             <Link
-              href={siteConfig.links.linkedIn}
-              target="_blank"
-              rel="noreferrer"
               className="hidden md:flex"
+              href={siteConfig.links.linkedIn}
+              rel="noreferrer"
+              target="_blank"
             >
               <div
                 className={cn(
@@ -85,7 +85,7 @@ export function SiteHeader() {
             <ModeToggle />
             <LocaleSelector />
 
-            <Button size="sm" className="hidden md:flex">
+            <Button className="hidden md:flex" size="sm">
               {t('get-in-touch')}
             </Button>
 

@@ -66,8 +66,8 @@ export function Categories({
   return (
     <div className={cn('w-fit space-y-2', className)}>
       <RSelect
-        options={options}
         isMulti
+        options={options}
         value={valueIDs ? computedValues : undefined}
         {...props}
       />

@@ -26,7 +26,7 @@ function SkillsSection() {
         <div className="w-full ">
           <div className="mb-6 flex items-center gap-4 ">
             <Icons.logo className="h-9 w-9" />
-            <Typography element="h2" as="h2">
+            <Typography as="h2" element="h2">
               {t('skills.section-name')}
             </Typography>
           </div>
@@ -77,14 +77,14 @@ export function SkillsTypeSection({
   }, [sectionRef, isMobile]);
 
   return (
-    <div key={skillSection.type} className="space-y-4" ref={sectionRef}>
-      <Typography element="h3" as="h3">
+    <div className="space-y-4" key={skillSection.type} ref={sectionRef}>
+      <Typography as="h3" element="h3">
         {t(`skills.${skillSection.type}`)}
       </Typography>
 
       <div className="group/section grid gap-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
         {skillSection.items.map((skill) => (
-          <SkillCard key={skill.name['en-US']} item={skill} />
+          <SkillCard item={skill} key={skill.name['en-US']} />
         ))}
       </div>
     </div>
@@ -139,10 +139,10 @@ function SkillCard({
           <item.icon className="z-10 flex h-16 w-auto min-w-[4rem] max-w-full items-center justify-center place-self-center justify-self-center rounded-sm md:mt-auto" />
 
           <div className="me-auto mt-auto space-y-1">
-            <Typography element="h4" as="h4">
+            <Typography as="h4" element="h4">
               {item.name[locale]}
             </Typography>
-            <Typography element="p" as="mutedText" className="">
+            <Typography as="mutedText" className="" element="p">
               {item.description[locale]}
             </Typography>
           </div>

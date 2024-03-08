@@ -70,8 +70,8 @@ export function ProjectParallax() {
 
   return (
     <div
-      ref={ref}
       className="dark relative flex flex-col overflow-hidden bg-black py-40 antialiased [perspective:1000px] [transform-style:preserve-3d]"
+      ref={ref}
       style={{ height: `${projectRows.length * (isMobile ? 70 : 95)}vh` }}
     >
       <Header />
@@ -88,17 +88,17 @@ export function ProjectParallax() {
           const isOdd = index % 2 === 0;
           return (
             <motion.div
-              key={`project-row-${index}`}
               className={cn('mb-20 flex gap-10 space-x-reverse md:gap-20', {
                 'flex-row-reverse': isOdd,
               })}
+              key={`project-row-${index}`}
             >
               {row.map((project, projectIndex) => (
                 <AnimationProjectCard
-                  project={project}
-                  translate={isOdd ? translateXReverse : translateX}
                   key={project.id + projectIndex}
                   locale={locale}
+                  project={project}
+                  translate={isOdd ? translateXReverse : translateX}
                 />
               ))}
             </motion.div>
@@ -115,8 +115,8 @@ export function Header() {
   return (
     <div className="container relative inset-x-0 z-40 px-4 py-20 md:py-40">
       <Typography
-        element="h2"
         className="whitespace-nowrap text-[3rem] font-semibold leading-tight sm:text-6xl md:leading-normal"
+        element="h2"
       >
         {t('my-projects')}
       </Typography>
@@ -138,14 +138,14 @@ export function AnimationProjectCard({
 }) {
   return (
     <motion.div
+      className="group/product relative w-[25rem] flex-shrink-0 md:w-[35rem]"
+      key={project.id}
       style={{
         x: translate,
       }}
       whileHover={{
         y: -10,
       }}
-      key={project.id}
-      className="group/product relative w-[25rem] flex-shrink-0 md:w-[35rem]"
     >
       <ProjectCard locale={locale} project={project} />
     </motion.div>
@@ -163,23 +163,23 @@ export function ProjectCard({
 }) {
   return (
     <Link
-      href={`/projects/${project.id}`}
       className={cn('relative', className)}
+      href={`/projects/${project.id}`}
     >
       <Image
-        width={500}
-        src={project.image}
-        className="h-full w-full rounded-lg object-cover"
         alt={project.name[locale]}
+        className="h-full w-full rounded-lg object-cover"
+        src={project.image}
+        width={500}
       />
 
       <div className="absolute inset-0 z-10 flex h-full w-full items-end justify-between gap-2 bg-gradient-to-b from-transparent to-background p-4">
         <div className="flex flex-col items-start gap-2">
-          <Typography element="h4" as="h4">
+          <Typography as="h4" element="h4">
             {project.name[locale]}
           </Typography>
 
-          <Typography element="p" as="mutedText" className="line-clamp-2">
+          <Typography as="mutedText" className="line-clamp-2" element="p">
             {project.shortDescription[locale]}
           </Typography>
 

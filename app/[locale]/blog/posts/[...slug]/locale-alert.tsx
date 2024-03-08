@@ -48,14 +48,14 @@ export function LocaleAlert({
           </AlertDescription>
 
           <Link
-            href={`/blog/posts/${currentLocaleLocalization?.id ?? post.id}/${currentLocaleLocalization?.slug ?? post.slug}`}
             className="w-full"
+            href={`/blog/posts/${currentLocaleLocalization?.id ?? post.id}/${currentLocaleLocalization?.slug ?? post.slug}`}
           >
             <Button
-              variant="secondary"
+              className="mt-2 w-full"
               disabled={!currentLocaleLocalization}
               size="sm"
-              className="mt-2 w-full"
+              variant="secondary"
             >
               <Languages className="h-4 w-4" />
               {currentLocaleLocalization

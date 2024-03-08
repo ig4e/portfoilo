@@ -56,27 +56,27 @@ function ProjectPage({ params }: PageProps) {
           <div className="mx-auto flex max-w-3xl flex-col gap-4 overflow-x-hidden overflow-y-clip">
             <div className="mb-6 flex items-center gap-4">
               <Icons.logo className="h-9 w-9" />
-              <Typography element="h2" as="h2">
+              <Typography as="h2" element="h2">
                 {t('about-project')}
               </Typography>
             </div>
 
             <div>
-              <Typography element="h3" as="h3" className="">
+              <Typography as="h3" className="" element="h3">
                 {project.name[locale]}
               </Typography>
 
               <Typography
-                element="h4"
                 as="h6"
                 className="text-muted-foreground"
+                element="h4"
               >
                 {project.workArea[locale]}
               </Typography>
             </div>
 
             <div className="space-y-4">
-              <Typography element="p" className="leading-relaxed">
+              <Typography className="leading-relaxed" element="p">
                 {project.description[locale]}
               </Typography>
             </div>

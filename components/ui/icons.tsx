@@ -5,57 +5,57 @@ type IconProps = React.HTMLAttributes<SVGElement>;
 export const Icons = {
   logo: (props: IconProps) => (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 70.522 58.176"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
       className={cn(props.className, 'fill-current')}
     >
       <g
-        id="Group_1"
         data-name="Group 1"
+        id="Group_1"
         transform="translate(-1051.556 -540.677)"
       >
         <path
-          id="A"
           d="M51.194-16.25H42.4L31.9,1.936Q24.47,14.854,14.282,14.854a13.842,13.842,0,0,1-10.49-4.491A15.588,15.588,0,0,1-.444-.762,18.728,18.728,0,0,1,2.825-11.156a26.249,26.249,0,0,1,8.918-8.3,30.138,30.138,0,0,1,9.363-3.4,75.807,75.807,0,0,1,13.679-.984h2.349l2.507-4.6q5.237-9.617,12.791-12.822,4.856-2.063,12.7-2.063a5,5,0,0,1,3.142.889,2.959,2.959,0,0,1,1.143,2.476,4.863,4.863,0,0,1-.381,1.714l-.286.73L63.286-23.835h3.237q3.555,0,3.555,3.079a4.142,4.142,0,0,1-1.46,3.19,5.117,5.117,0,0,1-3.555,1.317H60.208L56.685-7.585h6q3.555,0,3.555,3.047a4.175,4.175,0,0,1-1.46,3.221A5.117,5.117,0,0,1,61.223,0H53.574a6.823,6.823,0,0,1-4.459-1.412,4.512,4.512,0,0,1-1.73-3.666,14.456,14.456,0,0,1,1.3-4.951Zm3.11-7.585L58.875-35.1a9.574,9.574,0,0,0-5.665,2.142,27.348,27.348,0,0,0-5.253,6.967l-1.3,2.158ZM32.786-16.25h-2.7q-9.077,0-14.409,3.364a17,17,0,0,0-5.411,5.4A12.261,12.261,0,0,0,8.252-.952a7.424,7.424,0,0,0,1.936,5.157,6.1,6.1,0,0,0,4.7,2.142q4.792,0,8.474-6.348Z"
+          id="A"
           transform="translate(1052 584)"
         />
         <circle
-          id="Ellipse_1"
-          data-name="Ellipse 1"
           cx="7.5"
           cy="7.5"
+          data-name="Ellipse 1"
+          fill="#e11d48"
+          id="Ellipse_1"
           r="7.5"
           transform="translate(1092 574)"
-          fill="#e11d48"
         />
       </g>
     </svg>
   ),
   shadcnui: (props: IconProps) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" {...props}>
-      <rect width="256" height="256" fill="none" />
+    <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <rect fill="none" height="256" width="256" />
       <line
-        x1="208"
-        y1="128"
-        x2="128"
-        y2="208"
         fill="none"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="16"
+        x1="208"
+        x2="128"
+        y1="128"
+        y2="208"
       />
       <line
-        x1="192"
-        y1="40"
-        x2="40"
-        y2="192"
         fill="none"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="16"
+        x1="192"
+        x2="40"
+        y1="40"
+        y2="192"
       />
     </svg>
   ),
@@ -73,13 +73,13 @@ export const Icons = {
   gitHub: (props: IconProps) => (
     <svg viewBox="0 0 438.549 438.549" {...props}>
       <path
-        fill="currentColor"
         d="M409.132 114.573c-19.608-33.596-46.205-60.194-79.798-79.8-33.598-19.607-70.277-29.408-110.063-29.408-39.781 0-76.472 9.804-110.063 29.408-33.596 19.605-60.192 46.204-79.8 79.8C9.803 148.168 0 184.854 0 224.63c0 47.78 13.94 90.745 41.827 128.906 27.884 38.164 63.906 64.572 108.063 79.227 5.14.954 8.945.283 11.419-1.996 2.475-2.282 3.711-5.14 3.711-8.562 0-.571-.049-5.708-.144-15.417a2549.81 2549.81 0 01-.144-25.406l-6.567 1.136c-4.187.767-9.469 1.092-15.846 1-6.374-.089-12.991-.757-19.842-1.999-6.854-1.231-13.229-4.086-19.13-8.559-5.898-4.473-10.085-10.328-12.56-17.556l-2.855-6.57c-1.903-4.374-4.899-9.233-8.992-14.559-4.093-5.331-8.232-8.945-12.419-10.848l-1.999-1.431c-1.332-.951-2.568-2.098-3.711-3.429-1.142-1.331-1.997-2.663-2.568-3.997-.572-1.335-.098-2.43 1.427-3.289 1.525-.859 4.281-1.276 8.28-1.276l5.708.853c3.807.763 8.516 3.042 14.133 6.851 5.614 3.806 10.229 8.754 13.846 14.842 4.38 7.806 9.657 13.754 15.846 17.847 6.184 4.093 12.419 6.136 18.699 6.136 6.28 0 11.704-.476 16.274-1.423 4.565-.952 8.848-2.383 12.847-4.285 1.713-12.758 6.377-22.559 13.988-29.41-10.848-1.14-20.601-2.857-29.264-5.14-8.658-2.286-17.605-5.996-26.835-11.14-9.235-5.137-16.896-11.516-22.985-19.126-6.09-7.614-11.088-17.61-14.987-29.979-3.901-12.374-5.852-26.648-5.852-42.826 0-23.035 7.52-42.637 22.557-58.817-7.044-17.318-6.379-36.732 1.997-58.24 5.52-1.715 13.706-.428 24.554 3.853 10.85 4.283 18.794 7.952 23.84 10.994 5.046 3.041 9.089 5.618 12.135 7.708 17.705-4.947 35.976-7.421 54.818-7.421s37.117 2.474 54.823 7.421l10.849-6.849c7.419-4.57 16.18-8.758 26.262-12.565 10.088-3.805 17.802-4.853 23.134-3.138 8.562 21.509 9.325 40.922 2.279 58.24 15.036 16.18 22.559 35.787 22.559 58.817 0 16.178-1.958 30.497-5.853 42.966-3.9 12.471-8.941 22.457-15.125 29.979-6.191 7.521-13.901 13.85-23.131 18.986-9.232 5.14-18.182 8.85-26.84 11.136-8.662 2.286-18.415 4.004-29.263 5.146 9.894 8.562 14.842 22.077 14.842 40.539v60.237c0 3.422 1.19 6.279 3.572 8.562 2.379 2.279 6.136 2.95 11.276 1.995 44.163-14.653 80.185-41.062 108.068-79.226 27.88-38.161 41.825-81.126 41.825-128.906-.01-39.771-9.818-76.454-29.414-110.049z"
+        fill="currentColor"
       />
     </svg>
   ),
   radix: (props: IconProps) => (
-    <svg viewBox="0 0 25 25" fill="none" {...props}>
+    <svg fill="none" viewBox="0 0 25 25" {...props}>
       <path
         d="M12 25C7.58173 25 4 21.4183 4 17C4 12.5817 7.58173 9 12 9V25Z"
         fill="currentcolor"
@@ -92,7 +92,7 @@ export const Icons = {
     </svg>
   ),
   aria: (props: IconProps) => (
-    <svg role="img" viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <svg fill="currentColor" role="img" viewBox="0 0 24 24" {...props}>
       <path d="M13.966 22.624l-1.69-4.281H8.122l3.892-9.144 5.662 13.425zM8.884 1.376H0v21.248zm15.116 0h-8.884L24 22.624Z" />
     </svg>
   ),
@@ -138,19 +138,19 @@ export const Icons = {
   ),
   prisma: (props: IconProps) => (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="22.081"
       height="27.09"
       viewBox="0 0 22.081 27.09"
+      width="22.081"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
       className={cn(props.className, 'fill-current')}
     >
       <path
-        id="Path_2"
-        data-name="Path 2"
         d="M.21,19.007A1.349,1.349,0,0,1,.2,17.58L10.328,1.057A1.349,1.349,0,0,1,12.7,1.2l9.254,20.073a1.349,1.349,0,0,1-.837,1.857L6.725,27.446a1.349,1.349,0,0,1-1.527-.57ZM11.5,5.888a.506.506,0,0,1,.96-.1l6.383,14.77a.506.506,0,0,1-.32.685L8.575,24.211a.506.506,0,0,1-.641-.584Z"
-        transform="translate(0 -0.413)"
+        data-name="Path 2"
         fillRule="evenodd"
+        id="Path_2"
+        transform="translate(0 -0.413)"
       />
     </svg>
   ),
@@ -165,16 +165,16 @@ export const Icons = {
         data-v-e9cb7cd5=""
       />
       <path
-        fill="#3B3939"
         d="M78.8,10L64,35.4L49.2,10H25.6L64,76l38.4-66H78.8z"
         data-v-e9cb7cd5=""
+        fill="#3B3939"
       />
     </svg>
   ),
   html: (props: IconProps) => (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 128 128"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
       className={cn(props.className, 'fill-current')}
     >
@@ -183,8 +183,8 @@ export const Icons = {
   ),
   css: (props: IconProps) => (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 128 128"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
       className={cn(props.className, 'fill-current')}
     >
@@ -193,8 +193,8 @@ export const Icons = {
   ),
   graphql: (props: IconProps) => (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 128 128"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
       className={cn(props.className, 'fill-current')}
     >
@@ -212,8 +212,8 @@ export const Icons = {
   ),
   js: (props: IconProps) => (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 128 128"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
       className={cn(props.className, 'fill-current')}
     >
@@ -222,8 +222,8 @@ export const Icons = {
   ),
   py: (props: IconProps) => (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 128 128"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
       className={cn(props.className, 'fill-current')}
     >
@@ -232,22 +232,22 @@ export const Icons = {
   ),
   mongodb: (props: IconProps) => (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 128 128"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
       className={cn(props.className, 'fill-current')}
     >
       <path
-        fillRule="evenodd"
         clipRule="evenodd"
         d="M90.491 57.282c-.37-4.79-1.496-9.409-3.062-13.934-3.244-10.104-8.45-19.046-15.783-26.74-1.854-1.946-3.916-3.729-5.209-6.151-.818-1.532-1.597-3.085-2.394-4.629l-.505-1.273c-.085.292-.139.396-.142.501-.065 2.517-1.491 4.224-3.267 5.817-1.997 1.793-3.856 3.739-5.775 5.618l-5.901 7.763c-1.592 2.925-3.182 5.85-4.772 8.775l-3.19 8.617-.096.134c-1.756 5.768-2.622 11.698-3.048 17.688-.16 2.251.022 4.535.149 6.798.181 3.235.743 6.415 1.586 9.545 3.062 11.372 9.276 20.805 17.771 28.819 1.579 1.489 3.199 2.843 4.847 4.26.282-.965.507-1.93.763-2.895.256-.961.515-1.917.688-2.881-.174.964-.369 1.92-.562 2.881l-.826 2.895.738 2.501.684 3.884.326 4.053c-.003.823-.036 1.648.014 2.47.012.21.288.404.442.606l1.376.483 1.434.558-.246-3.603-.011-3.548.495-5.405.359-1.177 1.027-1.82c1.268-1.02 2.629-1.946 3.784-3.081 2.09-2.054 4.175-4.134 6.045-6.383a47.846 47.846 0 006.191-9.516c1.122-2.284 2.178-4.614 3.052-7.001.77-2.104 1.247-4.315 1.854-6.479.054-.156.126-.309.16-.468 1.254-5.841 1.465-11.741 1.004-17.682zm-23.599 49.375l-.805-1.763.805 1.763 1.183 1.01-1.183-1.01z"
+        fillRule="evenodd"
       />
     </svg>
   ),
   figma: (props: IconProps) => (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 128 128"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
       className={cn(props.className, 'fill-current')}
     >
@@ -256,8 +256,8 @@ export const Icons = {
   ),
   adobeXd: (props: IconProps) => (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 128 128"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
       className={cn(props.className, 'fill-current')}
     >
@@ -266,41 +266,41 @@ export const Icons = {
   ),
   vsc: (props: IconProps) => (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 100.061 99.484"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
       className={cn(props.className, 'fill-current')}
     >
-      <g id="Group_5" data-name="Group 5" transform="translate(0.061 -0.258)">
+      <g data-name="Group 5" id="Group_5" transform="translate(0.061 -0.258)">
         <path
-          id="Path_3"
-          data-name="Path 3"
           d="M96.461,10.8,75.857.876A6.229,6.229,0,0,0,68.75,2.083L1.3,63.583a4.167,4.167,0,0,0,0,6.162l5.51,5.009a4.167,4.167,0,0,0,5.321.237L93.361,13.37a4.138,4.138,0,0,1,6.639,3.3v-.239A6.25,6.25,0,0,0,96.461,10.8Z"
+          data-name="Path 3"
           fill="#e4e4e4"
+          id="Path_3"
         />
-        <g id="Group_2" data-name="Group 2">
+        <g data-name="Group 2" id="Group_2">
           <path
-            id="Path_4"
-            data-name="Path 4"
             d="M96.461,89.2l-20.6,9.921a6.229,6.229,0,0,1-7.107-1.208L1.3,36.417a4.167,4.167,0,0,1,0-6.162l5.51-5.009a4.167,4.167,0,0,1,5.321-.236L93.361,86.63a4.138,4.138,0,0,0,6.639-3.3v.239A6.25,6.25,0,0,1,96.461,89.2Z"
+            data-name="Path 4"
             fill="#ececec"
+            id="Path_4"
           />
         </g>
-        <g id="Group_3" data-name="Group 3">
+        <g data-name="Group 3" id="Group_3">
           <path
-            id="Path_5"
-            data-name="Path 5"
             d="M75.858,99.126a6.232,6.232,0,0,1-7.108-1.21A3.661,3.661,0,0,0,75,95.328V4.672a3.661,3.661,0,0,0-6.25-2.589A6.232,6.232,0,0,1,75.858.874l20.6,9.907A6.25,6.25,0,0,1,100,16.413V83.587a6.25,6.25,0,0,1-3.541,5.632Z"
+            data-name="Path 5"
             fill="#fff"
+            id="Path_5"
           />
         </g>
-        <g id="Group_4" data-name="Group 4" opacity="0.25">
+        <g data-name="Group 4" id="Group_4" opacity="0.25">
           <path
-            id="Path_6"
-            data-name="Path 6"
             d="M70.851,99.317a6.224,6.224,0,0,0,4.961-.191L96.4,89.22a6.25,6.25,0,0,0,3.539-5.633V16.413A6.25,6.25,0,0,0,96.4,10.781L75.812.874a6.223,6.223,0,0,0-7.1,1.21L29.294,38.041,12.126,25.01a4.162,4.162,0,0,0-5.318.236L1.3,30.255a4.168,4.168,0,0,0,0,6.162L16.186,50,1.3,63.583a4.168,4.168,0,0,0,0,6.162l5.506,5.009a4.162,4.162,0,0,0,5.318.237L29.294,61.959,68.708,97.917A6.218,6.218,0,0,0,70.851,99.317Zm4.1-72.018L45.048,50,74.954,72.7Z"
+            data-name="Path 6"
             fill="#fff"
             fillRule="evenodd"
+            id="Path_6"
           />
         </g>
       </g>
@@ -308,8 +308,8 @@ export const Icons = {
   ),
   git: (props: IconProps) => (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 128 128"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
       className={cn(props.className, 'fill-current')}
     >
@@ -318,8 +318,8 @@ export const Icons = {
   ),
   ts: (props: IconProps) => (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 128 128"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
       className={cn(props.className, 'fill-current')}
     >
@@ -328,12 +328,12 @@ export const Icons = {
   ),
   svelte: (props: IconProps) => (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      version="1.1"
       id="Layer_1"
-      x="0px"
-      y="0px"
+      version="1.1"
       viewBox="0 0 98.1 118"
+      x="0px"
+      xmlns="http://www.w3.org/2000/svg"
+      y="0px"
       {...props}
     >
       <path
@@ -370,22 +370,22 @@ export const Icons = {
   ),
   nuxt: (props: IconProps) => (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 300 200"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
       className={cn(props.className, 'fill-current')}
     >
       <path
-        id="Path_1"
-        data-name="Path 1"
         d="M168,200H279a20.324,20.324,0,0,0,10-3c3.068-1.756,6.23-3.959,8-7a18.165,18.165,0,0,0,0-20L222,41a18.236,18.236,0,0,0-7-7,24.172,24.172,0,0,0-11-3,20.33,20.33,0,0,0-10,3,18.236,18.236,0,0,0-7,7L168,74,130,10c-1.772-3.04-3.932-6.243-7-8s-6.458-2-10-2-6.932.245-10,2a23.715,23.715,0,0,0-8,8L2,170c-1.773,3.039-2,6.487-2,10s.23,6.96,2,10,4.932,5.244,8,7a20.322,20.322,0,0,0,10,3H90c27.737,0,47.925-12.442,62-36l34-59,18-31,55,94H186ZM89,168H40L113,42l37,63-24.509,42.725C116.144,163.01,105.488,168,89,168Z"
+        data-name="Path 1"
+        id="Path_1"
       />
     </svg>
   ),
   express: (props: IconProps) => (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 32 32"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
       className={cn(props.className, 'fill-current')}
     >
@@ -394,8 +394,8 @@ export const Icons = {
   ),
   nest: (props: IconProps) => (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 264.58333 255.58751"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
       className={cn(props.className, 'fill-current')}
     >
@@ -410,8 +410,8 @@ export const Icons = {
   google: (props: IconProps) => (
     <svg role="img" viewBox="0 0 24 24" {...props}>
       <path
-        fill="currentColor"
         d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"
+        fill="currentColor"
       />
     </svg>
   ),
@@ -433,15 +433,15 @@ export const Icons = {
   ),
   spinner: (props: IconProps) => (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
       fill="none"
+      height="24"
       stroke="currentColor"
-      strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
       <path d="M21 12a9 9 0 1 1-6.219-8.56" />
@@ -450,17 +450,17 @@ export const Icons = {
 
   md: (props: IconProps) => (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 208 128"
+      aria-hidden="true"
       fill="currentColor"
       stroke="currentColor"
-      aria-hidden="true"
+      viewBox="0 0 208 128"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
       <path
+        d="M15,5h178c5.523,0,10,4.477,10,10v98c0,5.523-4.477,10-10,10H15  c-5.523,0-10-4.477-10-10V15C5,9.477,9.477,5,15,5z"
         fill="none"
         strokeWidth="10"
-        d="M15,5h178c5.523,0,10,4.477,10,10v98c0,5.523-4.477,10-10,10H15  c-5.523,0-10-4.477-10-10V15C5,9.477,9.477,5,15,5z"
       />
       <path d="M30,98V30h20l20,25l20-25h20v68H90V59L70,84L50,59v39H30z M155,98l-30-33h20V30h20v35h20L155,98z" />
     </svg>
@@ -468,11 +468,11 @@ export const Icons = {
 
   nextra: (props: IconProps) => (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 70 70"
+      aria-hidden="true"
       fill="currentColor"
       stroke="currentColor"
-      aria-hidden="true"
+      viewBox="0 0 70 70"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
       <path
@@ -486,32 +486,32 @@ export const Icons = {
 
   trpc: (props: IconProps) => (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 512 512"
+      aria-hidden="true"
       fill="currentColor"
       stroke="currentColor"
-      aria-hidden="true"
+      viewBox="0 0 512 512"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
       <rect
-        width="512"
+        className="text-secondary"
+        fill="currentColor"
         height="512"
         rx="150"
-        fill="currentColor"
-        className="text-secondary"
+        width="512"
       />
       <path
-        fillRule="evenodd"
         clipRule="evenodd"
         d="M255.446 75L326.523 116.008V138.556L412.554 188.238V273.224L435.631 286.546V368.608L364.6 409.615L333.065 391.378L256.392 435.646L180.178 391.634L149.085 409.615L78.0538 368.538V286.546L100.231 273.743V188.238L184.415 139.638L184.462 139.636V116.008L255.446 75ZM326.523 159.879V198.023L255.492 239.031L184.462 198.023V160.936L184.415 160.938L118.692 198.9V263.084L149.085 245.538L220.115 286.546V368.538L198.626 380.965L256.392 414.323L314.618 380.712L293.569 368.538V286.546L364.6 245.538L394.092 262.565V198.9L326.523 159.879ZM312.031 357.969V307.915L355.369 332.931V382.985L312.031 357.969ZM417.169 307.846L373.831 332.862V382.985L417.169 357.9V307.846ZM96.5154 357.9V307.846L139.854 332.862V382.915L96.5154 357.9ZM201.654 307.846L158.315 332.862V382.915L201.654 357.9V307.846ZM321.262 291.923L364.6 266.908L407.938 291.923L364.6 316.962L321.262 291.923ZM149.085 266.838L105.746 291.923L149.085 316.892L192.423 291.923L149.085 266.838ZM202.923 187.362V137.308L246.215 162.346V212.377L202.923 187.362ZM308.015 137.308L264.723 162.346V212.354L308.015 187.362V137.308ZM212.154 121.338L255.446 96.3231L298.785 121.338L255.446 146.354L212.154 121.338Z"
+        fillRule="evenodd"
       />
     </svg>
   ),
 
   postman: (props: IconProps) => (
     <svg
-      viewBox="0 0 32 32"
       fill="none"
+      viewBox="0 0 32 32"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
@@ -564,39 +564,39 @@ export const Icons = {
 
   strapi: (props: IconProps) => (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 32 32"
+      aria-hidden="true"
       fill="currentColor"
       stroke="currentColor"
-      aria-hidden="true"
+      viewBox="0 0 32 32"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <rect y="0.299805" width="31.6997" height="31.6997" rx="5.65311" />
+      <rect height="31.6997" rx="5.65311" width="31.6997" y="0.299805" />
       <g className="text-secondary">
         <path
-          fillRule="evenodd"
           clipRule="evenodd"
           d="M21.9792 9.8623H11.1619V15.2656H16.576C16.6632 15.2656 16.734 15.3364 16.734 15.4236V20.8374H22.1372V10.0203C22.1372 9.93305 22.0665 9.8623 21.9792 9.8623Z"
           fill="currentColor"
+          fillRule="evenodd"
         />
         <path
-          opacity="0.42"
-          fillRule="evenodd"
           clipRule="evenodd"
           d="M11.1629 9.86218V15.2653H5.95038C5.87999 15.2653 5.84474 15.1802 5.89452 15.1304L11.1629 9.86218Z"
           fill="currentColor"
+          fillRule="evenodd"
+          opacity="0.42"
         />
         <path
-          opacity="0.42"
-          fillRule="evenodd"
           clipRule="evenodd"
           d="M16.8694 26.1055C16.8197 26.1553 16.7346 26.12 16.7346 26.0496V20.8372H22.1378L16.8694 26.1055Z"
           fill="currentColor"
+          fillRule="evenodd"
+          opacity="0.42"
         />
         <path
-          opacity="0.42"
           d="M11.1642 15.2655H16.6573C16.7009 15.2655 16.7363 15.3009 16.7363 15.3445V20.8375H11.3222C11.2349 20.8375 11.1642 20.7667 11.1642 20.6794V15.2655Z"
           fill="currentColor"
+          opacity="0.42"
         />
       </g>
     </svg>
@@ -604,22 +604,22 @@ export const Icons = {
 
   authjs: (props: IconProps) => (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 20 20"
+      aria-hidden="true"
       fill="currentColor"
       stroke="currentColor"
-      aria-hidden="true"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
       <path d="M3.71875 3.92972C5.62789 3.36733 8.45568 2.52411 9.64828 2.16812C10.0173 2.05797 10.4075 2.05711 10.7771 2.16533C11.926 2.50173 14.5984 3.28783 16.6648 3.92349C17.0828 4.05209 17.3679 4.44593 17.3575 4.88319C17.1188 14.9867 12.0196 17.4105 10.5842 17.8936C10.3388 17.9762 10.0837 17.9764 9.83802 17.8945C8.39567 17.4137 3.25421 14.9951 3.00907 4.89714C2.9983 4.45317 3.29276 4.05521 3.71875 3.92972Z" />
       <mask
+        height="16"
         id="mask0_156_252"
-        style={{ maskType: 'alpha' }}
         maskUnits="userSpaceOnUse"
+        style={{ maskType: 'alpha' }}
+        width="15"
         x="3"
         y="2"
-        width="15"
-        height="16"
       >
         <path d="M3.71875 3.92972C5.62789 3.36733 8.45568 2.52411 9.64828 2.16812C10.0173 2.05797 10.4075 2.05711 10.7771 2.16533C11.926 2.50173 14.5984 3.28783 16.6648 3.92349C17.0828 4.05209 17.3679 4.44593 17.3575 4.88319C17.1188 14.9867 12.0196 17.4105 10.5842 17.8936C10.3388 17.9762 10.0837 17.9764 9.83802 17.8945C8.39567 17.4137 3.25421 14.9951 3.00907 4.89714C2.9983 4.45317 3.29276 4.05521 3.71875 3.92972Z" />
       </mask>
@@ -628,10 +628,10 @@ export const Icons = {
 
   linkedIn: (props: IconProps) => (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="currentColor"
       aria-hidden="true"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
       <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z" />

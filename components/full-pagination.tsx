@@ -28,10 +28,10 @@ export function FullPagination({ ...props }: PaginationParams) {
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious
+            name={t('previous')}
             onClick={() => {
               pagination.previous();
             }}
-            name={t('previous')}
           />
         </PaginationItem>
         {pagination.range.map((page) => {
@@ -45,10 +45,10 @@ export function FullPagination({ ...props }: PaginationParams) {
           return (
             <PaginationItem key={page}>
               <PaginationLink
+                isActive={pagination.active === page}
                 onClick={() => {
                   pagination.setPage(page);
                 }}
-                isActive={pagination.active === page}
               >
                 {page}
               </PaginationLink>
@@ -57,10 +57,10 @@ export function FullPagination({ ...props }: PaginationParams) {
         })}
         <PaginationItem>
           <PaginationNext
+            name={t('next')}
             onClick={() => {
               pagination.next();
             }}
-            name={t('next')}
           />
         </PaginationItem>
       </PaginationContent>

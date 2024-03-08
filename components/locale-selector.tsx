@@ -40,7 +40,7 @@ export function LocaleSelector() {
     return (
       <Drawer>
         <DrawerTrigger asChild>
-          <Button variant="ghost" size="icon">
+          <Button size="icon" variant="ghost">
             <LanguagesIcon className="h-[1.2rem] w-[1.2rem]" />
             <span className="sr-only">{t('locale-select')}</span>
           </Button>
@@ -54,12 +54,12 @@ export function LocaleSelector() {
             {locales.map((locale) => {
               return (
                 <Button
-                  key={locale}
-                  variant="secondary"
                   className="w-full"
+                  key={locale}
                   onClick={() => {
                     setLocale(locale);
                   }}
+                  variant="secondary"
                 >
                   {t(locale)}
                 </Button>
@@ -69,7 +69,7 @@ export function LocaleSelector() {
 
           <DrawerFooter>
             <DrawerClose>
-              <Button variant="outline" className="w-full">
+              <Button className="w-full" variant="outline">
                 {tModals('cancel')}
               </Button>
             </DrawerClose>
@@ -81,7 +81,7 @@ export function LocaleSelector() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon">
+        <Button size="icon" variant="ghost">
           <LanguagesIcon className="h-[1.2rem] w-[1.2rem]" />
           <span className="sr-only">{t('locale-select')}</span>
         </Button>

@@ -26,31 +26,31 @@ export default function Home({
         <div className="mx-auto flex min-h-[40vh] max-w-3xl flex-col gap-4 overflow-x-hidden overflow-y-clip">
           <div className="mb-6 flex items-center gap-4">
             <Icons.logo className="h-9 w-9" />
-            <Typography element="h2" as="h2">
+            <Typography as="h2" element="h2">
               {t('about-me.section-name')}
             </Typography>
           </div>
 
           <div>
-            <Typography element="h3" as="h3" className="">
+            <Typography as="h3" className="" element="h3">
               {t('about-me.name')}
             </Typography>
 
-            <Typography element="h4" as="h6" className="text-muted-foreground">
+            <Typography as="h6" className="text-muted-foreground" element="h4">
               {t('about-me.title')}
             </Typography>
           </div>
 
           <div className="space-y-4">
-            <Typography element="p" className="leading-relaxed">
+            <Typography className="leading-relaxed" element="p">
               {t('about-me.my-start')}
             </Typography>
 
-            <Typography element="p" className="leading-relaxed">
+            <Typography className="leading-relaxed" element="p">
               {t('about-me.my-foucs')}
             </Typography>
 
-            <Typography element="p" className="leading-relaxed">
+            <Typography className="leading-relaxed" element="p">
               {t('about-me.my-life')}
             </Typography>
           </div>

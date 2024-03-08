@@ -15,9 +15,9 @@ function SiteFooter() {
     <header className="z-50 w-full border-b border-border/40 bg-background/95 py-4 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex max-w-screen-2xl items-center">
         <div className="flex flex-col gap-2">
-          <Link href="/" className="group flex items-center gap-2">
+          <Link className="group flex items-center gap-2" href="/">
             <Icons.logo className="h-8 w-8" />
-            <Typography element="h4" as="h5" className="relative">
+            <Typography as="h5" className="relative" element="h4">
               <span className="block whitespace-nowrap group-hover:hidden">
                 セカイ
               </span>
@@ -26,7 +26,7 @@ function SiteFooter() {
           </Link>
 
           <div className=" flex items-center gap-4">
-            <Typography element="h4" as="mutedText">
+            <Typography as="mutedText" element="h4">
               Copyright © 2024 Ahmed Mohamed.
             </Typography>
           </div>
@@ -35,10 +35,10 @@ function SiteFooter() {
         <div className="flex flex-1 items-center justify-end space-x-2">
           <nav className="flex items-center gap-2" suppressHydrationWarning>
             <Link
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noreferrer"
               className="hidden md:flex"
+              href={siteConfig.links.github}
+              rel="noreferrer"
+              target="_blank"
             >
               <div
                 className={cn(
@@ -54,10 +54,10 @@ function SiteFooter() {
             </Link>
 
             <Link
-              href={siteConfig.links.linkedIn}
-              target="_blank"
-              rel="noreferrer"
               className="hidden md:flex"
+              href={siteConfig.links.linkedIn}
+              rel="noreferrer"
+              target="_blank"
             >
               <div
                 className={cn(

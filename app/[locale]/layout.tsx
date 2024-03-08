@@ -66,7 +66,7 @@ export default function RootLayout({
   const dir = locale === 'ar-EG' ? 'rtl' : 'ltr';
 
   return (
-    <html lang={locale} dir={dir}>
+    <html dir={dir} lang={locale}>
       <DirectionProvider dir={dir}>
         <body
           className={cn(
@@ -78,8 +78,8 @@ export default function RootLayout({
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
-            enableSystem
             disableTransitionOnChange
+            enableSystem
           >
             <ApolloWrapper>
               <NextIntlClientProvider messages={messages}>
@@ -96,10 +96,10 @@ export default function RootLayout({
       </DirectionProvider>
 
       <Script
-        strategy="afterInteractive"
+        data-website-id="5e7d095f-b63e-49a5-b4b5-9bbe5f60c764"
         defer
         src="https://eu.umami.is/script.js"
-        data-website-id="5e7d095f-b63e-49a5-b4b5-9bbe5f60c764"
+        strategy="afterInteractive"
       />
     </html>
   );
