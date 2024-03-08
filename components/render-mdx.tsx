@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call  -- TODO FIX MDX TYPES */
+ 
 /* eslint-disable @typescript-eslint/no-unsafe-member-access -- TODO FIX MDX TYPES */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment  -- TODO FIX MDX TYPES */
 import { MDXRemote } from 'next-mdx-remote/rsc';
