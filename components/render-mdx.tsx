@@ -26,7 +26,7 @@ function RenderMDX({ source }: { source: string }) {
             [
               rehypeAutolinkHeadings,
               {
-                behavior: 'prepend',
+                behavior: 'wrap',
                 properties: {
                   ariaHidden: true,
                   tabIndex: -1,
