@@ -73,6 +73,8 @@
     "my-blog": "My Blog",
     "description": "This blog serves as a repository for my writings, covering a spectrum from professional insights to personal anecdotes and anything in between",
     "toc": "On this page",
+    "written-by": "Written by",
+    "categories": "Categories",
     "search": "Search",
     "fillters": {
       "categories": "Categories"

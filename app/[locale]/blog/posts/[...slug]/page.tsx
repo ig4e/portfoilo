@@ -7,29 +7,32 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment  -- TODO FIX MDX TYPES  */
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain  -- TODO FIX MDX TYPES  */
 
-import { AtSign, Clock } from 'lucide-react';
 import type { Metadata } from 'next';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { ClockIcon } from '@radix-ui/react-icons';
+import { AtSign } from 'lucide-react';
 import Image from 'next/image';
 import { gql } from '@/_generated';
 import { GenericHero } from '@/components/generic-hero';
 import { RenderMDX } from '@/components/render-mdx';
-import { Typography } from '@/components/typography';
+import type { Locale } from '@/config/i18n';
+import { getClient } from '@/lib/apollo';
+import { getTableOfContents } from '@/server/get-toc';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Typography } from '@/components/typography';
+import { calculateRT, toLocaleDateString } from '@/lib/utils';
+import { Link } from '@/lib/navigation';
 import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import type { Locale } from '@/config/i18n';
-import { getClient } from '@/lib/apollo';
-import { Link } from '@/lib/navigation';
-import { calculateRT, toLocaleDateString } from '@/lib/utils';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
+import { TOCItems } from './toc';
 import { LocaleAlert } from './locale-alert';
-import { Toc } from './toc';
 
 interface PostPageProps {
   params: {
@@ -38,7 +41,7 @@ interface PostPageProps {
   };
 }
 
-//export const fetchCache = 'force-no-store';
+export const fetchCache = 'force-no-store';
 
 const POST_QUERY = gql(`query Post($postId: ID) {
     post(id: $postId) {
@@ -49,6 +52,7 @@ const POST_QUERY = gql(`query Post($postId: ID) {
             data {
               id
               attributes {
+                title
                 name
                 image {
                   data {
@@ -76,6 +80,8 @@ const POST_QUERY = gql(`query Post($postId: ID) {
             data {
               attributes {
                 url
+                width
+                height
               }
             }
           }
@@ -192,15 +198,20 @@ async function Post({
       postId: id,
     },
   });
-
+  const toc = await getTableOfContents(post?.data?.attributes?.body!);
   const postData = {
     id: post?.data?.id!,
     title: post?.data?.attributes?.title!,
     description: post?.data?.attributes?.description!,
     body: post?.data?.attributes?.body!,
-    image: post?.data?.attributes?.image.data?.attributes?.url!,
+    image: {
+      url: post?.data?.attributes?.image?.data?.attributes?.url!,
+      width: post?.data?.attributes?.image?.data?.attributes?.width!,
+      height: post?.data?.attributes?.image?.data?.attributes?.height!,
+    },
     author: {
       name: post?.data?.attributes?.author?.data?.attributes!.name!,
+      title: post?.data?.attributes?.author?.data?.attributes!.title!,
       image:
         post?.data?.attributes?.author?.data?.attributes!.image?.data
           ?.attributes?.url!,
@@ -233,97 +244,125 @@ async function Post({
         title={postData.title}
       />
 
-      <div className="rounded-md bg-background/60 p-4 py-8 backdrop-blur-3xl md:flex md:gap-4">
-        <div className="mx-auto max-w-4xl space-y-8">
+      <div className="relative justify-between rounded-md bg-background/60 px-3 py-8 backdrop-blur-3xl md:px-4 lg:flex">
+        <article className="lg:w-[70%] lg:ps-8">
           {postData ? (
-            <LocaleAlert
-              localizations={postData.localizations}
-              post={{
-                id: postData.id,
-                locale: postData.locale,
-                slug: postData.slug,
-              }}
-            />
-          ) : null}
-
-          <div className="flex items-center gap-4">
-            <Avatar className="h-20 w-20">
-              <AvatarImage src={postData.author.image} />
-              <AvatarFallback className="text-lg font-semibold uppercase">
-                {postData.author.name.slice(0, 2)}
-              </AvatarFallback>
-            </Avatar>
-
-            <div className="space-y-1">
-              <Typography as="h4" element="h4">
-                {postData.author.name}
-              </Typography>
-
-              <Typography
-                as="mutedText"
-                className="flex items-center gap-1"
-                element="h4"
-              >
-                <Clock className="h-4 w-4" />
-                {t('rt', {
-                  count: calculateRT(postData.body),
-                })}
-              </Typography>
-
-              <Typography
-                as="mutedText"
-                className="flex items-center gap-1"
-                element="h4"
-              >
-                <AtSign className="h-4 w-4" />
-                {toLocaleDateString(postData.postedAt)}
-              </Typography>
-            </div>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {postData.categories.map((category) => {
-              return (
-                <Link
-                  href={`/blog?categories=${category.id}`}
-                  key={category.id}
-                >
-                  <TooltipProvider key={category.id}>
-                    <Tooltip key={category.id}>
-                      <TooltipTrigger>
-                        <Badge className="text-base" variant="secondary">
-                          {category.name}
-                        </Badge>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>{category.description}</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Link>
-              );
-            })}
-          </div>
-          <Separator />
-          <Image
-            alt={postData.title}
-            className="h-auto w-full rounded-md object-cover"
-            height={1000}
-            src={postData.image}
-            width={1000}
-          />
-          <div className="prose prose-stone max-w-3xl dark:prose-invert">
-            {post?.data?.attributes?.body ? (
-              <RenderMDX
-                source={postData.body}
-                sourceLocale={postData.locale}
+            <>
+              <LocaleAlert
+                localizations={postData.localizations}
+                post={{
+                  id: postData.id,
+                  locale: postData.locale,
+                  slug: postData.slug,
+                }}
               />
-            ) : null}
-          </div>
-        </div>
 
-        <div className="sticky top-20 hidden h-full w-full max-w-80 rounded-md border bg-accent/50 p-2 md:block">
-          <Toc />
-        </div>
+              <AspectRatio
+                ratio={postData.image?.width / postData.image?.height}
+              >
+                <div className="h-full w-full overflow-hidden rounded-md p-0.5">
+                  <Image
+                    alt={postData.title}
+                    className="h-full w-full rounded-md bg-accent object-fill"
+                    height={postData.image.height}
+                    priority
+                    src={postData.image?.url}
+                    width={postData.image.width}
+                  />
+                </div>
+              </AspectRatio>
+              <div className="prose prose-stone mt-4 max-w-3xl dark:prose-invert">
+                <RenderMDX source={postData.body} />
+              </div>
+            </>
+          ) : null}
+        </article>
+
+        <aside className="sticky top-20 mt-6 h-full self-start border-t pb-8 pt-5 md:min-h-screen lg:mt-0 lg:w-3/12 lg:border-s lg:border-t-0 lg:ps-[4.16%]">
+          <ScrollArea>
+            <div className="space-y-4">
+              <div className="space-y-4 border-b pb-4">
+                <Typography as="mutedText" element="span">
+                  {t('written-by')}
+                </Typography>
+                <div className="flex items-center gap-3">
+                  <Avatar className="h-12 w-12">
+                    <AvatarImage src={postData.author.image} />
+                    <AvatarFallback className="text-lg font-semibold uppercase">
+                      {postData.author.name.slice(0, 2)}
+                    </AvatarFallback>
+                  </Avatar>
+
+                  <div>
+                    <Typography as="h5" element="h5">
+                      {postData.author.name}
+                    </Typography>
+                    <Typography
+                      as="mutedText"
+                      className="flex max-w-fit items-center gap-1 text-ellipsis whitespace-nowrap"
+                      element="h6"
+                    >
+                      {postData.author.title}
+                    </Typography>
+                  </div>
+                </div>
+
+                <div>
+                  <Typography
+                    as="mutedText"
+                    className="flex items-center gap-1"
+                    element="h6"
+                  >
+                    <AtSign className="h-3 w-3" />
+                    {toLocaleDateString(postData.postedAt)}
+                  </Typography>
+                  <Typography
+                    as="mutedText"
+                    className="flex items-center gap-1"
+                    element="h6"
+                  >
+                    <ClockIcon className="h-3 w-3" />
+                    {t('rt', {
+                      count: calculateRT(postData.body),
+                    })}
+                  </Typography>
+                </div>
+              </div>
+
+              <div className="space-y-4 border-b pb-4">
+                <Typography as="mutedText" element="span">
+                  {t('categories')}
+                </Typography>
+
+                <div className="flex flex-wrap gap-2">
+                  {postData.categories.map((category) => {
+                    return (
+                      <Link
+                        href={`/blog?categories=${category.id}`}
+                        key={category.id}
+                      >
+                        <TooltipProvider key={category.id}>
+                          <Tooltip key={category.id}>
+                            <TooltipTrigger>
+                              <Badge className="text-base" variant="secondary">
+                                {category.name}
+                              </Badge>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>{category.description}</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <TOCItems items={toc} />
+            </div>
+          </ScrollArea>
+        </aside>
       </div>
     </div>
   );
@@ -340,7 +379,7 @@ export async function generateStaticParams() {
     },
   ).then((res) => res.json());
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access  -- TODO FIX MDX TYPES
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return  -- TODO FIX MDX TYPES
   return posts.data.map(
     (post: { id: string; attributes: { slug: string; locale: string } }) => ({
       slug: [String(post.id), String(post.attributes.slug)],

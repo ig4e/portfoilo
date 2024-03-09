@@ -1,130 +1,79 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
+import { TextIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { Typography } from '@/components/typography';
-import { Loader } from '@/components/ui/loader';
+import * as Primitive from '@/components/ui/toc';
 import { cn } from '@/lib/utils';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import type { TOCItemType } from '@/server/get-toc';
 
-interface TOCItem {
-  title: string;
-  url: string;
-  children: TOCItem[];
-}
+type PosType = [top: number, height: number];
 
-export function Toc() {
+export function TOCItems({ items }: { items: TOCItemType[] }): JSX.Element {
   const t = useTranslations('blog');
-  const [tree, setTree] = useState<TOCItem[]>([]);
-  const [activeId, setActiveId] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const markerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const toc = document.querySelector('div.prose > ul:nth-child(2)');
-    if (toc) {
-      const parseList = (element: HTMLElement): TOCItem[] => {
-        const items: TOCItem[] = [];
-        const listItems = Array.from(element.children);
-        listItems.forEach((li) => {
-          const link = li.querySelector('a');
-          const title = link?.innerText ?? '';
-          const url = link?.getAttribute('href') ?? '';
-          const nestedList = li.querySelector('ul');
-          const children = nestedList ? parseList(nestedList) : [];
-          items.push({ title, url, children });
-        });
-        return items;
-      };
+  const setPos = ([top, height]: PosType): void => {
+    const element = markerRef.current;
+    if (!element) return;
 
-      const treeData: TOCItem[] = parseList(toc as unknown as HTMLElement);
-      setTree(treeData);
-      setIsLoading(false);
-    }
-  }, []);
+    element.style.setProperty('top', `${top}px`);
+    element.style.setProperty('height', `${height}px`);
+    element.style.setProperty('display', `block`);
+  };
 
   return (
-    <div className={cn({ 'h-64': isLoading })}>
-      {isLoading ? (
-        <Loader className="inset-0" />
-      ) : (
-        <>
-          <Typography as="h4" className="p-2" element="h4">
-            {t('toc')}
-          </Typography>
-          {tree.map((item) => {
-            return (
-              <Item
-                {...item}
-                activeId={activeId}
-                key={item.url}
-                setActiveId={setActiveId}
-              />
-            );
-          })}
-        </>
-      )}
-    </div>
+    <ScrollArea className="pt-4 text-sm first:pt-0" ref={containerRef}>
+      <Primitive.TOCScrollProvider containerRef={containerRef} toc={items}>
+        <div
+          className="absolute start-0 hidden border-s-2 border-primary transition-all"
+          ref={markerRef}
+          role="none"
+        />
+        <h3 className="mb-4 inline-flex items-center gap-2">
+          <TextIcon className="size-4" />
+          {t('toc')}
+        </h3>
+        <div className="flex flex-col gap-1 border-s-2 text-muted-foreground">
+          {items.map((item) => (
+            <TOCItem item={item} key={item.url} setMarker={setPos} />
+          ))}
+        </div>
+      </Primitive.TOCScrollProvider>
+    </ScrollArea>
   );
 }
 
-function Item({
-  title,
-  url,
-  children,
-  setActiveId,
-  activeId,
-}: TOCItem & { setActiveId: (id: string) => void; activeId: string }) {
-  const id = useMemo(() => decodeURIComponent(url).replace('#', ''), [url]);
-  const observer = useRef<IntersectionObserver>(null);
+function TOCItem({
+  item,
+  setMarker,
+}: {
+  item: TOCItemType;
+  setMarker: (v: PosType) => void;
+}): JSX.Element {
+  const active = Primitive.useActiveAnchor(item.url);
+  const ref = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
-    const handleObserver: IntersectionObserverCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveId(entry.target.id);
-        }
-      });
-    };
-
-    //@ts-expect-error -- TODO
-    observer.current = new IntersectionObserver(handleObserver, {
-      rootMargin: '0% 0% -35% 0px',
-    });
-
-    const elements = document.querySelectorAll('h2, h3, h4, h5, h6');
-    elements.forEach((elem) => observer.current?.observe(elem));
-    return () => observer.current?.disconnect();
-  }, [setActiveId]);
+    if (active && ref.current) {
+      setMarker([ref.current.offsetTop, ref.current.clientHeight]);
+    }
+  }, [active, setMarker]);
 
   return (
-    <div className="prose prose-sm">
-      <ul>
-        <li>
-          <a
-            className={cn(
-              'text-base font-semibold text-muted-foreground transition hover:text-primary/80',
-              {
-                'text-primary': activeId === id,
-              },
-            )}
-            href={url}
-            onClick={() => {
-              setActiveId(id);
-            }}
-          >
-            {title}
-          </a>
-        </li>
-        <ul className="px-2">
-          {children.map((child) => (
-            <Item
-              {...child}
-              activeId={activeId}
-              key={child.url}
-              setActiveId={setActiveId}
-            />
-          ))}
-        </ul>
-      </ul>
-    </div>
+    <Primitive.TOCItem
+      className={cn(
+        'overflow-hidden text-ellipsis py-1 transition-colors data-[active=true]:font-medium data-[active=true]:text-primary',
+        item.depth <= 2 && 'ps-4',
+        item.depth === 3 && 'ps-7',
+        item.depth >= 4 && 'ps-10',
+      )}
+      href={item.url}
+      ref={ref}
+    >
+      {item.title}
+    </Primitive.TOCItem>
   );
 }

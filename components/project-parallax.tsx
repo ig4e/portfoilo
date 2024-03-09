@@ -91,11 +91,11 @@ export function ProjectParallax() {
               className={cn('mb-20 flex gap-10 space-x-reverse md:gap-20', {
                 'flex-row-reverse': isOdd,
               })}
-              key={`project-row-${index}`}
+              key={`project-row-${row.length * index}`}
             >
               {row.map((project, projectIndex) => (
                 <AnimationProjectCard
-                  key={project.id + projectIndex}
+                  key={`project-row-card-${project.id}-${row.length * projectIndex}`}
                   locale={locale}
                   project={project}
                   translate={isOdd ? translateXReverse : translateX}

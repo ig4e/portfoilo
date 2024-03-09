@@ -10,7 +10,6 @@ import { siteConfig } from '@/config/site';
 import { Link, usePathname } from '@/lib/navigation';
 import { cn } from '@/lib/utils';
 import { Icons } from '@/components/ui/icons';
-import { Toc } from '@/app/[locale]/blog/posts/[...slug]/toc';
 
 export function NavSheet() {
   const t = useTranslations('site-header');
@@ -57,12 +56,6 @@ export function NavSheet() {
               </Link>
             );
           })}
-
-          {pathname.includes('/blog/posts') && (
-            <div className="relative mt-4 rounded-md bg-accent p-1">
-              <Toc />
-            </div>
-          )}
         </div>
 
         <div className="flex items-center gap-2">

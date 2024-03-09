@@ -34,7 +34,7 @@ export function LocaleAlert({
   return (
     <div>
       {post.locale !== locale && (
-        <Alert className="flex flex-col gap-2">
+        <Alert className="flex flex-col gap-2 mb-4">
           <Languages className="h-4 w-4" />
           <AlertTitle>
             {currentLocaleLocalization
