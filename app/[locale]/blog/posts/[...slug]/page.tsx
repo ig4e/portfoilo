@@ -40,7 +40,7 @@ export interface PostPageProps {
   };
 }
 
-export const fetchCache = 'force-no-store';
+//export const fetchCache = 'force-no-store';
 
 const POST_QUERY = gql(`query Post($postId: ID) {
     post(id: $postId) {
