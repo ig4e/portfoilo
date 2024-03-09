@@ -28,7 +28,7 @@ export function HeroScrollText({ className }: { className?: string }) {
 
   return (
     <motion.div
-      className="relative min-h-max"
+      className="relative min-h-max will-change-auto"
       style={{
         x: mapping,
       }}
