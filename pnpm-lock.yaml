@@ -155,6 +155,9 @@ dependencies:
   scroll-into-view-if-needed:
     specifier: ^3.1.0
     version: 3.1.0
+  server-only-context:
+    specifier: ^0.1.0
+    version: 0.1.0(react@18.2.0)
   sharp:
     specifier: ^0.33.2
     version: 0.33.2
@@ -9001,6 +9004,14 @@ packages:
       tslib: 2.6.2
       upper-case-first: 2.0.2
     dev: true
+
+  /server-only-context@0.1.0(react@18.2.0):
+    resolution: {integrity: sha512-5Ba19yx9Bj9uSh40aZNsZNBvLF88tLY3na6QxWkqyrSLOSHPxtnzTs/JzjKwfac1NbHFlEodkN7T4M6UzvH2Ng==}
+    peerDependencies:
+      react: next
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /server-only@0.0.1:
     resolution: {integrity: sha512-qepMx2JxAa5jjfzxG79yPPq+8BuFToHd1hm7kI+Z4zAq1ftQiP7HcxMhDDItrbtwVeLg/cY2JnKnrcFkmiswNA==}

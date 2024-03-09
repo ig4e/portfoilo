@@ -7,34 +7,33 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment  -- TODO FIX MDX TYPES  */
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain  -- TODO FIX MDX TYPES  */
 
+import { AtSign, ClockIcon } from 'lucide-react';
 import type { Metadata } from 'next';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
-import { ClockIcon } from '@radix-ui/react-icons';
-import { AtSign } from 'lucide-react';
 import Image from 'next/image';
 import { gql } from '@/_generated';
 import { GenericHero } from '@/components/generic-hero';
 import { RenderMDX } from '@/components/render-mdx';
-import type { Locale } from '@/config/i18n';
-import { getClient } from '@/lib/apollo';
-import { getTableOfContents } from '@/server/get-toc';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Typography } from '@/components/typography';
-import { calculateRT, toLocaleDateString } from '@/lib/utils';
-import { Link } from '@/lib/navigation';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { AspectRatio } from '@/components/ui/aspect-ratio';
-import { TOCItems } from './toc';
+import type { Locale } from '@/config/i18n';
+import { getClient } from '@/lib/apollo';
+import { Link } from '@/lib/navigation';
+import { calculateRT, toLocaleDateString } from '@/lib/utils';
+import { getTableOfContents } from '@/server/get-toc';
 import { LocaleAlert } from './locale-alert';
+import { TOCItems } from './toc';
 
-interface PostPageProps {
+export interface PostPageProps {
   params: {
     locale: Locale;
     readonly slug: [string, string];
@@ -198,7 +197,9 @@ async function Post({
       postId: id,
     },
   });
-  const toc = await getTableOfContents(post?.data?.attributes?.body!);
+  const toc = await getTableOfContents({
+    content: post?.data?.attributes?.body!,
+  });
   const postData = {
     id: post?.data?.id!,
     title: post?.data?.attributes?.title!,
@@ -237,14 +238,14 @@ async function Post({
   };
 
   return (
-    <div className="space-y-16 pb-16" suppressHydrationWarning>
+    <div className="pb-16" suppressHydrationWarning>
       <GenericHero
         classNames={{ description: 'max-w-3xl' }}
         description={postData.description}
         title={postData.title}
       />
 
-      <div className="relative justify-between rounded-md bg-background/60 px-3 py-8 backdrop-blur-3xl md:px-4 lg:flex">
+      <div className="relative flex flex-col-reverse justify-between rounded-md bg-background/60 px-3 py-8 backdrop-blur-3xl md:px-4 lg:flex lg:flex-row">
         <article className="lg:w-[70%] lg:ps-8">
           {postData ? (
             <>
@@ -271,14 +272,14 @@ async function Post({
                   />
                 </div>
               </AspectRatio>
-              <div className="prose prose-stone mt-4 max-w-3xl dark:prose-invert">
+              <div className="prose prose-stone mt-4 max-w-4xl dark:prose-invert w-full">
                 <RenderMDX source={postData.body} />
               </div>
             </>
           ) : null}
         </article>
 
-        <aside className="sticky top-20 mt-6 h-full self-start border-t pb-8 pt-5 md:min-h-screen lg:mt-0 lg:w-3/12 lg:border-s lg:border-t-0 lg:ps-[4.16%]">
+        <aside className="top-20 h-full w-full self-start pb-8 lg:sticky lg:mt-0 lg:min-h-screen lg:w-3/12 lg:border-s lg:ps-[4.16%] lg:pt-5">
           <ScrollArea>
             <div className="space-y-4">
               <div className="space-y-4 border-b pb-4">
@@ -359,7 +360,9 @@ async function Post({
                 </div>
               </div>
 
-              <TOCItems items={toc} />
+              <div className="hidden lg:block">
+                <TOCItems items={toc} />
+              </div>
             </div>
           </ScrollArea>
         </aside>

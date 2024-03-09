@@ -63,6 +63,7 @@
     "remark-gfm": "^3.0.1",
     "remark-toc": "^9.0.0",
     "scroll-into-view-if-needed": "^3.1.0",
+    "server-only-context": "^0.1.0",
     "sharp": "^0.33.2",
     "shiki": "1.1.7",
     "styled-components": "^6.1.8",

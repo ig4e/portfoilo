@@ -40,7 +40,7 @@ export function HeroSection({ projectId }: { projectId: string }) {
     >
       <div className="overflow-hidden">
         <div
-          className="absolute inset-x-0 top-0 -z-[10] min-h-[40vh] animate-cardlight rounded-b-full bg-gradient-to-b from-rose-900 opacity-80 blur-3xl md:min-h-[60vh]"
+          className="absolute inset-x-0 top-0 -z-[10] min-h-[40vh] animate-cardlight rounded-b-full bg-gradient-to-b from-transparent opacity-80 blur-3xl md:min-h-[60vh]"
           id="project-gradient"
           style={{
             //@ts-expect-error -- TODO
@@ -94,7 +94,7 @@ export function HeroSection({ projectId }: { projectId: string }) {
         </div>
 
         <div className="mt-4 hidden w-screen items-center gap-4 [perspective:2000px;] md:flex">
-          <AspectRatio className="container w-full" ratio={16 / 7.5}>
+          <AspectRatio className="container w-full" ratio={project.image.width / project.image.height}>
             <motion.div
               className="h-full w-full overflow-hidden rounded-[5vh] p-0.5"
               style={{
@@ -109,11 +109,10 @@ export function HeroSection({ projectId }: { projectId: string }) {
             >
               <Image
                 alt={project.name[locale]}
-                className="h-full w-full rounded-[5vh] bg-accent object-fill"
+                className="h-full rounded-[5vh] bg-accent"
                 placeholder="blur"
                 priority
                 src={project.image}
-                width={1440}
               />
             </motion.div>
           </AspectRatio>

@@ -2,7 +2,8 @@
 
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { routes } from '@/config/routes';
@@ -10,11 +11,32 @@ import { siteConfig } from '@/config/site';
 import { Link, usePathname } from '@/lib/navigation';
 import { cn } from '@/lib/utils';
 import { Icons } from '@/components/ui/icons';
+import { type TOCItemType, getTableOfContents } from '@/server/get-toc';
+import { TOCItems } from '@/app/[locale]/blog/posts/[...slug]/toc';
 
 export function NavSheet() {
   const t = useTranslations('site-header');
   const [open, setOpen] = useState(false);
+  const [toc, setToc] = useState<TOCItemType[]>([]);
   const pathname = usePathname();
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- necessary
+  const id = useParams()?.slug?.[0];
+
+  useEffect(() => {
+    let ignore = false;
+
+    if (id) {
+      getTableOfContents({ postId: id })
+        .then((tocItems) => {
+          if (!ignore) setToc(tocItems);
+        })
+        .catch(() => null);
+
+      return () => {
+        ignore = true;
+      };
+    }
+  }, [id]);
 
   return (
     <Sheet onOpenChange={setOpen} open={open}>
@@ -56,6 +78,22 @@ export function NavSheet() {
               </Link>
             );
           })}
+
+          {Boolean(id) && (
+            <div
+              className="mt-4"
+              onClick={() => {
+                setOpen(false);
+              }}
+              onKeyDown={() => {
+                setOpen(false);
+              }}
+              role="button"
+              tabIndex={0}
+            >
+              <TOCItems items={toc} />
+            </div>
+          )}
         </div>
 
         <div className="flex items-center gap-2">
