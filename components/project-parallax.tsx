@@ -10,7 +10,7 @@ import type { Project } from '@/config/projects';
 import { projects } from '@/config/projects';
 import type { Locale } from '@/config/i18n';
 import { cn } from '@/lib/utils';
-import useViewport from '@/hooks/use-viewport';
+import { useViewport } from '@/hooks/use-viewport';
 import { Badge } from '@/components/ui/badge';
 import { Typography } from '@/components/typography';
 

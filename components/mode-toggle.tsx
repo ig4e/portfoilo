@@ -22,7 +22,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import useViewport from '@/hooks/use-viewport';
+import { useViewport } from '@/hooks/use-viewport';
 
 const modes = ['light', 'dark', 'system'] as const;
 

@@ -9,7 +9,7 @@ import { Typography } from '@/components/typography';
 import { Icons } from '@/components/ui/icons';
 import { Noise } from '@/components/ui/images';
 import { Link } from '@/lib/navigation';
-import useViewport from '@/hooks/use-viewport';
+import { useViewport } from '@/hooks/use-viewport';
 
 function SkillsSection() {
   const t = useTranslations('index');

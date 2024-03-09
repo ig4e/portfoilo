@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useMemo, useState } from 'react';
+import { useMediaQuery } from '@mantine/hooks';
 
 const screens = {
   sm: 640,
@@ -11,38 +11,11 @@ const screens = {
 
 export type Screen = keyof typeof screens;
 
-function useViewport() {
-  const [width, setWidth] = useState<number>(
-    (typeof window !== 'undefined' ? window : { innerWidth: 1280 }).innerWidth,
-  );
-
-  function handleWindowSizeChange() {
-    setWidth(window.innerWidth);
-  }
-
-  useEffect(() => {
-    window.addEventListener('resize', handleWindowSizeChange);
-    return () => {
-      window.removeEventListener('resize', handleWindowSizeChange);
-    };
-  }, []);
-
-  const currentScreen = useMemo(
-    () =>
-      Object.keys(screens).find(
-        (screen) => screens[screen as Screen] <= width,
-      ) as Screen,
-    [width],
-  );
+export function useViewport() {
+  const isDesktop = useMediaQuery('(min-width: 768px)');
 
   return {
-    screen: currentScreen,
-    isMobile: screens.md >= width,
-    isTablet: screens.md <= width && screens.lg >= width,
-    isDesktop:
-      screens.md <= width && screens.lg <= width && screens.xl >= width,
-    isLargeDesktop: screens.xl <= width,
+    isMobile: !isDesktop,
+    isDesktop,
   };
 }
-
-export default useViewport;

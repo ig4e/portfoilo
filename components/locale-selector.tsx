@@ -22,7 +22,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import type { Locale } from '@/config/i18n';
 import { locales } from '@/config/i18n';
-import useViewport from '@/hooks/use-viewport';
+import { useViewport } from '@/hooks/use-viewport';
 import { usePathname, useRouter } from '@/lib/navigation';
 
 export function LocaleSelector() {
