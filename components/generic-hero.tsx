@@ -61,7 +61,7 @@ export function GenericHero({
               className={cn(
                 'container mb-6 text-balance text-center text-[3rem] font-semibold leading-tight sm:text-6xl md:leading-normal lg:text-7xl xl:text-8xl',
                 {
-                  'text-5xl leading-relaxed sm:text-7xl lg:text-8xl xl:text-9xl':
+                  'pb-8 text-5xl leading-relaxed sm:text-7xl lg:text-8xl xl:text-9xl':
                     locale === 'ar-EG',
                 },
                 classNames.title,
@@ -74,7 +74,7 @@ export function GenericHero({
             <Typography
               as="h3"
               className={cn(
-                'max-w-6xl text-balance font-normal text-muted-foreground',
+                'max-w-4xl text-balance font-normal text-muted-foreground',
                 classNames.description,
               )}
               element="p"

@@ -124,7 +124,7 @@ export function ProjectsPageList({
 
   return (
     <div className="space-y-4 rounded-md border bg-background/60 p-4 md:space-y-8">
-      <div className="flex items-center gap-2 md:gap-4">
+      <div className="flex items-start gap-2 md:gap-4">
         <SearchInput
           className="bg-background"
           onChange={(e) => {

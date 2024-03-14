@@ -134,7 +134,7 @@ export function Posts() {
 
   return (
     <div className="space-y-4 rounded-md border bg-background/60 p-4 md:space-y-8">
-      <div className="relative flex items-center gap-4">
+      <div className="relative flex items-start gap-4">
         <SearchInput
           onChange={(e) => void setQuery(e.target.value)}
           placeholder={t('search')}
@@ -142,7 +142,7 @@ export function Posts() {
         />
         <Suspense fallback={<Loader className="min-h-10" />}>
           <Categories
-            className="w-1/2"
+            className="w-full md:w-1/2"
             onChange={(state) =>
               void setCategories(
                 (state as { label: string; value: string }[]).map(

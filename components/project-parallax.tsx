@@ -20,8 +20,9 @@ export function ProjectParallax() {
 
   const projectRows = useMemo(() => {
     return [
-      projects.slice(0, 5),
-      Array(2).fill(projects.slice(5, 15)).flat(),
+      Array(2).fill(projects.slice(0, 3)).flat(),
+      Array(2).fill(projects.slice(3, 6)).flat(),
+      Array(2).fill(projects.slice(6, 9)).flat(),
     ] as Project[][];
   }, []);
 
@@ -35,12 +36,20 @@ export function ProjectParallax() {
   const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
 
   const translateX = useSpring(
-    useTransform(scrollYProgress, [0, 1], isMobile ? [-1000, 1000] : [0, 500]),
+    useTransform(
+      scrollYProgress,
+      [0, 1],
+      locale === 'en-US' ? [-1000, 1000] : [1000, -1000],
+    ),
     springConfig,
   );
 
   const translateXReverse = useSpring(
-    useTransform(scrollYProgress, [0, 1], isMobile ? [1000, -1000] : [0, -500]),
+    useTransform(
+      scrollYProgress,
+      [0, 1],
+      locale === 'en-US' ? [1000, -1000] : [-1000, 1000],
+    ),
     springConfig,
   );
 
@@ -72,7 +81,11 @@ export function ProjectParallax() {
     <div
       className="dark relative flex flex-col overflow-hidden bg-black py-40 antialiased [perspective:1000px] [transform-style:preserve-3d]"
       ref={ref}
-      style={{ height: `${projectRows.length * (isMobile ? 70 : 95)}vh` }}
+      style={{
+        height: isMobile
+          ? `calc(50vh + ${projectRows.length * 400}px)`
+          : `calc(50vh + ${projectRows.length * 560}px)`,
+      }}
     >
       <Header />
 
@@ -162,10 +175,7 @@ export function ProjectCard({
   className?: string;
 }) {
   return (
-    <Link
-      className={cn('relative', className)}
-      href={`/projects/${project.id}`}
-    >
+    <Link className={cn('', className)} href={`/projects/${project.id}`}>
       <Image
         alt={project.name[locale]}
         className="h-full w-full rounded-lg object-cover"

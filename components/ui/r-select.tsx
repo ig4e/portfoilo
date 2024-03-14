@@ -25,7 +25,7 @@ export const RSelect = forwardRef<
       classNames={{
         control: ({ isDisabled, isFocused, isMulti }) =>
           cn(
-            'flex !min-h-10 h-full w-full items-center gap-2 min-w-32 md:min-w-44 justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background [&>span]:line-clamp-1',
+            'flex flex-wrap !min-h-10 h-full w-full items-center gap-2 min-w-32 md:min-w-44 justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background [&>span]:line-clamp-1',
             {
               'outline-none ring-2 ring-ring ring-offset-2': isFocused,
               'cursor-not-allowed opacity-50': isDisabled,
@@ -35,9 +35,11 @@ export const RSelect = forwardRef<
 
         placeholder: () => cn('text-muted-foreground'),
 
+        indicatorsContainer: () => cn(''),
+
         multiValue: () =>
           cn(
-            'bg-secondary rounded-md items-center py-0.5 ps-2 pe-1 gap-1.5 me-1',
+            'bg-secondary rounded-md items-center py-0.5 ps-2 pe-1 gap-1.5 me-1 text-xs',
           ),
 
         menu: () =>

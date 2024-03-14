@@ -75,7 +75,7 @@ export function HeroSection({ projectId }: { projectId: string }) {
             className={cn(
               'container text-balance text-center text-[3rem] font-semibold leading-tight sm:text-6xl md:mb-6 md:leading-normal lg:text-7xl xl:text-8xl',
               {
-                'text-5xl leading-relaxed sm:text-7xl lg:text-8xl xl:text-9xl':
+                'pb-8 text-5xl leading-relaxed sm:text-7xl lg:text-8xl xl:text-9xl':
                   locale === 'ar-EG',
               },
             )}
@@ -94,7 +94,10 @@ export function HeroSection({ projectId }: { projectId: string }) {
         </div>
 
         <div className="mt-4 hidden w-screen items-center gap-4 [perspective:2000px;] md:flex">
-          <AspectRatio className="container w-full" ratio={project.image.width / project.image.height}>
+          <AspectRatio
+            className="container w-full"
+            ratio={project.image.width / project.image.height}
+          >
             <motion.div
               className="h-full w-full overflow-hidden rounded-[5vh] p-0.5"
               style={{

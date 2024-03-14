@@ -240,7 +240,6 @@ async function Post({
   return (
     <div className="pb-16" suppressHydrationWarning>
       <GenericHero
-        classNames={{ description: 'max-w-3xl' }}
         description={postData.description}
         title={postData.title}
       />
@@ -272,7 +271,7 @@ async function Post({
                   />
                 </div>
               </AspectRatio>
-              <div className="prose prose-stone mt-4 max-w-4xl dark:prose-invert w-full">
+              <div className="prose prose-stone mt-4 w-full max-w-4xl dark:prose-invert">
                 <RenderMDX source={postData.body} />
               </div>
             </>

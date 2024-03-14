@@ -104,7 +104,7 @@ function SkillCard({
       <div className="card group relative cursor-pointer overflow-hidden rounded-md bg-secondary px-[1px] py-[1.5px]">
         <div
           about="card-blur"
-          className="absolute inset-0 z-[3] h-full w-full opacity-0 blur-xl transition-all duration-300 group-hover:opacity-100 will-change-auto"
+          className="absolute inset-0 z-[3] h-full w-full opacity-0 blur-xl transition-all duration-300 will-change-auto group-hover:opacity-100"
           style={{
             background: `radial-gradient(var(--circle-size, 700px) circle at var(--x, 100px) var(--y, 100px), rgba(${itemRgbColor.r}, ${itemRgbColor.g}, ${itemRgbColor.b}, 0.25), transparent 40%)`,
           }}
@@ -112,7 +112,7 @@ function SkillCard({
 
         <div
           about="card-border"
-          className="absolute inset-0 z-[1] h-full w-full opacity-0 transition-all duration-300 group-hover/section:opacity-100 will-change-auto"
+          className="absolute inset-0 z-[1] h-full w-full opacity-0 transition-all duration-300 will-change-auto group-hover/section:opacity-100"
           style={{
             background: `radial-gradient(var(--circle-size,250px) circle at var(--x, 100px) var(--y, 100px), rgba(${itemRgbColor.r}, ${itemRgbColor.g}, ${itemRgbColor.b}, 0.4), transparent 40%)`,
           }}
@@ -128,7 +128,7 @@ function SkillCard({
         />
 
         <div
-          className="absolute inset-10 z-[3] h-full w-full animate-skillcardlight opacity-15 blur-3xl md:bottom-0 md:left-0 md:h-1/2 will-change-auto"
+          className="absolute inset-10 z-[3] h-full w-full animate-skillcardlight opacity-15 blur-3xl will-change-auto md:bottom-0 md:left-0 md:h-1/2"
           style={{
             backgroundColor: item.color,
           }}
