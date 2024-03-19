@@ -42,7 +42,7 @@ export function HeroSection() {
             className={cn(
               'container text-balance text-center text-5xl font-semibold leading-tight sm:text-6xl md:leading-normal lg:text-7xl xl:text-8xl',
               {
-                'text-5xl leading-normal md:leading-relaxed sm:text-7xl lg:text-8xl xl:text-9xl':
+                'text-5xl leading-normal sm:text-7xl md:leading-relaxed lg:text-8xl xl:text-9xl':
                   locale === 'ar-EG',
               },
             )}

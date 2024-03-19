@@ -14,9 +14,7 @@ async function Blog({
 
   return (
     <div className="mb-14 space-y-8">
-      <Suspense>
-        <GenericHero description={t('description')} title={t('my-blog')} />
-      </Suspense>
+      <GenericHero description={t('description')} title={t('my-blog')} />
       <Suspense>
         <Posts />
       </Suspense>
