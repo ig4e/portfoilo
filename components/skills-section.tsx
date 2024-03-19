@@ -20,7 +20,7 @@ function SkillsSection() {
       id="skills"
     >
       <div
-        className="container flex min-h-[40vh]  flex-col gap-4 overflow-x-hidden overflow-y-clip"
+        className="container flex min-h-[40vh] flex-col gap-4 overflow-x-hidden overflow-y-clip"
         id="skill-cards"
       >
         <div className="w-full ">
@@ -82,9 +82,13 @@ export function SkillsTypeSection({
         {t(`skills.${skillSection.type}`)}
       </Typography>
 
-      <div className="group/section grid gap-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+      <div className="group/section grid gap-3 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
         {skillSection.items.map((skill) => (
-          <SkillCard item={skill} key={skill.name['en-US']} />
+          <SkillCard
+            isMobile={isMobile}
+            item={skill}
+            key={skill.name['en-US']}
+          />
         ))}
       </div>
     </div>
@@ -93,8 +97,10 @@ export function SkillsTypeSection({
 
 function SkillCard({
   item,
+  isMobile,
 }: {
   item: (typeof skills)[number]['items'][number];
+  isMobile: boolean;
 }) {
   const locale = useLocale() as Locale;
   const itemRgbColor = useMemo(() => hexToRgb(item.color), [item.color]);
@@ -102,21 +108,25 @@ function SkillCard({
   return (
     <Link href={item.link} target="_blank">
       <div className="card group relative cursor-pointer overflow-hidden rounded-md bg-secondary px-[1px] py-[1.5px]">
-        <div
-          about="card-blur"
-          className="absolute inset-0 z-[3] h-full w-full opacity-0 blur-xl transition-all duration-300 will-change-auto group-hover:opacity-100"
-          style={{
-            background: `radial-gradient(var(--circle-size, 700px) circle at var(--x, 100px) var(--y, 100px), rgba(${itemRgbColor.r}, ${itemRgbColor.g}, ${itemRgbColor.b}, 0.25), transparent 40%)`,
-          }}
-        />
+        {!isMobile && (
+          <>
+            <div
+              about="card-blur"
+              className="absolute inset-0 z-[3] h-full w-full opacity-0 blur-xl transition-all duration-300 will-change-auto group-hover:opacity-100"
+              style={{
+                background: `radial-gradient(var(--circle-size, 700px) circle at var(--x, 100px) var(--y, 100px), rgba(${itemRgbColor.r}, ${itemRgbColor.g}, ${itemRgbColor.b}, 0.25), transparent 40%)`,
+              }}
+            />
 
-        <div
-          about="card-border"
-          className="absolute inset-0 z-[1] h-full w-full opacity-0 transition-all duration-300 will-change-auto group-hover/section:opacity-100"
-          style={{
-            background: `radial-gradient(var(--circle-size,250px) circle at var(--x, 100px) var(--y, 100px), rgba(${itemRgbColor.r}, ${itemRgbColor.g}, ${itemRgbColor.b}, 0.4), transparent 40%)`,
-          }}
-        />
+            <div
+              about="card-border"
+              className="absolute inset-0 z-[1] h-full w-full opacity-0 transition-all duration-300 will-change-auto group-hover/section:opacity-100"
+              style={{
+                background: `radial-gradient(var(--circle-size,250px) circle at var(--x, 100px) var(--y, 100px), rgba(${itemRgbColor.r}, ${itemRgbColor.g}, ${itemRgbColor.b}, 0.4), transparent 40%)`,
+              }}
+            />
+          </>
+        )}
 
         <div
           className="top-18 absolute inset-0 z-[4] mix-blend-overlay"

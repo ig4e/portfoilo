@@ -244,7 +244,7 @@ async function Post({
         title={postData.title}
       />
 
-      <div className="relative flex flex-col-reverse justify-between rounded-md bg-background/60 px-3 py-8 backdrop-blur-3xl md:px-4 lg:flex lg:flex-row">
+      <div className="relative flex flex-col-reverse justify-between rounded-md bg-background/60 px-3 py-8 md:px-4 lg:flex lg:flex-row">
         <article className="lg:w-[70%] lg:ps-8">
           {postData ? (
             <>

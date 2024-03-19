@@ -12,7 +12,7 @@ function SiteFooter() {
   const t = useTranslations('site-header');
 
   return (
-    <header className="z-50 w-full border-b border-border/40 bg-background/95 py-4 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="z-50 w-full border-b border-border/40 bg-background/95 py-4">
       <div className="container flex max-w-screen-2xl items-center">
         <div className="flex flex-col gap-2">
           <Link className="group flex items-center gap-2" href="/">
