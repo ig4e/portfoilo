@@ -1,0 +1,113 @@
+{
+  "site-header": {
+    "name": "Ahmed",
+    "get-in-touch": "Get in touch",
+    "links": {
+      "about-me": "About Me",
+      "skills": "Skills",
+      "blog": "Blog",
+      "my-projects": "My Projects"
+    }
+  },
+  "mode-toggle": {
+    "toggle-theme": "Toggle Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "locale-selector": {
+    "locale-select": "Select Locale",
+    "ar-EG": "العربية (مصر)",
+    "en-US": "English (US)"
+  },
+  "modals": {
+    "cancel": "Cancel",
+    "confirm": "Confirm"
+  },
+  "index": {
+    "hero": {
+      "title": {
+        "text": "Let’s craft <highlight>لَا تُنْسَى*</highlight> user experiences.",
+        "highlight-meaning": "<highlight>*لا تُنْسَى</highlight> unforgettable in English"
+      },
+      "scroll-text": "Coding-Designing-Web-API",
+      "my-projects": "My Projects",
+      "resume": "Resume"
+    },
+    "about-me": {
+      "section-name": "About Me",
+      "name": "I'm Ahmed Mohamed",
+      "title": "Fullstack web engineer | UI/UX Designer",
+      "my-start": "In 2018, I took the plunge into the world of custom Discord bots, immersing myself in the intricate realm of coding and web development. As time marched on, I found myself fortunate to craft software for a diverse array of clients.",
+      "my-foucs": "Currently, my primary focus revolves around crafting products for clients at Mostaql. During my free time, I delve into exploring new concepts, trends, and emerging technologies.",
+      "my-life": "When I’m not at the computer, you'll often find me immersed in music, socializing with friends, or indulging in some anime watching. It's a refreshing break from the digital world."
+    },
+    "my-projects": {
+      "section-name": "My Projects"
+    },
+    "skills": {
+      "section-name": "My Skills",
+      "languages": "Languages",
+      "libraries-frameworks": "Libraries & Frameworks",
+      "databases": "Databases",
+      "cms": "Content management systems",
+      "tools": "Tools",
+      "made-with": "Made with"
+    }
+  },
+  "project": {
+    "my-projects": "My Projects",
+    "description": "I prioritize client privacy and only showcase projects with their explicit approval",
+    "about-project": "About Project",
+    "search": "Search",
+    "fillters": {
+      "categories": "Categories",
+      "languages": "Languages",
+      "libraries-frameworks": "Libraries & Frameworks",
+      "databases": "Databases",
+      "cms": "Content management systems",
+      "tools": "Tools"
+    }
+  },
+  "blog": {
+    "my-blog": "My Blog",
+    "description": "This blog serves as a repository for my writings, covering a spectrum from professional insights to personal anecdotes and anything in between",
+    "toc": "On this page",
+    "written-by": "Written by",
+    "categories": "Categories",
+    "search": "Search",
+    "fillters": {
+      "categories": "Categories"
+    },
+    "rt": "{count, plural, =0 {# minutes} =1 {one minute} other {# minutes}} read",
+    "locale-alert": {
+      "title": "Localization Available!",
+      "description": "You're currently viewing a blog in a language different from your selected locale. Fortunately, there's a localized version available for your locale.",
+      "switch": "Switch Locales"
+    },
+    "locale-not-found-alert": {
+      "title": "Localization Unavailable!",
+      "description": "You're currently viewing a blog in a language different from your selected locale. Unfortunately, there's no localization available for your locale at the moment. I will update it as soon as possible.",
+      "switch": "No Locales Available"
+    }
+  },
+  "404": {
+    "title": "404: Not found",
+    "description": "The page you were looking for doesn't exist.",
+    "go-back": "Go Back"
+  },
+  "r-select": {
+    "no-options": "No Results"
+  },
+  "loader": {
+    "loading": "Loading..."
+  },
+  "copy-button": {
+    "copy": "Copy",
+    "copied": "Copied!"
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next"
+  }
+}
