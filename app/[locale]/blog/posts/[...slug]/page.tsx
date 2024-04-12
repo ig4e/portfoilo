@@ -7,6 +7,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment  -- TODO FIX MDX TYPES  */
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain  -- TODO FIX MDX TYPES  */
 
+
 import { AtSign, ClockIcon } from 'lucide-react';
 import type { Metadata } from 'next';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
@@ -40,7 +41,7 @@ export interface PostPageProps {
   };
 }
 
-//export const fetchCache = 'force-no-store';
+export const fetchCache = 'force-no-store';
 
 const POST_QUERY = gql(`query Post($postId: ID) {
     post(id: $postId) {
