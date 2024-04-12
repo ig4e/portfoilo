@@ -5,6 +5,8 @@ import PhiBoutique from '@/public/assets/projects/phiboutique.png';
 import ShareMe from '@/public/assets/projects/shareme.png';
 import WolfLand from '@/public/assets/projects/wolfland.png';
 import HnzakrOnline from '@/public/assets/projects/hnzakronline.png';
+import Ugurly from '@/public/assets/projects/ugurly.png';
+
 import { databases, languages, technologies, tools } from './skills';
 
 export const categories = {
@@ -42,6 +44,60 @@ export const mappedCategories = (
 }));
 
 export const projects = [
+  {
+    id: 'ugurly',
+    image: Ugurly,
+    name: {
+      'ar-EG': 'يوجورلي',
+      'en-US': 'Ugurly',
+    },
+    shortDescription: {
+      'ar-EG': 'يوجورلي - خدمة تقصير روابط URL اختصر روابطك، ووسّع إمكانياتك',
+      'en-US':
+        'Ugurly - A URL shortener service shorten Your URL, Expand Your Possibilities',
+    },
+    description: {
+      'ar-EG': 'يوجورلي - خدمة تقصير روابط URL اختصر روابطك، ووسّع إمكانياتك',
+      'en-US':
+        'Ugurly - A URL shortener service shorten Your URL, Expand Your Possibilities.',
+    },
+    workArea: {
+      'ar-EG': 'فرونت-ايند | باك-ايند | تصميم واجهة المستخدم وتجربة المستخدم',
+      'en-US': 'Front-end | Back-end | UI/UX Design',
+    },
+    color: '#e11c47',
+    links: {
+      github: 'https://github.com/ig4e/ugurly',
+      website: 'https://ugurly.vercel.app',
+    },
+    categories: [
+      categories['ux-ui'],
+      categories['front-end'],
+      categories['back-end'],
+      categories.database,
+    ],
+    stack: [
+      languages.ts,
+      technologies.nextjs,
+      technologies.react,
+      technologies.tailwind,
+      technologies.trpc,
+      technologies.prisma,
+      technologies.radixui,
+      technologies.authjs,
+      technologies.shadcnui,
+
+      databases.sqlite,
+      languages.html,
+      languages.css,
+      languages.js,
+      tools.vsc,
+      tools.git,
+      tools.github,
+      tools.postman,
+    ],
+    createdAt: '2024/4/12',
+  },
   {
     id: 'shareme',
     image: ShareMe,

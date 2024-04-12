@@ -347,6 +347,22 @@ export const skills = [
         color: '#01ed64',
         link: 'https://www.mongodb.com/',
       },
+      {
+        id: 'sqlite',
+        icon: Icons.sqlite,
+        name: {
+          'ar-EG': 'سكيولايت',
+          'en-US': 'SQLite',
+        },
+        description: {
+          'ar-EG':
+            'SQLite هي محرك قاعدة بيانات مدمجة ذاتية الإدارة وغير متصلة بالشبكة تدعم الـ SQL. تستخدم بشكل شائع في تطبيقات الجوال والأجهزة المحمولة والبرمجيات المدمجة.',
+          'en-US':
+            'SQLite is a self-contained, serverless, zero-configuration, transactional SQL database engine. It is widely used in mobile applications, embedded devices, and software.',
+        },
+        color: '#01ed64',
+        link: 'https://www.sqlite.org/',
+      },
     ],
   },
   {

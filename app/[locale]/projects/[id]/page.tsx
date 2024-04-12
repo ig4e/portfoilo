@@ -2,12 +2,16 @@ import type { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 import { unstable_setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import { ExternalLinkIcon } from '@radix-ui/react-icons';
 import { Typography } from '@/components/typography';
 import { Icons } from '@/components/ui/icons';
 import type { Locale } from '@/config/i18n';
 import { projects } from '@/config/projects';
-import { HeroSection } from './hero-section';
+import { Link } from '@/lib/navigation';
+import { buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 import { MadeWithSection } from './made-with-section';
+import { HeroSection } from './hero-section';
 
 interface PageProps {
   params: { locale: Locale; id: string };
@@ -62,9 +66,55 @@ function ProjectPage({ params }: PageProps) {
             </div>
 
             <div>
-              <Typography as="h3" className="" element="h3">
-                {project.name[locale]}
-              </Typography>
+              <div className="flex w-full items-center justify-between gap-2">
+                <Typography as="h3" className="" element="h3">
+                  {project.name[locale]}
+                </Typography>
+
+                <div className="flex items-center gap-2">
+                  {project.links.github ? (
+                    <Link
+                      className="hidden md:flex"
+                      href={project.links.github}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      <div
+                        className={cn(
+                          buttonVariants({
+                            variant: 'secondary',
+                          }),
+                          'aspect-square !h-9 !w-9 px-0',
+                        )}
+                      >
+                        <Icons.gitHub className="h-4 w-4" />
+                        <span className="sr-only">GitHub</span>
+                      </div>
+                    </Link>
+                  ) : null}
+
+                  {project.links.website ? (
+                    <Link
+                      className="hidden md:flex"
+                      href={project.links.website}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      <div
+                        className={cn(
+                          buttonVariants({
+                            variant: 'secondary',
+                          }),
+                          'aspect-square !h-9 !w-9 px-0',
+                        )}
+                      >
+                        <ExternalLinkIcon className="h-4 w-4" />
+                        <span className="sr-only">Webiste</span>
+                      </div>
+                    </Link>
+                  ) : null}
+                </div>
+              </div>
 
               <Typography
                 as="h6"
