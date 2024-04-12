@@ -15,11 +15,11 @@ import {
   useRef,
 } from 'react';
 import scrollIntoView from 'scroll-into-view-if-needed';
-import type { TableOfContents } from '@/server/get-toc';
-import { mergeRefs } from '@/lib/utils';
 import { useAnchorObserver } from '@/hooks/use-anchor-observer';
+import { mergeRefs } from '@/lib/utils';
+import type { TableOfContents } from '@/server/get-toc';
 
-const ActiveAnchorContext = createContext<{
+export const ActiveAnchorContext = createContext<{
   activeAnchor: string | undefined;
   containerRef: RefObject<HTMLElement>;
 }>({
@@ -84,10 +84,10 @@ export interface TOCItemProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
 
 export const TOCItem = forwardRef<HTMLAnchorElement, TOCItemProps>(
   (props, ref) => {
-    const { containerRef } = useContext(ActiveAnchorContext);
     const active = useActiveAnchor(props.href);
     const anchorRef = useRef<HTMLAnchorElement>(null);
     const mergedRef = mergeRefs(anchorRef, ref);
+    const { containerRef } = useContext(ActiveAnchorContext);
 
     useEffect(() => {
       const element = anchorRef.current;

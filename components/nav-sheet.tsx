@@ -1,51 +1,29 @@
 'use client';
 
-import { HamburgerMenuIcon } from '@radix-ui/react-icons';
+import { PanelLeft } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
+import { useState } from 'react';
 import { Button, buttonVariants } from '@/components/ui/button';
+import { Icons } from '@/components/ui/icons';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { routes } from '@/config/routes';
 import { siteConfig } from '@/config/site';
 import { Link, usePathname } from '@/lib/navigation';
 import { cn } from '@/lib/utils';
-import { Icons } from '@/components/ui/icons';
-import { type TOCItemType, getTableOfContents } from '@/server/get-toc';
-import { TOCItems } from '@/app/[locale]/blog/posts/[...slug]/toc';
 
 export function NavSheet() {
   const t = useTranslations('site-header');
   const [open, setOpen] = useState(false);
-  const [toc, setToc] = useState<TOCItemType[]>([]);
   const pathname = usePathname();
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- necessary
-  const id = useParams()?.slug?.[0];
-
-  useEffect(() => {
-    let ignore = false;
-
-    if (id) {
-      getTableOfContents({ postId: id })
-        .then((tocItems) => {
-          if (!ignore) setToc(tocItems);
-        })
-        .catch(() => null);
-
-      return () => {
-        ignore = true;
-      };
-    }
-  }, [id]);
 
   return (
     <Sheet onOpenChange={setOpen} open={open}>
       <SheetTrigger asChild>
         <Button size="icon" variant="ghost">
-          <HamburgerMenuIcon className="h-5 w-5" />
+          <PanelLeft className="h-5 w-5" />
         </Button>
       </SheetTrigger>
-      <SheetContent className="flex flex-col justify-between" side="full">
+      <SheetContent className="flex flex-col justify-between">
         <div className="mt-4 flex flex-col gap-2">
           {routes.map((route) => {
             return (
@@ -78,22 +56,6 @@ export function NavSheet() {
               </Link>
             );
           })}
-
-          {Boolean(id) && (
-            <div
-              className="mt-4"
-              onClick={() => {
-                setOpen(false);
-              }}
-              onKeyDown={() => {
-                setOpen(false);
-              }}
-              role="button"
-              tabIndex={0}
-            >
-              <TOCItems items={toc} />
-            </div>
-          )}
         </div>
 
         <div className="flex items-center gap-2">

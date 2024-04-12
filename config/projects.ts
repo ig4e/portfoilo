@@ -6,7 +6,6 @@ import ShareMe from '@/public/assets/projects/shareme.png';
 import WolfLand from '@/public/assets/projects/wolfland.png';
 import HnzakrOnline from '@/public/assets/projects/hnzakronline.png';
 import Ugurly from '@/public/assets/projects/ugurly.png';
-
 import { databases, languages, technologies, tools } from './skills';
 
 export const categories = {

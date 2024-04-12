@@ -7,7 +7,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment  -- TODO FIX MDX TYPES  */
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain  -- TODO FIX MDX TYPES  */
 
-
 import { AtSign, ClockIcon } from 'lucide-react';
 import type { Metadata } from 'next';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
@@ -32,7 +31,7 @@ import { Link } from '@/lib/navigation';
 import { calculateRT, toLocaleDateString } from '@/lib/utils';
 import { getTableOfContents } from '@/server/get-toc';
 import { LocaleAlert } from './locale-alert';
-import { TOCItems } from './toc';
+import { MobileTOC, OneLineTOC, TOCItems } from './toc';
 
 export interface PostPageProps {
   params: {
@@ -242,7 +241,7 @@ async function Post({
     <div className="pb-16" suppressHydrationWarning>
       <GenericHero description={postData.description} title={postData.title} />
 
-      <div className="relative flex flex-col-reverse justify-between rounded-md bg-background/60 px-3 py-8 md:px-4 lg:flex lg:flex-row">
+      <div className="relative flex flex-col-reverse justify-between rounded-md bg-background/60 py-8 md:px-4 lg:flex lg:flex-row">
         <article className="lg:w-[70%] lg:ps-8">
           {postData ? (
             <>
@@ -269,11 +268,17 @@ async function Post({
                   />
                 </div>
               </AspectRatio>
-              <div className="prose prose-stone mt-4 w-full max-w-4xl dark:prose-invert">
+              <div className="prose prose-stone mt-4 break-before-all overflow-hidden break-words dark:prose-invert md:max-w-4xl">
                 <RenderMDX source={postData.body} />
               </div>
             </>
           ) : null}
+          <header className="fixed inset-x-0 bottom-0 z-10 w-screen border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 md:hidden">
+            <div className="container flex h-14 items-center justify-between gap-8">
+              <MobileTOC items={toc} />
+              <OneLineTOC items={toc} />
+            </div>
+          </header>
         </article>
 
         <aside className="top-20 h-full w-full self-start pb-8 lg:sticky lg:mt-0 lg:min-h-screen lg:w-3/12 lg:border-s lg:ps-[4.16%] lg:pt-5">
