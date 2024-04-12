@@ -197,7 +197,10 @@ export const projects = [
       'en-US': 'Front-end | Back-end | UI/UX Design',
     },
     color: '#F2E0D8',
-    links: {},
+    links: {
+      github: 'https://github.com/ig4e/phi-boutique-website',
+      website: 'https://phi-boutique-website.vercel.app/',
+    },
     categories: [
       categories['ux-ui'],
       categories['front-end'],
@@ -241,7 +244,9 @@ export const projects = [
       'en-US': 'UI/UX Design',
     },
     color: '#F8C32A',
-    links: {},
+    links: {
+      website: 'https://mhtce.com',
+    },
     categories: [categories['ux-ui']],
     stack: [tools.adobexd],
     createdAt: '2022/4/0',
@@ -268,7 +273,10 @@ export const projects = [
       'en-US': 'Front-end | Back-end | UI/UX Design',
     },
     color: '#0ea5e9',
-    links: {},
+    links: {
+      github: 'https://github.com/ig4e/easymanga-frontend',
+      website: 'https://easymanga-frontend.vercel.app/',
+    },
     categories: [
       categories['ux-ui'],
       categories['front-end'],
@@ -315,7 +323,10 @@ export const projects = [
       'en-US': 'Front-end | Back-end | UI/UX Design',
     },
     color: '#FFC64A',
-    links: {},
+    links: {
+      github: 'https://github.com/ig4e/wolfland',
+      website: 'https://wolfland.vercel.app/',
+    },
     categories: [
       categories['ux-ui'],
       categories['front-end'],
@@ -361,7 +372,10 @@ export const projects = [
       'en-US': 'Front-end | Back-end | UI/UX Design',
     },
     color: '#22c55e',
-    links: {},
+    links: {
+      github: 'https://github.com/ig4e/hnzakr-online-redesign',
+      website: 'https://hnzakr-online-redesign.vercel.app',
+    },
     categories: [
       categories['ux-ui'],
       categories['front-end'],
