@@ -306,8 +306,8 @@ export const skills = [
           'en-US': 'tRPC',
         },
         description: {
-          'ar-EG': 'إطار إنشاء موقع بسيط وقوي ومرن.',
-          'en-US': 'Simple, powerful and flexible site generation framework.',
+          'ar-EG': 'إطار إنشاء أبي أي بتقنية أر بي سي بسيط وقوي ومرن.',
+          'en-US': 'Simple, powerful and flexible RPC Api framework.',
         },
         color: '#398ccb',
         link: 'https://trpc.io/',
@@ -320,8 +320,8 @@ export const skills = [
           'en-US': 'Auth.js',
         },
         description: {
-          'ar-EG': 'إطار إنشاء موقع بسيط وقوي ومرن.',
-          'en-US': 'Simple, powerful and flexible site generation framework.',
+          'ar-EG': 'إطار مصادقة بسيط وقوي ومرن.',
+          'en-US': 'Simple, powerful and flexible auth framework.',
         },
         color: '#398ccb',
         link: 'https://authjs.dev/',
@@ -356,11 +356,11 @@ export const skills = [
         },
         description: {
           'ar-EG':
-            'SQLite هي محرك قاعدة بيانات مدمجة ذاتية الإدارة وغير متصلة بالشبكة تدعم الـ SQL. تستخدم بشكل شائع في تطبيقات الجوال والأجهزة المحمولة والبرمجيات المدمجة.',
+            'SQLite هي محرك قاعدة بيانات مدمجة ذاتية الإدارة وغير متصلة بالشبكة تدعم الـ SQL.',
           'en-US':
-            'SQLite is a self-contained, serverless, zero-configuration, transactional SQL database engine. It is widely used in mobile applications, embedded devices, and software.',
+            'SQLite is a self-contained, serverless, zero-configuration, transactional SQL database engine.',
         },
-        color: '#01ed64',
+        color: '#398ccb',
         link: 'https://www.sqlite.org/',
       },
     ],
