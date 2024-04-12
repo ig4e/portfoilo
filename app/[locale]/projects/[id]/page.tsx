@@ -74,7 +74,6 @@ function ProjectPage({ params }: PageProps) {
                 <div className="flex items-center gap-2">
                   {project.links.github ? (
                     <Link
-                      className="hidden md:flex"
                       href={project.links.github}
                       rel="noreferrer"
                       target="_blank"
@@ -95,7 +94,6 @@ function ProjectPage({ params }: PageProps) {
 
                   {project.links.website ? (
                     <Link
-                      className="hidden md:flex"
                       href={project.links.website}
                       rel="noreferrer"
                       target="_blank"
