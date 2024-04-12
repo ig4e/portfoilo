@@ -1,20 +1,20 @@
 import { useTranslations } from 'next-intl';
+import { NavSheet } from '@/components/nav-sheet';
+import { Typography } from '@/components/typography';
+import { buttonVariants } from '@/components/ui/button';
+import { Icons } from '@/components/ui/icons';
 import { routes } from '@/config/routes';
 import { siteConfig } from '@/config/site';
 import { Link } from '@/lib/navigation';
 import { cn } from '@/lib/utils';
-import { NavSheet } from '@/components/nav-sheet';
-import { Typography } from '@/components/typography';
-import { Button, buttonVariants } from '@/components/ui/button';
-import { Icons } from '@/components/ui/icons';
-import { ModeToggle } from './mode-toggle';
 import { LocaleSelector } from './locale-selector';
+import { ModeToggle } from './mode-toggle';
 
 export function SiteHeader() {
   const t = useTranslations('site-header');
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-gradient-to-t from-background/95 via-muted/25 to-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 max-w-screen-2xl items-center">
         <div className="flex items-center gap-4">
           <Link className="group flex items-center gap-2" href="/">
@@ -84,10 +84,6 @@ export function SiteHeader() {
 
             <ModeToggle />
             <LocaleSelector />
-
-            <Button className="hidden md:flex" size="sm">
-              {t('get-in-touch')}
-            </Button>
 
             <div className="block md:hidden">
               <NavSheet />

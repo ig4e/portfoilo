@@ -40,7 +40,7 @@ export function HeroSection() {
         >
           <Typography
             className={cn(
-              'container text-balance text-center text-5xl font-semibold leading-tight sm:text-6xl md:leading-normal lg:text-7xl xl:text-8xl',
+              'container text-balance text-transparent bg-clip-text bg-gradient-to-t from-foreground to-foreground/25 text-center text-5xl font-semibold leading-tight sm:text-6xl md:leading-normal lg:text-7xl xl:text-8xl',
               {
                 'text-5xl leading-normal sm:text-7xl md:leading-relaxed lg:text-8xl xl:text-9xl':
                   locale === 'ar-EG',
