@@ -20,7 +20,7 @@ let exportedConfig = withNextIntl(nextConfig);
 
 if (process.env.NODE_ENV === 'production') {
   exportedConfig = million.next(exportedConfig, {
-    auto: { threshold: 0.02, rsc: true },
+    auto: { rsc: true },
   });
 }
 
