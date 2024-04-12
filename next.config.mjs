@@ -1,5 +1,3 @@
-/* eslint-disable import/no-mutable-exports  -- million */
-import million from 'million/compiler';
 import createNextIntlPlugin from 'next-intl/plugin';
 
 /** @type {import('next').NextConfig} */
@@ -16,12 +14,6 @@ const nextConfig = {
 };
 
 const withNextIntl = createNextIntlPlugin();
-let exportedConfig = withNextIntl(nextConfig);
-
-if (process.env.NODE_ENV === 'production') {
-  exportedConfig = million.next(exportedConfig, {
-    auto: { rsc: true },
-  });
-}
+const exportedConfig = withNextIntl(nextConfig);
 
 export default exportedConfig;
