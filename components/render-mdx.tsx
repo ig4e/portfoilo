@@ -1,14 +1,23 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access -- TODO FIX MDX TYPES */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment  -- TODO FIX MDX TYPES */
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import rehypePrettyCode from 'rehype-pretty-code';
-import type { Options as rehypePrettyCodeOptions } from 'rehype-pretty-code';
-import rehypeSlug from 'rehype-slug';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import type { Options as rehypeAutolinkHeadingsOptions } from 'rehype-autolink-headings';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import type { Options as rehypePrettyCodeOptions } from 'rehype-pretty-code';
+import rehypePrettyCode from 'rehype-pretty-code';
+import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import { visit } from 'unist-util-visit';
-import { Pre } from './mdx/pre';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import { Pre } from '@/components/mdx/pre';
+
 
 function RenderMDX({ source }: { source: string }) {
   return (
@@ -16,6 +25,12 @@ function RenderMDX({ source }: { source: string }) {
       components={{
         //@ts-expect-error -- type mismatch nothing i can do
         pre: Pre,
+        table: Table,
+        tbody: TableBody,
+        thead: TableHeader,
+        tr: TableRow,
+        th: TableHead,
+        td: TableCell,
       }}
       options={{
         mdxOptions: {
