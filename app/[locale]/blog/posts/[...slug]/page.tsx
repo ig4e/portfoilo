@@ -3,10 +3,14 @@
 /* eslint-disable @typescript-eslint/no-shadow  -- TODO FIX MDX TYPES  */
 /* eslint-disable @typescript-eslint/no-non-null-assertion  -- TODO FIX MDX TYPES  */
 /* eslint-disable @typescript-eslint/no-unnecessary-condition  -- TODO FIX MDX TYPES  */
-/* eslint-disable @typescript-eslint/no-unsafe-argument  -- TODO FIX MDX TYPES  */
+ 
 /* eslint-disable @typescript-eslint/no-unsafe-assignment  -- TODO FIX MDX TYPES  */
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain  -- TODO FIX MDX TYPES  */
 
+import { AtSign, ClockIcon } from 'lucide-react';
+import type { Metadata } from 'next';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import Image from 'next/image';
 import { POST_META_QUERY, POST_QUERY } from '@/apollo/queries/post';
 import { GenericHero } from '@/components/generic-hero';
 import { RenderMDX } from '@/components/render-mdx';
@@ -26,10 +30,6 @@ import { getClient } from '@/lib/apollo';
 import { Link } from '@/lib/navigation';
 import { calculateRT } from '@/lib/utils';
 import { getTableOfContents } from '@/server/get-toc';
-import { AtSign, ClockIcon } from 'lucide-react';
-import type { Metadata } from 'next';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
-import Image from 'next/image';
 import { PostDate } from './date';
 import { LocaleAlert } from './locale-alert';
 import { MobileTOC, OneLineTOC, TOCItems } from './toc';

@@ -28,6 +28,7 @@ module.exports = {
     'react/jsx-pascal-case': 'off',
     'react/no-unknown-property': 'off',
     'react-compiler/react-compiler': 'error',
+    '@typescript-eslint/restrict-template-expressions': 'off',
     camelcase: 'off',
   },
   overrides: [

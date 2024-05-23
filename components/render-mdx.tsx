@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default -- REHYPE THING I WONT FIX */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access -- TODO FIX MDX TYPES */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment  -- TODO FIX MDX TYPES */
 import { MDXRemote } from 'next-mdx-remote/rsc';
@@ -17,7 +18,6 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Pre } from '@/components/mdx/pre';
-
 
 function RenderMDX({ source }: { source: string }) {
   return (
@@ -60,7 +60,6 @@ function RenderMDX({ source }: { source: string }) {
               });
             },
             [
-              //@ts-expect-error -- type mismatch nothing i can do
               rehypePrettyCode,
               {
                 theme: {

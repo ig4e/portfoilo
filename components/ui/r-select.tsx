@@ -19,7 +19,7 @@ export const RSelect = forwardRef<
   return (
     <ReactSelect
       className={cn('', className)}
-      //@ts-expect-error -- ref
+      //@ts-expect-error -- ref type mismatch
       ref={ref}
       {...props}
       classNames={{

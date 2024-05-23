@@ -3,13 +3,12 @@ import { NavSheet } from '@/components/nav-sheet';
 import { Typography } from '@/components/typography';
 import { buttonVariants } from '@/components/ui/button';
 import { Icons } from '@/components/ui/icons';
-import { routes } from '@/config/routes';
 import { siteConfig } from '@/config/site';
 import { Link } from '@/lib/navigation';
 import { cn } from '@/lib/utils';
+import { NavMenu } from './header-nav';
 import { LocaleSelector } from './locale-selector';
 import { ModeToggle } from './mode-toggle';
-import { NavMenu } from './header-nav';
 
 export function SiteHeader() {
   const t = useTranslations('site-header');

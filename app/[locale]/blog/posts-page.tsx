@@ -7,8 +7,8 @@ import { Badge } from '@/components/ui/badge';
 import { getClient } from '@/lib/apollo';
 import { cn } from '@/lib/utils';
 import { Link } from '@/lib/navigation';
+import { type Locale } from '@/config/i18n';
 import { PostSearch } from './search';
-import { Locale } from '@/config/i18n';
 
 export async function Posts({ locale }: { locale: Locale }) {
   const t = await getTranslations('blog');
@@ -17,7 +17,7 @@ export async function Posts({ locale }: { locale: Locale }) {
     query: POSTS_QUERY,
     variables: {
       sort: ['postedAt:desc'],
-      locale: locale,
+      locale,
     },
   });
 

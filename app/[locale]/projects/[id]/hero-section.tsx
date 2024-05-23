@@ -43,7 +43,7 @@ export function HeroSection({ projectId }: { projectId: string }) {
           className="absolute inset-x-0 top-0 -z-[3] min-h-[40vh] bg-gradient-to-b from-transparent opacity-60 blur-3xl md:min-h-[60vh]"
           id="project-gradient"
           style={{
-            //@ts-expect-error -- TODO
+            //@ts-expect-error -- TODO fix the type
             '--tw-gradient-to': project.color,
           }}
         />
@@ -148,7 +148,7 @@ export function HeroSection({ projectId }: { projectId: string }) {
             position: 'absolute',
             width: '100%',
             zIndex: '1',
-            //@ts-expect-error -- TODO
+            //@ts-expect-error -- TODO fix the type
             '--gradient-color': project.color,
           }}
         />

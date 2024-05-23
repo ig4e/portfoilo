@@ -11,9 +11,9 @@ export function MadeWithSection({ projectId }: { projectId: string }) {
       <div className="container">
         <SkillsTypeSection
           skillSection={{
-            //@ts-expect-error -- TODO
+            //@ts-expect-error -- TODO fix the type
             items: project.stack,
-            //@ts-expect-error -- TODO
+            //@ts-expect-error -- TODO fix the type
             type: 'made-with',
           }}
         />

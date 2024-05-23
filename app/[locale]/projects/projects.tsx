@@ -100,7 +100,7 @@ export function ProjectsPageList({
     return fillters.map((id) => {
       const allSkillsItems = (
         skills.reduce(
-          //@ts-expect-error -- TODO
+          //@ts-expect-error -- TODO fix the type
           (acc, skill) => [...acc, ...skill.items],
           [],
         ) as unknown as (typeof skills)[0]['items']
