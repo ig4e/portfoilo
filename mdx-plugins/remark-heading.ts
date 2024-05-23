@@ -5,7 +5,6 @@
 import Slugger from 'github-slugger';
 import type { Transformer } from 'unified';
 import { visit } from 'unist-util-visit';
-import type { Root } from 'remark-gfm';
 import type { TOCItemType } from '@/server/get-toc';
 import { flattenNode } from '@/mdx-plugins/utils/remark';
 
@@ -20,7 +19,7 @@ export interface HProperties {
  *
  * Attach an array of `TOCItemType` to `vfile.data.toc`
  */
-export function remarkHeading(): Transformer<Root, Root> {
+export function remarkHeading(): Transformer<any, any> {
   return (node, file) => {
     const toc: TOCItemType[] = [];
     slugger.reset();
@@ -30,7 +29,7 @@ export function remarkHeading(): Transformer<Root, Root> {
       heading.data.hProperties ||= {};
 
       const text = flattenNode(heading);
-      const properties = heading.data.hProperties as any;
+      const properties = heading.data.hProperties;
       const id = slugger.slug(properties.id ?? text);
 
       properties.id = id;
