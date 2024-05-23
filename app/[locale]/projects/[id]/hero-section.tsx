@@ -40,7 +40,7 @@ export function HeroSection({ projectId }: { projectId: string }) {
     >
       <div className="overflow-hidden">
         <div
-          className="absolute inset-x-0 top-0 -z-[10] min-h-[40vh] animate-cardlight rounded-b-full bg-gradient-to-b from-transparent opacity-80 blur-3xl md:min-h-[60vh]"
+          className="absolute inset-x-0 top-0 -z-[3] min-h-[40vh] bg-gradient-to-b from-transparent opacity-60 blur-3xl md:min-h-[60vh]"
           id="project-gradient"
           style={{
             //@ts-expect-error -- TODO
@@ -48,12 +48,14 @@ export function HeroSection({ projectId }: { projectId: string }) {
           }}
         />
 
+        <div className="absolute inset-0 top-0 -z-[4] h-[50vh] overflow-hidden bg-gradient-to-b from-transparent to-background md:h-[60vh]" />
+
         <div
-          className="top-18 absolute inset-0 -z-[5] mix-blend-overlay"
+          className="top-18 absolute inset-0 -z-[1] mix-blend-overlay"
           style={{
             backgroundRepeat: 'repeat',
             backgroundImage: `url('${Noise.src}')`,
-            opacity: 0.1,
+            opacity: 0.2,
           }}
         />
       </div>
@@ -73,7 +75,7 @@ export function HeroSection({ projectId }: { projectId: string }) {
 
           <Typography
             className={cn(
-              'container text-balance text-center text-[3rem] font-semibold leading-tight sm:text-6xl md:mb-6 md:leading-normal lg:text-7xl xl:text-8xl',
+              'container text-balance bg-gradient-to-t from-foreground to-foreground/35 bg-clip-text pb-4 text-center text-5xl font-semibold leading-tight text-transparent sm:text-6xl md:leading-normal lg:text-7xl xl:text-8xl',
               {
                 'pb-8 text-5xl leading-relaxed sm:text-7xl lg:text-8xl xl:text-9xl':
                   locale === 'ar-EG',
@@ -94,10 +96,7 @@ export function HeroSection({ projectId }: { projectId: string }) {
         </div>
 
         <div className="mt-4 hidden w-screen items-center gap-4 [perspective:2000px;] md:flex">
-          <AspectRatio
-            className="container w-full"
-            ratio={project.image.width / project.image.height}
-          >
+          <AspectRatio className="container w-full" ratio={16 / 8}>
             <motion.div
               className="h-full w-full overflow-hidden rounded-[5vh] p-0.5"
               style={{
@@ -112,7 +111,7 @@ export function HeroSection({ projectId }: { projectId: string }) {
             >
               <Image
                 alt={project.name[locale]}
-                className="h-full rounded-[5vh] bg-accent"
+                className="h-full rounded-[5vh] bg-accent object-cover"
                 placeholder="blur"
                 priority
                 src={project.image}

@@ -93,7 +93,7 @@ query PostsSearch(
 }
 `);
 
-export function Posts() {
+export function PostSearch() {
   const locale = useLocale();
   const t = useTranslations('blog');
 
@@ -133,8 +133,11 @@ export function Posts() {
   });
 
   return (
-    <div className="space-y-4 rounded-md border bg-background/60 p-4 md:space-y-8">
-      <div className="relative flex items-start gap-4">
+    <div className="space-y-4 rounded-md md:space-y-8">
+      <div className="relative flex flex-wrap items-start gap-4">
+        <Typography as="h3" className="w-full" element="h3">
+          {t('search')}
+        </Typography>
         <SearchInput
           onChange={(e) => void setQuery(e.target.value)}
           placeholder={t('search')}
@@ -142,7 +145,7 @@ export function Posts() {
         />
         <Suspense fallback={<Loader className="min-h-10" />}>
           <Categories
-            className="w-full md:w-1/2"
+            className="w-full"
             onChange={(state) =>
               void setCategories(
                 (state as { label: string; value: string }[]).map(
@@ -156,7 +159,7 @@ export function Posts() {
         </Suspense>
       </div>
 
-      <div className="relative z-40 grid min-h-64 grid-cols-1 gap-4 will-change-auto md:grid-cols-2 lg:grid-cols-3">
+      <div className="relative z-40 grid min-h-64 grid-cols-1 gap-4 will-change-auto">
         <Loader isLoading={loading} />
         {posts?.search?.posts?.data.map((post) => (
           <PostCard
@@ -192,15 +195,15 @@ interface Post {
 
 export function PostCard({ post }: HTMLMotionProps<'div'> & { post: Post }) {
   return (
-    <div
-      className="group relative overflow-hidden rounded-md border transition duration-500 hover:-translate-y-1 hover:border-primary"
-      id={post.id}
-      key={post.slug}
-    >
-      <Link href={`/blog/posts/${post.id}/${post.slug}`}>
+    <Link href={`/blog/posts/${post.id}/${post.slug}`}>
+      <div
+        className="group relative w-full overflow-hidden rounded-md border transition duration-500 hover:-translate-y-1 hover:border-primary"
+        id={post.id}
+        key={post.slug}
+      >
         <Image
           alt={post.name}
-          className="aspect-video h-full w-full object-cover"
+          className="h-full w-full object-cover"
           height={500}
           src={post.image}
           width={500}
@@ -227,7 +230,7 @@ export function PostCard({ post }: HTMLMotionProps<'div'> & { post: Post }) {
 
           <ExternalLinkIcon className="h-5 w-5 min-w-5 opacity-100 transition duration-300 group-hover:opacity-100 md:opacity-0" />
         </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 }

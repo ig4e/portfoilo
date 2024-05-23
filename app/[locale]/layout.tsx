@@ -14,6 +14,7 @@ import { siteConfig } from '@/config/site';
 import { ApolloWrapper } from '@/lib/apollo-wrapper';
 import { cn } from '@/lib/utils';
 import '../globals.css';
+import { TRPCReactProvider } from '@/trpc/react';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -67,33 +68,35 @@ export default function RootLayout({
 
   return (
     <html dir={dir} lang={locale}>
-      <DirectionProvider dir={dir}>
-        <body
-          className={cn(
-            'min-h-screen bg-background antialiased',
-            inter.className,
-            cairo.className,
-          )}
-        >
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            disableTransitionOnChange
-            enableSystem
+      <TRPCReactProvider>
+        <DirectionProvider dir={dir}>
+          <body
+            className={cn(
+              'min-h-screen bg-background antialiased',
+              inter.className,
+              cairo.className,
+            )}
           >
-            <ApolloWrapper>
-              <NextIntlClientProvider messages={messages}>
-                <MotionProvider reducedMotion="user">
-                  <SiteHeader />
-                  <div>{children}</div>
-                  <SiteFooter />
-                </MotionProvider>
-              </NextIntlClientProvider>
-            </ApolloWrapper>
-          </ThemeProvider>
-          <SpeedInsights />
-        </body>
-      </DirectionProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              disableTransitionOnChange
+              enableSystem
+            >
+              <ApolloWrapper>
+                <NextIntlClientProvider messages={messages}>
+                  <MotionProvider reducedMotion="user">
+                    <SiteHeader />
+                    <div>{children}</div>
+                    <SiteFooter />
+                  </MotionProvider>
+                </NextIntlClientProvider>
+              </ApolloWrapper>
+            </ThemeProvider>
+            <SpeedInsights />
+          </body>
+        </DirectionProvider>
+      </TRPCReactProvider>
 
       <Script
         data-website-id="5e7d095f-b63e-49a5-b4b5-9bbe5f60c764"

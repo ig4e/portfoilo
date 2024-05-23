@@ -20,13 +20,14 @@ module.exports = {
       },
     },
   },
-  plugins: ['react'],
+  plugins: ['react', 'eslint-plugin-react-compiler'],
   rules: {
     'react/self-closing-comp': 'error',
     'no-undef': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     'react/jsx-pascal-case': 'off',
     'react/no-unknown-property': 'off',
+    'react-compiler/react-compiler': 'error',
     camelcase: 'off',
   },
   overrides: [

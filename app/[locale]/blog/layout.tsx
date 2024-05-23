@@ -12,7 +12,7 @@ function layout({
   unstable_setRequestLocale(locale);
 
   return (
-    <div className="container min-h-[calc(100vh-9.5rem)]">
+    <div className="min-h-[calc(100vh-9.5rem)]">
       <div className="">{children}</div>
     </div>
   );

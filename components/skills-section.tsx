@@ -138,7 +138,7 @@ function SkillCard({
         />
 
         <div
-          className="absolute inset-10 z-[3] h-full w-full opacity-15 blur-3xl will-change-auto md:bottom-0 md:left-0 md:h-1/2"
+          className="absolute inset-10 z-[3] h-full w-full opacity-15 blur-3xl will-change-auto md:bottom-0 md:start-0 md:h-1/2"
           style={{
             backgroundColor: item.color,
           }}

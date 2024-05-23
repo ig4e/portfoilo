@@ -9,6 +9,7 @@ import { Link } from '@/lib/navigation';
 import { cn } from '@/lib/utils';
 import { LocaleSelector } from './locale-selector';
 import { ModeToggle } from './mode-toggle';
+import { NavMenu } from './header-nav';
 
 export function SiteHeader() {
   const t = useTranslations('site-header');
@@ -21,24 +22,16 @@ export function SiteHeader() {
             <Icons.logo className="h-8 w-8" />
             <Typography as="h5" className="relative w-14" element="h4">
               <span className="block w-14 overflow-hidden whitespace-nowrap transition-all duration-200 group-hover:w-0">
-                セカイ
-              </span>
-              <span className="absolute top-0 w-0 overflow-hidden transition-all duration-200 group-hover:w-14">
                 {t('name')}
+              </span>
+              <span className="absolute top-0 w-0 overflow-hidden text-nowrap transition-all duration-200 group-hover:w-14">
+                セカイ
               </span>
             </Typography>
           </Link>
 
           <div className="hidden items-center gap-4 md:flex">
-            {routes.map((route) => {
-              return (
-                <Link href={route.url} key={route.title}>
-                  <Typography as="link" element="h4">
-                    {t(`links.${route.title}`)}
-                  </Typography>
-                </Link>
-              );
-            })}
+            <NavMenu />
           </div>
         </div>
 

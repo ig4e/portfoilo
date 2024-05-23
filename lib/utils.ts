@@ -58,3 +58,7 @@ export function mergeRefs<T>(
     });
   };
 }
+
+export function getProjectPath(project: { id: string }) {
+  return `/projects/${project.id}`;
+}

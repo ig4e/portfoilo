@@ -7,11 +7,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment  -- TODO FIX MDX TYPES  */
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain  -- TODO FIX MDX TYPES  */
 
-import { AtSign, ClockIcon } from 'lucide-react';
-import type { Metadata } from 'next';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
-import Image from 'next/image';
-import { gql } from '@/_generated';
+import { POST_META_QUERY, POST_QUERY } from '@/apollo/queries/post';
 import { GenericHero } from '@/components/generic-hero';
 import { RenderMDX } from '@/components/render-mdx';
 import { Typography } from '@/components/typography';
@@ -28,10 +24,16 @@ import {
 import type { Locale } from '@/config/i18n';
 import { getClient } from '@/lib/apollo';
 import { Link } from '@/lib/navigation';
-import { calculateRT, toLocaleDateString } from '@/lib/utils';
+import { calculateRT } from '@/lib/utils';
 import { getTableOfContents } from '@/server/get-toc';
+import { AtSign, ClockIcon } from 'lucide-react';
+import type { Metadata } from 'next';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import Image from 'next/image';
+import { PostDate } from './date';
 import { LocaleAlert } from './locale-alert';
 import { MobileTOC, OneLineTOC, TOCItems } from './toc';
+import { Track } from './track';
 
 export interface PostPageProps {
   params: {
@@ -42,109 +44,6 @@ export interface PostPageProps {
 
 export const fetchCache = 'force-no-store';
 
-const POST_QUERY = gql(`query Post($postId: ID) {
-    post(id: $postId) {
-      data {
-        id
-        attributes {
-          author {
-            data {
-              id
-              attributes {
-                title
-                name
-                image {
-                  data {
-                    attributes {
-                      url
-                    }
-                  }
-                }
-                slug
-              }
-            }
-          }
-          body
-          categories {
-            data {
-              id
-              attributes {
-                name
-                description
-              }
-            }
-          }
-          description
-          image {
-            data {
-              attributes {
-                url
-                width
-                height
-              }
-            }
-          }
-          locale
-          postedAt
-          createdAt
-          slug
-          title
-          localizations {
-            data {
-              id
-              attributes {
-                locale
-                slug
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`);
-
-const POST_METADATA_QUERY = gql(`query PostMeta($postId: ID) {
-    post(id: $postId) {
-      data {
-        id
-        attributes {
-          author {
-            data {
-              id
-              attributes {
-                name
-                image {
-                  data {
-                    attributes {
-                      url
-                    }
-                  }
-                }
-                slug
-              }
-            }
-          }
-          description
-          image {
-            data {
-              attributes {
-                url
-                width
-                height
-              }
-            }
-          }
-          locale
-          postedAt
-          slug
-          title
-        }
-      }
-    }
-  }
-`);
-
 export async function generateMetadata({
   params: {
     slug: [id],
@@ -153,7 +52,7 @@ export async function generateMetadata({
   const {
     data: { post },
   } = await getClient().query({
-    query: POST_METADATA_QUERY,
+    query: POST_META_QUERY,
     variables: {
       postId: id,
     },
@@ -239,135 +138,141 @@ async function Post({
 
   return (
     <div className="pb-16" suppressHydrationWarning>
+      <Track postId={id} />
       <GenericHero description={postData.description} title={postData.title} />
 
-      <div className="relative flex flex-col-reverse justify-between rounded-md bg-background/60 py-8 md:px-4 lg:flex lg:flex-row">
-        <article className="lg:w-[70%] lg:ps-8">
-          {postData ? (
-            <>
-              <LocaleAlert
-                localizations={postData.localizations}
-                post={{
-                  id: postData.id,
-                  locale: postData.locale,
-                  slug: postData.slug,
-                }}
-              />
+      <div className="relative rounded-md bg-background/60 py-8 md:px-4">
+        <div className="container flex flex-col-reverse justify-between rounded-md bg-background/60 lg:flex lg:flex-row">
+          <article className="lg:w-[70%] lg:ps-8">
+            {postData ? (
+              <>
+                <LocaleAlert
+                  localizations={postData.localizations}
+                  post={{
+                    id: postData.id,
+                    locale: postData.locale,
+                    slug: postData.slug,
+                  }}
+                />
 
-              <AspectRatio
-                ratio={postData.image?.width / postData.image?.height}
-              >
-                <div className="h-full w-full overflow-hidden rounded-md p-0.5">
-                  <Image
-                    alt={postData.title}
-                    className="h-full w-full rounded-md bg-accent object-fill"
-                    height={postData.image.height}
-                    priority
-                    src={postData.image?.url}
-                    width={postData.image.width}
-                  />
+                <AspectRatio
+                  ratio={postData.image?.width / postData.image?.height}
+                >
+                  <div className="h-full w-full overflow-hidden rounded-md p-0.5">
+                    <Image
+                      alt={postData.title}
+                      className="h-full w-full rounded-md bg-accent object-fill"
+                      height={postData.image.height}
+                      priority
+                      src={postData.image?.url}
+                      width={postData.image.width}
+                    />
+                  </div>
+                </AspectRatio>
+                <div className="prose prose-stone mt-4 break-before-all overflow-hidden break-words dark:prose-invert md:max-w-4xl">
+                  <RenderMDX source={postData.body} />
                 </div>
-              </AspectRatio>
-              <div className="prose prose-stone mt-4 break-before-all overflow-hidden break-words dark:prose-invert md:max-w-4xl">
-                <RenderMDX source={postData.body} />
+              </>
+            ) : null}
+            <header className="fixed inset-x-0 bottom-0 z-10 w-screen border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 md:hidden">
+              <div className="container flex h-14 items-center justify-between gap-8">
+                <MobileTOC items={toc} />
+                <OneLineTOC items={toc} />
               </div>
-            </>
-          ) : null}
-          <header className="fixed inset-x-0 bottom-0 z-10 w-screen border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 md:hidden">
-            <div className="container flex h-14 items-center justify-between gap-8">
-              <MobileTOC items={toc} />
-              <OneLineTOC items={toc} />
-            </div>
-          </header>
-        </article>
+            </header>
+          </article>
 
-        <aside className="top-20 h-full w-full self-start pb-8 lg:sticky lg:mt-0 lg:min-h-screen lg:w-3/12 lg:border-s lg:ps-[4.16%] lg:pt-5">
-          <ScrollArea>
-            <div className="space-y-4">
-              <div className="space-y-4 border-b pb-4">
-                <Typography as="mutedText" element="span">
-                  {t('written-by')}
-                </Typography>
-                <div className="flex items-center gap-3">
-                  <Avatar className="h-12 w-12">
-                    <AvatarImage src={postData.author.image} />
-                    <AvatarFallback className="text-lg font-semibold uppercase">
-                      {postData.author.name.slice(0, 2)}
-                    </AvatarFallback>
-                  </Avatar>
+          <aside className="top-20 h-full w-full self-start pb-8 lg:sticky lg:mt-0 lg:min-h-screen lg:w-3/12 lg:border-s lg:ps-[4.16%] lg:pt-5">
+            <ScrollArea>
+              <div className="space-y-4">
+                <div className="space-y-4 border-b pb-4">
+                  <Typography as="mutedText" element="span">
+                    {t('written-by')}
+                  </Typography>
+                  <div className="flex items-center gap-3">
+                    <Avatar className="h-12 w-12">
+                      <AvatarImage src={postData.author.image} />
+                      <AvatarFallback className="text-lg font-semibold uppercase">
+                        {postData.author.name.slice(0, 2)}
+                      </AvatarFallback>
+                    </Avatar>
+
+                    <div>
+                      <Typography as="h5" element="h5">
+                        {postData.author.name}
+                      </Typography>
+                      <Typography
+                        as="mutedText"
+                        className="flex max-w-fit items-center gap-1 text-ellipsis whitespace-nowrap"
+                        element="h6"
+                      >
+                        {postData.author.title}
+                      </Typography>
+                    </div>
+                  </div>
 
                   <div>
-                    <Typography as="h5" element="h5">
-                      {postData.author.name}
+                    <Typography
+                      as="mutedText"
+                      className="flex items-center gap-1"
+                      element="h6"
+                    >
+                      <AtSign className="h-3 w-3" />
+                      <PostDate date={postData.postedAt} />
                     </Typography>
                     <Typography
                       as="mutedText"
-                      className="flex max-w-fit items-center gap-1 text-ellipsis whitespace-nowrap"
+                      className="flex items-center gap-1"
                       element="h6"
                     >
-                      {postData.author.title}
+                      <ClockIcon className="h-3 w-3" />
+                      {t('rt', {
+                        count: calculateRT(postData.body),
+                      })}
                     </Typography>
                   </div>
                 </div>
 
-                <div>
-                  <Typography
-                    as="mutedText"
-                    className="flex items-center gap-1"
-                    element="h6"
-                  >
-                    <AtSign className="h-3 w-3" />
-                    {toLocaleDateString(postData.postedAt)}
+                <div className="space-y-4 border-b pb-4">
+                  <Typography as="mutedText" element="span">
+                    {t('categories')}
                   </Typography>
-                  <Typography
-                    as="mutedText"
-                    className="flex items-center gap-1"
-                    element="h6"
-                  >
-                    <ClockIcon className="h-3 w-3" />
-                    {t('rt', {
-                      count: calculateRT(postData.body),
+
+                  <div className="flex flex-wrap gap-2">
+                    {postData.categories.map((category) => {
+                      return (
+                        <Link
+                          href={`/blog?categories=${category.id}`}
+                          key={category.id}
+                        >
+                          <TooltipProvider key={category.id}>
+                            <Tooltip key={category.id}>
+                              <TooltipTrigger>
+                                <Badge
+                                  className="text-base"
+                                  variant="secondary"
+                                >
+                                  {category.name}
+                                </Badge>
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>{category.description}</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        </Link>
+                      );
                     })}
-                  </Typography>
+                  </div>
+                </div>
+
+                <div className="hidden lg:block">
+                  <TOCItems items={toc} />
                 </div>
               </div>
-
-              <div className="space-y-4 border-b pb-4">
-                <Typography as="mutedText" element="span">
-                  {t('categories')}
-                </Typography>
-
-                <div className="flex flex-wrap gap-2">
-                  {postData.categories.map((category) => {
-                    return (
-                      <Link
-                        href={`/blog?categories=${category.id}`}
-                        key={category.id}
-                      >
-                        <TooltipProvider key={category.id}>
-                          <Tooltip key={category.id}>
-                            <TooltipTrigger>
-                              <Badge className="text-base" variant="secondary">
-                                {category.name}
-                              </Badge>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              <p>{category.description}</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        </TooltipProvider>
-                      </Link>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div className="hidden lg:block">
-                <TOCItems items={toc} />
-              </div>
-            </div>
-          </ScrollArea>
-        </aside>
+            </ScrollArea>
+          </aside>
+        </div>
       </div>
     </div>
   );

@@ -19,13 +19,25 @@ export function HeroSection() {
     <div className="mb-12" id="hero">
       <section className="flex min-h-[50vh] flex-col items-center justify-center gap-12 overflow-hidden text-center md:min-h-screen">
         <div className="overflow-hidden">
-          <div className="absolute inset-x-0 top-0 -z-[10] min-h-[40vh] animate-cardlight rounded-b-full bg-gradient-to-b from-rose-500 to-red-100 opacity-80 blur-3xl dark:from-rose-900 md:min-h-[60vh]" />
+          <div className="absolute inset-x-0 top-0 -z-[10] min-h-[40vh] overflow-hidden bg-gradient-to-b from-rose-500 to-red-100 opacity-50 blur-3xl dark:from-rose-900 md:min-h-[60vh]" />
+
+          <div
+            className="absolute inset-x-0 top-0 -z-[5] h-[50vh] w-full overflow-hidden !fill-current !text-white brightness-125 md:h-[60vh]"
+            style={{
+              background: `url("/assets/background.svg")`,
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: 'cover',
+            }}
+          />
+
+          <div className="absolute inset-0 top-0 -z-[4] h-[50vh] overflow-hidden bg-gradient-to-b from-transparent to-background md:h-[60vh]" />
+
           <div
             className="top-18 absolute inset-0 -z-[1] mix-blend-overlay"
             style={{
               backgroundRepeat: 'repeat',
               backgroundImage: `url('${Noise.src}')`,
-              opacity: 0.1,
+              opacity: 0.2,
             }}
           />
         </div>
@@ -40,7 +52,7 @@ export function HeroSection() {
         >
           <Typography
             className={cn(
-              'container text-balance text-transparent bg-clip-text bg-gradient-to-t from-foreground to-foreground/25 text-center text-5xl font-semibold leading-tight sm:text-6xl md:leading-normal lg:text-7xl xl:text-8xl',
+              'container text-balance bg-gradient-to-t from-foreground to-foreground/35 bg-clip-text text-center text-5xl font-semibold leading-tight text-transparent sm:text-6xl md:leading-normal lg:text-7xl xl:text-8xl',
               {
                 'text-5xl leading-normal sm:text-7xl md:leading-relaxed lg:text-8xl xl:text-9xl':
                   locale === 'ar-EG',

@@ -111,7 +111,7 @@ export function OneLineTOC({ items }: { items: TOCItemType[] }) {
     <Primitive.TOCScrollProvider containerRef={containerRef} toc={items}>
       <div className="text-foreground">
         <Link href={activeAnchorData.url}>
-          <span className="overflow-hidden line-clamp-1 text-ellipsis py-1 transition-colors data-[active=true]:font-medium data-[active=true]:text-primary">
+          <span className="line-clamp-1 overflow-hidden text-ellipsis py-1 transition-colors data-[active=true]:font-medium data-[active=true]:text-primary">
             {activeAnchorData.title}
           </span>
         </Link>
