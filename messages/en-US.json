@@ -48,7 +48,9 @@
     "skills": {
       "section-name": "My Skills",
       "languages": "Languages",
+      "runtimes": "Runtimes",
       "libraries-frameworks": "Libraries & Frameworks",
+      "search-engines": "Search Engines",
       "databases": "Databases",
       "cms": "Content management systems",
       "tools": "Tools",

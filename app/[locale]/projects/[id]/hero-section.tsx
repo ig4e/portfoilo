@@ -1,21 +1,21 @@
 'use client';
 
-import {
-  type MotionValue,
-  motion,
-  useScroll,
-  useSpring,
-  useTransform,
-} from 'framer-motion';
-import { useLocale } from 'next-intl';
-import Image from 'next/image';
-import { useRef } from 'react';
 import { Typography } from '@/components/typography';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Noise } from '@/components/ui/images';
 import type { Locale } from '@/config/i18n';
 import { projects } from '@/config/projects';
 import { cn, hexToRgb } from '@/lib/utils';
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+  type MotionValue,
+} from 'framer-motion';
+import { useLocale } from 'next-intl';
+import Image from 'next/image';
+import { useRef } from 'react';
 
 export function HeroSection({ projectId }: { projectId: string }) {
   const project = projects.find((p) => p.id === projectId);
@@ -115,6 +115,7 @@ export function HeroSection({ projectId }: { projectId: string }) {
                 placeholder="blur"
                 priority
                 src={project.image}
+                quality={100}
               />
             </motion.div>
           </AspectRatio>
@@ -128,6 +129,7 @@ export function HeroSection({ projectId }: { projectId: string }) {
               placeholder="blur"
               priority
               src={project.image}
+              quality={100}
             />
           </div>
         </div>

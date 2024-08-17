@@ -6,7 +6,15 @@ import ShareMe from '@/public/assets/projects/shareme.png';
 import WolfLand from '@/public/assets/projects/wolfland.png';
 import HnzakrOnline from '@/public/assets/projects/hnzakronline.png';
 import Ugurly from '@/public/assets/projects/ugurly.png';
-import { databases, languages, technologies, tools } from './skills';
+import Blitzmarks from '@/public/assets/projects/blitzmarks.png';
+import {
+  databases,
+  languages,
+  runtimes,
+  searchEngines,
+  technologies,
+  tools,
+} from './skills';
 
 export const categories = {
   'ux-ui': {
@@ -44,6 +52,62 @@ export const mappedCategories = (
 
 export const projects = [
   {
+    id: 'blitzmarks',
+    image: Blitzmarks,
+    name: {
+      'ar-EG': 'بليتز ماركس',
+      'en-US': 'BlitzMarks',
+    },
+    shortDescription: {
+      'ar-EG':
+        'شوف نتيجة الثانوية العامة بسهولة! دوّر بالاسم أو رقم الجلوس وهتلاقي كل تفاصيل الطالب ودرجاته في كل مادة.',
+      'en-US':
+        "Retrieve your high school exam results effortlessly. A simple search by name or seating number will provide you with comprehensive details of the student's performance in all subjects.",
+    },
+    description: {
+      'ar-EG':
+        'شوف نتيجة الثانوية العامة بسهولة! دوّر بالاسم أو رقم الجلوس وهتلاقي كل تفاصيل الطالب ودرجاته في كل مادة.',
+      'en-US':
+        "Retrieve your high school exam results effortlessly. A simple search by name or seating number will provide you with comprehensive details of the student's performance in all subjects..",
+    },
+    workArea: {
+      'ar-EG': 'فرونت-ايند | باك-ايند | تصميم واجهة المستخدم وتجربة المستخدم',
+      'en-US': 'Front-end | Back-end | UI/UX Design',
+    },
+    color: '#1d4ed8',
+    links: {
+      github: undefined,
+      website: 'https://blitzmarks.ahmedmohamed.dev',
+    },
+    categories: [
+      categories['ux-ui'],
+      categories['front-end'],
+      categories['back-end'],
+      categories.database,
+    ],
+    stack: [
+      languages.ts,
+      runtimes.bun,
+      technologies.react,
+      technologies.nextjs,
+      technologies.tailwind,
+      technologies.shadcnui,
+      technologies.prisma,
+      technologies.mantine,
+      technologies.hono,
+      searchEngines['mongodb-atlas'],
+      databases.mysql,
+      languages.html,
+      languages.css,
+      languages.js,
+      tools.adobexd,
+      tools.git,
+      tools.github,
+      tools['github-codespaces'],
+    ],
+    createdAt: '2024/8/6',
+  },
+  {
     id: 'ugurly',
     image: Ugurly,
     name: {
@@ -77,6 +141,7 @@ export const projects = [
     ],
     stack: [
       languages.ts,
+      runtimes.node,
       technologies.nextjs,
       technologies.react,
       technologies.tailwind,
@@ -128,6 +193,7 @@ export const projects = [
     ],
     stack: [
       languages.ts,
+      runtimes.node,
       technologies.nextjs,
       technologies.react,
       technologies.tailwind,
@@ -207,6 +273,7 @@ export const projects = [
     ],
     stack: [
       languages.ts,
+      runtimes.node,
       technologies.nextjs,
       technologies.react,
       technologies.tailwind,
@@ -285,6 +352,7 @@ export const projects = [
     ],
     stack: [
       languages.ts,
+      runtimes.node,
       languages.graphql,
       technologies.nextjs,
       technologies.react,
@@ -336,6 +404,7 @@ export const projects = [
       languages.html,
       languages.css,
       languages.ts,
+      runtimes.node,
       technologies.nextjs,
       technologies.react,
       technologies.tailwind,
@@ -391,6 +460,7 @@ export const projects = [
       languages.css,
       languages.ts,
       languages.js,
+      runtimes.node,
       tools.vsc,
       tools.adobexd,
       tools.git,

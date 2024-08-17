@@ -1,6 +1,7 @@
 import { Icons } from '@/components/ui/icons';
 
 export const skills = [
+  /* Languages  */
   {
     type: 'languages',
     items: [
@@ -115,6 +116,48 @@ export const skills = [
       },
     ],
   },
+
+  /* Runtimes */
+
+  {
+    type: 'runtimes',
+    items: [
+      {
+        id: 'node',
+        icon: Icons.nodejs,
+        name: {
+          'ar-EG': 'نود جي اس',
+          'en-US': 'Node.js',
+        },
+        description: {
+          'ar-EG':
+            'محرك جافاسكريبت بالوقت الفعلي مفتوح المصدر ومُصمم لكتابة تطبيقات متعدد المنصات.',
+          'en-US':
+            "Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.",
+        },
+        color: '#417e38',
+        link: 'https://nodejs.org',
+      },
+      {
+        id: 'bun',
+        icon: Icons.bun,
+        name: {
+          'ar-EG': 'بان',
+          'en-US': 'Bun',
+        },
+        description: {
+          'ar-EG':
+            'هو بيئة تشغيل سريعة لـ جافاسكريبت، كما أنه مجموعة أدوات شاملة.',
+          'en-US': 'Bun is a fast JavaScript runtime & all-in-one toolkit.',
+        },
+        color: '#ffffff',
+        link: 'https://bun.sh',
+      },
+    ],
+  },
+
+  /* Libraries & Frameworks */
+
   {
     type: 'libraries-frameworks',
     items: [
@@ -193,6 +236,20 @@ export const skills = [
         link: 'https://nuxtjs.org/',
       },
       {
+        id: 'nextra',
+        icon: Icons.nextra,
+        name: {
+          'ar-EG': 'نيكسترا',
+          'en-US': 'Nextra',
+        },
+        description: {
+          'ar-EG': 'إطار إنشاء موقع بسيط وقوي ومرن.',
+          'en-US': 'Simple, powerful and flexible site generation framework.',
+        },
+        color: '#FFFFFF',
+        link: 'https://nextra.site/',
+      },
+      {
         id: 'nest',
         icon: Icons.nest,
         name: {
@@ -209,6 +266,20 @@ export const skills = [
         link: 'https://nestjs.com/',
       },
       {
+        id: 'hono',
+        icon: Icons.hono,
+        name: {
+          'ar-EG': 'هونو',
+          'en-US': 'Hono',
+        },
+        description: {
+          'ar-EG': 'إطار عمل ويب فائق السرعة لعدة بيئات تشغيل جافاسكريبت',
+          'en-US': 'Ultrafast web framework for multiple JavaScript runtimes',
+        },
+        color: '#ff5b11',
+        link: 'https://hono.dev/',
+      },
+      {
         id: 'express',
         icon: Icons.express,
         name: {
@@ -223,6 +294,34 @@ export const skills = [
         },
         color: '#FFF',
         link: 'https://expressjs.com/',
+      },
+      {
+        id: 'trpc',
+        icon: Icons.trpc,
+        name: {
+          'ar-EG': 'تي أر بي سي',
+          'en-US': 'tRPC',
+        },
+        description: {
+          'ar-EG': 'إطار إنشاء أبي أي بتقنية أر بي سي بسيط وقوي ومرن.',
+          'en-US': 'Simple, powerful and flexible RPC Api framework.',
+        },
+        color: '#398ccb',
+        link: 'https://trpc.io/',
+      },
+      {
+        id: 'authjs',
+        icon: Icons.authjs,
+        name: {
+          'ar-EG': 'أوث جي أس',
+          'en-US': 'Auth.js',
+        },
+        description: {
+          'ar-EG': 'إطار مصادقة بسيط وقوي ومرن.',
+          'en-US': 'Simple, powerful and flexible auth framework.',
+        },
+        color: '#398ccb',
+        link: 'https://authjs.dev/',
       },
       {
         id: 'prisma',
@@ -268,6 +367,23 @@ export const skills = [
         color: '#FFFFFF',
         link: 'https://ui.shadcn.com/',
       },
+
+      {
+        id: 'mantine',
+        icon: Icons.mantine,
+        name: {
+          'ar-EG': 'مانتين',
+          'en-US': 'Mantine',
+        },
+        description: {
+          'ar-EG':
+            'مكتبة مكونات واجهة مستخدم قابلة للتخصيص لبناء تطبيقات الويب',
+          'en-US':
+            'Highly customizable UI component library for building web applications',
+        },
+        color: '#339af0',
+        link: 'https://mantine.dev/',
+      },
       {
         id: 'radixui',
         icon: Icons.radix,
@@ -284,50 +400,62 @@ export const skills = [
         color: '#FFFFFF',
         link: 'https://www.radix-ui.com',
       },
+    ],
+  },
+
+  /* Search Engines */
+
+  {
+    type: 'search-engines',
+    items: [
       {
-        id: 'nextra',
-        icon: Icons.nextra,
+        id: 'meilisearch',
+        icon: Icons.meilisearch, // Assuming you have an icon for Meilisearch
         name: {
-          'ar-EG': 'نيكسترا',
-          'en-US': 'Nextra',
+          'ar-EG': 'ميلي سيرش',
+          'en-US': 'Meilisearch',
         },
         description: {
-          'ar-EG': 'إطار إنشاء موقع بسيط وقوي ومرن.',
-          'en-US': 'Simple, powerful and flexible site generation framework.',
+          'ar-EG': 'محرك بحث سريع وسهل الاستخدام للبيانات الخاصة بك',
+          'en-US': 'Fast and easy-to-use search engine for your data',
         },
-        color: '#FFFFFF',
-        link: 'https://nextra.site/',
+        color: '#FF4E62', // You can customize the color
+        link: 'https://www.meilisearch.com/',
       },
       {
-        id: 'trpc',
-        icon: Icons.trpc,
+        id: 'orama',
+        icon: Icons.orama, // Assuming you have an icon for Orama
         name: {
-          'ar-EG': 'تي أر بي سي',
-          'en-US': 'tRPC',
+          'ar-EG': 'أوراما سيرش',
+          'en-US': 'Orama Search',
         },
         description: {
-          'ar-EG': 'إطار إنشاء أبي أي بتقنية أر بي سي بسيط وقوي ومرن.',
-          'en-US': 'Simple, powerful and flexible RPC Api framework.',
+          'ar-EG': 'محرك بحث هجين سريع و مفتوح المصدر',
+          'en-US': 'Fast, open-source hybrid search engine',
         },
-        color: '#398ccb',
-        link: 'https://trpc.io/',
+        color: '#43205b', // You can customize the color
+        link: 'https://askorama.ai/',
       },
       {
-        id: 'authjs',
-        icon: Icons.authjs,
+        id: 'mongodb-atlas',
+        icon: Icons.mongodb,
         name: {
-          'ar-EG': 'أوث جي أس',
-          'en-US': 'Auth.js',
+          'ar-EG': 'مونغو دي بي اتلاس',
+          'en-US': 'MongoDB Atlas',
         },
         description: {
-          'ar-EG': 'إطار مصادقة بسيط وقوي ومرن.',
-          'en-US': 'Simple, powerful and flexible auth framework.',
+          'ar-EG':
+            'MongoDB هي قاعدة بيانات NoSQL متاحة المصدر وموجهة نحو المستندات.',
+          'en-US': 'MongoDB Atlas is an all-in-one platform for MongoDB.',
         },
-        color: '#398ccb',
-        link: 'https://authjs.dev/',
+        color: '#01ed64',
+        link: 'https://www.mongodb.com/',
       },
     ],
   },
+
+  /* Databases */
+
   {
     type: 'databases',
     items: [
@@ -347,6 +475,36 @@ export const skills = [
         color: '#01ed64',
         link: 'https://www.mongodb.com/',
       },
+
+      {
+        id: 'postgresql',
+        icon: Icons.postgresql, // Assuming you have an icon for PostgreSQL
+        name: {
+          'ar-EG': 'بوستجريس كيو إل',
+          'en-US': 'PostgreSQL',
+        },
+        description: {
+          'ar-EG': 'قاعدة بيانات مفتوحة المصدر متقدمة وعالية الأداء.',
+          'en-US': 'Advanced open-source relational database system.',
+        },
+        color: '#336699', // You can customize the color
+        link: 'https://www.postgresql.org/',
+      },
+      {
+        id: 'mysql',
+        icon: Icons.mysql, // Assuming you have an icon for MySQL
+        name: {
+          'ar-EG': 'ماي إس كيو إل',
+          'en-US': 'MySQL',
+        },
+        description: {
+          'ar-EG':
+            'قاعدة بيانات مفتوحة المصدر شعبية لإدارة البيانات العلائقية.',
+          'en-US': 'Popular open-source relational database management system.',
+        },
+        color: '#00758F', // You can customize the color
+        link: 'https://www.mysql.com/',
+      },
       {
         id: 'sqlite',
         icon: Icons.sqlite,
@@ -358,13 +516,16 @@ export const skills = [
           'ar-EG':
             'SQLite هي محرك قاعدة بيانات مدمجة ذاتية الإدارة وغير متصلة بالشبكة تدعم الـ SQL.',
           'en-US':
-            'SQLite is a self-contained, serverless, zero-configuration, transactional SQL database engine.',
+            'SQLite is a self-contained, serverless, zero-configuration, database engine.',
         },
         color: '#398ccb',
         link: 'https://www.sqlite.org/',
       },
     ],
   },
+
+  /* Content management systems */
+
   {
     type: 'cms',
     items: [
@@ -379,13 +540,16 @@ export const skills = [
           'ar-EG':
             'سترابي هو نظام إدارة محتوى فارغ الرأس مخصص لتطوير مواقع الويب، تطبيقات الهواتف المحمولة، متاجر التجارة الإلكترونية، وواجهات البرمجة (APIs).',
           'en-US':
-            'Strapi is a headless CMS for developing websites, mobile apps, eCommerce sites, and APIs.',
+            'Strapi is a headless CMS for developing websites, mobile apps.',
         },
         color: '#4945ff',
         link: 'https://strapi.io/',
       },
     ],
   },
+
+  /* Tools */
+
   {
     type: 'tools',
     items: [
@@ -467,6 +631,21 @@ export const skills = [
         link: 'https://github.com/',
       },
       {
+        id: 'github-codespaces',
+        icon: Icons.githubCodeSpaces,
+        name: {
+          'ar-EG': 'جيت هب - كود سبيسيس',
+          'en-US': 'Github - Codespaces',
+        },
+        description: {
+          'ar-EG': 'بيئة تطوير سحابية فورية لبناء وتشغيل الكود.',
+          'en-US':
+            'Instant cloud-based development environments for building and running code.',
+        },
+        color: '#FFFFFF',
+        link: 'https://github.com/',
+      },
+      {
         id: 'postman',
         icon: Icons.postman,
         name: {
@@ -490,10 +669,8 @@ export const skills = [
           'en-US': 'MongoDB Compass',
         },
         description: {
-          'ar-EG':
-            'بوست مان هو تطبيق يتيح اختبار واستكشاف واستخدام وتصحيح الواجهات البرمجية للويب.',
-          'en-US':
-            'Postman is an application that allows the testing of web APIs.',
+          'ar-EG': 'أداة رسومية لإدارة قواعد بيانات مونجو دي بي',
+          'en-US': 'Graphical tool for managing MongoDB databases',
         },
         color: '#01ed64',
         link: 'https://www.mongodb.com/products/tools/compass',
@@ -502,7 +679,9 @@ export const skills = [
   },
 ] as const;
 
-type MappedCategory<T extends (typeof skills)[number]> = {
+export type Skills = typeof skills;
+
+type MappedCategory<T extends Skills[number]> = {
   [key in T['items'][number]['id']]: T['items'][number];
 };
 
@@ -511,37 +690,53 @@ export const languages = skills[0].items.reduce(
     object[item.id] = item;
     return object;
   },
-  {} as MappedCategory<(typeof skills)[0]>,
+  {} as MappedCategory<Skills[0]>,
 );
 
-export const technologies = skills[1].items.reduce(
+export const runtimes = skills[1].items.reduce(
   (object, item) => {
     object[item.id] = item;
     return object;
   },
-  {} as MappedCategory<(typeof skills)[1]>,
+  {} as MappedCategory<Skills[1]>,
 );
 
-export const databases = skills[2].items.reduce(
+export const technologies = skills[2].items.reduce(
   (object, item) => {
     object[item.id] = item;
     return object;
   },
-  {} as MappedCategory<(typeof skills)[2]>,
+  {} as MappedCategory<Skills[2]>,
 );
 
-export const cms = skills[3].items.reduce(
+export const searchEngines = skills[3].items.reduce(
   (object, item) => {
     object[item.id] = item;
     return object;
   },
-  {} as MappedCategory<(typeof skills)[3]>,
+  {} as MappedCategory<Skills[3]>,
 );
 
-export const tools = skills[4].items.reduce(
+export const databases = skills[4].items.reduce(
   (object, item) => {
     object[item.id] = item;
     return object;
   },
-  {} as MappedCategory<(typeof skills)[4]>,
+  {} as MappedCategory<Skills[4]>,
+);
+
+export const cms = skills[5].items.reduce(
+  (object, item) => {
+    object[item.id] = item;
+    return object;
+  },
+  {} as MappedCategory<Skills[5]>,
+);
+
+export const tools = skills[6].items.reduce(
+  (object, item) => {
+    object[item.id] = item;
+    return object;
+  },
+  {} as MappedCategory<Skills[6]>,
 );

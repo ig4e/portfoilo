@@ -48,7 +48,9 @@
     "skills": {
       "section-name": "مهاراتي",
       "languages": "لغات البرمجة",
+      "runtimes": "بيئات الشتغيل",
       "libraries-frameworks": "المكتبات والأطُر",
+      "search-engines": "محركات البحث",
       "databases": "قاعدات البيانات",
       "cms": "أنظمة إدارة المحتوى",
       "tools": "الأدوات",
