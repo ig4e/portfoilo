@@ -191,7 +191,7 @@ export const Icons = {
   bun: (props: IconProps) => (
     <svg
       {...props}
-      className={cn(props.className, 'h-24 min-w-[24rem]')}
+      className={cn(props.className, 'h-24 lg:min-w-[24rem]')}
       viewBox="0 0 80 70"
       height="128"
       width="128"
