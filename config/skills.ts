@@ -445,7 +445,7 @@ export const skills = [
         },
         description: {
           'ar-EG':
-            'MongoDB هي قاعدة بيانات NoSQL متاحة المصدر وموجهة نحو المستندات.',
+            'MongoDB Atlas هي مجموعة ادوات متكامله ل MongoDB',
           'en-US': 'MongoDB Atlas is an all-in-one platform for MongoDB.',
         },
         color: '#01ed64',
