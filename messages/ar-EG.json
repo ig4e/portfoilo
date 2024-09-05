@@ -65,7 +65,9 @@
     "fillters": {
       "categories": "التصنيفات",
       "languages": "لغات البرمجة",
+      "runtimes": "بيئات الشتغيل",
       "libraries-frameworks": "المكتبات والأطُر",
+      "search-engines": "محركات البحث",
       "databases": "قاعدات البيانات",
       "cms": "أنظمة إدارة المحتوى",
       "tools": "الأدوات"

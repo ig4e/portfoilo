@@ -67,29 +67,43 @@ export function ProjectsPageList({
       })),
     },
     {
-      label: t('fillters.libraries-frameworks'),
+      label: t('fillters.runtimes'),
       options: skills[1].items.map((language) => ({
         label: language.name[locale],
         value: language.id,
       })),
     },
     {
-      label: t('fillters.databases'),
+      label: t('fillters.libraries-frameworks'),
       options: skills[2].items.map((language) => ({
         label: language.name[locale],
         value: language.id,
       })),
     },
     {
-      label: t('fillters.cms'),
+      label: t('fillters.search-engines'),
       options: skills[3].items.map((language) => ({
         label: language.name[locale],
         value: language.id,
       })),
     },
     {
-      label: t('fillters.tools'),
+      label: t('fillters.databases'),
       options: skills[4].items.map((language) => ({
+        label: language.name[locale],
+        value: language.id,
+      })),
+    },
+    {
+      label: t('fillters.cms'),
+      options: skills[5].items.map((language) => ({
+        label: language.name[locale],
+        value: language.id,
+      })),
+    },
+    {
+      label: t('fillters.tools'),
+      options: skills[6].items.map((language) => ({
         label: language.name[locale],
         value: language.id,
       })),
