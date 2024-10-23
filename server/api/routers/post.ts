@@ -31,6 +31,6 @@ export const postRouter = createTRPCRouter({
         },
       });
 
-      return newPost;
+      return { ok: true };
     }),
 });
