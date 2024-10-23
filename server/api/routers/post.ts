@@ -1,6 +1,6 @@
 import { UPDATE_POST_MUTATION } from '@/apollo/mutations/post';
 import { POST_MINIMAL_QUERY } from '@/apollo/queries/post';
-import { getClient } from '@/lib/apollo';
+import { getClient } from '@/server/apollo';
 import { createTRPCRouter, publicProcedure } from '@/server/api/trpc';
 import { TRPCError } from '@trpc/server';
 import { z } from 'zod';
