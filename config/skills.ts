@@ -400,6 +400,38 @@ export const skills = [
         color: '#FFFFFF',
         link: 'https://www.radix-ui.com',
       },
+      {
+        id: 'chakraui',
+        icon: Icons.chakra,
+        name: {
+          'ar-EG': 'شاكرا يو أي',
+          'en-US': 'Chakra UI',
+        },
+        description: {
+          'ar-EG':
+            'مكتبة مكونات بسيطة وقابلة للتخصيص وقابلة للوصول لبناء تطبيقات الويب بسرعة.',
+          'en-US':
+            'Simple, modular and accessible component library for building React applications quickly.',
+        },
+        color: '#319795',
+        link: 'https://chakra-ui.com',
+      },
+      {
+        id: 'nextintl',
+        icon: Icons.nextintl,
+        name: {
+          'ar-EG': 'نيكست إنت إل',
+          'en-US': 'Next-intl',
+        },
+        description: {
+          'ar-EG':
+            'حل شامل للتدويل في تطبيقات نيكست.جي إس.',
+          'en-US':
+            'Complete solution for internationalization in Next.js applications.',
+        },
+        color: '#000000',
+        link: 'https://next-intl-docs.vercel.app',
+      },
     ],
   },
 

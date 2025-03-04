@@ -7,6 +7,8 @@ import WolfLand from '@/public/assets/projects/wolfland.png';
 import HnzakrOnline from '@/public/assets/projects/hnzakronline.png';
 import Ugurly from '@/public/assets/projects/ugurly.png';
 import Blitzmarks from '@/public/assets/projects/blitzmarks.png';
+import Taiba from '@/public/assets/projects/taiba.png';
+
 import {
   databases,
   languages,
@@ -51,6 +53,49 @@ export const mappedCategories = (
 }));
 
 export const projects = [
+  {
+    id: 'taiba-lines',
+    image: Taiba,
+    name: {
+      'ar-EG': 'طيبة لاينز',
+      'en-US': 'Taiba Lines',
+    },
+    shortDescription: {
+      'ar-EG': 'موقع متعدد اللغات لشركة طيبة لاينز',
+      'en-US': 'A localized website for Taiba Lines',
+    },
+    description: {
+      'ar-EG': 'موقع متعدد اللغات لشركة طيبة لاينز تم تطويره باستخدام أحدث التقنيات',
+      'en-US': 'A localized website for Taiba Lines built with modern technologies',
+    },
+    workArea: {
+      'ar-EG': 'فرونت-ايند | تصميم واجهة المستخدم وتجربة المستخدم',
+      'en-US': 'Front-end | UI/UX Design',
+    },
+    color: '#22c55e',
+    links: {
+      website: 'https://taibalines.com',
+    },
+    categories: [
+      categories['ux-ui'],
+      categories['front-end'],
+    ],
+    stack: [
+      languages.ts,
+      runtimes.bun,
+      technologies.nextjs,
+      technologies.react,
+      technologies.chakraui,
+      technologies.nextintl,
+      languages.html,
+      languages.css,
+      languages.js,
+      tools.vsc,
+      tools.git,
+      tools.github,
+    ],
+    createdAt: '2024/12/29',
+  },
   {
     id: 'blitzmarks',
     image: Blitzmarks,
