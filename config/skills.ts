@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/prefer-reduce-type-parameter --- for reduce function */
 import { Icons } from '@/components/ui/icons';
 
 export const skills = [
