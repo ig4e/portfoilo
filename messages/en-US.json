@@ -6,7 +6,9 @@
       "about-me": "About Me",
       "skills": "Skills",
       "blog": "Blog",
-      "my-projects": "My Projects"
+      "my-projects": "My Projects",
+      "experience": "Experience",
+      "experience-desc": "My experience in web development and UI/UX design"
     }
   },
   "mode-toggle": {
@@ -27,7 +29,7 @@
   "index": {
     "hero": {
       "title": {
-        "text": "Let’s craft <highlight>لَا تُنْسَى*</highlight> user experiences.",
+        "text": "Let's craft <highlight>لَا تُنْسَى*</highlight> user experiences.",
         "highlight-meaning": "<highlight>*لا تُنْسَى</highlight> unforgettable in English"
       },
       "scroll-text": "Coding-Designing-Web-API",
@@ -40,7 +42,7 @@
       "title": "Fullstack web engineer | UI/UX Designer",
       "my-start": "In 2018, I took the plunge into the world of custom Discord bots, immersing myself in the intricate realm of coding and web development. As time marched on, I found myself fortunate to craft software for a diverse array of clients.",
       "my-foucs": "Currently, my primary focus revolves around crafting products for clients at Mostaql. During my free time, I delve into exploring new concepts, trends, and emerging technologies.",
-      "my-life": "When I’m not at the computer, you'll often find me immersed in music, socializing with friends, or indulging in some anime watching. It's a refreshing break from the digital world."
+      "my-life": "When I'm not at the computer, you'll often find me immersed in music, socializing with friends, or indulging in some anime watching. It's a refreshing break from the digital world."
     },
     "my-projects": {
       "section-name": "My Projects"
@@ -55,6 +57,15 @@
       "cms": "Content management systems",
       "tools": "Tools",
       "made-with": "Made with"
+    },
+    "experience": {
+      "section-name": "Experience",
+      "present": "Present",
+      "current": "Current",
+      "whatIDid": "What I Did",
+      "techStack": "Tech Stack",
+      "website": "Website",
+      "linkedIn": "LinkedIn"
     }
   },
   "project": {
@@ -82,6 +93,7 @@
     "categories": "Categories",
     "search": "Search",
     "latest": "Latest Posts",
+    "no_posts_found": "No posts found",
     "fillters": {
       "categories": "Categories"
     },

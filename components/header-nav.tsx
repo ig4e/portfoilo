@@ -50,13 +50,16 @@ export function NavMenu() {
                 </NavigationMenuLink>
               </li>
 
-              <ListItem href="#about" title={t('links.about-me')}>
+              <ListItem href="/#about" title={t('links.about-me')}>
                 <span className="line-clamp-2">
                   {tHome('about-me.my-start')}
                 </span>
               </ListItem>
-              <ListItem href="#skills" title={t('links.skills')}>
+              <ListItem href="/#skills" title={t('links.skills')}>
                 {tProject('description')}
+              </ListItem>
+              <ListItem href="/#experience" title={t('links.experience')}>
+                {t('links.experience-desc')}
               </ListItem>
             </ul>
           </NavigationMenuContent>

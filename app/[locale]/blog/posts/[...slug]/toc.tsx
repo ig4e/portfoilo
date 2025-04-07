@@ -2,7 +2,7 @@
 
 import { Book, TextIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, type JSX } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   Popover,

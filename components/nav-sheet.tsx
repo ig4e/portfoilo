@@ -2,7 +2,7 @@
 
 import { PanelLeft } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useState, type JSX } from 'react';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { Icons } from '@/components/ui/icons';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';

@@ -1,6 +1,6 @@
 'use client';
 import { useLocale, useTranslations } from 'next-intl';
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useCallback } from 'react';
 import { ExternalLink } from 'lucide-react';
 import type { Locale } from '@/config/i18n';
 import { skills } from '@/config/skills';
@@ -51,30 +51,47 @@ export function SkillsTypeSection({
   const t = useTranslations('index');
   const sectionRef = useRef<HTMLDivElement>(null);
   const { isMobile } = useViewport();
+  const lastMoveTime = useRef(0);
+
+  const throttledMouseMove = useCallback((e: MouseEvent) => {
+    const now = performance.now();
+    // Throttle to max 60fps (about 16ms between frames)
+    if (now - lastMoveTime.current < 16) {
+      return;
+    }
+    lastMoveTime.current = now;
+
+    const current = sectionRef.current;
+    if (!current) return;
+
+    const cards = current.getElementsByClassName('card');
+
+    for (const card of Array.from(cards)) {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      (card as HTMLDivElement).style.setProperty('--x', `${x}px`);
+      (card as HTMLDivElement).style.setProperty('--y', `${y}px`);
+    }
+  }, []);
 
   useEffect(() => {
     if (isMobile) return () => void 0;
-    const { current } = sectionRef;
+    const current = sectionRef.current;
 
-    if (current) current.addEventListener('mousemove', onMouseMove);
-
-    function onMouseMove(e: MouseEvent) {
-      if (!current) return;
-
-      for (const card of document.getElementsByClassName('card')) {
-        const rect = card.getBoundingClientRect(),
-          x = e.clientX - rect.left,
-          y = e.clientY - rect.top;
-
-        (card as HTMLDivElement).style.setProperty('--x', `${x}px`);
-        (card as HTMLDivElement).style.setProperty('--y', `${y}px`);
-      }
+    if (current) {
+      current.addEventListener('mousemove', throttledMouseMove, {
+        passive: true,
+      });
     }
 
     return () => {
-      if (current) current.removeEventListener('mousemove', onMouseMove);
+      if (current) {
+        current.removeEventListener('mousemove', throttledMouseMove);
+      }
     };
-  }, [sectionRef, isMobile]);
+  }, [sectionRef, isMobile, throttledMouseMove]);
 
   return (
     <div className="space-y-4" key={skillSection.type} ref={sectionRef}>
@@ -107,12 +124,12 @@ function SkillCard({
 
   return (
     <Link href={item.link} target="_blank">
-      <div className="card group relative cursor-pointer overflow-hidden rounded-md bg-secondary px-[1px] py-[1.5px]">
+      <div className="card group relative transform-gpu cursor-pointer overflow-hidden rounded-md bg-secondary px-[1px] py-[1.5px]">
         {!isMobile && (
           <>
             <div
               about="card-blur"
-              className="absolute inset-0 z-[3] h-full w-full opacity-0 blur-xl transition-all duration-300 will-change-auto group-hover:opacity-100"
+              className="absolute inset-0 z-[3] h-full w-full opacity-0 blur-xl transition-opacity duration-300 will-change-transform group-hover:opacity-100"
               style={{
                 background: `radial-gradient(var(--circle-size, 700px) circle at var(--x, 100px) var(--y, 100px), rgba(${itemRgbColor.r}, ${itemRgbColor.g}, ${itemRgbColor.b}, 0.25), transparent 40%)`,
               }}
@@ -120,7 +137,7 @@ function SkillCard({
 
             <div
               about="card-border"
-              className="absolute inset-0 z-[1] h-full w-full opacity-0 transition-all duration-300 will-change-auto group-hover/section:opacity-100"
+              className="absolute inset-0 z-[1] h-full w-full opacity-0 transition-opacity duration-300 will-change-transform group-hover/section:opacity-100"
               style={{
                 background: `radial-gradient(var(--circle-size,250px) circle at var(--x, 100px) var(--y, 100px), rgba(${itemRgbColor.r}, ${itemRgbColor.g}, ${itemRgbColor.b}, 0.4), transparent 40%)`,
               }}
@@ -138,14 +155,14 @@ function SkillCard({
         />
 
         <div
-          className="absolute inset-10 z-[3] h-full w-full opacity-15 blur-3xl will-change-auto md:bottom-0 md:start-0 md:h-1/2"
+          className="absolute inset-10 z-[3] h-full w-full opacity-15 blur-3xl will-change-transform md:bottom-0 md:start-0 md:h-1/2"
           style={{
             backgroundColor: item.color,
           }}
         />
 
         <div className="relative z-[2] flex h-full w-full flex-row-reverse items-center gap-4 rounded-[inherit] bg-black p-4 md:aspect-square md:flex-col">
-          <ExternalLink className="absolute end-2 top-2 self-end opacity-0 transition-all group-hover:opacity-100 md:end-4 md:top-4" />
+          <ExternalLink className="absolute end-2 top-2 self-end opacity-0 transition-opacity group-hover:opacity-100 md:end-4 md:top-4" />
           <item.icon className="z-10 flex h-16 w-auto min-w-[4rem] max-w-full items-center justify-center place-self-center justify-self-center rounded-sm md:mt-auto" />
 
           <div className="me-auto mt-auto space-y-1">

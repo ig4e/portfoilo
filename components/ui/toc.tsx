@@ -1,11 +1,6 @@
 'use client';
 
-import type {
-  AnchorHTMLAttributes,
-  HTMLAttributes,
-  ReactNode,
-  RefObject,
-} from 'react';
+import type { AnchorHTMLAttributes, HTMLAttributes, ReactNode, RefObject, JSX } from 'react';
 import {
   createContext,
   forwardRef,
@@ -21,7 +16,7 @@ import type { TableOfContents } from '@/server/get-toc';
 
 export const ActiveAnchorContext = createContext<{
   activeAnchor: string | undefined;
-  containerRef: RefObject<HTMLElement>;
+  containerRef: RefObject<HTMLElement | null>;
 }>({
   activeAnchor: undefined,
   containerRef: { current: null },
@@ -38,7 +33,7 @@ export interface TOCProviderProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export interface TOCScrollProvider {
-  containerRef: RefObject<HTMLElement>;
+  containerRef: RefObject<HTMLElement | null>;
   toc: TableOfContents;
   children: ReactNode;
 }

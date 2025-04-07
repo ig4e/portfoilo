@@ -8,7 +8,6 @@ import HnzakrOnline from '@/public/assets/projects/hnzakronline.png';
 import Ugurly from '@/public/assets/projects/ugurly.png';
 import Blitzmarks from '@/public/assets/projects/blitzmarks.png';
 import Taiba from '@/public/assets/projects/taiba.png';
-
 import {
   databases,
   languages,
@@ -65,8 +64,10 @@ export const projects = [
       'en-US': 'A localized website for Taiba Lines',
     },
     description: {
-      'ar-EG': 'موقع متعدد اللغات لشركة طيبة لاينز تم تطويره باستخدام أحدث التقنيات',
-      'en-US': 'A localized website for Taiba Lines built with modern technologies',
+      'ar-EG':
+        'موقع متعدد اللغات لشركة طيبة لاينز تم تطويره باستخدام أحدث التقنيات',
+      'en-US':
+        'A localized website for Taiba Lines built with modern technologies',
     },
     workArea: {
       'ar-EG': 'فرونت-ايند | تصميم واجهة المستخدم وتجربة المستخدم',
@@ -76,10 +77,7 @@ export const projects = [
     links: {
       website: 'https://taibalines.com',
     },
-    categories: [
-      categories['ux-ui'],
-      categories['front-end'],
-    ],
+    categories: [categories['ux-ui'], categories['front-end']],
     stack: [
       languages.ts,
       runtimes.bun,

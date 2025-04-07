@@ -1,6 +1,7 @@
+import { use } from 'react';
 import type { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { ExternalLinkIcon } from '@radix-ui/react-icons';
 import { Typography } from '@/components/typography';
@@ -14,12 +15,14 @@ import { MadeWithSection } from './made-with-section';
 import { HeroSection } from './hero-section';
 
 interface PageProps {
-  params: { locale: Locale; id: string };
+  params: Promise<{ locale: Locale; id: string }>;
 }
 
-export function generateMetadata({
-  params: { id, locale },
-}: PageProps): Metadata {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
+
+  const { id, locale } = params;
+
   const project = projects.find((p) => p.id === id);
 
   if (!project)
@@ -40,9 +43,10 @@ export function generateMetadata({
   };
 }
 
-function ProjectPage({ params }: PageProps) {
+function ProjectPage(props: PageProps) {
+  const params = use(props.params);
   const { locale, id } = params;
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
 
   const project = projects.find((p) => p.id === id);
   const t = useTranslations('project');

@@ -1,18 +1,24 @@
+import { use } from 'react';
 import { useTranslations } from 'next-intl';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import { HeroSection } from '@/components/hero-section';
 import { ProjectParallax } from '@/components/project-parallax';
 import { SkillsSection } from '@/components/skills-section';
+import { ExperienceSection } from '@/components/experience-section';
 import { Typography } from '@/components/typography';
 import { Icons } from '@/components/ui/icons';
 import type { Locale } from '@/config/i18n';
 
-export default function Home({
-  params: { locale },
-}: Readonly<{
-  params: { locale: Locale };
-}>) {
-  unstable_setRequestLocale(locale);
+export default function Home(
+  props: Readonly<{
+    params: Promise<{ locale: Locale }>;
+  }>,
+) {
+  const params = use(props.params);
+
+  const { locale } = params;
+
+  setRequestLocale(locale);
   const t = useTranslations('index');
 
   return (
@@ -57,6 +63,7 @@ export default function Home({
         </div>
       </section>
 
+      <ExperienceSection locale={locale} />
       <ProjectParallax />
       <SkillsSection />
     </main>

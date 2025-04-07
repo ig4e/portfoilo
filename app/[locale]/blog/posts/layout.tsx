@@ -1,15 +1,20 @@
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import React from 'react';
 import type { Locale } from '@/config/i18n';
 
-function layout({
-  children,
-  params: { locale },
-}: Readonly<{
-  params: { locale: Locale };
-  children: React.ReactNode;
-}>) {
-  unstable_setRequestLocale(locale);
+async function layout(
+  props: Readonly<{
+    params: { locale: Locale };
+    children: React.ReactNode;
+  }>,
+) {
+  const params = await props.params;
+
+  const { locale } = params;
+
+  const { children } = props;
+
+  setRequestLocale(locale);
 
   return <div>{children}</div>;
 }

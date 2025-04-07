@@ -3,6 +3,8 @@ import { cva } from 'class-variance-authority';
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 
+import type { JSX } from "react";
+
 const typographyVariants = cva('', {
   variants: {
     as: {
@@ -35,7 +37,7 @@ type TypographyProps<T extends Element> = {
 
 function TypographyElement<T extends Element>(
   { className, element, as, ...props }: TypographyProps<T>,
-  ref: React.LegacyRef<T>,
+  ref: React.Ref<T>,
 ) {
   const Component = element;
 

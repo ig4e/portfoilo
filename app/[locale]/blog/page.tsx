@@ -1,14 +1,18 @@
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { GenericHero } from '@/components/generic-hero';
 import type { Locale } from '@/config/i18n';
 import { Posts } from './posts-page';
 
-async function Blog({
-  params: { locale },
-}: Readonly<{
-  params: { locale: Locale };
-}>) {
-  unstable_setRequestLocale(locale);
+async function Blog(
+  props: Readonly<{
+    params: Promise<{ locale: Locale }>;
+  }>,
+) {
+  const params = await props.params;
+
+  const { locale } = params;
+
+  setRequestLocale(locale);
   const t = await getTranslations('blog');
 
   return (

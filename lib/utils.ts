@@ -46,7 +46,7 @@ export function toLocaleDateString(date = new Date()): string {
 }
 
 export function mergeRefs<T>(
-  ...refs: (React.MutableRefObject<T> | React.LegacyRef<T>)[]
+  ...refs: (React.MutableRefObject<T> | React.Ref<T>)[]
 ): React.RefCallback<T> {
   return (value) => {
     refs.forEach((ref) => {

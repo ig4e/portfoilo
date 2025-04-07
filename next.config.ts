@@ -1,7 +1,8 @@
+/* eslint-disable import/no-default-export -- NO SUPPORT FOR NEXT CONFIG */
 import createNextIntlPlugin from 'next-intl/plugin';
+import { type NextConfig } from 'next/dist/server/config-shared';
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
     remotePatterns: [
@@ -13,7 +14,7 @@ const nextConfig = {
   },
   eslint: {
     ignoreDuringBuilds: true,
-  }
+  },
 };
 
 const withNextIntl = createNextIntlPlugin();

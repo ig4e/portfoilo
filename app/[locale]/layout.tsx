@@ -1,9 +1,11 @@
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import type { Metadata } from 'next';
-import { NextIntlClientProvider, useMessages } from 'next-intl';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { NextIntlClientProvider, hasLocale } from 'next-intl';
+import { setRequestLocale } from 'next-intl/server';
 import { Cairo, Inter } from 'next/font/google';
 import Script from 'next/script';
+import { type Metadata } from 'next/dist/types';
+import { notFound } from 'next/navigation';
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import { DirectionProvider } from '@/components/direction-provider';
 import { MotionProvider } from '@/components/motion-provider';
 import { SiteFooter } from '@/components/site-footer';
@@ -15,6 +17,7 @@ import { ApolloWrapper } from '@/lib/apollo-wrapper';
 import { cn } from '@/lib/utils';
 import '../globals.css';
 import { TRPCReactProvider } from '@/trpc/react';
+import { routing } from '@/i18n/routing';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -53,17 +56,20 @@ export const metadata: Metadata = {
   ),
 };
 
-export default function RootLayout({
-  children,
-  params,
-}: Readonly<{
-  children: React.ReactNode;
-  params: { locale: Locale };
-}>) {
-  const { locale } = params;
+export default async function RootLayout(
+  props: Readonly<{
+    children: React.ReactNode;
+    params: Promise<{ locale: Locale }>;
+  }>,
+) {
+  const { children, params } = props;
+  const { locale } = await params;
 
-  unstable_setRequestLocale(locale);
-  const messages = useMessages();
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
+  setRequestLocale(locale);
   const dir = locale === 'ar-EG' ? 'rtl' : 'ltr';
 
   return (
@@ -84,10 +90,12 @@ export default function RootLayout({
               enableSystem
             >
               <ApolloWrapper>
-                <NextIntlClientProvider messages={messages}>
+                <NextIntlClientProvider locale={locale}>
                   <MotionProvider reducedMotion="user">
                     <SiteHeader />
-                    <div>{children}</div>
+                    <div>
+                      <NuqsAdapter>{children}</NuqsAdapter>
+                    </div>
                     <SiteFooter />
                   </MotionProvider>
                 </NextIntlClientProvider>

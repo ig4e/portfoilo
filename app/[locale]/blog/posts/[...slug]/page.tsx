@@ -3,13 +3,13 @@
 /* eslint-disable @typescript-eslint/no-shadow  -- TODO FIX MDX TYPES  */
 /* eslint-disable @typescript-eslint/no-non-null-assertion  -- TODO FIX MDX TYPES  */
 /* eslint-disable @typescript-eslint/no-unnecessary-condition  -- TODO FIX MDX TYPES  */
- 
+
 /* eslint-disable @typescript-eslint/no-unsafe-assignment  -- TODO FIX MDX TYPES  */
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain  -- TODO FIX MDX TYPES  */
 
 import { AtSign, ClockIcon } from 'lucide-react';
 import type { Metadata } from 'next';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Image from 'next/image';
 import { POST_META_QUERY, POST_QUERY } from '@/apollo/queries/post';
 import { GenericHero } from '@/components/generic-hero';
@@ -36,19 +36,21 @@ import { MobileTOC, OneLineTOC, TOCItems } from './toc';
 import { Track } from './track';
 
 export interface PostPageProps {
-  params: {
+  params: Promise<{
     locale: Locale;
     readonly slug: [string, string];
-  };
+  }>;
 }
 
 export const fetchCache = 'force-no-store';
 
-export async function generateMetadata({
-  params: {
+export async function generateMetadata(props: PostPageProps) {
+  const params = await props.params;
+
+  const {
     slug: [id],
-  },
-}: PostPageProps) {
+  } = params;
+
   const {
     data: { post },
   } = await getClient().query({
@@ -80,13 +82,15 @@ export async function generateMetadata({
   } as Metadata;
 }
 
-async function Post({
-  params: {
+async function Post(props: PostPageProps) {
+  const params = await props.params;
+
+  const {
     locale,
     slug: [id],
-  },
-}: PostPageProps) {
-  unstable_setRequestLocale(locale);
+  } = params;
+
+  setRequestLocale(locale);
   const t = await getTranslations('blog');
   const {
     data: { post },

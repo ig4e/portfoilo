@@ -1,16 +1,19 @@
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import React from 'react';
 import type { Locale } from '@/config/i18n';
 
-function layout({
-  params,
-  children,
-}: Readonly<{
-  params: { locale: Locale };
-  children: React.ReactNode;
-}>) {
+async function layout(
+  props: Readonly<{
+    params: { locale: Locale };
+    children: React.ReactNode;
+  }>,
+) {
+  const params = await props.params;
+
+  const { children } = props;
+
   const { locale } = params;
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
 
   return <div className="min-h-[calc(100vh-4rem)]">{children}</div>;
 }
