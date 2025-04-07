@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { Suspense } from 'react';
 import { GenericHero } from '@/components/generic-hero';
 import type { Locale } from '@/config/i18n';
 import { Posts } from './posts-page';
@@ -18,7 +19,9 @@ async function Blog(
   return (
     <div className="mb-14 space-y-8">
       <GenericHero description={t('description')} title={t('my-blog')} />
-      <Posts locale={locale} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Posts locale={locale} />
+      </Suspense>
     </div>
   );
 }

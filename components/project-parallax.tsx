@@ -250,3 +250,6 @@ export function ProjectParallax() {
     </div>
   );
 }
+
+// Export the ProjectCard component
+export { ProjectCard };
