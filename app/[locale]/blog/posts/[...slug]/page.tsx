@@ -42,8 +42,6 @@ export interface PostPageProps {
   }>;
 }
 
-export const fetchCache = 'force-no-store';
-
 export async function generateMetadata(props: PostPageProps) {
   const params = await props.params;
 
@@ -59,7 +57,6 @@ export async function generateMetadata(props: PostPageProps) {
       postId: id,
     },
     errorPolicy: 'ignore',
-    fetchPolicy: 'no-cache',
   });
 
   return {

@@ -1,4 +1,4 @@
-import { use } from 'react';
+import { Suspense, use } from 'react';
 import type { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
@@ -22,7 +22,9 @@ function ProjectsPage(props: { params: Promise<{ locale: Locale }> }) {
     <div className="container my-4 mb-8 space-y-8">
       <GenericHero description={t('description')} title={t('my-projects')} />
 
-      <ProjectsPageList params={{ locale }} />
+      <Suspense>
+        <ProjectsPageList params={{ locale }} />
+      </Suspense>
     </div>
   );
 }

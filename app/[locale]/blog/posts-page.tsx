@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
+import { Suspense } from 'react';
 import type { PostEntity } from '@/_generated/graphql';
 import { POSTS_QUERY } from '@/apollo/queries/post';
 import { Typography } from '@/components/typography';
@@ -26,15 +27,12 @@ export async function Posts({ locale }: { locale: Locale }) {
     <div className="bg-background">
       <div className="container px-4 py-4 md:py-8">
         <div className="flex flex-col gap-6 lg:grid lg:grid-cols-12 lg:gap-8">
-          {/* Main content - Moved up */}
           <main className="w-full lg:col-span-9">
-            {/* Header for large screens */}
             <Typography as="h3" className="mb-4 hidden lg:block" element="h3">
               {t('latest')}
             </Typography>
             {latestPosts.length > 0 ? (
               <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2">
-                {/* Featured post */}
                 {latestPosts[0]?.attributes ? (
                   <div className="col-span-full mb-6">
                     <Link
@@ -88,7 +86,6 @@ export async function Posts({ locale }: { locale: Locale }) {
                   </div>
                 ) : null}
 
-                {/* Regular posts */}
                 {latestPosts.slice(1).map((post) => {
                   if (!post.id || !post.attributes) return null;
 
@@ -116,10 +113,11 @@ export async function Posts({ locale }: { locale: Locale }) {
             )}
           </main>
 
-          {/* Sidebar - Moved down and kept lg:order-1 */}
           <aside className="mb-6 w-full lg:order-1 lg:col-span-3 lg:mb-0 lg:self-start">
             <div className="sticky top-4 lg:top-20">
-              <PostSearch />
+              <Suspense>
+                <PostSearch />
+              </Suspense>
             </div>
           </aside>
         </div>
