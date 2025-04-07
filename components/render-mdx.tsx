@@ -1,6 +1,8 @@
 /* eslint-disable import/no-named-as-default -- REHYPE THING I WONT FIX */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access -- TODO FIX MDX TYPES */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment  -- TODO FIX MDX TYPES */
+import fs from 'node:fs';
+import path from 'node:path';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import type { Options as rehypeAutolinkHeadingsOptions } from 'rehype-autolink-headings';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -19,11 +21,24 @@ import {
 } from '@/components/ui/table';
 import { Pre } from '@/components/mdx/pre';
 
+// Read and parse the custom themes
+const crimsonDark = JSON.parse(
+  fs.readFileSync(
+    path.join(process.cwd(), 'lib/shiki-themes/crimson-dark.json'),
+    'utf-8',
+  ),
+);
+const crimsonLight = JSON.parse(
+  fs.readFileSync(
+    path.join(process.cwd(), 'lib/shiki-themes/crimson-light.json'),
+    'utf-8',
+  ),
+);
+
 function RenderMDX({ source }: { source: string }) {
   return (
     <MDXRemote
       components={{
-        //@ts-expect-error -- type mismatch nothing i can do
         pre: Pre,
         table: Table,
         tbody: TableBody,
@@ -63,9 +78,10 @@ function RenderMDX({ source }: { source: string }) {
               rehypePrettyCode,
               {
                 theme: {
-                  dark: 'red',
-                  light: 'min-light',
+                  dark: crimsonDark,
+                  light: crimsonLight,
                 },
+                keepBackground: false,
               } satisfies rehypePrettyCodeOptions,
             ],
             () => (tree) => {

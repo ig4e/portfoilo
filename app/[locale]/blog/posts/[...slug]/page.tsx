@@ -145,7 +145,7 @@ async function Post(props: PostPageProps) {
       <Track postId={id} />
       <GenericHero description={postData.description} title={postData.title} />
 
-      <div className="relative rounded-md bg-background/60 py-8 md:px-4">
+      <div className="relative rounded-md bg-background/60 py-8 md:px-4 lg:px-8">
         <div className="container flex flex-col-reverse justify-between rounded-md bg-background/60 lg:flex lg:flex-row">
           <article className="lg:w-[70%] lg:ps-8">
             {postData ? (
@@ -186,7 +186,7 @@ async function Post(props: PostPageProps) {
             </header>
           </article>
 
-          <aside className="top-20 h-full w-full self-start pb-8 lg:sticky lg:mt-0 lg:min-h-screen lg:w-3/12 lg:border-s lg:ps-[4.16%] lg:pt-5">
+          <aside className="top-20 h-full w-full self-start pb-8 lg:sticky lg:mt-0 lg:min-h-screen lg:w-3/12 lg:border-s lg:border-border/60 lg:ps-8 lg:pt-5">
             <ScrollArea>
               <div className="space-y-4">
                 <div className="space-y-4 border-b pb-4">
