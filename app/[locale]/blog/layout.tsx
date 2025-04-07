@@ -4,7 +4,7 @@ import type { Locale } from '@/config/i18n';
 
 async function layout(
   props: Readonly<{
-    params: { locale: Locale };
+    params: Promise<{ locale: Locale }>;
     children: React.ReactNode;
   }>,
 ) {
