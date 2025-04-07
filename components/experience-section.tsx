@@ -27,11 +27,16 @@ export function ExperienceSection({ locale }: ExperienceSectionProps) {
   };
 
   return (
-    <section className="scroll-mt-20 bg-black dark  px-4 py-12 pb-14" id="experience">
-      <div className="mx-auto max-w-3xl">
+    <section
+      className="dark scroll-mt-20 bg-black px-4 py-12 pb-14"
+      id="experience"
+    >
+      <div className="mx-auto max-w-4xl">
         <div className="mb-8 flex items-center gap-4">
-          <BriefcaseIcon className="h-9 w-9" />
-          <Typography as="h2" element="h2">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+            <BriefcaseIcon className="h-9 w-9" />
+          </div>
+          <Typography as="h2" element="h2" className="text-gradient-primary">
             {t('experience.section-name')}
           </Typography>
         </div>

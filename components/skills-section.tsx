@@ -23,10 +23,12 @@ function SkillsSection() {
         className="container flex min-h-[40vh] flex-col gap-4 overflow-x-hidden overflow-y-clip"
         id="skill-cards"
       >
-        <div className="w-full ">
-          <div className="mb-6 flex items-center gap-4 ">
-            <Icons.logo className="h-9 w-9" />
-            <Typography as="h2" element="h2">
+        <div className="w-full">
+          <div className="mb-6 flex items-center gap-4">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+              <Icons.logo className="h-6 w-6" />
+            </div>
+            <Typography as="h2" element="h2" className="text-gradient-primary">
               {t('skills.section-name')}
             </Typography>
           </div>

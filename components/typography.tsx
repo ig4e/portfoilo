@@ -1,9 +1,8 @@
 import type { VariantProps } from 'class-variance-authority';
 import { cva } from 'class-variance-authority';
 import * as React from 'react';
+import type { JSX } from 'react';
 import { cn } from '@/lib/utils';
-
-import type { JSX } from "react";
 
 const typographyVariants = cva('', {
   variants: {
@@ -26,7 +25,16 @@ const typographyVariants = cva('', {
       link: 'text-sm text-muted-foreground hover:text-foreground hover:underline transition-all',
     },
   },
+  defaultVariants: {
+    as: 'p',
+  },
 });
+
+// Custom utility classes that can be applied via className
+export const typographyClasses = {
+  'text-gradient-primary':
+    'bg-gradient-to-r from-primary to-purple-500 bg-clip-text text-transparent',
+};
 
 type Element = keyof JSX.IntrinsicElements;
 

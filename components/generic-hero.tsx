@@ -32,9 +32,14 @@ export function GenericHero({
 
   return (
     <div className={cn('mb-12', classNames.container)}>
-      <section className="flex flex-col items-center justify-center gap-12 overflow-hidden text-center">
+      <section className="flex min-h-[40vh] flex-col items-center justify-center gap-12 overflow-hidden text-center">
         <div className="overflow-hidden">
-          <div className="absolute inset-x-0 top-0 -z-[10] min-h-[40vh] overflow-hidden bg-gradient-to-b from-rose-500 to-red-100 opacity-50 blur-3xl dark:from-rose-900 md:min-h-[60vh]" />
+          {/* Modern gradient mesh background */}
+          <div className="absolute inset-x-0 top-0 -z-[10] min-h-[40vh] overflow-hidden opacity-60 blur-3xl dark:opacity-40 md:min-h-[60vh]">
+            <div className="absolute -left-[25%] top-0 aspect-square w-[50%] rounded-full bg-purple-600/30 dark:bg-purple-900/20" />
+            <div className="absolute left-[25%] top-[10%] aspect-square w-[40%] rounded-full bg-rose-500/30 dark:bg-rose-800/20" />
+            <div className="absolute left-[60%] top-[20%] aspect-square w-[30%] rounded-full bg-amber-400/30 dark:bg-amber-700/20" />
+          </div>
 
           <div
             className="absolute inset-x-0 top-0 -z-[5] h-[50vh] w-full overflow-hidden !fill-current !text-white brightness-125 md:h-[60vh]"
@@ -58,14 +63,15 @@ export function GenericHero({
         </div>
 
         <motion.div
-          animate={{ opacity: 1 }}
+          animate={{ opacity: 1, y: 0 }}
           className={cn(
             'container flex flex-col items-center gap-12',
             classNames.textContainer,
           )}
-          initial={{ opacity: 0.5 }}
+          initial={{ opacity: 0.5, y: 20 }}
           transition={{
-            duration: 0.2,
+            duration: 0.5,
+            ease: 'easeOut',
           }}
         >
           <div className="flex flex-col items-center gap-4 md:mt-8">

@@ -26,6 +26,18 @@
     "cancel": "Cancel",
     "confirm": "Confirm"
   },
+  "cta": {
+    "projects": {
+      "title": "Explore My Projects",
+      "description": "View my latest work and discover the technologies I use to build exceptional digital experiences.",
+      "button": "View Projects"
+    },
+    "contact": {
+      "title": "Let's Work Together",
+      "description": "Have a project in mind? Let's discuss how I can help bring your vision to life.",
+      "button": "Get in Touch"
+    }
+  },
   "index": {
     "hero": {
       "title": {
