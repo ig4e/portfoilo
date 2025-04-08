@@ -32,6 +32,7 @@ export function Pre({
             className,
             'shiki shiki-themes relative m-0 border bg-background/90 dark:bg-background/80',
           )}
+          dir="ltr"
           {...props}
         >
           {props.children}

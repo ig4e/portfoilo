@@ -1,6 +1,13 @@
+/* eslint-disable react-compiler/react-compiler -- TODO: fix this */
 'use client';
 
-import type { AnchorHTMLAttributes, HTMLAttributes, ReactNode, RefObject, JSX } from 'react';
+import type {
+  AnchorHTMLAttributes,
+  HTMLAttributes,
+  ReactNode,
+  RefObject,
+  JSX,
+} from 'react';
 import {
   createContext,
   forwardRef,

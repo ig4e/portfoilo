@@ -1,21 +1,15 @@
 'use client';
 
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { useLocale } from 'next-intl';
+import Image from 'next/image';
+import { useRef } from 'react';
 import { Typography } from '@/components/typography';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Noise } from '@/components/ui/images';
 import type { Locale } from '@/config/i18n';
 import { projects } from '@/config/projects';
 import { cn, hexToRgb } from '@/lib/utils';
-import {
-  motion,
-  useScroll,
-  useSpring,
-  useTransform,
-  type MotionValue,
-} from 'framer-motion';
-import { useLocale } from 'next-intl';
-import Image from 'next/image';
-import { useRef } from 'react';
 
 export function HeroSection({ projectId }: { projectId: string }) {
   const project = projects.find((p) => p.id === projectId);
@@ -27,7 +21,7 @@ export function HeroSection({ projectId }: { projectId: string }) {
   const translateSpring = useSpring(scrollYProgress, {
     bounce: 0.1,
     damping: 20,
-  }) as MotionValue<number>;
+  });
 
   const translate = useTransform(translateSpring, [0, 1], [35, 0]);
 
@@ -111,27 +105,29 @@ export function HeroSection({ projectId }: { projectId: string }) {
             >
               <Image
                 alt={project.name[locale]}
-                className="h-full rounded-[5vh] bg-accent object-cover"
+                className="h-full w-full rounded-[5vh] bg-accent object-cover"
                 placeholder="blur"
                 priority
                 src={project.image}
                 quality={100}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1400px"
               />
             </motion.div>
           </AspectRatio>
         </div>
 
-        <div className="relative flex min-h-96 w-full min-w-[90vw] md:hidden">
-          <div className="absolute inset-0 z-0 !w-full !min-w-[100vw] ps-[1rem]">
+        <div className="relative mt-4 flex w-full md:hidden">
+          <AspectRatio ratio={16 / 9} className="w-full">
             <Image
               alt={project.name[locale]}
-              className="!h-full !w-full rounded-md !object-cover object-left transition-all"
+              className="h-full w-full rounded-lg object-cover"
               placeholder="blur"
               priority
               src={project.image}
               quality={100}
+              sizes="100vw"
             />
-          </div>
+          </AspectRatio>
         </div>
 
         <div
