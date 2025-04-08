@@ -196,39 +196,38 @@ interface Post {
 export function PostCard({ post }: HTMLMotionProps<'div'> & { post: Post }) {
   return (
     <Link href={`/blog/posts/${post.id}/${post.slug}`}>
-      <div
-        className="group relative w-full overflow-hidden rounded-md border transition duration-500 hover:-translate-y-1 hover:border-primary"
-        id={post.id}
-        key={post.slug}
-      >
-        <Image
-          alt={post.name}
-          className="h-full w-full object-cover"
-          height={500}
-          src={post.image}
-          width={500}
-        />
-
-        <div className="absolute inset-0 z-10 flex h-full w-full items-end justify-between gap-2 bg-gradient-to-b from-transparent to-background p-4 ">
-          <div className="flex flex-col items-start gap-2">
-            <Typography as="h4" element="h4">
-              {post.name}
-            </Typography>
-
-            <Typography as="mutedText" className="line-clamp-2" element="p">
-              {post.description}
-            </Typography>
-
-            <div className="flex flex-wrap items-center gap-2">
-              {post.categories.slice(0, 4).map(({ id, attributes }) => (
-                <Badge key={id} variant="transparent">
-                  {attributes?.name}
-                </Badge>
-              ))}
-            </div>
+      <div className="group relative h-full overflow-hidden rounded-lg border bg-card transition-all hover:-translate-y-1 hover:shadow-md">
+        <div className="relative aspect-video w-full overflow-hidden">
+          <Image
+            alt={post.name}
+            className="object-cover"
+            fill
+            src={post.image}
+          />
+        </div>
+        <div className="p-4">
+          <Typography
+            as="h4"
+            element="h4"
+            className="mb-2 line-clamp-2 text-base md:text-lg"
+          >
+            {post.name}
+          </Typography>
+          <Typography
+            as="mutedText"
+            className="line-clamp-2 text-sm text-muted-foreground"
+            element="p"
+          >
+            {post.description}
+          </Typography>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {post.categories.slice(0, 3).map(({ id, attributes }) => (
+              <Badge key={id} variant="outline" className="text-xs">
+                {attributes?.name}
+              </Badge>
+            ))}
           </div>
-
-          <ExternalLinkIcon className="h-5 w-5 min-w-5 opacity-100 transition duration-300 group-hover:opacity-100 md:opacity-0" />
+          <ExternalLinkIcon className="absolute end-4 top-4 h-5 w-5 opacity-0 transition-opacity group-hover:opacity-100" />
         </div>
       </div>
     </Link>
