@@ -26,26 +26,6 @@ export default function Home(
     <main>
       <HeroSection />
 
-      {/* Section divider */}
-      <div className="relative h-24 overflow-hidden bg-gradient-to-b from-background to-black">
-        <div className="absolute inset-0 flex justify-center">
-          <div className="w-full max-w-7xl">
-            <svg
-              className="absolute -top-1 h-24 w-full"
-              preserveAspectRatio="none"
-              viewBox="0 0 1440 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M0 24H1440V0C1440 0 1144 24 720 24C296 24 0 0 0 0V24Z"
-                fill="currentColor"
-                className="fill-background"
-              />
-            </svg>
-          </div>
-        </div>
-      </div>
-
       <section
         className="dark scroll-mt-20 bg-black px-4 py-12 text-white"
         id="about"
