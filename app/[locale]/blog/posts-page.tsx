@@ -53,19 +53,6 @@ export async function Posts({ locale }: { locale: Locale }) {
                           />
                         </div>
                         <div className="p-4 md:p-6">
-                          <div className="mb-2 flex flex-wrap gap-2 md:mb-3">
-                            {latestPosts[0].attributes.categories?.data
-                              .slice(0, 2)
-                              .map((category) => (
-                                <Badge
-                                  key={category.id}
-                                  variant="outline"
-                                  className="text-xs"
-                                >
-                                  {category.attributes?.name}
-                                </Badge>
-                              ))}
-                          </div>
                           <Typography
                             as="h2"
                             element="h3"
@@ -80,6 +67,20 @@ export async function Posts({ locale }: { locale: Locale }) {
                           >
                             {latestPosts[0].attributes.description}
                           </Typography>
+
+                          <div className="mt-2 flex flex-wrap gap-2 md:mt-3">
+                            {latestPosts[0].attributes.categories?.data
+                              .slice(0, 2)
+                              .map((category) => (
+                                <Badge
+                                  key={category.id}
+                                  variant="outline"
+                                  className="text-xs"
+                                >
+                                  {category.attributes?.name}
+                                </Badge>
+                              ))}
+                          </div>
                         </div>
                       </div>
                     </Link>
@@ -145,13 +146,6 @@ function PostCard({
         />
       </div>
       <div className="p-3 md:p-4">
-        <div className="mb-1 flex flex-wrap gap-1 md:mb-2">
-          {attributes.categories?.data.slice(0, 2).map((category) => (
-            <Badge key={category.id} variant="outline" className="text-xs">
-              {category.attributes?.name}
-            </Badge>
-          ))}
-        </div>
         <Typography
           as="h3"
           element="h3"
@@ -166,6 +160,14 @@ function PostCard({
         >
           {attributes.description}
         </Typography>
+
+        <div className="mt-2 flex flex-wrap gap-1 md:mt-3">
+          {attributes.categories?.data.slice(0, 2).map((category) => (
+            <Badge key={category.id} variant="outline" className="text-xs">
+              {category.attributes?.name}
+            </Badge>
+          ))}
+        </div>
       </div>
     </div>
   );
