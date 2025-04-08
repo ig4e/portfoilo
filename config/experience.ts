@@ -11,18 +11,19 @@ export const experience = [
       'en-US': 'AVNOLOGY',
     },
     role: {
-      'ar-EG': 'مطور الويب كامل المكدس', // Placeholder Arabic role
+      'ar-EG': 'مطور فول ستاك', // More common term
       'en-US': 'Full Stack Developer',
     },
     startDate: '2024/10/01',
     endDate: null, // null for present
     description: {
-      'ar-EG': 'نساعد بحلول إبداعية للتصميم التفاعلي والتطوير والتسويق الرقمي', // Placeholder Arabic description
+      'ar-EG':
+        'بنساعد بحلول إبداعية للتصميم التفاعلي، التطوير، والتسويق الرقمي.', // More conversational
       'en-US':
         'We help with creative solutions to interactive design, development and digital marketing',
     },
     workArea: {
-      'ar-EG': 'تطوير الويب كامل المكدس، تصميم واجهة المستخدم وتجربة المستخدم', // Placeholder Arabic work area
+      'ar-EG': 'تطوير فول ستاك، تصميم واجهة وتجربة المستخدم (UI/UX)', // More common terms
       'en-US': 'Full Stack Development, UI/UX Design',
     },
     links: {
@@ -46,7 +47,7 @@ export const experience = [
     ],
     whatIDidDo: {
       'ar-EG':
-        'طورت نظام رمز الاستجابة السريعة وصفحات تسويقية متعددة للعملاء باستخدام Next.js و React و Tailwind CSS.', // Placeholder Arabic description
+        'طورت نظام QR Code وصفحات تسويقية لعملاء باستخدام Next.js، React، و Tailwind CSS.', // More natural flow, use 'QR Code'
       'en-US':
         'Developed a QR code system and multiple marketing pages for clients using Next.js, React, and Tailwind CSS.',
     },
@@ -59,20 +60,19 @@ export const experience = [
       'en-US': 'Freelance',
     },
     role: {
-      'ar-EG': 'مطور الويب كامل المكدس / مصمم واجهة المستخدم وتجربة المستخدم',
-      'en-US': 'Full Stack / UI/UX Designer',
+      'ar-EG': 'مطور فول ستاك / مصمم UI/UX', // Shorter, common terms
+      'en-US': 'Full Stack Developer / UI/UX Designer', // Updated English role too
     },
     startDate: '2020/05/01',
     endDate: null, // null for present
     description: {
       'ar-EG':
-        'تطوير وتصميم تطبيقات الويب والجوال مع التركيز على تجربة المستخدم',
+        'تطوير وتصميم تطبيقات ويب وموبايل مع التركيز على تجربة المستخدم.', // Slightly more natural
       'en-US':
         'Web and mobile application development and design with focus on user experience',
     },
     workArea: {
-      'ar-EG':
-        'تطوير الويب كامل المكدس، تصميم واجهة المستخدم وتجربة المستخدم، تطوير التطبيقات',
+      'ar-EG': 'تطوير فول ستاك، تصميم UI/UX، تطوير تطبيقات.', // Shorter, common terms
       'en-US': 'Full Stack Development, UI/UX Design, Application Development',
     },
     links: {},
@@ -98,7 +98,7 @@ export const experience = [
     ],
     whatIDidDo: {
       'ar-EG':
-        'تصميم وتطوير مواقع ويب وتطبيقات للعملاء باستخدام أحدث التقنيات والأدوات',
+        'صممت وطورت مواقع وتطبيقات لعملاء باستخدام أحدث التكنولوجيات والأدوات.', // More active voice, common term 'تكنولوجيات'
       'en-US':
         'Designed and developed websites and applications for clients using modern technologies and tools',
     },
